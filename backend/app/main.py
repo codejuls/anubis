@@ -10,11 +10,12 @@ from .schemas import GrouperRequest, GrouperResponse
 from .grouper import AnubisMockGrouper
 from .pricer import AnubisMockPricer
 from .generator import SyntheticClaimsGenerator
+from .llm_provider import OllamaProvider, OVMSProvider
 
 # Initialize FastAPI application
 app = FastAPI(
     title="Project Anubis Integration Core",
-    description="Ecosystem endpoints for dynamic medical case grouping, pricing validation, and synthetic claim generation.",
+    description="Ecosystem endpoints for dynamic medical case grouping, pricing validation, and local LLM synthetic claim generation.",
     version="0.1.0"
 )
 
@@ -30,6 +31,7 @@ app.add_middleware(
 # Instantiate providers and generator
 grouper = AnubisMockGrouper()
 pricer = AnubisMockPricer()
+ollama_llm = OllamaProvider()
 
 # Path to default YAML blueprint
 BLUEPRINT_PATH = os.path.join(os.path.dirname(__file__), "../../blueprints/sepsis_pneumonia.yaml")
@@ -52,7 +54,8 @@ async def health_check():
     return {
         "status": "healthy",
         "grouper_provider": grouper.provider_id,
-        "pricer_provider": pricer.provider_id
+        "pricer_provider": pricer.provider_id,
+        "local_llm_provider": ollama_llm.provider_id
     }
 
 
