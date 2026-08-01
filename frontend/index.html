@@ -80,10 +80,16 @@
             font-weight: 500;
         }
 
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
         .badge {
             background: var(--emerald-primary);
             color: #ffffff;
-            padding: 5px 14px;
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 11px;
             font-weight: 700;
@@ -91,6 +97,33 @@
             letter-spacing: 0.05em;
             box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2);
             border: 1px solid var(--accent-green);
+        }
+
+        .btn-generate {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 13.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-generate:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+        }
+
+        .btn-generate:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         /* Two-column layout for main workspaces */
@@ -152,7 +185,10 @@
             <h1><span>𓁢</span> Project Anubis Sandbox Portal</h1>
             <p>Interactive Clinical Chart Modeling & Financial Impact Simulator</p>
         </div>
-        <div>
+        <div class="header-actions">
+            <button class="btn-generate" id="generate-btn">
+                🎲 Generate New Case
+            </button>
             <span class="badge">Ecosystem MVP</span>
         </div>
     </div>
@@ -186,10 +222,46 @@
         const toast = document.getElementById('toast');
         const toastMsg = document.getElementById('toast-msg');
         const toastActionBtn = document.getElementById('toast-action-btn');
+        const generateBtn = document.getElementById('generate-btn');
 
         let lastCapturedText = "";
 
-        // 1. Listen for text selection / highlight events from ClinicalChartViewer
+        // 1. Generate Case Button Handler
+        generateBtn.addEventListener('click', async () => {
+            try {
+                generateBtn.disabled = true;
+                generateBtn.innerHTML = "⏳ Generating Case...";
+
+                const response = await fetch('/api/generate');
+                if (!response.ok) throw new Error("Generation request failed");
+
+                const casePackage = await response.json();
+
+                // Update chart viewer with new synthetic narrative
+                chart.updateChart(casePackage.case_id, casePackage.unstructured_document.narrative);
+
+                // Reset abstractor workspace inputs
+                form.resetForm();
+
+                // Update telemetry panel gold standard and reset state
+                telemetry.setGoldStandard(casePackage.gold_standard);
+                telemetry.resetDefault();
+
+                // Show toast notification
+                toastMsg.innerHTML = `✨ <strong>New Case Generated:</strong> Loaded <em>${casePackage.case_id}</em> into chart viewer.`;
+                toastActionBtn.style.display = 'none';
+                toast.style.display = 'flex';
+
+            } catch (err) {
+                console.error("Generate error:", err);
+                alert(`Case generation failed: ${err.message}`);
+            } finally {
+                generateBtn.disabled = false;
+                generateBtn.innerHTML = "🎲 Generate New Case";
+            }
+        });
+
+        // 2. Listen for text selection / highlight events from ClinicalChartViewer
         document.addEventListener('TextHighlighted', (event) => {
             const text = event.detail.text;
             lastCapturedText = text;
@@ -226,7 +298,7 @@
             toast.style.display = 'flex';
         });
 
-        // 2. Listen for claim submissions from CodeEntryForm
+        // 3. Listen for claim submissions from CodeEntryForm
         document.addEventListener('ClaimSubmitted', async (event) => {
             const payload = event.detail;
 

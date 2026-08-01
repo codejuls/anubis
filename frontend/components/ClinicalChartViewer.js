@@ -67,7 +67,7 @@ class ClinicalChartViewer extends HTMLElement {
             </style>
 
             <h2><span>𓇚</span> Clinical Record Viewer</h2>
-            <div class="metadata">Case ID: <strong>ANUBIS-2026-0001</strong> | Type: Inpatient Discharge Summary</div>
+            <div class="metadata" id="case-meta">Case ID: <strong>ANUBIS-BP-SEPSIS-PNEUMONIA-001-DEFAULT</strong> | Type: Inpatient Discharge Summary</div>
             <div class="chart-content" id="chart-text">
 CHIEF COMPLAINT: Shortness of breath and fever.
 
@@ -80,9 +80,20 @@ ASSESSMENT/PLAN: Community-acquired pneumonia with sepsis. Initiated IV fluids a
         `;
     }
 
-    setupHighlightListener() {
-        const chartText = this.shadowRoot.getElementById('chart-text');
+    // Dynamic method to update chart content when a new case is generated
+    updateChart(caseId, chartText) {
+        const meta = this.shadowRoot.getElementById('case-meta');
+        const content = this.shadowRoot.getElementById('chart-text');
         
+        if (meta) {
+            meta.innerHTML = `Case ID: <strong>${caseId}</strong> | Type: Inpatient Discharge Summary`;
+        }
+        if (content) {
+            content.innerText = chartText;
+        }
+    }
+
+    setupHighlightListener() {
         this.shadowRoot.addEventListener('mouseup', () => {
             const selection = this.shadowRoot.getSelection ? this.shadowRoot.getSelection() : window.getSelection();
             const selectedText = selection.toString().trim();

@@ -191,9 +191,19 @@ class CodeEntryForm extends HTMLElement {
         `;
     }
 
+    // Reset workspace form inputs for new cases
+    resetForm() {
+        const pdxInput = this.shadowRoot.getElementById('pdx');
+        if (pdxInput) pdxInput.value = "";
+        
+        const container = this.shadowRoot.getElementById('secondary-container');
+        if (container) container.innerHTML = "";
+        
+        this.secondaryCount = 0;
+    }
+
     setupFormListeners() {
         const addBtn = this.shadowRoot.getElementById('add-secondary-btn');
-        const container = this.shadowRoot.getElementById('secondary-container');
         const submitBtn = this.shadowRoot.getElementById('submit-claim-btn');
 
         // Handler to add a secondary diagnosis row
@@ -227,7 +237,7 @@ class CodeEntryForm extends HTMLElement {
 
             const hospitalId = this.shadowRoot.getElementById('hospital').value;
 
-            // Compile the exact payload matching GrouperRequest + hospital_id
+            // Compile payload
             const payload = {
                 case_data: {
                     age: 68,
@@ -241,7 +251,6 @@ class CodeEntryForm extends HTMLElement {
                 hospital_id: hospitalId
             };
 
-            // Dispatch custom event ClaimSubmitted
             const submitEvent = new CustomEvent('ClaimSubmitted', {
                 detail: payload,
                 bubbles: true,
@@ -265,7 +274,6 @@ class CodeEntryForm extends HTMLElement {
 
         container.appendChild(row);
 
-        // Bind delete action
         row.querySelector('.delete-row-btn').addEventListener('click', (e) => {
             const targetId = e.target.getAttribute('data-target');
             const targetRow = this.shadowRoot.getElementById(targetId);
@@ -275,7 +283,6 @@ class CodeEntryForm extends HTMLElement {
         });
     }
 
-    // Programmatic method to append secondary code from highlight action
     appendSecondaryCode(code) {
         this.addSecondaryRow(code);
     }

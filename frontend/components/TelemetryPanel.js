@@ -2,9 +2,19 @@ class TelemetryPanel extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+        this.customGoldStandard = null;
     }
 
     connectedCallback() {
+        this.renderDefault();
+    }
+
+    setGoldStandard(goldStandard) {
+        this.customGoldStandard = goldStandard;
+    }
+
+    resetDefault() {
+        this.customGoldStandard = null;
         this.renderDefault();
     }
 
@@ -54,15 +64,17 @@ class TelemetryPanel extends HTMLElement {
     }
 
     showResult(result, studentPayload) {
-        // Gold standard for ANUBIS-2026-0001
-        const goldStandard = {
-            pdx: "A41.9",
-            sdx: ["J18.9"],
-            drg: "871",
-            drg_desc: "SEPTICEMIA OR SEVERE SEPSIS WITHOUT MV >96 HOURS WITH MCC",
-            weight: 1.7824,
-            payment_urban: 13368.00 // 1.7824 * 7500.0
+        // Use custom gold standard if set, otherwise fallback to default Sepsis/Pneumonia
+        const defaultGold = {
+            principal_diagnosis: { code: "A41.9", description: "Sepsis, unspecified organism" },
+            secondary_diagnoses: [{ code: "J18.9", description: "Pneumonia, unspecified organism", type: "MCC" }],
+            weight: 1.7824
         };
+
+        const activeGold = this.customGoldStandard || defaultGold;
+
+        const goldPdx = activeGold.principal_diagnosis.code.toUpperCase().trim();
+        const goldSdxCodes = activeGold.secondary_diagnoses.map(d => d.code.toUpperCase().trim());
 
         const studentPdx = studentPayload.case_data.principal_diagnosis.code.toUpperCase().trim();
         const studentSdx = studentPayload.case_data.secondary_diagnoses.map(d => d.code.toUpperCase().trim());
@@ -75,12 +87,12 @@ class TelemetryPanel extends HTMLElement {
         else if (studentHospital === "HOSP-SUBURBAN-002") baseRate = 6800.0;
         else if (studentHospital === "HOSP-RURAL-003") baseRate = 5900.0;
 
-        goldPayment = Math.round(goldStandard.weight * baseRate * 100) / 100;
+        goldPayment = Math.round(1.7824 * baseRate * 100) / 100;
 
         // Grade accuracy
-        const pdxMatched = studentPdx === goldStandard.pdx;
-        const missingMCC = !studentSdx.includes("J18.9");
-        
+        const pdxMatched = studentPdx === goldPdx;
+        const missingMCC = goldSdxCodes.some(c => !studentSdx.includes(c));
+
         let score = 0;
         let gradingStatus = "";
         let gradingClass = "";
@@ -137,7 +149,7 @@ class TelemetryPanel extends HTMLElement {
                     -webkit-backdrop-filter: blur(12px);
                     border: 1px solid rgba(16, 185, 129, 0.22);
                     border-radius: 12px;
-                    padding: 20px;
+                    padding: 22px;
                     box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.05);
                 }
 
