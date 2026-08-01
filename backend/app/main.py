@@ -9,11 +9,12 @@ import os
 from .schemas import GrouperRequest, GrouperResponse
 from .grouper import AnubisMockGrouper
 from .pricer import AnubisMockPricer
+from .generator import SyntheticClaimsGenerator
 
 # Initialize FastAPI application
 app = FastAPI(
     title="Project Anubis Integration Core",
-    description="Ecosystem endpoints for dynamic medical case grouping and pricing validation.",
+    description="Ecosystem endpoints for dynamic medical case grouping, pricing validation, and synthetic claim generation.",
     version="0.1.0"
 )
 
@@ -26,9 +27,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Instantiate our "little" mock providers
+# Instantiate providers and generator
 grouper = AnubisMockGrouper()
 pricer = AnubisMockPricer()
+
+# Path to default YAML blueprint
+BLUEPRINT_PATH = os.path.join(os.path.dirname(__file__), "../../blueprints/sepsis_pneumonia.yaml")
+generator = SyntheticClaimsGenerator(BLUEPRINT_PATH)
 
 # Composite analysis structures
 class AnalysisRequest(BaseModel):
@@ -49,6 +54,19 @@ async def health_check():
         "grouper_provider": grouper.provider_id,
         "pricer_provider": pricer.provider_id
     }
+
+
+@app.get("/api/generate")
+async def generate_synthetic_case(seed: Optional[int] = None):
+    """
+    Synthetic Claims Generator (ASCG) Endpoint.
+    Generates a brand-new, zero-PHI clinical chart and gold standard case package.
+    """
+    try:
+        case_package = generator.generate_case(seed=seed)
+        return case_package
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Generation failed: {str(e)}")
 
 
 @app.post("/api/group", response_model=GrouperResponse)
@@ -84,8 +102,7 @@ async def analyze_claim(request: AnalysisRequest):
         raise HTTPException(status_code=400, detail=f"Analysis failed: {str(e)}")
 
 
-# 4. Mount Frontend Static Files to serve the complete sandbox on a single port!
-# We check if the frontend directory exists first to avoid startup crashes.
+# Mount Frontend Static Files to serve the complete sandbox on a single port!
 frontend_dir = "/opt/data/anubis/frontend"
 if os.path.exists(frontend_dir):
     app.mount("/", StaticFiles(directory=frontend_dir, html=True), name="frontend")

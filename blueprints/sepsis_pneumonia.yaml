@@ -1,0 +1,52 @@
+blueprint_id: BP-SEPSIS-PNEUMONIA-001
+domain: Inpatient-Internal-Medicine
+core_concept: Sepsis secondary to localized Pneumonia
+difficulty_level: Moderate
+
+demographics_rules:
+  age_range: [50, 85]
+  genders: ["F", "M"]
+
+isomorphic_noise_pool:
+  social_history:
+    - "Former smoker, quit 10 years ago. No active tobacco or alcohol use."
+    - "Never smoked. Occasional social glass of wine on weekends."
+    - "Denies history of tobacco, alcohol, or illicit drug use."
+  chronic_conditions:
+    - code: "I10"
+      description: "Essential hypertension"
+      clinical_marker: "BP controlled on home Lisinopril 10mg daily."
+    - code: "M19.90"
+      description: "Osteoarthritis, unspecified"
+      clinical_marker: "Mild chronic joint stiffness in bilateral knees."
+    - code: "E11.9"
+      description: "Type 2 diabetes mellitus without complications"
+      clinical_marker: "Hemoglobin A1c 6.8% on Metformin 500mg BID."
+
+clinical_template:
+  chief_complaint: "Shortness of breath, productive cough, and high fever."
+  vitals:
+    temp_fahrenheit: [101.2, 102.8]
+    heart_rate_bpm: [104, 118]
+    respiratory_rate: [22, 26]
+    blood_pressure_sys: [98, 108]
+    blood_pressure_dia: [55, 65]
+  labs:
+    wbc_k_uL: [13.5, 17.2]
+    lactate_mmol_L: [2.2, 3.1]
+    chest_xray: "Left lower lobe opacity consistent with acute infiltrate/consolidation."
+
+gold_standard:
+  principal_diagnosis:
+    code: "A41.9"
+    description: "Sepsis, unspecified organism"
+    rationale: "Sepsis is present on admission (POA) and meets criteria for principal diagnosis under ICD-10-CM Guideline I.C.1.d.1.a."
+  secondary_diagnoses:
+    - code: "J18.9"
+      description: "Pneumonia, unspecified organism"
+      type: "MCC"
+      rationale: "Localized pulmonary infection causing systemic sepsis. Classified as MCC."
+    - code: "J44.1"
+      description: "Chronic obstructive pulmonary disease with (acute) exacerbation"
+      type: "CC"
+      rationale: "Acute exacerbation managed with bronchodilator therapy."
