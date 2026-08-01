@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "effective_fiscal_year": "FY2026",
+    "effective_dates": "October 1, 2025 - September 30, 2026",
+    "source_authority": "CMS / NCHS Official Guidelines for Coding and Reporting",
+    "index_version": "1.0.0"
+  },
+  "guideline_index": [
+    {
+      "guideline_id": "I.C.1.d.1.a",
+      "section": "Section I.C.1.d - Infectious and Parasitic Diseases: Sepsis",
+      "title": "Sepsis as Principal Diagnosis",
+      "citation": "ICD-10-CM Official Guidelines FY2026, Section I.C.1.d.1.a",
+      "associated_codes": ["A41.9", "A41.01", "A41.51"],
+      "summary_rationale": "If sepsis is present on admission (POA) and meets the definition of principal diagnosis, the systemic infection code (A41.-) should be sequenced first, followed by localized infection codes as secondary diagnoses."
+    },
+    {
+      "guideline_id": "I.C.1.d.1.b",
+      "section": "Section I.C.1.d - Severe Sepsis",
+      "title": "Severe Sepsis Coding & Organ Dysfunction",
+      "citation": "ICD-10-CM Official Guidelines FY2026, Section I.C.1.d.1.b",
+      "associated_codes": ["R65.20", "R65.21"],
+      "summary_rationale": "The coding of severe sepsis requires a minimum of 2 codes: first a code for the underlying systemic infection, followed by a code from subcategory R65.2 (Severe sepsis) and associated acute organ dysfunction codes."
+    },
+    {
+      "guideline_id": "I.C.10.a",
+      "section": "Section I.C.10 - Respiratory System: Pneumonia",
+      "title": "Pneumonia with Sepsis Sequencing",
+      "citation": "ICD-10-CM Official Guidelines FY2026, Section I.C.10.a",
+      "associated_codes": ["J18.9", "J15.9", "J13"],
+      "summary_rationale": "When pneumonia is localized and secondary to systemic sepsis, Pneumonia is classified as a Major Complication or Comorbidity (MCC) and sequenced as a secondary diagnosis."
+    },
+    {
+      "guideline_id": "I.C.10.5.a",
+      "section": "Section I.C.10 - Chronic Obstructive Pulmonary Disease",
+      "title": "COPD with Acute Exacerbation",
+      "citation": "ICD-10-CM Official Guidelines FY2026, Section I.C.10.5.a",
+      "associated_codes": ["J44.1", "J44.0"],
+      "summary_rationale": "Code J44.1 is assigned when COPD is documented with an acute exacerbation. If an infection such as pneumonia is also present, sequence based on the principal diagnosis rules."
+    }
+  ]
+}
