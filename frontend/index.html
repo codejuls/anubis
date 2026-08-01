@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Anubis - Live Sandbox Portal</title>
+    <style>
+        /* 
+           THE MINT-EMERALD GLASSMORPHISM PALETTE:
+           - 60% Dominant (Base): Warm cream & frosted ice backdrop (#f7f9f6 with ambient soft green gradient)
+           - 30% Secondary (Structure): Emerald Forest (#047857), Deep Jade Slate (#0f291e), and Soft Mint Glass (#d1fae5 / rgba(255,255,255,0.75))
+           - 10% Accent (Action/Energy): Vibrant Emerald Mint (#10b981 / #059669)
+        */
+        :root {
+            --bg-color: #f7f9f6;          /* Base soft cream/mint environment */
+            --card-glass: rgba(255, 255, 255, 0.82); /* Glassmorphism translucent container */
+            --glass-border: rgba(16, 185, 129, 0.22); /* Translucent emerald glass border */
+            --text-main: #0f291e;         /* Deep Jade Charcoal text */
+            --text-secondary: #475569;    /* Muted Slate details */
+            
+            --emerald-primary: #059669;    /* Deep Emerald for headers */
+            --emerald-dark: #047857;       /* Dark Emerald */
+            --emerald-light-bg: #ecfdf5;   /* Soft mint surface tint */
+            
+            --accent-green: #10b981;      /* Vibrant Mint Green CTA */
+            --accent-green-hover: #059669;
+            --accent-green-dark: #065f46;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(5, 150, 105, 0.08) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(209, 250, 229, 0.2) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 25px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--glass-border);
+            padding-bottom: 15px;
+            background: var(--card-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 18px 24px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.05);
+        }
+
+        .title-area h1 {
+            color: var(--emerald-primary);
+            margin: 0;
+            font-size: 26px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+        }
+
+        .title-area h1 span {
+            color: var(--accent-green);
+        }
+
+        .title-area p {
+            color: var(--text-secondary);
+            margin: 5px 0 0 0;
+            font-size: 14.5px;
+            font-weight: 500;
+        }
+
+        .badge {
+            background: var(--emerald-primary);
+            color: #ffffff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2);
+            border: 1px solid var(--accent-green);
+        }
+
+        /* Two-column layout for main workspaces */
+        .workspace {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Quick-capture toast/logger with Glassmorphism */
+        .toast-container {
+            background: rgba(236, 253, 245, 0.9); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--accent-green);
+            border-radius: 10px;
+            padding: 12px 18px;
+            font-size: 13.5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 20px -2px rgba(16, 185, 129, 0.12);
+        }
+
+        .toast-text {
+            color: var(--accent-green-dark); 
+            font-weight: 600;
+        }
+
+        .toast-action {
+            background: var(--accent-green);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 7px 14px;
+            font-size: 12.5px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.2s;
+            box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
+        }
+
+        .toast-action:hover {
+            background-color: var(--accent-green-hover);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="title-area">
+            <h1><span>𓁢</span> Project Anubis Sandbox Portal</h1>
+            <p>Interactive Clinical Chart Modeling & Financial Impact Simulator</p>
+        </div>
+        <div>
+            <span class="badge">Ecosystem MVP</span>
+        </div>
+    </div>
+
+    <!-- Quick Capture Toast for Highlight Event Telemetry -->
+    <div class="toast-container" id="toast" style="display: none;">
+        <span class="toast-text" id="toast-msg">Highlight telemetry logged...</span>
+        <button class="toast-action" id="toast-action-btn">➕ Append to Workspace</button>
+    </div>
+
+    <div class="workspace">
+        <!-- Custom Component: Clinical Chart Viewer -->
+        <clinical-chart-viewer id="chart"></clinical-chart-viewer>
+
+        <!-- Custom Component: Abstractor Workspace Form -->
+        <code-entry-form id="form"></code-entry-form>
+    </div>
+
+    <!-- Custom Component: Telemetry & Evaluation Panel -->
+    <telemetry-panel id="telemetry"></telemetry-panel>
+
+    <!-- Load Custom Web Components as ES Modules -->
+    <script type="module">
+        import "./components/ClinicalChartViewer.js";
+        import "./components/CodeEntryForm.js";
+        import "./components/TelemetryPanel.js";
+
+        const chart = document.getElementById('chart');
+        const form = document.getElementById('form');
+        const telemetry = document.getElementById('telemetry');
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toast-msg');
+        const toastActionBtn = document.getElementById('toast-action-btn');
+
+        let lastCapturedText = "";
+
+        // 1. Listen for text selection / highlight events from ClinicalChartViewer
+        document.addEventListener('TextHighlighted', (event) => {
+            const text = event.detail.text;
+            lastCapturedText = text;
+
+            // Simple medical NER pattern match simulation
+            let inferredCode = "";
+            let inferredDesc = "";
+
+            const lowerText = text.toLowerCase();
+            if (lowerText.includes("sepsis")) {
+                inferredCode = "A41.9";
+                inferredDesc = "Sepsis, unspecified organism";
+            } else if (lowerText.includes("pneumonia") || lowerText.includes("infiltrate")) {
+                inferredCode = "J18.9";
+                inferredDesc = "Pneumonia, unspecified organism";
+            } else if (lowerText.includes("copd") || lowerText.includes("dyspnea")) {
+                inferredCode = "J44.1";
+                inferredDesc = "COPD with acute exacerbation";
+            }
+
+            toastMsg.innerHTML = `⚡ <strong>NLP Event Captured:</strong> Highlighted text <em>"${text}"</em>`;
+            
+            if (inferredCode) {
+                toastMsg.innerHTML += ` matches clinical indicator for code <strong>${inferredCode}</strong> (${inferredDesc})!`;
+                toastActionBtn.style.display = 'block';
+                toastActionBtn.onclick = () => {
+                    form.appendSecondaryCode(inferredCode);
+                    toast.style.display = 'none';
+                };
+            } else {
+                toastActionBtn.style.display = 'none';
+            }
+
+            toast.style.display = 'flex';
+        });
+
+        // 2. Listen for claim submissions from CodeEntryForm
+        document.addEventListener('ClaimSubmitted', async (event) => {
+            const payload = event.detail;
+
+            try {
+                // Clear toast
+                toast.style.display = 'none';
+
+                // Query the FastAPI backend at relative path /api/analyze
+                const response = await fetch('/api/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || "Server returned an error");
+                }
+
+                const result = await response.json();
+
+                // Pass result to TelemetryPanel for rendering and grading
+                telemetry.showResult(result, payload);
+
+                // Scroll down smoothly to show results
+                telemetry.scrollIntoView({ behavior: 'smooth' });
+
+            } catch (error) {
+                console.error("Analysis request failed:", error);
+                alert(`Analysis failed: ${error.message}`);
+            }
+        });
+    </script>
+</body>
+</html>

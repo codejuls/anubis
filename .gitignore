@@ -1,0 +1,19 @@
+# Python virtual environments & bytecode
+.venv/
+venv/
+ENV/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# IDE / System files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Node / NPM
+node_modules/
+npm-debug.log*
