@@ -48,8 +48,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--glass-border);
-            padding-bottom: 15px;
             background: var(--card-glass);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -139,24 +137,66 @@
             }
         }
 
-        /* Quick-capture toast/logger with Glassmorphism */
-        .toast-container {
-            background: rgba(236, 253, 245, 0.9); 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+        /* Smart NLP Suggestion Glass Card (Milestone #2) */
+        .suggestion-card {
+            background: rgba(236, 253, 245, 0.92); 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--accent-green);
-            border-radius: 10px;
-            padding: 12px 18px;
+            border-radius: 12px;
+            padding: 16px 20px;
             font-size: 13.5px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+        }
+
+        .suggestion-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 8px 20px -2px rgba(16, 185, 129, 0.12);
         }
 
-        .toast-text {
+        .suggestion-title {
             color: var(--accent-green-dark); 
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .severity-chip {
+            background: #059669;
+            color: #ffffff;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .suggestion-details {
+            color: var(--text-main);
+            line-height: 1.5;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 10px 14px;
+            border-radius: 8px;
+        }
+
+        .suggestion-citation {
+            font-size: 12px;
+            color: var(--emerald-dark);
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        .suggestion-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
         }
 
         .toast-action {
@@ -164,12 +204,12 @@
             color: #ffffff;
             border: none;
             border-radius: 6px;
-            padding: 7px 14px;
-            font-size: 12.5px;
+            padding: 8px 16px;
+            font-size: 13px;
             cursor: pointer;
             font-weight: 700;
             transition: all 0.2s;
-            box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
         }
 
         .toast-action:hover {
@@ -193,10 +233,25 @@
         </div>
     </div>
 
-    <!-- Quick Capture Toast for Highlight Event Telemetry -->
-    <div class="toast-container" id="toast" style="display: none;">
-        <span class="toast-text" id="toast-msg">Highlight telemetry logged...</span>
-        <button class="toast-action" id="toast-action-btn">➕ Append to Workspace</button>
+    <!-- Smart NLP Code Suggestion Glass Card (Milestone #2) -->
+    <div class="suggestion-card" id="suggestion-box" style="display: none;">
+        <div class="suggestion-header">
+            <div class="suggestion-title">
+                ⚡ <span>Anubis NLP Entity Match</span>
+            </div>
+            <span class="severity-chip" id="suggest-severity">MCC</span>
+        </div>
+        
+        <div class="suggestion-details">
+            Excerpt: <em id="suggest-excerpt">"Temp 102.1°F"</em><br>
+            Suggested Code: <strong id="suggest-code" style="color: var(--emerald-dark); font-size: 15px;">A41.9</strong> — <span id="suggest-desc">Sepsis, unspecified organism</span>
+            <div class="suggestion-citation" id="suggest-citation">Source: AHA Coding Clinic Q4 2023, p. 8</div>
+            <div style="font-size: 12.5px; color: var(--text-secondary); margin-top: 6px;" id="suggest-rationale"></div>
+        </div>
+
+        <div class="suggestion-actions">
+            <button class="toast-action" id="apply-code-btn">➕ Apply Code to Workspace</button>
+        </div>
     </div>
 
     <div class="workspace">
@@ -219,18 +274,26 @@
         const chart = document.getElementById('chart');
         const form = document.getElementById('form');
         const telemetry = document.getElementById('telemetry');
-        const toast = document.getElementById('toast');
-        const toastMsg = document.getElementById('toast-msg');
-        const toastActionBtn = document.getElementById('toast-action-btn');
         const generateBtn = document.getElementById('generate-btn');
+        
+        const suggestionBox = document.getElementById('suggestion-box');
+        const suggestExcerpt = document.getElementById('suggest-excerpt');
+        const suggestCode = document.getElementById('suggest-code');
+        const suggestDesc = document.getElementById('suggest-desc');
+        const suggestSeverity = document.getElementById('suggest-severity');
+        const suggestCitation = document.getElementById('suggest-citation');
+        const suggestRationale = document.getElementById('suggest-rationale');
+        const applyCodeBtn = document.getElementById('apply-code-btn');
 
-        let lastCapturedText = "";
+        let currentSuggestedCode = "";
+        let currentSeverity = "";
 
         // 1. Generate Case Button Handler
         generateBtn.addEventListener('click', async () => {
             try {
                 generateBtn.disabled = true;
                 generateBtn.innerHTML = "⏳ Generating Case...";
+                suggestionBox.style.display = 'none';
 
                 const response = await fetch('/api/generate');
                 if (!response.ok) throw new Error("Generation request failed");
@@ -247,11 +310,6 @@
                 telemetry.setGoldStandard(casePackage.gold_standard);
                 telemetry.resetDefault();
 
-                // Show toast notification
-                toastMsg.innerHTML = `✨ <strong>New Case Generated:</strong> Loaded <em>${casePackage.case_id}</em> into chart viewer.`;
-                toastActionBtn.style.display = 'none';
-                toast.style.display = 'flex';
-
             } catch (err) {
                 console.error("Generate error:", err);
                 alert(`Case generation failed: ${err.message}`);
@@ -261,41 +319,51 @@
             }
         });
 
-        // 2. Listen for text selection / highlight events from ClinicalChartViewer
-        document.addEventListener('TextHighlighted', (event) => {
+        // 2. Listen for text selection / highlight events and query POST /api/extract (Milestone #2)
+        document.addEventListener('TextHighlighted', async (event) => {
             const text = event.detail.text;
-            lastCapturedText = text;
 
-            // Simple medical NER pattern match simulation
-            let inferredCode = "";
-            let inferredDesc = "";
+            try {
+                const response = await fetch('/api/extract', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ selected_text: text })
+                });
 
-            const lowerText = text.toLowerCase();
-            if (lowerText.includes("sepsis")) {
-                inferredCode = "A41.9";
-                inferredDesc = "Sepsis, unspecified organism";
-            } else if (lowerText.includes("pneumonia") || lowerText.includes("infiltrate")) {
-                inferredCode = "J18.9";
-                inferredDesc = "Pneumonia, unspecified organism";
-            } else if (lowerText.includes("copd") || lowerText.includes("dyspnea")) {
-                inferredCode = "J44.1";
-                inferredDesc = "COPD with acute exacerbation";
+                if (!response.ok) return;
+
+                const nlpData = await response.json();
+
+                currentSuggestedCode = nlpData.suggested_code;
+                currentSeverity = nlpData.severity_type;
+
+                suggestExcerpt.innerText = `"${nlpData.entity_text}"`;
+                suggestCode.innerText = nlpData.suggested_code;
+                suggestDesc.innerText = nlpData.description;
+                suggestSeverity.innerText = nlpData.severity_type;
+                suggestCitation.innerText = `Source: ${nlpData.official_citation} (${nlpData.source})`;
+                suggestRationale.innerText = nlpData.rationale;
+
+                suggestionBox.style.display = 'flex';
+
+            } catch (err) {
+                console.error("NLP extraction failed:", err);
             }
+        });
 
-            toastMsg.innerHTML = `⚡ <strong>NLP Event Captured:</strong> Highlighted text <em>"${text}"</em>`;
-            
-            if (inferredCode) {
-                toastMsg.innerHTML += ` matches clinical indicator for code <strong>${inferredCode}</strong> (${inferredDesc})!`;
-                toastActionBtn.style.display = 'block';
-                toastActionBtn.onclick = () => {
-                    form.appendSecondaryCode(inferredCode);
-                    toast.style.display = 'none';
-                };
-            } else {
-                toastActionBtn.style.display = 'none';
+        // Apply suggested code to workspace
+        applyCodeBtn.addEventListener('click', () => {
+            if (currentSuggestedCode) {
+                if (currentSeverity === "Principal Candidate") {
+                    // Set as Principal
+                    const pdxInput = form.shadowRoot.getElementById('pdx');
+                    if (pdxInput) pdxInput.value = currentSuggestedCode;
+                } else {
+                    // Append as Secondary
+                    form.appendSecondaryCode(currentSuggestedCode);
+                }
+                suggestionBox.style.display = 'none';
             }
-
-            toast.style.display = 'flex';
         });
 
         // 3. Listen for claim submissions from CodeEntryForm
@@ -303,15 +371,12 @@
             const payload = event.detail;
 
             try {
-                // Clear toast
-                toast.style.display = 'none';
+                suggestionBox.style.display = 'none';
 
                 // Query the FastAPI backend at relative path /api/analyze
                 const response = await fetch('/api/analyze', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
 
