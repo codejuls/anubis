@@ -35,6 +35,7 @@ clinical_template:
     wbc_k_uL: [13.5, 17.2]
     lactate_mmol_L: [2.2, 3.1]
     chest_xray: "Left lower lobe opacity consistent with acute infiltrate/consolidation."
+  assessment: "Severe sepsis secondary to community-acquired pneumonia. Patient placed on sepsis resuscitation protocol with IV fluid boluses (30 mL/kg crystalloid) and started on broad-spectrum IV antibiotics (ceftriaxone + azithromycin). Supplemental oxygen titrated to maintain SpO2 > 92%. Serial lactates, vasopressor support if refractory hypotension. Source control not required. Infectious disease consultation. Chronic conditions managed on home medications."
 
 gold_standard:
   principal_diagnosis:

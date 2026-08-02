@@ -1,0 +1,63 @@
+blueprint_id: BP-COPD-EXACERBATION-002
+domain: Inpatient-Internal-Medicine
+core_concept: Acute exacerbation of COPD with respiratory failure
+difficulty_level: Moderate
+
+demographics_rules:
+  age_range: [55, 90]
+  genders: ["F", "M"]
+
+isomorphic_noise_pool:
+  social_history:
+    - "Former smoker with 40 pack-year history, quit 5 years ago. Lives alone with home health aide."
+    - "Current smoker, 1 pack per day for 35 years. Denies alcohol or illicit drug use."
+    - "Never smoked. Worked in textile factory with dust exposure for 30 years. Social drinker."
+  chronic_conditions:
+    - code: "I10"
+      description: "Essential hypertension"
+      clinical_marker: "BP controlled on Amlodipine 5mg daily."
+    - code: "E11.9"
+      description: "Type 2 diabetes mellitus without complications"
+      clinical_marker: "HbA1c 7.2% on Metformin 1000mg BID."
+    - code: "I25.10"
+      description: "Atherosclerotic heart disease of native coronary artery"
+      clinical_marker: "Status post PCI 3 years ago, on Aspirin and Atorvastatin."
+    - code: "J44.9"
+      description: "COPD, unspecified"
+      clinical_marker: "Home O2 2L NC, Spiriva HandiHaler daily, rescue albuterol PRN."
+
+clinical_template:
+  chief_complaint: "Worsening shortness of breath, increased sputum production, and low-grade fever."
+  vitals:
+    temp_fahrenheit: [99.5, 101.0]
+    heart_rate_bpm: [98, 115]
+    respiratory_rate: [24, 32]
+    blood_pressure_sys: [130, 160]
+    blood_pressure_dia: [75, 95]
+  labs:
+    wbc_k_uL: [10.5, 15.8]
+    lactate_mmol_L: [1.2, 2.5]
+    bnp_pg_mL: [350, 800]
+    chest_xray: "Hyperinflated lungs, flattened diaphragms, no acute consolidation. Possible peribronchial thickening."
+    abg_ph: [7.30, 7.38]
+    abg_pco2: [50, 65]
+  assessment: "Acute exacerbation of COPD with respiratory failure. Patient started on IV corticosteroids (methylprednisolone), nebulized bronchodilators (albuterol/ipratropium), and controlled oxygen therapy targeting SpO2 88-92%. BiPAP initiated for hypercapnic respiratory failure. Antibiotics (azithromycin/ceftriaxone) for infectious trigger. Home inhalers and O2 continued."
+
+gold_standard:
+  principal_diagnosis:
+    code: "J44.1"
+    description: "Chronic obstructive pulmonary disease with (acute) exacerbation"
+    rationale: "Acute worsening of COPD symptoms requiring hospitalization. Principal diagnosis per ICD-10-CM Guideline I.C.10.a."
+  secondary_diagnoses:
+    - code: "J96.00"
+      description: "Acute respiratory failure, unspecified whether with hypoxia or hypercapnia"
+      type: "MCC"
+      rationale: "ABG shows acute hypercapnic respiratory failure (pH <7.35, pCO2 >50). MCC per CMS DRG logic."
+    - code: "I10"
+      description: "Essential hypertension"
+      type: "None"
+      rationale: "Chronic condition, managed on home meds. Not a CC/MCC."
+    - code: "E11.9"
+      description: "Type 2 diabetes mellitus without complications"
+      type: "None"
+      rationale: "Controlled, no acute complications documented."

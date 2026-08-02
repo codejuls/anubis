@@ -1,0 +1,63 @@
+blueprint_id: BP-SEPSIS-UTI-008
+domain: Inpatient-Internal-Medicine
+core_concept: Urosepsis with bacteremia from complicated UTI
+difficulty_level: Moderate
+demographics_rules:
+  age_range: [60, 95]
+  genders: ["F", "M"]
+isomorphic_noise_pool:
+  social_history:
+    - "Lives independently, baseline continent. Denies tobacco, rare alcohol."
+    - "Resides in memory care unit. Incontinent, requires total care. PEG tube."
+    - "Lives with spouse, Foley catheter for neurogenic bladder. Independent ADLs."
+  chronic_conditions:
+    - code: "N39.0"
+      description: "Urinary tract infection, site not specified"
+      clinical_marker: "Recurrent UTIs (4 in past year), on prophylactic Nitrofurantoin 100mg daily."
+    - code: "E11.9"
+      description: "Type 2 diabetes mellitus without complications"
+      clinical_marker: "HbA1c 7.8% on Metformin 1000mg BID. Insulin sliding scale PRN."
+    - code: "I10"
+      description: "Essential hypertension"
+      clinical_marker: "Controlled on Lisinopril 20mg daily."
+    - code: "N28.85"
+      description: "Nephrolithiasis, unspecified"
+      clinical_marker: "History of calcium oxalate stones, status post ureteroscopy 2023."
+clinical_template:
+  chief_complaint: "Fever, flank pain, and altered mental status."
+  vitals:
+    temp_fahrenheit: [101.0, 103.5]
+    heart_rate_bpm: [100, 120]
+    respiratory_rate: [20, 26]
+    blood_pressure_sys: [90, 110]
+    blood_pressure_dia: [50, 70]
+  labs:
+    wbc_k_uL: [14.0, 22.0]
+    lactate_mmol_L: [2.0, 4.5]
+    creatinine_mg_dL: [1.2, 2.8]
+    chest_xray: "Normal heart size, clear lung fields. No acute cardiopulmonary process."
+    urinalysis: "Large leukocyte esterase, nitrite positive, >100 WBC/hpf, bacteria seen."
+    blood_cultures: "Pending at admission."
+  assessment: "Urosepsis secondary to complicated UTI with bacteremia. Sepsis protocol initiated with 30 mL/kg crystalloid bolus. Broad-spectrum IV antibiotics (piperacillin-tazobactam or meropenem) pending cultures. Foley catheter placement for strict I/O. Urology consultation for possible obstruction. Infectious disease consultation. Acute kidney injury monitoring. Adjust antibiotics per sensitivities."
+gold_standard:
+  principal_diagnosis:
+    code: "A41.9"
+    description: "Sepsis, unspecified organism"
+    rationale: "Sepsis present on admission from urinary source. Principal diagnosis per ICD-10-CM Guideline I.C.1.d.1.a."
+  secondary_diagnoses:
+    - code: "N39.0"
+      description: "Urinary tract infection, site not specified"
+      type: "MCC"
+      rationale: "UTI as source of sepsis. Classified as MCC when complicating sepsis."
+    - code: "N17.9"
+      description: "Acute kidney failure, unspecified"
+      type: "CC"
+      rationale: "AKI from sepsis/hypoperfusion. CC per CMS list."
+    - code: "E11.9"
+      description: "Type 2 diabetes mellitus without complications"
+      type: "None"
+      rationale: "Comorbidity predisposing to UTI. Not a CC/MCC."
+    - code: "N28.85"
+      description: "Nephrolithiasis, unspecified"
+      type: "None"
+      rationale: "History of stones, potential obstruction risk. Not a CC/MCC."

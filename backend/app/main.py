@@ -14,6 +14,16 @@ from .llm_provider import OllamaProvider, OVMSProvider
 from .nlp_parser import ClinicalNLPParser, NLPExtractionRequest, NLPExtractionResponse
 from .forge import ScenarioForgeEngine, BlueprintSummary, ForgeCustomizationRequest, ForgeScenarioPackage
 
+# Blueprint Creator models
+class BlueprintSaveRequest(BaseModel):
+    blueprint_id: str = Field(..., description="Unique blueprint identifier (e.g., BP-DOMAIN-CONCEPT-###)")
+    yaml_content: str = Field(..., description="Full YAML content of the blueprint")
+
+class BlueprintSaveResponse(BaseModel):
+    success: bool
+    blueprint_id: str
+    message: str
+
 # Initialize FastAPI application
 app = FastAPI(
     title="Project Anubis Integration Core",
@@ -77,13 +87,66 @@ async def list_forge_blueprints():
 @app.post("/api/forge/synthesize", response_model=ForgeScenarioPackage)
 async def synthesize_forge_scenario(request: ForgeCustomizationRequest):
     """
-    Synthesizes a customized scenario package based on educator controls 
+    Synthesizes a customized scenario package based on educator controls
     (age ranges, noise levels, and mutation vectors).
     """
     try:
         return forge_engine.forge_scenario(request)
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Forge synthesis failed: {str(e)}")
+
+
+@app.post("/api/forge/blueprints/save", response_model=BlueprintSaveResponse)
+async def save_blueprint(request: BlueprintSaveRequest):
+    """
+    Saves a new blueprint YAML file to the blueprints directory.
+    Validates the YAML structure and blueprint_id uniqueness.
+    """
+    try:
+        import yaml
+        import os
+        
+        blueprints_dir = os.path.join(os.path.dirname(__file__), "../../blueprints")
+        os.makedirs(blueprints_dir, exist_ok=True)
+        
+        # Validate YAML is parseable
+        try:
+            parsed = yaml.safe_load(request.yaml_content)
+        except yaml.YAMLError as e:
+            raise HTTPException(status_code=400, detail=f"Invalid YAML: {str(e)}")
+        
+        # Validate required fields
+        required_fields = ["blueprint_id", "domain", "core_concept", "difficulty_level", 
+                          "demographics_rules", "isomorphic_noise_pool", "clinical_template", "gold_standard"]
+        for field in required_fields:
+            if field not in parsed:
+                raise HTTPException(status_code=400, detail=f"Missing required field: {field}")
+        
+        # Validate blueprint_id matches
+        if parsed.get("blueprint_id") != request.blueprint_id:
+            raise HTTPException(status_code=400, detail="blueprint_id in YAML does not match request")
+        
+        # Check for existing
+        file_path = os.path.join(blueprints_dir, f"{request.blueprint_id}.yaml")
+        if os.path.exists(file_path):
+            raise HTTPException(status_code=409, detail=f"Blueprint '{request.blueprint_id}' already exists. Use a different ID.")
+        
+        # Write file
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(request.yaml_content)
+        
+        # Reload the forge engine to pick up the new blueprint
+        forge_engine._load_all_blueprints()
+        
+        return BlueprintSaveResponse(
+            success=True,
+            blueprint_id=request.blueprint_id,
+            message=f"Blueprint saved to {file_path}"
+        )
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Save failed: {str(e)}")
 
 
 @app.get("/api/generate")

@@ -1,0 +1,66 @@
+blueprint_id: BP-HIP-FRACTURE-ORIF-007
+domain: Inpatient-Orthopedics
+core_concept: Intertrochanteric hip fracture treated with ORIF
+difficulty_level: Moderate
+
+demographics_rules:
+  age_range: [70, 95]
+  genders: ["F", "M"]
+
+isomorphic_noise_pool:
+  social_history:
+    - "Lives independently in single-story home. Uses cane for ambulation. Independent ADLs."
+    - "Resides in assisted living. Walker for mobility. Needs assistance with IADLs."
+    - "Lives with spouse. Prior fall 6 months ago. Active in senior exercise program."
+  chronic_conditions:
+    - code: "M81.0"
+      description: "Age-related osteoporosis without current pathological fracture"
+      clinical_marker: "DEXA T-score -2.8 femoral neck. On Alendronate 70mg weekly, Calcium/Vit D."
+    - code: "I10"
+      description: "Essential hypertension"
+      clinical_marker: "Well controlled on Lisinopril 10mg daily."
+    - code: "E11.9"
+      description: "Type 2 diabetes mellitus without complications"
+      clinical_marker: "HbA1c 7.0% on Metformin 1000mg BID."
+    - code: "I48.91"
+      description: "Unspecified atrial fibrillation"
+      clinical_marker: "Paroxysmal Afib, on Apixaban 5mg BID. Held perioperatively."
+
+clinical_template:
+  chief_complaint: "Left hip pain and inability to bear weight after mechanical fall at home."
+  vitals:
+    temp_fahrenheit: [98.0, 99.5]
+    heart_rate_bpm: [80, 100]
+    respiratory_rate: [16, 20]
+    blood_pressure_sys: [130, 160]
+    blood_pressure_dia: [75, 90]
+  labs:
+    wbc_k_uL: [7.5, 11.5]
+    lactate_mmol_L: [0.8, 1.5]
+    hgb_g_dL: [10.5, 12.5]
+    chest_xray: "Normal heart size, clear lung fields. No acute cardiopulmonary process."
+    ekg: "Normal sinus rhythm or atrial fibrillation with controlled ventricular response."
+  assessment: "Intertrochanteric hip fracture confirmed. Orthopedic surgery consultation for ORIF with cephalomedullary nail. Preoperative clearance: cardiac (Afib rate control, hold anticoagulation bridging), medical optimization. Spinal anesthesia preferred. Post-op: DVT prophylaxis, multimodal pain control, early mobilization PT/OT day 0-1. Osteoporosis workup (DEXA if not recent), initiate/continue bisphosphonate. Fall risk assessment. Discharge to rehab/SNF."
+
+gold_standard:
+  principal_diagnosis:
+    code: "S72.141A"
+    description: "Displaced intertrochanteric fracture of right femur, initial encounter for closed fracture"
+    rationale: "Traumatic fracture is the reason for admission. 7th character 'A' for initial encounter."
+  secondary_diagnoses:
+    - code: "M81.0"
+      description: "Age-related osteoporosis without current pathological fracture"
+      type: "CC"
+      rationale: "Osteoporosis contributing to fracture. CC per CMS list."
+    - code: "I10"
+      description: "Essential hypertension"
+      type: "None"
+      rationale: "Controlled comorbidity. Not a CC/MCC."
+    - code: "E11.9"
+      description: "Type 2 diabetes mellitus without complications"
+      type: "None"
+      rationale: "Controlled. Not a CC/MCC."
+    - code: "I48.91"
+      description: "Unspecified atrial fibrillation"
+      type: "CC"
+      rationale: "Afib with anticoagulation management perioperatively. CC per CMS list."

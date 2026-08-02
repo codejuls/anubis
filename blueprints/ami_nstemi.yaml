@@ -1,0 +1,67 @@
+blueprint_id: BP-AMI-NSTEMI-004
+domain: Inpatient-Cardiology
+core_concept: Non-ST-elevation myocardial infarction (NSTEMI) with angiography
+difficulty_level: Advanced
+
+demographics_rules:
+  age_range: [50, 85]
+  genders: ["F", "M"]
+
+isomorphic_noise_pool:
+  social_history:
+    - "Former smoker, 20 pack-years, quit 15 years ago. Sedentary lifestyle. Rare alcohol."
+    - "Current smoker, 1.5 ppd x 30 years. High-stress executive role. Denies IV drug use."
+    - "Never smoked. Strong family history of premature CAD. Vegetarian diet, regular exercise."
+  chronic_conditions:
+    - code: "I10"
+      description: "Essential hypertension"
+      clinical_marker: "On Amlodipine 10mg and Losartan 100mg daily."
+    - code: "E78.5"
+      description: "Hyperlipidemia, unspecified"
+      clinical_marker: "On Atorvastatin 80mg daily. LDL 78 mg/dL last check."
+    - code: "E11.9"
+      description: "Type 2 diabetes mellitus without complications"
+      clinical_marker: "HbA1c 6.9% on Metformin 1000mg BID."
+    - code: "I25.10"
+      description: "Atherosclerotic heart disease of native coronary artery"
+      clinical_marker: "Prior PCI to RCA 2021. Dual antiplatelet therapy with Aspirin and Clopidogrel."
+
+clinical_template:
+  chief_complaint: "Intermittent substernal chest pressure at rest, radiating to left arm, 4 hours duration."
+  vitals:
+    temp_fahrenheit: [98.0, 99.0]
+    heart_rate_bpm: [70, 95]
+    respiratory_rate: [16, 22]
+    blood_pressure_sys: [135, 165]
+    blood_pressure_dia: [78, 95]
+  labs:
+    wbc_k_uL: [6.5, 11.0]
+    lactate_mmol_L: [0.6, 1.4]
+    troponin_ng_mL: [0.8, 15.0]
+    ck_mb_ng_mL: [5.0, 25.0]
+    chest_xray: "Normal heart size, clear lung fields, no effusions."
+    ekg: "ST depressions V4-V6, T wave inversions lateral leads. No ST elevation."
+  assessment: "NSTEMI confirmed by elevated troponin with ischemic symptoms. Immediate dual antiplatelet therapy (aspirin + ticagrelor), high-intensity statin, anticoagulation. Urgent cardiac catheterization with PCI to culprit lesion (LAD). Glycoprotein IIb/IIIa inhibitor considered. Post-PCI monitoring in CCU. Discharge on GDMT: DAPT 12 months, high-intensity statin, beta-blocker, ACEi, SGLT2i."
+
+gold_standard:
+  principal_diagnosis:
+    code: "I21.4"
+    description: "Non-ST elevation (NSTEMI) myocardial infarction"
+    rationale: "Elevated troponin with ischemic symptoms but no ST elevation. ICD-10-CM Guideline I.C.9.e.1."
+  secondary_diagnoses:
+    - code: "I10"
+      description: "Essential hypertension"
+      type: "None"
+      rationale: "Major risk factor for CAD. Not a CC/MCC."
+    - code: "E78.5"
+      description: "Hyperlipidemia, unspecified"
+      type: "None"
+      rationale: "Chronic risk factor. Not a CC/MCC."
+    - code: "E11.9"
+      description: "Type 2 diabetes mellitus without complications"
+      type: "None"
+      rationale: "Controlled DM. Not a CC/MCC."
+    - code: "I25.10"
+      description: "Atherosclerotic heart disease of native coronary artery"
+      type: "CC"
+      rationale: "Underlying CAD with prior PCI. CC per CMS list."

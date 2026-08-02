@@ -5,8 +5,18 @@ def test_list_blueprints():
     forge = ScenarioForgeEngine()
     summaries = forge.list_blueprints()
     assert len(summaries) > 0
-    assert summaries[0].blueprint_id == "BP-SEPSIS-PNEUMONIA-001"
-    assert "MUT-POA-SHIFT" in summaries[0].available_mutations[0]
+    # Find the original sepsis blueprint (order not guaranteed)
+    sepsis_bp = next((s for s in summaries if s.blueprint_id == "BP-SEPSIS-PNEUMONIA-001"), None)
+    assert sepsis_bp is not None, "Original sepsis blueprint should be present"
+    assert "MUT-POA-SHIFT" in sepsis_bp.available_mutations[0]
+    # Verify new blueprints are loaded
+    bp_ids = {s.blueprint_id for s in summaries}
+    assert "BP-COPD-EXACERBATION-002" in bp_ids
+    assert "BP-HEART-FAILURE-ACUTE-003" in bp_ids
+    assert "BP-AMI-NSTEMI-004" in bp_ids
+    assert "BP-STROKE-ISCHEMIC-005" in bp_ids
+    assert "BP-PNEUMONIA-ASPIRATION-006" in bp_ids
+    assert "BP-HIP-FRACTURE-ORIF-007" in bp_ids
 
 def test_forge_scenario_basic():
     forge = ScenarioForgeEngine()

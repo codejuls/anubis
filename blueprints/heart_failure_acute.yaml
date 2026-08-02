@@ -1,0 +1,76 @@
+blueprint_id: BP-HEART-FAILURE-ACUTE-003
+domain: Inpatient-Cardiology
+core_concept: Acute decompensated heart failure with volume overload
+difficulty_level: Moderate
+
+demographics_rules:
+  age_range: [60, 95]
+  genders: ["F", "M"]
+
+isomorphic_noise_pool:
+  social_history:
+    - "Lives with spouse, independent ADLs. Low sodium diet adherence variable. Occasional glass of wine."
+    - "Resides in assisted living facility. 25 pack-year smoking history, quit 10 years ago."
+    - "Lives alone, daughter checks in daily. Denies tobacco. Strict fluid restriction at home."
+  chronic_conditions:
+    - code: "I10"
+      description: "Essential hypertension"
+      clinical_marker: "Long-standing HTN, on Lisinopril 20mg, Carvedilol 25mg BID, Furosemide 40mg daily."
+    - code: "I25.10"
+      description: "Atherosclerotic heart disease of native coronary artery"
+      clinical_marker: "History of NSTEMI 2019, PCI to LAD. EF 30% on last echo."
+    - code: "E11.9"
+      description: "Type 2 diabetes mellitus without complications"
+      clinical_marker: "HbA1c 7.8% on Metformin 1000mg BID and Glipizide 5mg daily."
+    - code: "I48.91"
+      description: "Unspecified atrial fibrillation"
+      clinical_marker: "Chronic Afib, rate controlled on Metoprolol, Eliquis 5mg BID for stroke prophylaxis."
+    - code: "N18.3"
+      description: "Chronic kidney disease, stage 3"
+      clinical_marker: "Baseline Cr 1.6, eGFR 42. Nephrology co-management."
+
+clinical_template:
+  chief_complaint: "Progressive dyspnea on exertion, orthopnea, and 10 lb weight gain over 1 week."
+  vitals:
+    temp_fahrenheit: [97.8, 99.2]
+    heart_rate_bpm: [85, 105]
+    respiratory_rate: [20, 28]
+    blood_pressure_sys: [140, 175]
+    blood_pressure_dia: [80, 100]
+  labs:
+    wbc_k_uL: [7.2, 12.5]
+    lactate_mmol_L: [0.8, 1.8]
+    bnp_pg_mL: [1200, 4500]
+    troponin_ng_mL: [0.02, 0.08]
+    chest_xray: "Cardiomegaly, bilateral pleural effusions, pulmonary vascular congestion, Kerley B lines."
+    abg_ph: [7.38, 7.44]
+    abg_pco2: [35, 45]
+    creatinine_mg_dL: [1.4, 2.2]
+  assessment: "Acute decompensated heart failure with volume overload. IV loop diuretic (furosemide) bolus followed by continuous infusion for aggressive diuresis. Afterload reduction with IV nitroglycerin. Continued guideline-directed medical therapy (GDMT): beta-blocker, ACEi/ARB/ARNI, MRA, SGLT2i. Rate control for Afib. Cardiology consultation. Daily weights, strict I/O, fluid restriction 1.5L."
+
+gold_standard:
+  principal_diagnosis:
+    code: "I50.9"
+    description: "Heart failure, unspecified"
+    rationale: "Acute decompensated heart failure is the reason for admission. Unspecified type when systolic/diastolic not clearly documented per ICD-10-CM Guideline I.C.9.a."
+  secondary_diagnoses:
+    - code: "J81.0"
+      description: "Acute pulmonary edema"
+      type: "MCC"
+      rationale: "Clinical and radiographic evidence of acute pulmonary edema. MCC for DRG grouping."
+    - code: "I10"
+      description: "Essential hypertension"
+      type: "None"
+      rationale: "Chronic underlying etiology, managed on multiple agents."
+    - code: "I25.10"
+      description: "Atherosclerotic heart disease of native coronary artery"
+      type: "CC"
+      rationale: "Ischemic cardiomyopathy with reduced EF. CC per CMS list."
+    - code: "I48.91"
+      description: "Unspecified atrial fibrillation"
+      type: "CC"
+      rationale: "Chronic Afib with rate control. CC per CMS list."
+    - code: "N18.3"
+      description: "Chronic kidney disease, stage 3"
+      type: "CC"
+      rationale: "CKD stage 3. CC per CMS list."

@@ -1,0 +1,69 @@
+blueprint_id: BP-PNEUMONIA-ASPIRATION-006
+domain: Inpatient-Internal-Medicine
+core_concept: Aspiration pneumonia in patient with dysphagia and altered mental status
+difficulty_level: Moderate
+
+demographics_rules:
+  age_range: [65, 95]
+  genders: ["F", "M"]
+
+isomorphic_noise_pool:
+  social_history:
+    - "Resides in skilled nursing facility. Bedbound, requires total care. PEG tube in place."
+    - "Lives with adult daughter, caregiver. Moderate dementia, needs assistance with ADLs."
+    - "Prior independent, recent fall with hip fracture 3 months ago. Now uses walker."
+  chronic_conditions:
+    - code: "G30.9"
+      description: "Alzheimer's disease, unspecified"
+      clinical_marker: "Moderate dementia, MMSE 14/30. On Donepezil 10mg and Memantine 10mg BID."
+    - code: "I10"
+      description: "Essential hypertension"
+      clinical_marker: "Controlled on Amlodipine 5mg daily."
+    - code: "E11.9"
+      description: "Type 2 diabetes mellitus without complications"
+      clinical_marker: "HbA1c 7.5% on sliding scale insulin."
+    - code: "R13.10"
+      description: "Dysphagia, unspecified"
+      clinical_marker: "Videofluoroscopic swallow study shows silent aspiration. NPO with PEG feeds."
+    - code: "N39.0"
+      description: "Urinary tract infection, site not specified"
+      clinical_marker: "Recurrent UTIs, on prophylactic Nitrofurantoin."
+
+clinical_template:
+  chief_complaint: "Increased lethargy, fever, and decreased oral intake over 24 hours."
+  vitals:
+    temp_fahrenheit: [100.5, 103.0]
+    heart_rate_bpm: [95, 115]
+    respiratory_rate: [22, 28]
+    blood_pressure_sys: [95, 120]
+    blood_pressure_dia: [55, 75]
+  labs:
+    wbc_k_uL: [11.0, 18.5]
+    lactate_mmol_L: [1.5, 3.5]
+    crp_mg_dL: [8.0, 25.0]
+    chest_xray: "Right lower lobe consolidation with air bronchograms. Possible aspiration pattern."
+    blood_cultures: "Pending at admission."
+  assessment: "Aspiration pneumonia in setting of dysphagia and altered mental status. Broad-spectrum IV antibiotics (piperacillin-tazobactam or meropenem) covering anaerobes and gram-negatives. Speech therapy evaluation for swallow safety. NPO status with enteral feeding via PEG. Sepsis resuscitation if hemodynamic instability. Infectious disease consultation. Goals of care discussion given advanced dementia."
+
+gold_standard:
+  principal_diagnosis:
+    code: "J69.0"
+    description: "Pneumonitis due to inhalation of food and vomit"
+    rationale: "Aspiration pneumonia in patient with known dysphagia. ICD-10-CM Guideline I.C.10.d."
+  secondary_diagnoses:
+    - code: "J18.9"
+      description: "Pneumonia, unspecified organism"
+      type: "MCC"
+      rationale: "Bacterial superinfection common. MCC per CMS list."
+    - code: "G30.9"
+      description: "Alzheimer's disease, unspecified"
+      type: "CC"
+      rationale: "Underlying dementia with dysphagia leading to aspiration. CC per CMS list."
+    - code: "R13.10"
+      description: "Dysphagia, unspecified"
+      type: "None"
+      rationale: "Mechanism of aspiration. Not a CC/MCC."
+    - code: "E11.9"
+      description: "Type 2 diabetes mellitus without complications"
+      type: "None"
+      rationale: "Comorbidity. Not a CC/MCC."

@@ -59,6 +59,13 @@ class SyntheticClaimsGenerator:
         # 4. Synthesize Unstructured Clinical EHR Narrative
         chief_complaint = bp["clinical_template"]["chief_complaint"]
         
+        # Use custom assessment narrative from blueprint if available, otherwise fallback to sepsis
+        assessment = bp["clinical_template"].get("assessment", 
+            f"Severe sepsis secondary to community-acquired pneumonia. "
+            f"{gender_pronoun} was placed on sepsis resuscitation protocol with IV fluid boluses and started on "
+            f"broad-spectrum IV antibiotics (Ceftriaxone and Azithromycin). Supplemental oxygen titrated via nasal cannula. "
+            f"{gender_possessive} chronic conditions were monitored and maintained on home medications.")
+
         narrative = (
             f"CHIEF COMPLAINT: {chief_complaint}\n\n"
             f"HISTORY OF PRESENT ILLNESS: The patient is a {patient_age}-year-old {gender_title} "
@@ -71,13 +78,8 @@ class SyntheticClaimsGenerator:
             f"LABORATORY & IMAGING FINDINGS: Initial serum Lactate is elevated at {lactate} mmol/L. "
             f"White Blood Cell (WBC) count is elevated at {wbc} K/uL. "
             f"Chest X-Ray demonstrates: {labs['chest_xray']}\n\n"
-            f"ASSESSMENT & HOSPITAL COURSE: Severe sepsis secondary to community-acquired pneumonia. "
-            f"{gender_pronoun} was placed on sepsis resuscitation protocol with IV fluid boluses and started on "
-            f"broad-spectrum IV antibiotics (Ceftriaxone and Azithromycin). Supplemental oxygen titrated via nasal cannula. "
-            f"{gender_possessive} chronic conditions were monitored and maintained on home medications."
+            f"ASSESSMENT & HOSPITAL COURSE: {assessment}"
         )
-
-        # 5. Compile Package
         case_id = f"ANUBIS-{bp['blueprint_id']}-{random.randint(1000, 9999)}"
         
         return {

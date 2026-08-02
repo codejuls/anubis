@@ -1,0 +1,72 @@
+blueprint_id: BP-STROKE-ISCHEMIC-005
+domain: Inpatient-Neurology
+core_concept: Acute ischemic stroke with thrombolysis consideration
+difficulty_level: Advanced
+
+demographics_rules:
+  age_range: [55, 90]
+  genders: ["F", "M"]
+
+isomorphic_noise_pool:
+  social_history:
+    - "Lives with spouse, independent. Former smoker 30 pack-years, quit 20 years ago."
+    - "Resides in independent living. Never smoked. Active, walks 2 miles daily."
+    - "Lives alone, home health aide QD. History of ETOH abuse, sober 5 years."
+  chronic_conditions:
+    - code: "I10"
+      description: "Essential hypertension"
+      clinical_marker: "On Lisinopril 20mg, HCTZ 25mg, Amlodipine 10mg. BP 145/85 at baseline."
+    - code: "I48.91"
+      description: "Unspecified atrial fibrillation"
+      clinical_marker: "Paroxysmal Afib, on Apixaban 5mg BID. CHA2DS2-VASc 4."
+    - code: "E78.5"
+      description: "Hyperlipidemia, unspecified"
+      clinical_marker: "On Rosuvastatin 20mg. LDL 65 mg/dL."
+    - code: "E11.9"
+      description: "Type 2 diabetes mellitus without complications"
+      clinical_marker: "HbA1c 7.1% on Metformin 1000mg BID."
+
+clinical_template:
+  chief_complaint: "Sudden onset right-sided weakness and slurred speech, 2 hours duration."
+  vitals:
+    temp_fahrenheit: [98.0, 99.0]
+    heart_rate_bpm: [75, 95]
+    respiratory_rate: [14, 18]
+    blood_pressure_sys: [160, 190]
+    blood_pressure_dia: [90, 110]
+  labs:
+    wbc_k_uL: [6.8, 10.5]
+    lactate_mmol_L: [0.8, 1.6]
+    glucose_mg_dL: [110, 180]
+    chest_xray: "Normal heart size, clear lung fields. No acute cardiopulmonary process."
+    ct_head: "No intracranial hemorrhage. Early ischemic changes left MCA territory (ASPECTS 8)."
+    ct_angiogram: "Left M1 segment occlusion. Good collaterals."
+    nihss_score: [8, 16]
+  assessment: "Acute ischemic stroke, left MCA territory, within thrombolysis window. NIHSS assessed. IV alteplase (tPA) 0.9 mg/kg administered per protocol. BP management <185/110. Urgent neurology/neurointerventional consultation. Admission to stroke unit. Continuous cardiac monitoring for Afib detection. Secondary prevention: anticoagulation for cardioembolic source, high-intensity statin, antiplatelet if not thrombolyzed."
+
+gold_standard:
+  principal_diagnosis:
+    code: "I63.51"
+    description: "Cerebral infarction due to unspecified occlusion or stenosis of left middle cerebral artery"
+    rationale: "Acute ischemic stroke with confirmed left M1 occlusion. ICD-10-CM Guideline I.C.9.c."
+  secondary_diagnoses:
+    - code: "I48.91"
+      description: "Unspecified atrial fibrillation"
+      type: "CC"
+      rationale: "Known cardioembolic source. CC per CMS list."
+    - code: "I10"
+      description: "Essential hypertension"
+      type: "None"
+      rationale: "Major stroke risk factor. Not a CC/MCC."
+    - code: "E78.5"
+      description: "Hyperlipidemia, unspecified"
+      type: "None"
+      rationale: "Chronic risk factor. Not a CC/MCC."
+    - code: "E11.9"
+      description: "Type 2 diabetes mellitus without complications"
+      type: "None"
+      rationale: "Controlled DM. Not a CC/MCC."
+    - code: "Z92.82"
+      description: "Status post administration of tPA (rtPA) in a different facility within the last 24 hours before admission to current facility"
+      type: "None"
+      rationale: "If IV tPA given at outside hospital within 24h. Not a CC/MCC but critical for quality reporting."
