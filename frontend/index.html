@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Anubis - Live Sandbox Portal</title>
+    <title>Project Anubis - Live Portal & Scenario Forge</title>
     <style>
         /* 
            THE MINT-EMERALD GLASSMORPHISM PALETTE:
@@ -12,17 +12,17 @@
            - 10% Accent (Action/Energy): Vibrant Emerald Mint (#10b981 / #059669)
         */
         :root {
-            --bg-color: #f7f9f6;          /* Base soft cream/mint environment */
-            --card-glass: rgba(255, 255, 255, 0.82); /* Glassmorphism translucent container */
-            --glass-border: rgba(16, 185, 129, 0.22); /* Translucent emerald glass border */
-            --text-main: #0f291e;         /* Deep Jade Charcoal text */
-            --text-secondary: #475569;    /* Muted Slate details */
+            --bg-color: #f7f9f6;          
+            --card-glass: rgba(255, 255, 255, 0.82); 
+            --glass-border: rgba(16, 185, 129, 0.22); 
+            --text-main: #0f291e;         
+            --text-secondary: #475569;    
             
-            --emerald-primary: #059669;    /* Deep Emerald for headers */
-            --emerald-dark: #047857;       /* Dark Emerald */
-            --emerald-light-bg: #ecfdf5;   /* Soft mint surface tint */
+            --emerald-primary: #059669;    
+            --emerald-dark: #047857;       
+            --emerald-light-bg: #ecfdf5;   
             
-            --accent-green: #10b981;      /* Vibrant Mint Green CTA */
+            --accent-green: #10b981;      
             --accent-green-hover: #059669;
             --accent-green-dark: #065f46;
         }
@@ -78,10 +78,31 @@
             font-weight: 500;
         }
 
-        .header-actions {
+        .mode-nav {
             display: flex;
-            align-items: center;
-            gap: 12px;
+            gap: 10px;
+            background: rgba(236, 253, 245, 0.6);
+            padding: 4px;
+            border-radius: 10px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .mode-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--emerald-dark);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .mode-btn.active {
+            background: var(--emerald-primary);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
         }
 
         .badge {
@@ -97,33 +118,6 @@
             border: 1px solid var(--accent-green);
         }
 
-        .btn-generate {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            padding: 8px 16px;
-            font-size: 13.5px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .btn-generate:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
-        }
-
-        .btn-generate:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
         /* Two-column layout for main workspaces */
         .workspace {
             display: grid;
@@ -137,7 +131,7 @@
             }
         }
 
-        /* Smart NLP Suggestion Glass Card (Milestone #2) */
+        /* Smart NLP Suggestion Glass Card */
         .suggestion-card {
             background: rgba(236, 253, 245, 0.92); 
             backdrop-filter: blur(16px);
@@ -222,59 +216,73 @@
 
     <div class="header">
         <div class="title-area">
-            <h1><span>𓁢</span> Project Anubis Sandbox Portal</h1>
-            <p>Interactive Clinical Chart Modeling & Financial Impact Simulator</p>
+            <h1><span>𓁢</span> Project Anubis Platform</h1>
+            <p>Interactive Clinical Scenario Forge & Abstractor Sandbox</p>
         </div>
-        <div class="header-actions">
-            <button class="btn-generate" id="generate-btn">
-                🎲 Generate New Case
-            </button>
+        
+        <!-- Navigation Modes -->
+        <div class="mode-nav">
+            <button class="mode-btn active" id="mode-forge-btn">🔥 Scenario Forge Studio</button>
+            <button class="mode-btn" id="mode-sandbox-btn">𓁢 Abstractor Sandbox</button>
+        </div>
+
+        <div>
             <span class="badge">Ecosystem MVP</span>
         </div>
     </div>
 
-    <!-- Smart NLP Code Suggestion Glass Card (Milestone #2) -->
-    <div class="suggestion-card" id="suggestion-box" style="display: none;">
-        <div class="suggestion-header">
-            <div class="suggestion-title">
-                ⚡ <span>Anubis NLP Entity Match</span>
+    <!-- Mode 1: Scenario Forge Studio (Educator Creation & Demo Portal) -->
+    <div id="section-forge">
+        <scenario-forge-studio id="forge-studio"></scenario-forge-studio>
+    </div>
+
+    <!-- Mode 2: Abstractor Sandbox (Student Coding Practice) -->
+    <div id="section-sandbox" style="display: none; flex-direction: column; gap: 20px;">
+        <!-- Smart NLP Code Suggestion Glass Card -->
+        <div class="suggestion-card" id="suggestion-box" style="display: none;">
+            <div class="suggestion-header">
+                <div class="suggestion-title">
+                    ⚡ <span>Anubis NLP Entity Match</span>
+                </div>
+                <span class="severity-chip" id="suggest-severity">MCC</span>
             </div>
-            <span class="severity-chip" id="suggest-severity">MCC</span>
-        </div>
-        
-        <div class="suggestion-details">
-            Excerpt: <em id="suggest-excerpt">"Temp 102.1°F"</em><br>
-            Suggested Code: <strong id="suggest-code" style="color: var(--emerald-dark); font-size: 15px;">A41.9</strong> — <span id="suggest-desc">Sepsis, unspecified organism</span>
-            <div class="suggestion-citation" id="suggest-citation">Source: AHA Coding Clinic Q4 2023, p. 8</div>
-            <div style="font-size: 12.5px; color: var(--text-secondary); margin-top: 6px;" id="suggest-rationale"></div>
+            
+            <div class="suggestion-details">
+                Excerpt: <em id="suggest-excerpt">"Temp 102.1°F"</em><br>
+                Suggested Code: <strong id="suggest-code" style="color: var(--emerald-dark); font-size: 15px;">A41.9</strong> — <span id="suggest-desc">Sepsis, unspecified organism</span>
+                <div class="suggestion-citation" id="suggest-citation">Source: AHA Coding Clinic Q4 2023, p. 8</div>
+                <div style="font-size: 12.5px; color: var(--text-secondary); margin-top: 6px;" id="suggest-rationale"></div>
+            </div>
+
+            <div class="suggestion-actions">
+                <button class="toast-action" id="apply-code-btn">➕ Apply Code to Workspace</button>
+            </div>
         </div>
 
-        <div class="suggestion-actions">
-            <button class="toast-action" id="apply-code-btn">➕ Apply Code to Workspace</button>
+        <div class="workspace">
+            <clinical-chart-viewer id="chart"></clinical-chart-viewer>
+            <code-entry-form id="form"></code-entry-form>
         </div>
+
+        <telemetry-panel id="telemetry"></telemetry-panel>
     </div>
-
-    <div class="workspace">
-        <!-- Custom Component: Clinical Chart Viewer -->
-        <clinical-chart-viewer id="chart"></clinical-chart-viewer>
-
-        <!-- Custom Component: Abstractor Workspace Form -->
-        <code-entry-form id="form"></code-entry-form>
-    </div>
-
-    <!-- Custom Component: Telemetry & Evaluation Panel -->
-    <telemetry-panel id="telemetry"></telemetry-panel>
 
     <!-- Load Custom Web Components as ES Modules -->
     <script type="module">
         import "./components/ClinicalChartViewer.js";
         import "./components/CodeEntryForm.js";
         import "./components/TelemetryPanel.js";
+        import "./components/ScenarioForgeStudio.js";
 
+        const modeForgeBtn = document.getElementById('mode-forge-btn');
+        const modeSandboxBtn = document.getElementById('mode-sandbox-btn');
+        const sectionForge = document.getElementById('section-forge');
+        const sectionSandbox = document.getElementById('section-sandbox');
+        
+        const forgeStudio = document.getElementById('forge-studio');
         const chart = document.getElementById('chart');
         const form = document.getElementById('form');
         const telemetry = document.getElementById('telemetry');
-        const generateBtn = document.getElementById('generate-btn');
         
         const suggestionBox = document.getElementById('suggestion-box');
         const suggestExcerpt = document.getElementById('suggest-excerpt');
@@ -288,38 +296,33 @@
         let currentSuggestedCode = "";
         let currentSeverity = "";
 
-        // 1. Generate Case Button Handler
-        generateBtn.addEventListener('click', async () => {
-            try {
-                generateBtn.disabled = true;
-                generateBtn.innerHTML = "⏳ Generating Case...";
-                suggestionBox.style.display = 'none';
-
-                const response = await fetch('/api/generate');
-                if (!response.ok) throw new Error("Generation request failed");
-
-                const casePackage = await response.json();
-
-                // Update chart viewer with new synthetic narrative
-                chart.updateChart(casePackage.case_id, casePackage.unstructured_document.narrative);
-
-                // Reset abstractor workspace inputs
-                form.resetForm();
-
-                // Update telemetry panel gold standard and reset state
-                telemetry.setGoldStandard(casePackage.gold_standard);
-                telemetry.resetDefault();
-
-            } catch (err) {
-                console.error("Generate error:", err);
-                alert(`Case generation failed: ${err.message}`);
-            } finally {
-                generateBtn.disabled = false;
-                generateBtn.innerHTML = "🎲 Generate New Case";
-            }
+        // Navigation Mode Switcher
+        modeForgeBtn.addEventListener('click', () => {
+            modeForgeBtn.classList.add('active');
+            modeSandboxBtn.classList.remove('active');
+            sectionForge.style.display = 'block';
+            sectionSandbox.style.display = 'none';
         });
 
-        // 2. Listen for text selection / highlight events and query POST /api/extract (Milestone #2)
+        modeSandboxBtn.addEventListener('click', () => {
+            modeSandboxBtn.classList.add('active');
+            modeForgeBtn.classList.remove('active');
+            sectionForge.style.display = 'none';
+            sectionSandbox.style.display = 'flex';
+        });
+
+        // Listen for ScenarioForged event from ScenarioForgeStudio
+        document.addEventListener('ScenarioForged', (event) => {
+            const pkg = event.detail;
+
+            // Load into Sandbox components
+            chart.updateChart(pkg.scenario_id, pkg.synthesized_ehr.narrative);
+            form.resetForm();
+            telemetry.setGoldStandard(pkg.gold_standard);
+            telemetry.resetDefault();
+        });
+
+        // Listen for text selection / highlight events
         document.addEventListener('TextHighlighted', async (event) => {
             const text = event.detail.text;
 
@@ -355,25 +358,22 @@
         applyCodeBtn.addEventListener('click', () => {
             if (currentSuggestedCode) {
                 if (currentSeverity === "Principal Candidate") {
-                    // Set as Principal
                     const pdxInput = form.shadowRoot.getElementById('pdx');
                     if (pdxInput) pdxInput.value = currentSuggestedCode;
                 } else {
-                    // Append as Secondary
                     form.appendSecondaryCode(currentSuggestedCode);
                 }
                 suggestionBox.style.display = 'none';
             }
         });
 
-        // 3. Listen for claim submissions from CodeEntryForm
+        // Listen for claim submissions
         document.addEventListener('ClaimSubmitted', async (event) => {
             const payload = event.detail;
 
             try {
                 suggestionBox.style.display = 'none';
 
-                // Query the FastAPI backend at relative path /api/analyze
                 const response = await fetch('/api/analyze', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -387,10 +387,7 @@
 
                 const result = await response.json();
 
-                // Pass result to TelemetryPanel for rendering and grading
                 telemetry.showResult(result, payload);
-
-                // Scroll down smoothly to show results
                 telemetry.scrollIntoView({ behavior: 'smooth' });
 
             } catch (error) {

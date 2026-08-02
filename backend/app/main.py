@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from datetime import date
-from typing import Optional
+from typing import Optional, List
 import os
 
 from .schemas import GrouperRequest, GrouperResponse
@@ -12,12 +12,13 @@ from .pricer import AnubisMockPricer
 from .generator import SyntheticClaimsGenerator
 from .llm_provider import OllamaProvider, OVMSProvider
 from .nlp_parser import ClinicalNLPParser, NLPExtractionRequest, NLPExtractionResponse
+from .forge import ScenarioForgeEngine, BlueprintSummary, ForgeCustomizationRequest, ForgeScenarioPackage
 
 # Initialize FastAPI application
 app = FastAPI(
     title="Project Anubis Integration Core",
-    description="Ecosystem endpoints for dynamic medical case grouping, pricing validation, synthetic claim generation, and NLP entity extraction.",
-    version="0.2.0"
+    description="Ecosystem endpoints for dynamic medical case grouping, pricing validation, synthetic claim generation, and Scenario Forge Studio.",
+    version="0.3.0"
 )
 
 # Enable CORS for local sandbox development
@@ -34,6 +35,7 @@ grouper = AnubisMockGrouper()
 pricer = AnubisMockPricer()
 ollama_llm = OllamaProvider()
 nlp_parser = ClinicalNLPParser(llm_provider=ollama_llm)
+forge_engine = ScenarioForgeEngine()
 
 # Path to default YAML blueprint
 BLUEPRINT_PATH = os.path.join(os.path.dirname(__file__), "../../blueprints/sepsis_pneumonia.yaml")
@@ -61,6 +63,29 @@ async def health_check():
     }
 
 
+# --- SCENARIO FORGE STUDIO ENDPOINTS ---
+
+@app.get("/api/forge/blueprints", response_model=List[BlueprintSummary])
+async def list_forge_blueprints():
+    """Returns a list of all available parent blueprints in the Scenario Forge."""
+    try:
+        return forge_engine.list_blueprints()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to list blueprints: {str(e)}")
+
+
+@app.post("/api/forge/synthesize", response_model=ForgeScenarioPackage)
+async def synthesize_forge_scenario(request: ForgeCustomizationRequest):
+    """
+    Synthesizes a customized scenario package based on educator controls 
+    (age ranges, noise levels, and mutation vectors).
+    """
+    try:
+        return forge_engine.forge_scenario(request)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Forge synthesis failed: {str(e)}")
+
+
 @app.get("/api/generate")
 async def generate_synthetic_case(seed: Optional[int] = None):
     """
@@ -77,7 +102,7 @@ async def generate_synthetic_case(seed: Optional[int] = None):
 @app.post("/api/extract", response_model=NLPExtractionResponse)
 async def extract_clinical_entity(request: NLPExtractionRequest):
     """
-    Clinical Entity Extraction Endpoint (Milestone #2).
+    Clinical Entity Extraction Endpoint.
     Analyzes highlighted text excerpts and extracts ICD-10 suggestions, severity levels, and guideline citations.
     """
     try:
@@ -101,20 +126,21 @@ async def group_claim(request: GrouperRequest):
 async def analyze_claim(request: AnalysisRequest):
     """Composite analysis endpoint for both grouping and pricing."""
     try:
+        hospital_id = request.hospital_id or "DEFAULT"
         # 1. Run the grouper
         group_res = await grouper.group_case(request.case_data)
         
         # 2. Run the pricer using the returned relative weight
         payment = await pricer.price_case(
             relative_weight=group_res.relative_weight,
-            hospital_id=request.hospital_id,
+            hospital_id=hospital_id,
             date_of_service=request.case_data.service_date
         )
         
         return AnalysisResponse(
             grouper_result=group_res,
             price_result=payment,
-            hospital_id=request.hospital_id
+            hospital_id=hospital_id
         )
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Analysis failed: {str(e)}")
