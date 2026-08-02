@@ -1,7 +1,8 @@
 import re
-from typing import Dict, Any, Optional
+from typing import Dict, Any, List, Optional
 from pydantic import BaseModel, Field
 from .llm_provider import OllamaProvider
+from .guideline_index import FY2026GuidelineIndex
 
 class NLPExtractionRequest(BaseModel):
     selected_text: str = Field(..., description="The highlighted clinical narrative excerpt")
@@ -14,6 +15,10 @@ class NLPExtractionResponse(BaseModel):
     official_citation: str = Field(..., description="AHA Coding Clinic or Official Guideline Citation")
     rationale: str = Field(..., description="Educational rationale for clinical abstraction")
     source: str = Field(default="Deterministic Rule Engine", description="Extraction engine source")
+    references: List[Dict[str, Any]] = Field(
+        default_factory=list,
+        description="Related FY2026 Official Guidelines index entries matched to the suggested code"
+    )
 
 
 class ClinicalNLPParser:
@@ -21,10 +26,16 @@ class ClinicalNLPParser:
     Anubis Clinical NLP Parser Engine.
     Processes highlighted chart excerpts using fast rule matching and falls back to 
     local Ollama sidecar (qwen2.5-coder:7b) for complex unstructured text.
+
+    Every suggestion is cross-referenced against the local FY2026GuidelineIndex
+    (built from the AHA ICD-10-CM/PCS Coding Handbook via Docling ingestion) so the
+    sandbox can surface the actual official guideline sections tied to a code, not
+    just the single hardcoded citation string used for the rule match itself.
     """
 
-    def __init__(self, llm_provider: Optional[OllamaProvider] = None):
+    def __init__(self, llm_provider: Optional[OllamaProvider] = None, guideline_index: Optional[FY2026GuidelineIndex] = None):
         self.llm_provider = llm_provider or OllamaProvider()
+        self.guideline_index = guideline_index or FY2026GuidelineIndex()
 
         # Clinical term rule dictionary for MVP domains
         self.RULES = [
@@ -62,6 +73,27 @@ class ClinicalNLPParser:
             }
         ]
 
+    def lookup_references(self, code: str, limit: int = 5) -> List[Dict[str, Any]]:
+        """
+        Cross-references a suggested code against the local FY2026 Official Guidelines
+        Index (AHA Coding Handbook, Docling-ingested) and returns the top matching
+        guideline sections for display in the sandbox's reference panel.
+        """
+        try:
+            matches = self.guideline_index.search_by_code(code)
+        except Exception:
+            return []
+
+        references = []
+        for entry in matches[:limit]:
+            references.append({
+                "guideline_id": entry.get("guideline_id", ""),
+                "title": entry.get("title", ""),
+                "citation": entry.get("citation", ""),
+                "summary_rationale": (entry.get("summary_rationale") or "")[:400]
+            })
+        return references
+
     async def parse_highlight(self, selected_text: str) -> NLPExtractionResponse:
         clean_text = selected_text.strip()
         lower_text = clean_text.lower()
@@ -77,7 +109,8 @@ class ClinicalNLPParser:
                         severity_type=rule["severity"],
                         official_citation=rule["citation"],
                         rationale=rule["rationale"],
-                        source="Anubis Rule Matching Engine"
+                        source="Anubis Rule Matching Engine",
+                        references=self.lookup_references(rule["code"])
                     )
 
         # 2. Fallback to Local Ollama Sidecar Model
@@ -103,7 +136,8 @@ class ClinicalNLPParser:
                 severity_type="Indicator",
                 official_citation="Anubis Local AI Inference",
                 rationale=rationale,
-                source=f"Local LLM ({self.llm_provider.model_name})"
+                source=f"Local LLM ({self.llm_provider.model_name})",
+                references=self.lookup_references(suggested_code)
             )
         except Exception:
             # Safe default if LLM is unavailable
@@ -114,5 +148,6 @@ class ClinicalNLPParser:
                 severity_type="Indicator",
                 official_citation="ICD-10-CM Guidelines",
                 rationale="Unmapped clinical indicator.",
-                source="Fallback Parser"
+                source="Fallback Parser",
+                references=self.lookup_references("R69")
             )

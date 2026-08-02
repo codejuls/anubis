@@ -410,11 +410,21 @@
                     <div class="panel__body" style="padding: 16px;">
                         <div class="tab-bar" role="tablist" aria-label="Abstractor tabs" style="margin-bottom: 12px;">
                             <button class="tab-btn tab-btn--active" id="tab-code" role="tab" aria-selected="true" aria-controls="panel-code">Code Entry</button>
+                            <button class="tab-btn" id="tab-references" role="tab" aria-selected="false" aria-controls="panel-references">
+                                References <span class="badge" id="reference-count-badge" style="display:none; margin-left: 4px;">0</span>
+                            </button>
                             <button class="tab-btn" id="tab-telemetry" role="tab" aria-selected="false" aria-controls="panel-telemetry">Telemetry</button>
                         </div>
 
                         <div id="panel-code" role="tabpanel" aria-labelledby="tab-code">
                             <code-entry-form id="sandbox-code-form"></code-entry-form>
+                        </div>
+
+                        <div id="panel-references" role="tabpanel" aria-labelledby="tab-references" hidden>
+                            <div id="reference-panel-empty" class="preview preview--empty" style="min-height: 300px;">
+                                Highlight (select) any text in the Clinical Record on the left to look up FY2026 Official Guideline citations and AHA Coding Clinic references related to that excerpt.
+                            </div>
+                            <div id="reference-panel-content" style="display: none;"></div>
                         </div>
 
                         <div id="panel-telemetry" role="tabpanel" aria-labelledby="tab-telemetry" hidden>
@@ -1137,7 +1147,11 @@
         const sandboxCodeForm = document.getElementById('sandbox-code-form');
         const sandboxTelemetry = document.getElementById('sandbox-telemetry-panel');
         const tabCode = document.getElementById('tab-code');
+        const tabReferences = document.getElementById('tab-references');
         const tabTelemetry = document.getElementById('tab-telemetry');
+        const referenceCountBadge = document.getElementById('reference-count-badge');
+        const referencePanelEmpty = document.getElementById('reference-panel-empty');
+        const referencePanelContent = document.getElementById('reference-panel-content');
 
         // Load cases into sandbox dropdown
         async function loadSandboxCases() {
@@ -1165,6 +1179,11 @@
             sandboxChart.innerHTML = '<div class="preview--empty" style="min-height: 450px;">Loading case…</div>';
             sandboxCodeForm.resetForm();
             sandboxTelemetry.resetDefault();
+            lastHighlightedText = "";
+            referenceCountBadge.style.display = 'none';
+            referencePanelContent.style.display = 'none';
+            referencePanelEmpty.style.display = 'flex';
+            referencePanelEmpty.textContent = 'Highlight (select) any text in the Clinical Record on the left to look up FY2026 Official Guideline citations and AHA Coding Clinic references related to that excerpt.';
 
             try {
                 const res = await fetch('/api/forge/synthesize', {
@@ -1192,19 +1211,24 @@
             }
         });
 
-        // Tab switching for sandbox
-        tabCode.addEventListener('click', () => {
-            tabCode.classList.add('tab-btn--active'); tabCode.setAttribute('aria-selected', 'true');
-            tabTelemetry.classList.remove('tab-btn--active'); tabTelemetry.setAttribute('aria-selected', 'false');
-            document.getElementById('panel-code').hidden = false;
-            document.getElementById('panel-telemetry').hidden = true;
-        });
-        tabTelemetry.addEventListener('click', () => {
-            tabTelemetry.classList.add('tab-btn--active'); tabTelemetry.setAttribute('aria-selected', 'true');
-            tabCode.classList.remove('tab-btn--active'); tabCode.setAttribute('aria-selected', 'false');
-            document.getElementById('panel-telemetry').hidden = false;
-            document.getElementById('panel-code').hidden = true;
-        });
+        // Tab switching for sandbox (Code Entry | References | Telemetry)
+        const sandboxTabs = [tabCode, tabReferences, tabTelemetry];
+        const sandboxPanels = {
+            [tabCode.id]: document.getElementById('panel-code'),
+            [tabReferences.id]: document.getElementById('panel-references'),
+            [tabTelemetry.id]: document.getElementById('panel-telemetry')
+        };
+        function activateSandboxTab(activeTab) {
+            sandboxTabs.forEach(t => {
+                const isActive = t === activeTab;
+                t.classList.toggle('tab-btn--active', isActive);
+                t.setAttribute('aria-selected', String(isActive));
+                sandboxPanels[t.id].hidden = !isActive;
+            });
+        }
+        tabCode.addEventListener('click', () => activateSandboxTab(tabCode));
+        tabReferences.addEventListener('click', () => activateSandboxTab(tabReferences));
+        tabTelemetry.addEventListener('click', () => activateSandboxTab(tabTelemetry));
 
         // Listen for claim submissions from code-entry-form
         sandboxCodeForm.addEventListener('ClaimSubmitted', async (e) => {
@@ -1218,17 +1242,81 @@
                 if (!res.ok) { const err = await res.json(); throw new Error(err.detail || `HTTP ${res.status}`); }
                 const result = await res.json();
                 sandboxTelemetry.showResult(result, payload);
-                tabTelemetry.click();
+                activateSandboxTab(tabTelemetry);
             } catch (err) {
                 console.error('Grading failed:', err);
                 alert('Grading failed: ' + err.message);
             }
         });
 
-        // Listen for text highlights from chart viewer
-        sandboxChart.addEventListener('TextHighlighted', (e) => {
-            // Could show context menu or auto-fill suggestion
-            console.log('Highlighted:', e.detail.text);
+        // Render a single FY2026 Official Guideline / AHA Coding Clinic reference card
+        function renderReferenceCard(ref) {
+            return `
+                <div class="gs-card" style="margin-bottom: 10px;">
+                    <div class="gs-card__header">
+                        <span class="gs-card__code" style="font-size: 0.8125rem;">${escapeHtml(ref.guideline_id || '')}</span>
+                    </div>
+                    <div class="gs-card__desc" style="font-weight: 600;">${escapeHtml(ref.title || '')}</div>
+                    <div class="suggestion-citation" style="font-style: italic; color: var(--primary); font-size: 0.75rem; margin-top: 4px;">${escapeHtml(ref.citation || '')}</div>
+                    ${ref.summary_rationale ? `<div class="gs-card__rationale">${escapeHtml(ref.summary_rationale)}</div>` : ''}
+                </div>
+            `;
+        }
+
+        // Listen for text highlights from chart viewer — look up NLP suggestion + FY2026 guideline references
+        let lastHighlightedText = "";
+        sandboxChart.addEventListener('TextHighlighted', async (e) => {
+            const text = e.detail.text;
+            if (!text || text === lastHighlightedText) return;
+            lastHighlightedText = text;
+
+            referencePanelEmpty.style.display = 'flex';
+            referencePanelEmpty.textContent = `Looking up references for "${text}"…`;
+            referencePanelContent.style.display = 'none';
+
+            try {
+                const res = await fetch('/api/extract', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ selected_text: text })
+                });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+
+                const references = data.references || [];
+                referenceCountBadge.textContent = String(references.length);
+                referenceCountBadge.style.display = references.length > 0 ? 'inline-flex' : 'none';
+
+                if (references.length === 0) {
+                    referencePanelEmpty.style.display = 'flex';
+                    referencePanelEmpty.textContent = `No FY2026 guideline references found for "${text}". Suggested code: ${data.suggested_code} — ${data.description}.`;
+                    referencePanelContent.style.display = 'none';
+                } else {
+                    referencePanelEmpty.style.display = 'none';
+                    referencePanelContent.style.display = 'block';
+                    referencePanelContent.innerHTML = `
+                        <div class="gs-card gs-card--primary" style="margin-bottom: 14px;">
+                            <div class="gs-card__header">
+                                <span class="gs-card__code">${escapeHtml(data.suggested_code)}</span>
+                                ${ccBadge(data.severity_type === 'MCC' ? 'MCC' : (data.severity_type === 'CC' ? 'CC' : 'None'))}
+                            </div>
+                            <div class="gs-card__desc">${escapeHtml(data.description)}</div>
+                            <div class="gs-card__rationale">Excerpt: "${escapeHtml(data.entity_text)}"<br>${escapeHtml(data.rationale)}</div>
+                            <div class="suggestion-citation" style="font-style: italic; color: var(--fg-subtle); font-size: 0.75rem; margin-top: 6px;">Source: ${escapeHtml(data.official_citation)} (${escapeHtml(data.source)})</div>
+                        </div>
+                        <div class="section-header">FY2026 Official Guidelines Index — Related Sections</div>
+                        ${references.map(renderReferenceCard).join('')}
+                    `;
+                }
+
+                activateSandboxTab(tabReferences);
+            } catch (err) {
+                console.error('Reference lookup failed:', err);
+                referencePanelEmpty.style.display = 'flex';
+                referencePanelEmpty.textContent = `Reference lookup failed: ${err.message}`;
+                referencePanelContent.style.display = 'none';
+                activateSandboxTab(tabReferences);
+            }
         });
 
         // Initialize sandbox
