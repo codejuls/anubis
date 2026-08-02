@@ -3,84 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Anubis - Live Portal & Scenario Forge</title>
+    <title>Project Anubis - Scenario Forge & Abstractor Sandbox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* ============================================================
-           NEUMORPHIC DESIGN SYSTEM — PROJECT ANUBIS
-           Gray-base neumorphism with Emerald accents
-           Progressive elevation: left (low) → right (high)
-           Sharp, technical, professional, fun
+           FLAT DESIGN SYSTEM — PROJECT ANUBIS
+           High contrast, clean, professional, coder-focused
+           Information density over decoration
         ============================================================ */
         :root {
-            /* NEUMORPHIC GRAY PALETTE */
-            --bg-base: #e8eae9;              /* Base background */
-            --bg-raised: #e8eae9;            /* Raised surface (same as base) */
-            --bg-pressed: #d4d6d5;           /* Pressed/inset surface */
+            /* FLAT COLOR PALETTE - High contrast, accessible */
+            --bg: #f8f9fa;
+            --bg-card: #ffffff;
+            --bg-hover: #e9ecef;
+            --bg-active: #dee2e6;
 
-            /* SHADOWS — The soul of neumorphism */
-            --shadow-low: 
-                3px 3px 6px #c5c7c6,          /* Dark shadow (bottom-right) */
-                -3px -3px 6px #ffffff;        /* Light shadow (top-left) */
-            --shadow-med: 
-                6px 6px 12px #c5c7c6,
-                -6px -6px 12px #ffffff;
-            --shadow-high: 
-                10px 10px 20px #c5c7c6,
-                -10px -10px 20px #ffffff;
+            --fg: #1a1d1c;
+            --fg-muted: #343a40;
+            --fg-subtle: #6c757d;
 
-            /* INSET (pressed) shadows */
-            --shadow-inset-low: 
-                inset 3px 3px 6px #c5c7c6,
-                inset -3px -3px 6px #ffffff;
-            --shadow-inset-med: 
-                inset 6px 6px 12px #c5c7c6,
-                inset -6px -6px 12px #ffffff;
+            --primary: #006b3c;
+            --primary-hover: #00582e;
+            --primary-light: #e8f5ee;
+            --primary-focus: rgba(0, 107, 60, 0.25);
 
-            /* EMERALD ACCENTS — Higher contrast, works on gray */
-            --emerald: #007f4a;              /* Primary emerald — strong on gray */
-            --emerald-light: #00a85e;        /* Hover/active */
-            --emerald-dark: #005a35;         /* Pressed */
-            --emerald-glow: rgba(0, 127, 74, 0.35);
-            --emerald-glow-strong: rgba(0, 127, 74, 0.55);
+            --danger: #c92a2a;
+            --danger-hover: #a61e1e;
+            --danger-light: #fdeaea;
 
-            /* TEXT */
-            --text-primary: #1a1d1c;
-            --text-secondary: #4a4f4d;
-            --text-muted: #6d7371;
-            --text-on-emerald: #ffffff;
+            --border: #ced4da;
+            --border-strong: #adb5bd;
+            --border-focus: #006b3c;
 
-            /* BORDERS — Subtle definition */
-            --border-subtle: #d0d4d2;
-            --border-emerald: #007f4a;
-
-            /* ELEVATION STEPS (progressive left→right) */
-            --elev-1: var(--shadow-low);      /* Far left — barely raised */
-            --elev-2: var(--shadow-low);      /* Left */
-            --elev-3: var(--shadow-med);      /* Center-left */
-            --elev-4: var(--shadow-med);      /* Center */
-            --elev-5: var(--shadow-high);     /* Center-right */
-            --elev-6: var(--shadow-high);     /* Far right — most prominent */
-
-            /* RADIUS — Sharp, technical */
+            --radius: 6px;
             --radius-sm: 4px;
-            --radius-md: 8px;
-            --radius-lg: 12px;
-            --radius-xl: 16px;
+            --radius-lg: 8px;
 
-            /* TRANSITIONS */
-            --transition-fast: 120ms cubic-bezier(0.2, 0.8, 0.2, 1);
-            --transition-med: 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
-            --transition-slow: 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
 
-            /* Z-INDEX LAYERS */
-            --z-base: 1;
-            --z-raised: 10;
-            --z-sticky: 100;
-            --z-modal: 1000;
-            --z-toast: 1100;
+            --font-ui: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --font-mono: "JetBrains Mono", "Fira Code", "SF Mono", monospace;
+
+            --transition: 120ms ease;
         }
 
-        /* Reduce motion */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -88,22 +58,13 @@
             }
         }
 
-        /* ========== BASE ========== */
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            font-size: 15px;
-        }
-
+        /* ========== RESET ========== */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { font-size: 14px; }
         body {
-            background: var(--bg-base);
-            background-image: 
-                radial-gradient(ellipse at 0% 0%, #f0f2f1 0%, transparent 50%),
-                radial-gradient(ellipse at 100% 100%, #e0e3e1 0%, transparent 50%);
-            color: var(--text-primary);
-            font-family: "JetBrains Mono", "Fira Code", "SF Mono", "Monaco", "Courier New", monospace;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--font-ui);
             margin: 0;
             padding: 24px;
             min-height: 100vh;
@@ -113,760 +74,171 @@
         }
 
         /* ========== TYPOGRAPHY ========== */
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            letter-spacing: -0.015em;
-            line-height: 1.25;
-            margin: 0;
-        }
+        h1, h2, h3, h4 { font-weight: 600; line-height: 1.3; margin: 0; letter-spacing: -0.01em; }
+        h1 { font-size: 1.5rem; }
+        h2 { font-size: 1.125rem; }
+        h3 { font-size: 1rem; }
+        h4 { font-size: 0.875rem; }
 
-        h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); }
-        h2 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
-        h3 { font-size: clamp(1rem, 2vw, 1.125rem); }
-        h4 { font-size: clamp(0.875rem, 1.5vw, 1rem); }
+        code { font-family: var(--font-mono); font-size: 0.85em; background: var(--bg-hover); padding: 0.15em 0.4em; border-radius: 3px; }
+        kbd { font-family: var(--font-mono); font-size: 0.75em; background: var(--fg); color: #fff; padding: 0.1em 0.4em; border-radius: 3px; }
 
-        .text-emerald { color: var(--emerald); }
-        .text-secondary { color: var(--text-secondary); }
-        .text-muted { color: var(--text-muted); font-size: 0.875em; }
+        .text-muted { color: var(--fg-subtle); font-size: 0.8125rem; }
+        .text-primary { color: var(--primary); font-weight: 600; }
 
         /* ========== LAYOUT ========== */
-        .app-shell {
-            max-width: 1600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* ========== NEUMORPHIC CARD BASE ========== */
-        .neo-card {
-            background: var(--bg-raised);
-            border-radius: var(--radius-md);
-            transition: box-shadow var(--transition-med), transform var(--transition-fast);
-            border: 1px solid transparent;
-        }
-
-        .neo-card--elev-1 { box-shadow: var(--elev-1); }
-        .neo-card--elev-2 { box-shadow: var(--elev-2); }
-        .neo-card--elev-3 { box-shadow: var(--elev-3); }
-        .neo-card--elev-4 { box-shadow: var(--elev-4); }
-        .neo-card--elev-5 { box-shadow: var(--elev-5); }
-        .neo-card--elev-6 { box-shadow: var(--elev-6); }
-
-        .neo-card--interactive:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-high);
-        }
-        .neo-card--interactive:active {
-            transform: translateY(1px);
-            box-shadow: var(--shadow-inset-low);
-        }
-
-        .neo-card--pressed {
-            box-shadow: var(--shadow-inset-med);
-            background: var(--bg-pressed);
-        }
+        .app-shell { max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
 
         /* ========== HEADER ========== */
         .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            padding: 20px 24px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--elev-2);
+            display: flex; align-items: center; justify-content: space-between; gap: 16px;
+            padding: 16px 20px; background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);
         }
-
-        .header__brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
+        .header__brand { display: flex; align-items: center; gap: 12px; }
         .header__logo {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
-            border-radius: var(--radius-sm);
-            color: var(--text-on-emerald);
-            font-size: 1.25rem;
-            box-shadow: var(--shadow-low), inset 0 0 0 1px rgba(255,255,255,0.2);
+            width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+            background: var(--primary); border-radius: var(--radius-sm); color: #fff; font-size: 1.125rem;
         }
+        .header__title { font-weight: 700; letter-spacing: -0.02em; }
+        .header__subtitle { font-size: 0.6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-subtle); }
 
-        .header__title { font-weight: 800; letter-spacing: -0.02em; }
-        .header__subtitle { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
-
-        .header__nav { display: flex; gap: 8px; }
-
-        /* ========== MODE SWITCHER (Neumorphic Toggle) ========== */
-        .mode-switcher {
-            display: inline-flex;
-            background: var(--bg-base);
-            border-radius: var(--radius-md);
-            padding: 4px;
-            box-shadow: var(--shadow-inset-low);
-            gap: 4px;
-        }
-
+        .mode-switcher { display: inline-flex; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 3px; gap: 3px; }
         .mode-btn {
-            background: transparent;
-            border: none;
-            padding: 10px 18px;
-            border-radius: var(--radius-sm);
-            font-size: 0.8125rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            font-family: inherit;
-            white-space: nowrap;
+            background: transparent; border: none; padding: 8px 14px; border-radius: var(--radius-sm);
+            font-size: 0.8125rem; font-weight: 500; color: var(--fg-muted); cursor: pointer;
+            transition: all var(--transition); font-family: inherit; white-space: nowrap;
         }
+        .mode-btn:hover { color: var(--fg); background: var(--bg-hover); }
+        .mode-btn--active { color: var(--primary); background: var(--primary-light); }
 
-        .mode-btn--active {
-            background: var(--bg-raised);
-            color: var(--emerald);
-            box-shadow: var(--shadow-low);
-        }
+        .badge { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: var(--radius-sm); font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; border: 1px solid var(--border); background: var(--bg-card); color: var(--fg-muted); }
+        .badge--primary { background: var(--primary-light); color: var(--primary); border-color: var(--primary); }
 
-        .mode-btn:not(.mode-btn--active):hover {
-            color: var(--text-primary);
-        }
+        /* ========== WORKSPACE GRID ========== */
+        .workspace { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+        @media (max-width: 1024px) { .workspace { grid-template-columns: 1fr; } }
 
-        /* ========== BADGE ========== */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 6px 12px;
-            border-radius: var(--radius-sm);
-            font-size: 0.6875rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            border: 1px solid var(--border-subtle);
-            background: var(--bg-raised);
-            box-shadow: var(--shadow-low);
-            color: var(--text-secondary);
-        }
+        /* ========== CARD / PANEL ========== */
+        .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; }
+        .panel__header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: var(--bg); border-bottom: 1px solid var(--border); }
+        .panel__title { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; font-weight: 600; }
+        .panel__icon { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: var(--primary-light); color: var(--primary); border-radius: var(--radius-sm); font-size: 0.8125rem; }
+        .panel__body { flex: 1; padding: 18px; overflow-y: auto; min-height: 400px; }
 
-        .badge--emerald {
-            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
-            color: var(--text-on-emerald);
-            border-color: transparent;
-            box-shadow: var(--shadow-low), 0 0 0 1px rgba(255,255,255,0.15) inset;
-        }
-
-        /* ========== MAIN WORKSPACE — Progressive Grid ========== */
-        .workspace {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            align-items: start;
-        }
-
-        @media (max-width: 1100px) {
-            .workspace { grid-template-columns: 1fr; }
-        }
-
-        /* Progressive elevation classes for workspace children */
-        .workspace > *:nth-child(1) { /* Left panel — lowest elevation */ }
-        .workspace > *:nth-child(2) { /* Right panel — higher elevation */ }
-
-        /* ========== PANELS ========== */
-        .panel {
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .panel__header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            background: var(--bg-raised);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .panel__title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9375rem;
-            font-weight: 700;
-        }
-
-        .panel__icon {
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
-            border-radius: var(--radius-sm);
-            color: var(--text-on-emerald);
-            font-size: 0.875rem;
-            box-shadow: var(--shadow-low);
-        }
-
-        .panel__body {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        /* Left panel — Elevation 2 */
-        .panel--left { box-shadow: var(--elev-2); }
-        /* Right panel — Elevation 4 */
-        .panel--right { box-shadow: var(--elev-4); }
-
-        /* ========== FORMS — Neumorphic Inputs ========== */
+        /* ========== FORM ELEMENTS ========== */
         .form-group { margin-bottom: 16px; }
+        .form-label { display: block; font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-muted); margin-bottom: 6px; }
+        .form-help { font-size: 0.75rem; color: var(--fg-subtle); margin-top: 4px; }
 
-        .form-label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
+        .input, .select, .textarea {
+            width: 100%; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-sm);
+            padding: 10px 12px; font-size: 0.875rem; color: var(--fg); font-family: inherit;
+            transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
         }
+        .input:focus, .select:focus, .textarea:focus { outline: none; border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--primary-focus); }
+        .input::placeholder, .textarea::placeholder { color: var(--fg-subtle); }
+        .select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23868e96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 36px; }
+        .textarea { resize: vertical; min-height: 80px; line-height: 1.55; }
 
-        .neo-input,
-        .neo-select,
-        .neo-textarea {
-            width: 100%;
-            background: var(--bg-base);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-sm);
-            padding: 10px 14px;
-            font-size: 0.875rem;
-            color: var(--text-primary);
-            font-family: inherit;
-            box-shadow: var(--shadow-inset-low);
-            transition: all var(--transition-fast);
-        }
+        .input-row { display: flex; gap: 12px; }
+        .input-row .input { flex: 1; }
 
-        .neo-input:focus,
-        .neo-select:focus,
-        .neo-textarea:focus {
-            outline: none;
-            border-color: var(--emerald);
-            box-shadow: var(--shadow-inset-low), 0 0 0 3px var(--emerald-glow);
-        }
-
-        .neo-input::placeholder,
-        .neo-textarea::placeholder {
-            color: var(--text-muted);
-        }
-
-        .neo-select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236d7371' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            padding-right: 40px;
-        }
-
-        .neo-textarea {
-            resize: vertical;
-            min-height: 80px;
-            line-height: 1.55;
-        }
-
-        /* Range inputs */
-        .range-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .neo-range {
-            flex: 1;
-            -webkit-appearance: none;
-            appearance: none;
-            background: var(--bg-base);
-            border-radius: var(--radius-sm);
-            height: 6px;
-            box-shadow: var(--shadow-inset-low);
-        }
-
-        .neo-range::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--emerald);
-            cursor: pointer;
-            box-shadow: var(--shadow-low);
-            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-        }
-
-        .neo-range::-webkit-slider-thumb:hover {
-            transform: scale(1.15);
-            box-shadow: var(--shadow-med), 0 0 0 4px var(--emerald-glow);
-        }
-
-        .neo-range::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
-            border: none;
-            border-radius: 50%;
-            background: var(--emerald);
-            cursor: pointer;
-            box-shadow: var(--shadow-low);
-        }
-
-        .range-value {
-            min-width: 44px;
-            text-align: right;
-            font-variant-numeric: tabular-nums;
-            font-size: 0.8125rem;
-            color: var(--text-secondary);
-        }
+        /* Range slider */
+        .range-row { display: flex; align-items: center; gap: 12px; }
+        .range { flex: 1; -webkit-appearance: none; appearance: none; background: var(--bg); border-radius: 3px; height: 6px; }
+        .range::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--primary); cursor: pointer; box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition); }
+        .range::-webkit-slider-thumb:hover { transform: scale(1.15); box-shadow: 0 0 0 4px var(--primary-focus); }
+        .range::-moz-range-thumb { width: 16px; height: 16px; border: none; border-radius: 50%; background: var(--primary); cursor: pointer; }
+        .range-value { min-width: 40px; text-align: right; font-variant-numeric: tabular-nums; font-size: 0.8125rem; color: var(--fg-muted); }
 
         /* Checkbox */
-        .neo-checkbox {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
-
-        .neo-checkbox input {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .neo-checkbox__box {
-            width: 20px;
-            height: 20px;
-            border-radius: var(--radius-sm);
-            background: var(--bg-base);
-            border: 1px solid var(--border-subtle);
-            box-shadow: var(--shadow-inset-low);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all var(--transition-fast);
-            flex-shrink: 0;
-        }
-
-        .neo-checkbox input:checked + .neo-checkbox__box {
-            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
-            border-color: transparent;
-            box-shadow: var(--shadow-low), inset 0 0 0 1px rgba(255,255,255,0.2);
-        }
-
-        .neo-checkbox__box::after {
-            content: "";
-            width: 6px;
-            height: 10px;
-            border: solid var(--text-on-emerald);
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg) translateY(-1px);
-            opacity: 0;
-            transition: opacity var(--transition-fast);
-        }
-
-        .neo-checkbox input:checked + .neo-checkbox__box::after {
-            opacity: 1;
-        }
-
-        .neo-checkbox__label {
-            font-size: 0.875rem;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
+        .checkbox { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; }
+        .checkbox input { position: absolute; opacity: 0; pointer-events: none; }
+        .checkbox__box { width: 18px; height: 18px; border-radius: 4px; background: #fff; border: 1px solid var(--border); box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center; transition: all var(--transition); flex-shrink: 0; }
+        .checkbox input:checked + .checkbox__box { background: var(--primary); border-color: var(--primary); }
+        .checkbox__box::after { content: ""; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg) translateY(-1px); opacity: 0; transition: opacity var(--transition); }
+        .checkbox input:checked + .checkbox__box::after { opacity: 1; }
+        .checkbox__label { font-size: 0.875rem; color: var(--fg); font-weight: 500; }
 
         /* ========== BUTTONS ========== */
-        .neo-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border: none;
-            border-radius: var(--radius-sm);
-            padding: 10px 20px;
-            font-size: 0.8125rem;
-            font-weight: 600;
-            font-family: inherit;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            white-space: nowrap;
-        }
-
-        .neo-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none !important;
-            box-shadow: var(--shadow-inset-low) !important;
-        }
-
-        /* Primary — Emerald */
-        .neo-btn--primary {
-            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
-            color: var(--text-on-emerald);
-            box-shadow: var(--shadow-low), inset 0 0 0 1px rgba(255,255,255,0.15);
-        }
-
-        .neo-btn--primary:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-med), 0 0 0 1px rgba(255,255,255,0.15), 0 0 12px var(--emerald-glow-strong);
-        }
-
-        .neo-btn--primary:active:not(:disabled) {
-            transform: translateY(1px);
-            box-shadow: var(--shadow-inset-med);
-            background: linear-gradient(135deg, var(--emerald-dark), var(--emerald));
-        }
-
-        /* Secondary — Gray raised */
-        .neo-btn--secondary {
-            background: var(--bg-raised);
-            color: var(--text-primary);
-            box-shadow: var(--shadow-low);
-            border: 1px solid var(--border-subtle);
-        }
-
-        .neo-btn--secondary:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-med);
-        }
-
-        .neo-btn--secondary:active:not(:disabled) {
-            transform: translateY(1px);
-            box-shadow: var(--shadow-inset-med);
-            background: var(--bg-pressed);
-        }
-
-        /* Ghost — Minimal */
-        .neo-btn--ghost {
-            background: transparent;
-            color: var(--text-secondary);
-            box-shadow: none;
-            padding: 8px 12px;
-        }
-
-        .neo-btn--ghost:hover:not(:disabled) {
-            color: var(--emerald);
-            background: var(--bg-base);
-            box-shadow: var(--shadow-inset-low);
-        }
-
-        .neo-btn--ghost:active:not(:disabled) {
-            background: var(--bg-pressed);
-        }
-
-        /* Danger */
-        .neo-btn--danger {
-            background: linear-gradient(135deg, #c0392b, #e74c3c);
-            color: #fff;
-            box-shadow: var(--shadow-low);
-        }
-
-        .neo-btn--danger:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-med), 0 0 12px rgba(231, 76, 60, 0.4);
-        }
-
-        /* Small */
-        .neo-btn--sm {
-            padding: 6px 12px;
-            font-size: 0.75rem;
-        }
-
-        /* ========== DYNAMIC ARRAY FIELDS ========== */
-        .array-field {
-            background: var(--bg-base);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            padding: 16px;
-            margin-bottom: 12px;
-            box-shadow: var(--shadow-inset-low);
-            position: relative;
-            animation: arraySlideIn var(--transition-med) ease-out;
-        }
-
-        @keyframes arraySlideIn {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .array-field__header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .array-field__title {
-            font-size: 0.8125rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-
-        .array-field__remove {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            padding: 6px;
-            border-radius: var(--radius-sm);
-            transition: all var(--transition-fast);
-        }
-
-        .array-field__remove:hover {
-            color: #c0392b;
-            background: rgba(192, 57, 43, 0.1);
-        }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: none; border-radius: var(--radius-sm); padding: 10px 18px; font-size: 0.8125rem; font-weight: 500; font-family: inherit; cursor: pointer; transition: all var(--transition); white-space: nowrap; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn--primary { background: var(--primary); color: #fff; }
+        .btn--primary:hover:not(:disabled) { background: var(--primary-hover); }
+        .btn--primary:active:not(:disabled) { background: var(--primary-hover); transform: scale(0.98); }
+        .btn--secondary { background: var(--bg); color: var(--fg); border: 1px solid var(--border); }
+        .btn--secondary:hover:not(:disabled) { background: var(--bg-hover); border-color: var(--border-strong); }
+        .btn--ghost { background: transparent; color: var(--fg-muted); padding: 8px 12px; }
+        .btn--ghost:hover:not(:disabled) { color: var(--primary); background: var(--primary-light); }
+        .btn--sm { padding: 7px 12px; font-size: 0.75rem; }
 
         /* ========== TABS ========== */
-        .tab-bar {
-            display: flex;
-            gap: 4px;
-            background: var(--bg-base);
-            padding: 4px;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-inset-low);
-            margin-bottom: 16px;
-        }
-
-        .tab-btn {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 10px 16px;
-            border-radius: var(--radius-sm);
-            font-size: 0.8125rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            font-family: inherit;
-        }
-
-        .tab-btn--active {
-            background: var(--bg-raised);
-            color: var(--emerald);
-            box-shadow: var(--shadow-low);
-        }
-
-        .tab-btn:not(.tab-btn--active):hover {
-            color: var(--text-primary);
-        }
+        .tab-bar { display: flex; gap: 4px; background: var(--bg); padding: 4px; border-radius: var(--radius); margin-bottom: 16px; border: 1px solid var(--border); }
+        .tab-btn { flex: 1; background: transparent; border: none; padding: 10px 14px; border-radius: var(--radius-sm); font-size: 0.8125rem; font-weight: 500; color: var(--fg-muted); cursor: pointer; transition: all var(--transition); font-family: inherit; }
+        .tab-btn:hover { color: var(--fg); background: var(--bg-hover); }
+        .tab-btn--active { color: var(--primary); background: var(--bg-card); box-shadow: var(--shadow-sm); }
 
         /* ========== PREVIEW PANEL ========== */
-        .preview-body {
-            background: var(--bg-base);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            padding: 16px;
-            font-family: inherit;
-            font-size: 0.8125rem;
-            line-height: 1.6;
-            color: var(--text-primary);
-            white-space: pre-wrap;
-            max-height: 420px;
-            overflow-y: auto;
-            box-shadow: var(--shadow-inset-low);
-        }
-
-        .preview-body--empty {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 200px;
-            color: var(--text-muted);
-            font-style: italic;
-            text-align: center;
-        }
+        .preview { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; font-family: var(--font-ui); font-size: 0.875rem; line-height: 1.65; color: var(--fg); white-space: pre-wrap; max-height: 500px; overflow-y: auto; }
+        .preview--empty { display: flex; align-items: center; justify-content: center; min-height: 200px; color: var(--fg-subtle); text-align: center; line-height: 1.6; }
+        .preview strong { color: var(--primary); }
+        .preview code { background: var(--bg-card); border: 1px solid var(--border); padding: 0.15em 0.4em; }
+        .preview .code-block { background: #1a1d1c; color: #e9ecef; padding: 12px; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.6; overflow-x: auto; margin: 8px 0; }
 
         /* ========== YAML EDITOR ========== */
-        .yaml-editor {
-            background: #1a1d1c;
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            padding: 16px;
-            font-family: "JetBrains Mono", "Fira Code", monospace;
-            font-size: 0.75rem;
-            line-height: 1.65;
-            color: #e8eae9;
-            max-height: 340px;
-            overflow: auto;
-            box-shadow: var(--shadow-inset-med);
-            tab-size: 2;
-        }
+        .yaml-editor { background: #1a1d1c; border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.65; color: #e9ecef; max-height: 360px; overflow: auto; tab-size: 2; outline: none; }
+        .yaml-editor .key { color: #6fdc8c; }
+        .yaml-editor .string { color: #a5d6a7; }
+        .yaml-editor .comment { color: #868e96; font-style: italic; }
+        .yaml-editor .number { color: #fcc419; }
 
-        .yaml-editor .key { color: #00a85e; }
-        .yaml-editor .string { color: #7dd3a0; }
-        .yaml-editor .comment { color: #6d7371; font-style: italic; }
-        .yaml-editor .number { color: #f9c74f; }
-
-        /* ========== ALERT TOAST ========== */
-        .alert {
-            display: none;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 18px;
-            border-radius: var(--radius-md);
-            font-size: 0.8125rem;
-            font-weight: 500;
-            box-shadow: var(--elev-4);
-            animation: alertSlideIn var(--transition-med) ease-out;
-        }
-
-        @keyframes alertSlideIn {
-            from { opacity: 0; transform: translateY(-12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .alert--success {
-            background: var(--bg-raised);
-            border: 1px solid var(--emerald);
-            color: var(--emerald-dark);
-        }
-
-        .alert--error {
-            background: var(--bg-raised);
-            border: 1px solid #c0392b;
-            color: #c0392b;
-        }
-
-        .alert--info {
-            background: var(--bg-raised);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-primary);
-        }
+        /* ========== ALERT ========== */
+        .alert { display: none; align-items: center; gap: 10px; padding: 12px 16px; border-radius: var(--radius); font-size: 0.8125rem; font-weight: 500; animation: slideDown var(--transition) ease-out; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+        .alert--success { background: #e8f5ee; border: 1px solid var(--primary); color: var(--primary); }
+        .alert--error { background: var(--danger-light); border: 1px solid var(--danger); color: var(--danger); }
+        .alert--info { background: #e7f1ff; border: 1px solid #228be6; color: #1971c2; }
 
         /* ========== WIZARD STEPPER ========== */
-        .wizard-stepper {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 24px;
-            padding: 0 4px;
-        }
-
-        .wizard-step {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            position: relative;
-        }
-
-        .wizard-step:not(:last-child)::after {
-            content: "";
-            position: absolute;
-            top: 12px;
-            left: 50%;
-            width: 100%;
-            height: 2px;
-            background: var(--border-subtle);
-            z-index: 0;
-        }
-
+        .wizard-stepper { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; padding: 0 4px; overflow-x: auto; }
+        .wizard-step { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative; min-width: 90px; }
+        .wizard-step:not(:last-child)::after { content: ""; position: absolute; top: 10px; left: 50%; width: 100%; height: 2px; background: var(--border); z-index: 0; }
         .wizard-step--completed:not(:last-child)::after,
-        .wizard-step--active:not(:last-child)::after {
-            background: linear-gradient(90deg, var(--emerald), var(--emerald-light));
-        }
-
-        .wizard-step__circle {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.6875rem;
-            font-weight: 700;
-            background: var(--bg-base);
-            border: 2px solid var(--border-subtle);
-            color: var(--text-muted);
-            box-shadow: var(--shadow-inset-low);
-            z-index: 1;
-            transition: all var(--transition-med);
-        }
-
-        .wizard-step--active .wizard-step__circle {
-            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
-            border-color: transparent;
-            color: var(--text-on-emerald);
-            box-shadow: var(--shadow-low), 0 0 0 4px var(--emerald-glow);
-        }
-
-        .wizard-step--completed .wizard-step__circle {
-            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
-            border-color: transparent;
-            color: var(--text-on-emerald);
-        }
-
-        .wizard-step__label {
-            font-size: 0.6875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            color: var(--text-muted);
-            text-align: center;
-            white-space: nowrap;
-        }
-
+        .wizard-step--active:not(:last-child)::after { background: var(--primary); }
+        .wizard-step__circle { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6875rem; font-weight: 600; background: #fff; border: 2px solid var(--border); color: var(--fg-subtle); box-shadow: var(--shadow-sm); z-index: 1; transition: all var(--transition); }
+        .wizard-step--active .wizard-step__circle { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 0 0 3px var(--primary-focus); }
+        .wizard-step--completed .wizard-step__circle { background: var(--primary); border-color: var(--primary); color: #fff; }
+        .wizard-step__label { font-size: 0.625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--fg-subtle); text-align: center; white-space: nowrap; }
         .wizard-step--active .wizard-step__label,
-        .wizard-step--completed .wizard-step__label {
-            color: var(--emerald);
-        }
+        .wizard-step--completed .wizard-step__label { color: var(--primary); }
+        .wizard-step--completed .wizard-step__label { color: var(--fg-muted); }
 
-        .wizard-step--completed .wizard-step__label {
-            color: var(--text-secondary);
-        }
+        /* ========== DYNAMIC ARRAY FIELDS ========== */
+        .array-field { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 12px; position: relative; animation: fadeIn var(--transition) ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+        .array-field__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+        .array-field__title { font-size: 0.75rem; font-weight: 600; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+        .array-field__remove { background: transparent; border: none; color: var(--fg-subtle); cursor: pointer; padding: 6px; border-radius: var(--radius-sm); transition: all var(--transition); display: flex; align-items: center; justify-content: center; }
+        .array-field__remove:hover { color: var(--danger); background: var(--danger-light); }
 
         /* ========== SECTION VISIBILITY ========== */
-        .section {
-            display: none;
-            animation: sectionFadeIn var(--transition-med) ease-out;
-        }
+        .section { display: none; animation: fadeIn var(--transition) ease-out; }
+        .section--active { display: block; }
 
-        .section--active {
-            display: block;
-        }
-
-        @keyframes sectionFadeIn {
-            from { opacity: 0; transform: translateX(16px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
+        /* ========== WIZARD PANEL ========== */
+        .wizard-panel { display: none; }
+        .wizard-panel--active { display: block; animation: fadeIn var(--transition) ease-out; }
 
         /* ========== SCROLLBAR ========== */
         *::-webkit-scrollbar { width: 8px; height: 8px; }
-        *::-webkit-scrollbar-track { background: var(--bg-base); }
-        *::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 4px; border: 2px solid var(--bg-base); }
-        *::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
-        *::-webkit-scrollbar-corner { background: var(--bg-base); }
+        *::-webkit-scrollbar-track { background: transparent; }
+        *::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; border: 2px solid transparent; background-clip: content-box; }
+        *::-webkit-scrollbar-thumb:hover { background: var(--border-strong); border: 2px solid transparent; background-clip: content-box; }
+        *::-webkit-scrollbar-corner { background: transparent; }
 
         /* ========== UTILITIES ========== */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
         .flex { display: flex; }
         .flex-col { flex-direction: column; }
         .items-center { align-items: center; }
@@ -880,60 +252,91 @@
         .mt-lg { margin-top: 24px; }
         .mb-sm { margin-bottom: 8px; }
         .mb-md { margin-bottom: 16px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        @media (max-width: 600px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+
+        .divider { height: 1px; background: var(--border); margin: 16px 0; }
+
+        /* Badge for CC/MCC */
+        .cc-badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: var(--radius-sm); font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+        .cc-badge--mcc { background: var(--danger-light); color: var(--danger); }
+        .cc-badge--cc { background: #fff4e6; color: #e67700; }
+        .cc-badge--none { background: var(--bg); color: var(--fg-subtle); border: 1px solid var(--border); }
+
+        /* Gold standard card */
+        .gs-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 10px; }
+        .gs-card--primary { border-left: 3px solid var(--primary); }
+        .gs-card__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+        .gs-card__code { font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--primary); }
+        .gs-card__desc { color: var(--fg); margin-top: 2px; }
+        .gs-card__rationale { font-size: 0.75rem; color: var(--fg-subtle); margin-top: 6px; line-height: 1.5; }
+        .gs-card__meta { display: flex; align-items: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+
+        /* DRG card */
+        .drg-card { background: var(--primary); color: #fff; border-radius: var(--radius); padding: 14px; margin-top: 12px; }
+        .drg-card__code { font-family: var(--font-mono); font-size: 1.125rem; font-weight: 700; }
+        .drg-card__desc { font-size: 0.875rem; opacity: 0.9; margin-top: 4px; }
+        .drg-card__rw { font-size: 0.75rem; opacity: 0.8; margin-top: 8px; }
+
+        /* Section header within panel */
+        .section-header { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-subtle); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
     </style>
 </head>
 <body>
     <div class="app-shell">
         <!-- HEADER -->
-        <header class="header neo-card neo-card--elev-2">
+        <header class="header">
             <div class="header__brand">
                 <div class="header__logo" aria-hidden="true">𓁢</div>
                 <div>
                     <h1 class="header__title">Project Anubis</h1>
-                    <p class="header__subtitle text-secondary">Clinical Scenario Forge & Abstractor Sandbox</p>
+                    <p class="header__subtitle text-muted">Scenario Forge & Abstractor Sandbox</p>
                 </div>
             </div>
-            <nav class="header__nav flex items-center gap-sm">
+            <nav class="flex items-center gap-md">
                 <div class="mode-switcher" role="tablist" aria-label="Mode selection">
-                    <button class="mode-btn mode-btn--active" id="mode-forge-btn" role="tab" aria-selected="true" data-mode="forge">🔥 Forge Scenario</button>
-                    <button class="mode-btn" id="mode-create-btn" role="tab" aria-selected="false" data-mode="create">✨ Create Blueprint</button>
+                    <button class="mode-btn mode-btn--active" id="mode-forge-btn" role="tab" aria-selected="true" data-mode="forge">Forge Scenario</button>
+                    <button class="mode-btn" id="mode-create-btn" role="tab" aria-selected="false" data-mode="create">Create Blueprint</button>
+                    <button class="mode-btn" id="mode-sandbox-btn" role="tab" aria-selected="false" data-mode="sandbox">Abstractor Sandbox</button>
                 </div>
-                <span class="badge badge--emerald">Next Gen MVP</span>
+                <span class="badge badge--primary">MVP</span>
             </nav>
         </header>
 
         <!-- MODE 1: FORGE SCENARIO -->
-        <section id="section-forge" class="section section--active">
+        <section id="section-forge" class="section section--active" aria-labelledby="forge-heading">
             <div class="workspace">
-                <!-- LEFT: Educator Controls (Elevation 2) -->
-                <div class="panel panel--left neo-card neo-card--elev-2">
+                <!-- LEFT: Educator Controls -->
+                <div class="panel">
                     <div class="panel__header">
-                        <h2 class="panel__title">
-                            <span class="panel__icon">🔥</span>
-                            Educator Controls
+                        <h2 class="panel__title" id="forge-heading">
+                            <span class="panel__icon" aria-hidden="true">⚙</span>
+                            Parameters
                         </h2>
                     </div>
                     <div class="panel__body">
                         <div class="form-group">
                             <label class="form-label" for="blueprint-select">Parent Blueprint</label>
-                            <select class="neo-select w-full" id="blueprint-select" aria-describedby="blueprint-desc">
+                            <select class="select w-full" id="blueprint-select" aria-describedby="blueprint-desc">
                                 <option value="">Loading blueprints…</option>
                             </select>
-                            <p id="blueprint-desc" class="text-muted mt-sm">Select a clinical scenario template to customize</p>
+                            <p id="blueprint-desc" class="form-help">Select a clinical scenario template to customize</p>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Demographic Age Range</label>
-                            <div class="range-row">
-                                <input type="number" id="age-min" class="neo-input" value="50" min="18" max="100" placeholder="Min" aria-label="Minimum age">
-                                <span class="text-muted">to</span>
-                                <input type="number" id="age-max" class="neo-input" value="85" min="18" max="100" placeholder="Max" aria-label="Maximum age">
+                            <div class="input-row">
+                                <input type="number" id="age-min" class="input" value="50" min="18" max="100" placeholder="Min" aria-label="Minimum age">
+                                <span class="text-muted" style="align-self: center;">to</span>
+                                <input type="number" id="age-max" class="input" value="85" min="18" max="100" placeholder="Max" aria-label="Maximum age">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label" for="noise-density">Isomorphic Noise Density</label>
-                            <select class="neo-select w-full" id="noise-density">
+                            <select class="select w-full" id="noise-density">
                                 <option value="Low">Low — Clean Academic Baseline</option>
                                 <option value="Medium" selected>Medium — Standard Clinical Noise</option>
                                 <option value="High">High — High-Acuity / Distractor Heavy</option>
@@ -941,44 +344,44 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="neo-checkbox">
+                            <label class="checkbox">
                                 <input type="checkbox" id="poa-mutation">
-                                <span class="neo-checkbox__box" aria-hidden="true"></span>
-                                <span class="neo-checkbox__label">
+                                <span class="checkbox__box" aria-hidden="true"></span>
+                                <span class="checkbox__label">
                                     <strong>Mutation Vector:</strong> Shift Sepsis Onset to Post-Admission (POA Mutation)
                                 </span>
                             </label>
                         </div>
 
-                        <button class="neo-btn neo-btn--primary w-full mt-lg" id="forge-btn" type="button">
-                            <span>🔥</span> Forge Scenario & Synthesize EHR
+                        <button class="btn btn--primary w-full mt-lg" id="forge-btn" type="button">
+                            <span>⚙</span> Forge Scenario
                         </button>
                     </div>
                 </div>
 
-                <!-- RIGHT: Live Output Preview (Elevation 4) -->
-                <div class="panel panel--right neo-card neo-card--elev-4">
+                <!-- RIGHT: Live Output Preview -->
+                <div class="panel">
                     <div class="panel__header">
                         <h2 class="panel__title">
-                            <span class="panel__icon">📄</span>
-                            Live Preview
+                            <span class="panel__icon" aria-hidden="true">📄</span>
+                            Output
                         </h2>
                     </div>
                     <div class="panel__body">
                         <div class="tab-bar" role="tablist" aria-label="Preview tabs">
-                            <button class="tab-btn tab-btn--active" id="tab-ehr" role="tab" aria-selected="true" aria-controls="panel-ehr">Synthesized EHR Chart</button>
-                            <button class="tab-btn" id="tab-gold" role="tab" aria-selected="false" aria-controls="panel-gold">Gold Standard Claims</button>
+                            <button class="tab-btn tab-btn--active" id="tab-ehr" role="tab" aria-selected="true" aria-controls="panel-ehr">Synthesized EHR</button>
+                            <button class="tab-btn" id="tab-gold" role="tab" aria-selected="false" aria-controls="panel-gold">Gold Standard</button>
                         </div>
 
                         <div id="panel-ehr" role="tabpanel" aria-labelledby="tab-ehr">
-                            <div class="preview-body preview-body--empty" id="preview-text">
-                                Configure educator parameters and click <strong>Forge Scenario</strong> to synthesize a live medical case…
+                            <div class="preview preview--empty" id="preview-text">
+                                Configure parameters and click <strong>Forge Scenario</strong> to synthesize a clinical case.
                             </div>
                         </div>
 
                         <div id="panel-gold" role="tabpanel" aria-labelledby="tab-gold" hidden>
-                            <div class="preview-body preview-body--empty" id="preview-gold">
-                                Gold standard claims mapping will appear here after forging…
+                            <div class="preview preview--empty" id="preview-gold">
+                                Gold standard claims mapping will appear here after forging.
                             </div>
                         </div>
                     </div>
@@ -986,12 +389,48 @@
             </div>
         </section>
 
+        <!-- MODE 3: ABSTRACTOR SANDBOX -->
+        <section id="section-sandbox" class="section" aria-labelledby="sandbox-heading">
+            <div class="workspace">
+                <!-- LEFT: Clinical Document Viewer -->
+                <div class="panel" style="min-height: 600px;">
+                    <div class="panel__body" style="padding: 16px;">
+                        <div class="form-group" style="margin-bottom: 12px;">
+                            <label class="form-label" for="sandbox-case-select">Load Case</label>
+                            <select class="select w-full" id="sandbox-case-select">
+                                <option value="">Select a case to abstract…</option>
+                            </select>
+                        </div>
+                        <clinical-chart-viewer id="sandbox-chart-viewer" style="min-height: 480px;"></clinical-chart-viewer>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Code Entry & Telemetry -->
+                <div class="panel" style="min-height: 600px;">
+                    <div class="panel__body" style="padding: 16px;">
+                        <div class="tab-bar" role="tablist" aria-label="Abstractor tabs" style="margin-bottom: 12px;">
+                            <button class="tab-btn tab-btn--active" id="tab-code" role="tab" aria-selected="true" aria-controls="panel-code">Code Entry</button>
+                            <button class="tab-btn" id="tab-telemetry" role="tab" aria-selected="false" aria-controls="panel-telemetry">Telemetry</button>
+                        </div>
+
+                        <div id="panel-code" role="tabpanel" aria-labelledby="tab-code">
+                            <code-entry-form id="sandbox-code-form"></code-entry-form>
+                        </div>
+
+                        <div id="panel-telemetry" role="tabpanel" aria-labelledby="tab-telemetry" hidden>
+                            <telemetry-panel id="sandbox-telemetry-panel"></telemetry-panel>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- MODE 2: BLUEPRINT CREATOR WIZARD -->
-        <section id="section-create" class="section">
+        <section id="section-create" class="section" aria-labelledby="create-heading">
             <div class="alert" id="create-alert" role="alert" aria-live="polite"></div>
 
             <!-- Wizard Stepper -->
-            <nav class="wizard-stepper" aria-label="Blueprint creation steps">
+            <nav class="wizard-stepper" aria-label="Blueprint creation steps" id="wizard-stepper">
                 <div class="wizard-step wizard-step--active" data-step="1" role="step" aria-current="step">
                     <div class="wizard-step__circle">1</div>
                     <span class="wizard-step__label">Identity</span>
@@ -1018,28 +457,27 @@
                 </div>
             </nav>
 
-            <!-- Wizard Panels (progressive elevation left→right in wide view) -->
             <div class="workspace">
-                <!-- LEFT: Form Steps (Elevation 2) -->
-                <div class="panel panel--left neo-card neo-card--elev-2" style="min-height: 600px;">
+                <!-- LEFT: Form Steps -->
+                <div class="panel" style="min-height: 600px;">
                     <div class="panel__header">
-                        <h2 class="panel__title">
-                            <span class="panel__icon">✨</span>
+                        <h2 class="panel__title" id="create-heading">
+                            <span class="panel__icon" aria-hidden="true">✨</span>
                             Blueprint Builder
                         </h2>
                     </div>
                     <div class="panel__body" style="flex: 1; overflow-y: auto;">
                         <!-- STEP 1: IDENTITY -->
-                        <div class="wizard-panel" data-step="1" role="tabpanel" aria-labelledby="step1-label">
-                            <h3 id="step1-label" class="text-secondary mb-md" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 1 — Blueprint Identity</h3>
+                        <div class="wizard-panel wizard-panel--active" data-step="1" role="tabpanel">
+                            <h3 class="text-muted mb-md" style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 1 — Blueprint Identity</h3>
                             <div class="form-group">
                                 <label class="form-label" for="bp-id">Blueprint ID *</label>
-                                <input type="text" id="bp-id" class="neo-input w-full" placeholder="BP-DOMAIN-CONCEPT-###" value="BP-NEW-CONDITION-001" aria-describedby="bp-id-help">
-                                <p id="bp-id-help" class="text-muted mt-sm">Unique identifier. Format: BP-DOMAIN-CONCEPT-###</p>
+                                <input type="text" id="bp-id" class="input w-full" placeholder="BP-DOMAIN-CONCEPT-###" value="BP-NEW-CONDITION-001" aria-describedby="bp-id-help">
+                                <p id="bp-id-help" class="form-help">Unique identifier. Format: BP-DOMAIN-CONCEPT-###</p>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="bp-domain">Clinical Domain *</label>
-                                <select class="neo-select w-full" id="bp-domain">
+                                <select class="select w-full" id="bp-domain">
                                     <option value="Inpatient-Internal-Medicine">Inpatient — Internal Medicine</option>
                                     <option value="Inpatient-Cardiology">Inpatient — Cardiology</option>
                                     <option value="Inpatient-Neurology">Inpatient — Neurology</option>
@@ -1052,12 +490,12 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="bp-concept">Core Concept *</label>
-                                <input type="text" id="bp-concept" class="neo-input w-full" placeholder="e.g., Acute pancreatitis with systemic inflammation" aria-describedby="bp-concept-help">
-                                <p id="bp-concept-help" class="text-muted mt-sm">One-line clinical summary of the scenario</p>
+                                <input type="text" id="bp-concept" class="input w-full" placeholder="e.g., Acute pancreatitis with systemic inflammation" aria-describedby="bp-concept-help">
+                                <p id="bp-concept-help" class="form-help">One-line clinical summary of the scenario</p>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="bp-difficulty">Difficulty Level *</label>
-                                <select class="neo-select w-full" id="bp-difficulty">
+                                <select class="select w-full" id="bp-difficulty">
                                     <option value="Introductory">Introductory</option>
                                     <option value="Moderate" selected>Moderate</option>
                                     <option value="Advanced">Advanced</option>
@@ -1067,105 +505,103 @@
                         </div>
 
                         <!-- STEP 2: DEMOGRAPHICS -->
-                        <div class="wizard-panel" data-step="2" role="tabpanel" aria-labelledby="step2-label" hidden>
-                            <h3 id="step2-label" class="text-secondary mb-md" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 2 — Demographics Rules</h3>
+                        <div class="wizard-panel" data-step="2" role="tabpanel" hidden>
+                            <h3 class="text-muted mb-md" style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 2 — Demographics Rules</h3>
                             <div class="form-group">
                                 <label class="form-label">Age Range *</label>
                                 <div class="range-row">
-                                    <input type="number" id="bp-age-min" class="neo-input" value="50" min="0" max="120" placeholder="Min" aria-label="Minimum age">
+                                    <input type="number" id="bp-age-min" class="input" value="50" min="0" max="120" placeholder="Min" aria-label="Minimum age">
                                     <span class="text-muted">to</span>
-                                    <input type="number" id="bp-age-max" class="neo-input" value="85" min="0" max="120" placeholder="Max" aria-label="Maximum age">
+                                    <input type="number" id="bp-age-max" class="input" value="85" min="0" max="120" placeholder="Max" aria-label="Maximum age">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Genders *</label>
                                 <div class="flex gap-md mt-sm">
-                                    <label class="neo-checkbox">
+                                    <label class="checkbox">
                                         <input type="checkbox" id="bp-gender-f" checked>
-                                        <span class="neo-checkbox__box" aria-hidden="true"></span>
-                                        <span class="neo-checkbox__label">Female (F)</span>
+                                        <span class="checkbox__box" aria-hidden="true"></span>
+                                        <span class="checkbox__label">Female (F)</span>
                                     </label>
-                                    <label class="neo-checkbox">
+                                    <label class="checkbox">
                                         <input type="checkbox" id="bp-gender-m" checked>
-                                        <span class="neo-checkbox__box" aria-hidden="true"></span>
-                                        <span class="neo-checkbox__label">Male (M)</span>
+                                        <span class="checkbox__box" aria-hidden="true"></span>
+                                        <span class="checkbox__label">Male (M)</span>
                                     </label>
                                 </div>
                             </div>
                         </div>
 
                         <!-- STEP 3: NOISE POOL -->
-                        <div class="wizard-panel" data-step="3" role="tabpanel" aria-labelledby="step3-label" hidden>
-                            <h3 id="step3-label" class="text-secondary mb-md" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 3 — Isomorphic Noise Pool</h3>
-                            <p class="text-muted mb-md">Variability injected into each generated case for realism</p>
+                        <div class="wizard-panel" data-step="3" role="tabpanel" hidden>
+                            <h3 class="text-muted mb-md" style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 3 — Isomorphic Noise Pool</h3>
+                            <p class="form-help mb-md">Variability injected into each generated case for realism</p>
 
                             <div class="form-group">
                                 <label class="form-label">Social History Variants</label>
-                                <div id="social-history-array">
-                                    <!-- Dynamic array fields injected here -->
-                                </div>
-                                <button type="button" class="neo-btn neo-btn--secondary neo-btn--sm mt-sm" id="add-social-btn">+ Add Social History Variant</button>
+                                <div id="social-history-array"></div>
+                                <button type="button" class="btn btn--secondary btn--sm mt-sm" id="add-social-btn">+ Add Social History Variant</button>
                             </div>
 
                             <div class="form-group mt-lg">
                                 <label class="form-label">Chronic Condition Variants</label>
-                                <div id="chronic-conditions-array">
-                                    <!-- Dynamic array fields injected here -->
-                                </div>
-                                <button type="button" class="neo-btn neo-btn--secondary neo-btn--sm mt-sm" id="add-chronic-btn">+ Add Chronic Condition</button>
+                                <div id="chronic-conditions-array"></div>
+                                <button type="button" class="btn btn--secondary btn--sm mt-sm" id="add-chronic-btn">+ Add Chronic Condition</button>
                             </div>
                         </div>
 
                         <!-- STEP 4: CLINICAL TEMPLATE -->
-                        <div class="wizard-panel" data-step="4" role="tabpanel" aria-labelledby="step4-label" hidden>
-                            <h3 id="step4-label" class="text-secondary mb-md" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 4 — Clinical Template</h3>
+                        <div class="wizard-panel" data-step="4" role="tabpanel" hidden>
+                            <h3 class="text-muted mb-md" style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 4 — Clinical Template</h3>
 
                             <div class="form-group">
                                 <label class="form-label" for="bp-chief-complaint">Chief Complaint *</label>
-                                <input type="text" id="bp-chief-complaint" class="neo-input w-full" placeholder="e.g., Severe epigastric pain radiating to back, nausea, vomiting">
+                                <input type="text" id="bp-chief-complaint" class="input w-full" placeholder="e.g., Severe epigastric pain radiating to back, nausea, vomiting">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Vital Signs Ranges</label>
-                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+                                <div class="grid-4">
                                     <div class="form-group">
                                         <label class="form-label">Temp (°F)</label>
                                         <div class="range-row">
-                                            <input type="number" id="bp-temp-min" class="neo-input" value="100.5" step="0.1" min="95" max="108" placeholder="Min">
+                                            <input type="number" id="bp-temp-min" class="input" value="100.5" step="0.1" min="95" max="108" placeholder="Min">
                                             <span class="text-muted">to</span>
-                                            <input type="number" id="bp-temp-max" class="neo-input" value="102.5" step="0.1" min="95" max="108" placeholder="Max">
+                                            <input type="number" id="bp-temp-max" class="input" value="102.5" step="0.1" min="95" max="108" placeholder="Max">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Heart Rate (bpm)</label>
                                         <div class="range-row">
-                                            <input type="number" id="bp-hr-min" class="neo-input" value="100" min="40" max="180" placeholder="Min">
+                                            <input type="number" id="bp-hr-min" class="input" value="100" min="40" max="180" placeholder="Min">
                                             <span class="text-muted">to</span>
-                                            <input type="number" id="bp-hr-max" class="neo-input" value="118" min="40" max="180" placeholder="Max">
+                                            <input type="number" id="bp-hr-max" class="input" value="118" min="40" max="180" placeholder="Max">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Resp Rate</label>
                                         <div class="range-row">
-                                            <input type="number" id="bp-rr-min" class="neo-input" value="20" min="8" max="40" placeholder="Min">
+                                            <input type="number" id="bp-rr-min" class="input" value="20" min="8" max="40" placeholder="Min">
                                             <span class="text-muted">to</span>
-                                            <input type="number" id="bp-rr-max" class="neo-input" value="26" min="8" max="40" placeholder="Max">
+                                            <input type="number" id="bp-rr-max" class="input" value="26" min="8" max="40" placeholder="Max">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">BP Systolic</label>
                                         <div class="range-row">
-                                            <input type="number" id="bp-sys-min" class="neo-input" value="95" min="60" max="220" placeholder="Min">
+                                            <input type="number" id="bp-sys-min" class="input" value="95" min="60" max="220" placeholder="Min">
                                             <span class="text-muted">to</span>
-                                            <input type="number" id="bp-sys-max" class="neo-input" value="115" min="60" max="220" placeholder="Max">
+                                            <input type="number" id="bp-sys-max" class="input" value="115" min="60" max="220" placeholder="Max">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="grid-2 mt-sm">
                                     <div class="form-group">
                                         <label class="form-label">BP Diastolic</label>
                                         <div class="range-row">
-                                            <input type="number" id="bp-dia-min" class="neo-input" value="55" min="30" max="140" placeholder="Min">
+                                            <input type="number" id="bp-dia-min" class="input" value="55" min="30" max="140" placeholder="Min">
                                             <span class="text-muted">to</span>
-                                            <input type="number" id="bp-dia-max" class="neo-input" value="70" min="30" max="140" placeholder="Max">
+                                            <input type="number" id="bp-dia-max" class="input" value="70" min="30" max="140" placeholder="Max">
                                         </div>
                                     </div>
                                 </div>
@@ -1173,33 +609,33 @@
 
                             <div class="form-group">
                                 <label class="form-label">Lab Ranges</label>
-                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+                                <div class="grid-4">
                                     <div class="form-group">
                                         <label class="form-label">WBC (K/µL)</label>
                                         <div class="range-row">
-                                            <input type="number" id="bp-wbc-min" class="neo-input" value="12.0" step="0.1" min="1" max="50" placeholder="Min">
+                                            <input type="number" id="bp-wbc-min" class="input" value="12.0" step="0.1" min="1" max="50" placeholder="Min">
                                             <span class="text-muted">to</span>
-                                            <input type="number" id="bp-wbc-max" class="neo-input" value="18.0" step="0.1" min="1" max="50" placeholder="Max">
+                                            <input type="number" id="bp-wbc-max" class="input" value="18.0" step="0.1" min="1" max="50" placeholder="Max">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Lactate (mmol/L)</label>
                                         <div class="range-row">
-                                            <input type="number" id="bp-lactate-min" class="neo-input" value="1.5" step="0.1" min="0.3" max="10" placeholder="Min">
+                                            <input type="number" id="bp-lactate-min" class="input" value="1.5" step="0.1" min="0.3" max="10" placeholder="Min">
                                             <span class="text-muted">to</span>
-                                            <input type="number" id="bp-lactate-max" class="neo-input" value="3.5" step="0.1" min="0.3" max="10" placeholder="Max">
+                                            <input type="number" id="bp-lactate-max" class="input" value="3.5" step="0.1" min="0.3" max="10" placeholder="Max">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Custom Lab 1 Name</label>
-                                        <input type="text" id="bp-custom-lab1-name" class="neo-input" placeholder="e.g., BNP, Troponin, CRP">
+                                        <input type="text" id="bp-custom-lab1-name" class="input" placeholder="e.g., BNP, Troponin, CRP">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Custom Lab 1 Range</label>
                                         <div class="range-row">
-                                            <input type="number" id="bp-custom-lab1-min" class="neo-input" step="0.1" placeholder="Min">
+                                            <input type="number" id="bp-custom-lab1-min" class="input" step="0.1" placeholder="Min">
                                             <span class="text-muted">to</span>
-                                            <input type="number" id="bp-custom-lab1-max" class="neo-input" step="0.1" placeholder="Max">
+                                            <input type="number" id="bp-custom-lab1-max" class="input" step="0.1" placeholder="Max">
                                         </div>
                                     </div>
                                 </div>
@@ -1207,81 +643,79 @@
 
                             <div class="form-group">
                                 <label class="form-label" for="bp-chest-xray">Chest X-Ray Finding *</label>
-                                <textarea id="bp-chest-xray" class="neo-textarea w-full" placeholder="e.g., Left lower lobe opacity consistent with acute infiltrate/consolidation." rows="2">Left lower lobe opacity consistent with acute infiltrate/consolidation.</textarea>
+                                <textarea id="bp-chest-xray" class="textarea w-full" placeholder="e.g., Left lower lobe opacity consistent with acute infiltrate/consolidation." rows="2">Left lower lobe opacity consistent with acute infiltrate/consolidation.</textarea>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label" for="bp-assessment">Assessment / Hospital Course Narrative *</label>
-                                <textarea id="bp-assessment" class="neo-textarea w-full" placeholder="e.g., Severe sepsis secondary to community-acquired pneumonia. Patient was placed on sepsis resuscitation protocol..." rows="4">Severe sepsis secondary to community-acquired pneumonia. Patient was placed on sepsis resuscitation protocol with IV fluid boluses and started on broad-spectrum IV antibiotics (Ceftriaxone and Azithromycin). Supplemental oxygen titrated via nasal cannula. Chronic conditions were monitored and maintained on home medications.</textarea>
-                                <p class="text-muted mt-sm">This narrative is used directly in the generated EHR. Write it clinically.</p>
+                                <textarea id="bp-assessment" class="textarea w-full" placeholder="e.g., Severe sepsis secondary to community-acquired pneumonia. Patient was placed on sepsis resuscitation protocol..." rows="4">Severe sepsis secondary to community-acquired pneumonia. Patient was placed on sepsis resuscitation protocol with IV fluid boluses and started on broad-spectrum IV antibiotics (Ceftriaxone and Azithromycin). Supplemental oxygen titrated via nasal cannula. Chronic conditions were monitored and maintained on home medications.</textarea>
+                                <p class="form-help">This narrative is used directly in the generated EHR. Write it clinically.</p>
                             </div>
                         </div>
 
                         <!-- STEP 5: GOLD STANDARD -->
-                        <div class="wizard-panel" data-step="5" role="tabpanel" aria-labelledby="step5-label" hidden>
-                            <h3 id="step5-label" class="text-secondary mb-md" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 5 — Gold Standard Claims Mapping</h3>
+                        <div class="wizard-panel" data-step="5" role="tabpanel" hidden>
+                            <h3 class="text-muted mb-md" style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 5 — Gold Standard Claims Mapping</h3>
 
                             <div class="form-group">
                                 <label class="form-label">Principal Diagnosis *</label>
-                                <div style="display: grid; grid-template-columns: 140px 1fr; gap: 12px;">
-                                    <input type="text" id="bp-pdx-code" class="neo-input" value="A41.9" placeholder="A41.9" aria-label="ICD-10 code">
-                                    <input type="text" id="bp-pdx-desc" class="neo-input" value="Sepsis, unspecified organism" placeholder="Description" aria-label="Description">
+                                <div class="grid-2">
+                                    <input type="text" id="bp-pdx-code" class="input" value="A41.9" placeholder="A41.9" aria-label="ICD-10 code">
+                                    <input type="text" id="bp-pdx-desc" class="input" value="Sepsis, unspecified organism" placeholder="Description" aria-label="Description">
                                 </div>
                                 <label class="form-label mt-md">Rationale (Coding Guideline Citation)</label>
-                                <textarea id="bp-pdx-rationale" class="neo-textarea w-full" placeholder="e.g., Sepsis is present on admission (POA) and meets criteria for principal diagnosis under ICD-10-CM Guideline I.C.1.d.1.a." rows="2">Sepsis is present on admission (POA) and meets criteria for principal diagnosis under ICD-10-CM Guideline I.C.1.d.1.a.</textarea>
+                                <textarea id="bp-pdx-rationale" class="textarea w-full" placeholder="e.g., Sepsis is present on admission (POA) and meets criteria for principal diagnosis under ICD-10-CM Guideline I.C.1.d.1.a." rows="2">Sepsis is present on admission (POA) and meets criteria for principal diagnosis under ICD-10-CM Guideline I.C.1.d.1.a.</textarea>
                             </div>
 
                             <div class="form-group mt-lg">
                                 <label class="form-label">Secondary Diagnoses</label>
-                                <div id="secondary-diagnoses-array">
-                                    <!-- Dynamic array fields injected here -->
-                                </div>
-                                <button type="button" class="neo-btn neo-btn--secondary neo-btn--sm mt-sm" id="add-secondary-btn">+ Add Secondary Diagnosis</button>
+                                <div id="secondary-diagnoses-array"></div>
+                                <button type="button" class="btn btn--secondary btn--sm mt-sm" id="add-secondary-btn">+ Add Secondary Diagnosis</button>
                             </div>
                         </div>
 
                         <!-- STEP 6: EXPORT -->
-                        <div class="wizard-panel" data-step="6" role="tabpanel" aria-labelledby="step6-label" hidden>
-                            <h3 id="step6-label" class="text-secondary mb-md" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 6 — Generate & Export</h3>
+                        <div class="wizard-panel" data-step="6" role="tabpanel" hidden>
+                            <h3 class="text-muted mb-md" style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 6 — Generate & Export</h3>
 
                             <div class="flex gap-sm flex-wrap mb-md">
-                                <button class="neo-btn neo-btn--primary" id="btn-preview-yaml" type="button">👁️ Preview YAML</button>
-                                <button class="neo-btn neo-btn--secondary" id="btn-save-blueprint" type="button">💾 Save to Project</button>
-                                <button class="neo-btn neo-btn--secondary" id="btn-download-yaml" type="button">⬇️ Download .yaml</button>
+                                <button class="btn btn--primary" id="btn-preview-yaml" type="button">Preview YAML</button>
+                                <button class="btn btn--secondary" id="btn-save-blueprint" type="button">Save to Project</button>
+                                <button class="btn btn--secondary" id="btn-download-yaml" type="button">Download .yaml</button>
                             </div>
 
                             <label class="form-label">YAML Output (Editable)</label>
-                            <textarea id="yaml-preview" class="yaml-editor w-full" placeholder="Click “Preview YAML” to generate…" spellcheck="false" aria-label="YAML preview editor"></textarea>
+                            <textarea id="yaml-preview" class="yaml-editor w-full" placeholder='Click "Preview YAML" to generate…' spellcheck="false" aria-label="YAML preview editor"></textarea>
                         </div>
 
                         <!-- Wizard Navigation -->
-                        <div class="flex justify-between mt-lg pt-md" style="border-top: 1px solid var(--border-subtle);">
-                            <button class="neo-btn neo-btn--ghost neo-btn--sm" id="wizard-prev" type="button" disabled>← Previous</button>
-                            <button class="neo-btn neo-btn--primary" id="wizard-next" type="button">Next →</button>
+                        <div class="flex justify-between mt-lg pt-md" style="border-top: 1px solid var(--border);">
+                            <button class="btn btn--ghost btn--sm" id="wizard-prev" type="button" disabled>← Previous</button>
+                            <button class="btn btn--primary" id="wizard-next" type="button">Next →</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- RIGHT: Live YAML Preview / Help (Elevation 4) -->
-                <div class="panel panel--right neo-card neo-card--elev-4" style="min-height: 600px;">
+                <!-- RIGHT: Live YAML Preview / Help -->
+                <div class="panel" style="min-height: 600px;">
                     <div class="panel__header">
                         <h2 class="panel__title">
-                            <span class="panel__icon">📋</span>
+                            <span class="panel__icon" aria-hidden="true">📋</span>
                             Live Preview & Reference
                         </h2>
                     </div>
                     <div class="panel__body">
-                        <div class="preview-body" id="create-preview" style="min-height: 400px;">
-                            <div class="preview-body--empty">
+                        <div class="preview" id="create-preview" style="min-height: 400px;">
+                            <div class="preview--empty">
                                 <strong>Live YAML Preview</strong><br><br>
                                 Fill in the wizard steps on the left. Click <strong>Preview YAML</strong> on Step 6 to see the generated blueprint here.<br><br>
                                 <span class="text-muted">All changes sync in real-time as you type.</span>
                             </div>
                         </div>
 
-                        <div class="mt-lg pt-lg" style="border-top: 1px solid var(--border-subtle);">
-                            <h4 class="text-secondary mb-sm" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Quick Reference</h4>
-                            <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.7;">
+                        <div class="mt-lg pt-lg" style="border-top: 1px solid var(--border);">
+                            <h4 class="text-muted mb-sm" style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.06em;">Quick Reference</h4>
+                            <div style="font-size: 0.75rem; color: var(--fg-subtle); line-height: 1.7;">
                                 <strong>Blueprint ID format:</strong> BP-DOMAIN-CONCEPT-###<br>
                                 <strong>CC/MCC types:</strong> None, CC, MCC (per CMS DRG logic)<br>
                                 <strong>POA values:</strong> Y (Present), N (Not present), U (Unknown)<br>
@@ -1305,7 +739,7 @@
         // Expose anime globally for components
         window.anime = anime;
 
-        // Load blueprints into the dropdown (relative path - same origin)
+        // ========== FORGE MODE ==========
         async function loadBlueprints() {
             const select = document.getElementById('blueprint-select');
             try {
@@ -1317,7 +751,7 @@
                 blueprints.forEach(bp => {
                     const opt = document.createElement('option');
                     opt.value = bp.blueprint_id;
-                    opt.innerText = `${bp.blueprint_id} - ${bp.core_concept} (${bp.domain})`;
+                    opt.innerText = `${bp.blueprint_id} — ${bp.core_concept} (${bp.domain})`;
                     select.appendChild(opt);
                 });
             } catch (err) {
@@ -1326,159 +760,479 @@
             }
         }
 
-        // Initialize on DOM ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadBlueprints);
-        } else {
-            loadBlueprints();
-        }
-
-        // Forge Scenario handler
         async function forgeScenario() {
             const btn = document.getElementById('forge-btn');
             const previewText = document.getElementById('preview-text');
             const previewGold = document.getElementById('preview-gold');
             const tabEhr = document.getElementById('tab-ehr');
             const tabGold = document.getElementById('tab-gold');
-            const panelEhr = document.getElementById('panel-ehr');
-            const panelGold = document.getElementById('panel-gold');
 
-            // Get form values
             const blueprintId = document.getElementById('blueprint-select').value;
             const ageMin = parseInt(document.getElementById('age-min').value);
             const ageMax = parseInt(document.getElementById('age-max').value);
             const noiseDensity = document.getElementById('noise-density').value;
             const applyPoaMutation = document.getElementById('poa-mutation').checked;
 
-            if (!blueprintId) {
-                alert('Please select a blueprint');
-                return;
-            }
+            if (!blueprintId) { alert('Please select a blueprint'); return; }
 
-            // UI loading state
             btn.disabled = true;
             btn.innerHTML = '<span>⏳</span> Forging…';
-            previewText.innerHTML = '<div class="preview-body--empty">Synthesizing clinical scenario…</div>';
-            previewGold.innerHTML = '<div class="preview-body--empty">Generating gold standard…</div>';
+            previewText.innerHTML = '<div class="preview--empty">Synthesizing clinical scenario…</div>';
+            previewGold.innerHTML = '<div class="preview--empty">Generating gold standard…</div>';
 
             try {
                 const res = await fetch('/api/forge/synthesize', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        blueprint_id: blueprintId,
-                        age_range: [ageMin, ageMax],
-                        noise_density: noiseDensity,
-                        apply_poa_mutation: applyPoaMutation
-                    })
+                    body: JSON.stringify({ blueprint_id: blueprintId, age_range: [ageMin, ageMax], noise_density: noiseDensity, apply_poa_mutation: applyPoaMutation })
                 });
 
-                if (!res.ok) {
-                    const err = await res.json();
-                    throw new Error(err.detail || `HTTP ${res.status}`);
-                }
-
+                if (!res.ok) { const err = await res.json(); throw new Error(err.detail || `HTTP ${res.status}`); }
                 const data = await res.json();
 
-                // Render synthesized EHR
+                // Render EHR
                 const ehr = data.synthesized_ehr;
-                previewText.innerHTML = `
-                    <div style="font-family: inherit; line-height: 1.7; white-space: pre-wrap;">
-                        <strong style="color: var(--emerald); font-size: 1.1em;">${ehr.document_type}</strong><br><br>
-                        ${ehr.narrative.replace(/\n/g, '<br>')}
-                    </div>
-                `;
+                previewText.innerHTML = `<div style="font-family: inherit; line-height: 1.7; white-space: pre-wrap;"><strong style="color: var(--primary);">${ehr.document_type}</strong><br><br>${escapeHtml(ehr.narrative).replace(/\n/g, '<br>')}</div>`;
 
-                // Render gold standard
+                // Render Gold Standard
                 const gs = data.gold_standard;
-                let goldHtml = `
-                    <div style="font-family: inherit; line-height: 1.7;">
-                        <div style="margin-bottom: 16px; padding: 12px; background: var(--bg-base); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
-                            <strong style="color: var(--emerald);">Principal Diagnosis</strong><br>
-                            <code style="font-size: 1.1em;">${gs.principal_diagnosis.code}</code> — ${gs.principal_diagnosis.description}<br>
-                            <em style="color: var(--text-muted); font-size: 0.85em;">${gs.principal_diagnosis.rationale}</em>
-                        </div>
-                        <strong>Secondary Diagnoses</strong><br>
-                `;
-                gs.secondary_diagnoses.forEach(sdx => {
-                    goldHtml += `
-                        <div style="margin: 10px 0; padding: 10px; background: var(--bg-base); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
-                            <code>${sdx.code}</code> — ${sdx.description}
-                            <span style="margin-left: 10px; padding: 2px 8px; background: ${sdx.type === 'MCC' ? 'rgba(192,57,43,0.15)' : 'rgba(0,127,74,0.15)'}; color: ${sdx.type === 'MCC' ? '#c0392b' : 'var(--emerald)'}; border-radius: var(--radius-sm); font-size: 0.7em; font-weight: 700;">${sdx.type}</span>
-                            <br><em style="color: var(--text-muted); font-size: 0.85em;">${sdx.rationale}</em>
-                        </div>
-                    `;
-                });
-                if (gs.procedures && gs.procedures.length > 0) {
-                    goldHtml += '<strong style="margin-top: 16px; display: block;">Procedures</strong><br>';
-                    gs.procedures.forEach(px => {
-                        goldHtml += `<div style="margin: 8px 0; padding: 10px; background: var(--bg-base); border-radius: var(--radius-sm);"><code>${px.code}</code> — ${px.description}</div>`;
-                    });
-                }
-                if (gs.reimbursement_impact) {
-                    goldHtml += `
-                        <div style="margin-top: 16px; padding: 12px; background: linear-gradient(135deg, var(--emerald), var(--emerald-light)); border-radius: var(--radius-md); color: white;">
-                            <strong>MS-DRG ${gs.reimbursement_impact.drg_code}: ${gs.reimbursement_impact.drg_description}</strong><br>
-                            Relative Weight: ${gs.reimbursement_impact.relative_weight}
-                        </div>
-                    `;
-                }
+                let goldHtml = renderGoldStandard(gs);
                 previewGold.innerHTML = goldHtml;
 
-                // Auto-switch to EHR tab and enable Gold tab
                 tabEhr.click();
                 tabGold.disabled = false;
 
             } catch (err) {
                 console.error('Forge failed:', err);
-                previewText.innerHTML = `<div class="preview-body--empty" style="color: #c0392b;">Error: ${err.message}</div>`;
+                previewText.innerHTML = `<div class="preview--empty" style="color: var(--danger);">Error: ${escapeHtml(err.message)}</div>`;
             } finally {
                 btn.disabled = false;
-                btn.innerHTML = '<span>🔥</span> Forge Scenario & Synthesize EHR';
+                btn.innerHTML = '<span>⚙</span> Forge Scenario';
             }
         }
 
-        // Tab switching
+        function escapeHtml(str) {
+            return str.replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>').replace(/"/g, '"').replace(/'/g, '&#039;');
+        }
+
+        function ccBadge(type) {
+            if (type === 'MCC') return '<span class="cc-badge cc-badge--mcc">MCC</span>';
+            if (type === 'CC') return '<span class="cc-badge cc-badge--cc">CC</span>';
+            return '<span class="cc-badge cc-badge--none">None</span>';
+        }
+
+        function renderGoldStandard(gs) {
+            let html = '<div style="font-family: inherit; line-height: 1.7;">';
+
+            // Principal
+            html += `<div class="gs-card gs-card--primary">
+                <div class="gs-card__header"><span class="gs-card__code">${escapeHtml(gs.principal_diagnosis.code)}</span></div>
+                <div class="gs-card__desc">${escapeHtml(gs.principal_diagnosis.description)}</div>
+                <div class="gs-card__rationale">${escapeHtml(gs.principal_diagnosis.rationale)}</div>
+            </div>`;
+
+            // Secondary
+            html += '<div class="section-header">Secondary Diagnoses</div>';
+            gs.secondary_diagnoses.forEach(sdx => {
+                html += `<div class="gs-card">
+                    <div class="gs-card__header">
+                        <span class="gs-card__code">${escapeHtml(sdx.code)}</span>
+                        ${ccBadge(sdx.type)}
+                    </div>
+                    <div class="gs-card__desc">${escapeHtml(sdx.description)}</div>
+                    <div class="gs-card__rationale">${escapeHtml(sdx.rationale)}</div>
+                </div>`;
+            });
+
+            // Procedures
+            if (gs.procedures && gs.procedures.length > 0) {
+                html += '<div class="section-header mt-md">Procedures</div>';
+                gs.procedures.forEach(px => {
+                    html += `<div class="gs-card"><span class="gs-card__code">${escapeHtml(px.code)}</span> <span style="margin-left:8px;">${escapeHtml(px.description)}</span></div>`;
+                });
+            }
+
+            // DRG
+            if (gs.reimbursement_impact) {
+                html += `<div class="drg-card">
+                    <div class="drg-card__code">MS-DRG ${escapeHtml(gs.reimbursement_impact.drg_code)}: ${escapeHtml(gs.reimbursement_impact.drg_description)}</div>
+                    <div class="drg-card__rw">Relative Weight: ${escapeHtml(String(gs.reimbursement_impact.relative_weight))}</div>
+                </div>`;
+            }
+
+            html += '</div>';
+            return html;
+        }
+
+        // ========== TABS ==========
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                document.querySelectorAll('.tab-btn').forEach(b => {
-                    b.classList.remove('tab-btn--active');
-                    b.setAttribute('aria-selected', 'false');
-                });
+                document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('tab-btn--active'); b.setAttribute('aria-selected', 'false'); });
                 document.querySelectorAll('[role="tabpanel"]').forEach(p => p.hidden = true);
-
-                this.classList.add('tab-btn--active');
-                this.setAttribute('aria-selected', 'true');
-                const panelId = this.getAttribute('aria-controls');
-                document.getElementById(panelId).hidden = false;
+                this.classList.add('tab-btn--active'); this.setAttribute('aria-selected', 'true');
+                document.getElementById(this.getAttribute('aria-controls')).hidden = false;
             });
         });
 
-        // Mode switching
-        document.getElementById('mode-forge-btn').addEventListener('click', function() {
-            document.getElementById('mode-forge-btn').classList.add('mode-btn--active');
-            document.getElementById('mode-forge-btn').setAttribute('aria-selected', 'true');
-            document.getElementById('mode-create-btn').classList.remove('mode-btn--active');
-            document.getElementById('mode-create-btn').setAttribute('aria-selected', 'false');
-            document.getElementById('section-forge').classList.add('section--active');
-            document.getElementById('section-create').classList.remove('section--active');
-        });
+        // ========== MODE SWITCHING ==========
+        function showMode(mode) {
+            const isForge = mode === 'forge';
+            const isCreate = mode === 'create';
+            const isSandbox = mode === 'sandbox';
+            document.getElementById('mode-forge-btn').classList.toggle('mode-btn--active', isForge);
+            document.getElementById('mode-forge-btn').setAttribute('aria-selected', isForge);
+            document.getElementById('mode-create-btn').classList.toggle('mode-btn--active', isCreate);
+            document.getElementById('mode-create-btn').setAttribute('aria-selected', isCreate);
+            document.getElementById('mode-sandbox-btn').classList.toggle('mode-btn--active', isSandbox);
+            document.getElementById('mode-sandbox-btn').setAttribute('aria-selected', isSandbox);
+            document.getElementById('section-forge').classList.toggle('section--active', isForge);
+            document.getElementById('section-create').classList.toggle('section--active', isCreate);
+            document.getElementById('section-sandbox').classList.toggle('section--active', isSandbox);
+        }
 
-        document.getElementById('mode-create-btn').addEventListener('click', function() {
-            document.getElementById('mode-create-btn').classList.add('mode-btn--active');
-            document.getElementById('mode-create-btn').setAttribute('aria-selected', 'true');
-            document.getElementById('mode-forge-btn').classList.remove('mode-btn--active');
-            document.getElementById('mode-forge-btn').setAttribute('aria-selected', 'false');
-            document.getElementById('section-create').classList.add('section--active');
-            document.getElementById('section-forge').classList.remove('section--active');
-        });
+        document.getElementById('mode-forge-btn').addEventListener('click', () => showMode('forge'));
+        document.getElementById('mode-create-btn').addEventListener('click', () => showMode('create'));
+        document.getElementById('mode-sandbox-btn').addEventListener('click', () => showMode('sandbox'));
 
-        // Wire up the forge button
+        // Wire up forge button
         document.getElementById('forge-btn').addEventListener('click', forgeScenario);
 
-        // Expose for debugging
+        // ========== WIZARD ==========
+        const wizardSteps = Array.from(document.querySelectorAll('.wizard-step'));
+        const wizardPanels = Array.from(document.querySelectorAll('.wizard-panel'));
+        let currentStep = 1;
+
+        function showStep(step) {
+            currentStep = step;
+            wizardSteps.forEach(s => {
+                const sNum = parseInt(s.dataset.step);
+                s.classList.toggle('wizard-step--active', sNum === step);
+                s.classList.toggle('wizard-step--completed', sNum < step);
+                s.setAttribute('aria-current', sNum === step ? 'step' : 'false');
+            });
+            wizardPanels.forEach(p => p.classList.toggle('wizard-panel--active', parseInt(p.dataset.step) === step));
+            document.getElementById('wizard-prev').disabled = step === 1;
+            document.getElementById('wizard-next').textContent = step === 6 ? 'Finish' : 'Next →';
+        }
+
+        document.getElementById('wizard-next').addEventListener('click', () => {
+            if (currentStep < 6) showStep(currentStep + 1);
+        });
+        document.getElementById('wizard-prev').addEventListener('click', () => {
+            if (currentStep > 1) showStep(currentStep - 1);
+        });
+
+        // ========== DYNAMIC ARRAY HELPERS ==========
+        function createSocialHistoryField(value = '') {
+            const div = document.createElement('div');
+            div.className = 'array-field';
+            div.innerHTML = `
+                <div class="array-field__header">
+                    <span class="array-field__title">Social History</span>
+                    <button type="button" class="array-field__remove" aria-label="Remove"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+                </div>
+                <input type="text" class="input w-full" placeholder="e.g., Former smoker, quit 10 years ago" value="${escapeHtml(value)}">
+            `;
+            div.querySelector('.array-field__remove').addEventListener('click', () => div.remove());
+            return div;
+        }
+
+        function createChronicConditionField(value = '') {
+            const div = document.createElement('div');
+            div.className = 'array-field';
+            div.innerHTML = `
+                <div class="array-field__header">
+                    <span class="array-field__title">Chronic Condition</span>
+                    <button type="button" class="array-field__remove" aria-label="Remove"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+                </div>
+                <div class="grid-2">
+                    <input type="text" class="input" placeholder="ICD-10 Code (e.g., I10)" value="${escapeHtml(value.code || '')}" data-field="code">
+                    <input type="text" class="input" placeholder="Description (e.g., Essential hypertension)" value="${escapeHtml(value.desc || '')}" data-field="desc">
+                </div>
+                <input type="text" class="input mt-sm" placeholder="Clinical Marker (e.g., BP 138/84 on home Lisinopril)" value="${escapeHtml(value.marker || '')}" data-field="marker">
+            `;
+            div.querySelector('.array-field__remove').addEventListener('click', () => div.remove());
+            return div;
+        }
+
+        function createSecondaryDiagnosisField(value = '') {
+            const div = document.createElement('div');
+            div.className = 'array-field';
+            div.innerHTML = `
+                <div class="array-field__header">
+                    <span class="array-field__title">Secondary Diagnosis</span>
+                    <button type="button" class="array-field__remove" aria-label="Remove"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+                </div>
+                <div class="grid-3">
+                    <input type="text" class="input" placeholder="Code" value="${escapeHtml(value.code || '')}" data-field="code">
+                    <input type="text" class="input" placeholder="Description" value="${escapeHtml(value.desc || '')}" data-field="desc">
+                    <select class="select" data-field="type">
+                        <option value="None" ${value.type === 'None' ? 'selected' : ''}>None</option>
+                        <option value="CC" ${value.type === 'CC' ? 'selected' : ''}>CC</option>
+                        <option value="MCC" ${value.type === 'MCC' ? 'selected' : ''}>MCC</option>
+                    </select>
+                </div>
+                <textarea class="textarea mt-sm" placeholder="Rationale / Guideline Citation" data-field="rationale" rows="2">${escapeHtml(value.rationale || '')}</textarea>
+            `;
+            div.querySelector('.array-field__remove').addEventListener('click', () => div.remove());
+            return div;
+        }
+
+        // Add button handlers
+        document.getElementById('add-social-btn').addEventListener('click', () => {
+            document.getElementById('social-history-array').appendChild(createSocialHistoryField());
+        });
+        document.getElementById('add-chronic-btn').addEventListener('click', () => {
+            document.getElementById('chronic-conditions-array').appendChild(createChronicConditionField());
+        });
+        document.getElementById('add-secondary-btn').addEventListener('click', () => {
+            document.getElementById('secondary-diagnoses-array').appendChild(createSecondaryDiagnosisField());
+        });
+
+        // Seed with one empty field each
+        document.getElementById('social-history-array').appendChild(createSocialHistoryField());
+        document.getElementById('chronic-conditions-array').appendChild(createChronicConditionField());
+        document.getElementById('secondary-diagnoses-array').appendChild(createSecondaryDiagnosisField());
+
+        // ========== YAML GENERATION ==========
+        function gatherWizardData() {
+            const social = Array.from(document.querySelectorAll('#social-history-array .array-field')).map(f => f.querySelector('input').value).filter(Boolean);
+            const chronic = Array.from(document.querySelectorAll('#chronic-conditions-array .array-field')).map(f => ({
+                code: f.querySelector('[data-field="code"]').value,
+                desc: f.querySelector('[data-field="desc"]').value,
+                marker: f.querySelector('[data-field="marker"]').value
+            })).filter(c => c.code || c.desc);
+            const secondary = Array.from(document.querySelectorAll('#secondary-diagnoses-array .array-field')).map(f => ({
+                code: f.querySelector('[data-field="code"]').value,
+                desc: f.querySelector('[data-field="desc"]').value,
+                type: f.querySelector('[data-field="type"]').value,
+                rationale: f.querySelector('[data-field="rationale"]').value
+            })).filter(s => s.code || s.desc);
+
+            return {
+                blueprint_id: document.getElementById('bp-id').value.trim(),
+                domain: document.getElementById('bp-domain').value,
+                core_concept: document.getElementById('bp-concept').value.trim(),
+                difficulty_level: document.getElementById('bp-difficulty').value,
+                demographics_rules: {
+                    age_range: [parseInt(document.getElementById('bp-age-min').value), parseInt(document.getElementById('bp-age-max').value)],
+                    genders: [
+                        document.getElementById('bp-gender-f').checked ? 'F' : null,
+                        document.getElementById('bp-gender-m').checked ? 'M' : null
+                    ].filter(Boolean)
+                },
+                isomorphic_noise_pool: {
+                    social_history: social,
+                    chronic_conditions: chronic
+                },
+                clinical_template: {
+                    chief_complaint: document.getElementById('bp-chief-complaint').value.trim(),
+                    vitals: {
+                        temp: { min: parseFloat(document.getElementById('bp-temp-min').value), max: parseFloat(document.getElementById('bp-temp-max').value) },
+                        hr: { min: parseInt(document.getElementById('bp-hr-min').value), max: parseInt(document.getElementById('bp-hr-max').value) },
+                        rr: { min: parseInt(document.getElementById('bp-rr-min').value), max: parseInt(document.getElementById('bp-rr-max').value) },
+                        bp_sys: { min: parseInt(document.getElementById('bp-sys-min').value), max: parseInt(document.getElementById('bp-sys-max').value) },
+                        bp_dia: { min: parseInt(document.getElementById('bp-dia-min').value), max: parseInt(document.getElementById('bp-dia-max').value) }
+                    },
+                    labs: {
+                        wbc: { min: parseFloat(document.getElementById('bp-wbc-min').value), max: parseFloat(document.getElementById('bp-wbc-max').value) },
+                        lactate: { min: parseFloat(document.getElementById('bp-lactate-min').value), max: parseFloat(document.getElementById('bp-lactate-max').value) },
+                        custom_1: {
+                            name: document.getElementById('bp-custom-lab1-name').value.trim(),
+                            min: document.getElementById('bp-custom-lab1-min').value ? parseFloat(document.getElementById('bp-custom-lab1-min').value) : null,
+                            max: document.getElementById('bp-custom-lab1-max').value ? parseFloat(document.getElementById('bp-custom-lab1-max').value) : null
+                        }
+                    },
+                    chest_xray: document.getElementById('bp-chest-xray').value.trim(),
+                    assessment: document.getElementById('bp-assessment').value.trim()
+                },
+                gold_standard: {
+                    principal_diagnosis: {
+                        code: document.getElementById('bp-pdx-code').value.trim(),
+                        description: document.getElementById('bp-pdx-desc').value.trim(),
+                        rationale: document.getElementById('bp-pdx-rationale').value.trim()
+                    },
+                    secondary_diagnoses: secondary,
+                    procedures: [],
+                    reimbursement_impact: { drg_code: "XXX", drg_description: "TBD", relative_weight: 0.0 },
+                    educational_insights: { coding_clinic_citations: [] }
+                }
+            };
+        }
+
+        function toYaml(obj, indent = 0) {
+            const spaces = '  '.repeat(indent);
+            if (obj === null || obj === undefined) return `${spaces}~`;
+            if (Array.isArray(obj)) {
+                if (obj.length === 0) return `${spaces}[]`;
+                return obj.map(item => `${spaces}- ${toYaml(item, indent + 1).trimStart()}`).join('\n');
+            }
+            if (typeof obj === 'object') {
+                const lines = Object.entries(obj).map(([k, v]) => {
+                    const val = toYaml(v, indent + 1);
+                    return `${spaces}${k}: ${val.trimStart()}`;
+                });
+                return lines.join('\n');
+            }
+            if (typeof obj === 'string') {
+                if (obj.includes('\n') || obj.includes(':') || obj.includes('#') || obj.startsWith('-')) {
+                    return `"${obj.replace(/"/g, '\\"')}"`;
+                }
+                return obj;
+            }
+            return String(obj);
+        }
+
+        document.getElementById('btn-preview-yaml').addEventListener('click', () => {
+            const data = gatherWizardData();
+            const yaml = toYaml(data);
+            document.getElementById('yaml-preview').value = yaml;
+            document.getElementById('create-preview').innerHTML = `<pre class="code-block" style="white-space: pre-wrap; font-family: var(--font-mono); font-size: 0.75rem;">${escapeHtml(yaml)}</pre>`;
+        });
+
+        document.getElementById('btn-download-yaml').addEventListener('click', () => {
+            const data = gatherWizardData();
+            const yaml = toYaml(data);
+            const blob = new Blob([yaml], { type: 'application/x-yaml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = `${data.blueprint_id}.yaml`;
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        document.getElementById('btn-save-blueprint').addEventListener('click', async () => {
+            const data = gatherWizardData();
+            const yaml = toYaml(data);
+            const alertEl = document.getElementById('create-alert');
+            try {
+                const res = await fetch('/api/forge/blueprints/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ blueprint_id: data.blueprint_id, yaml_content: yaml })
+                });
+                if (!res.ok) { const err = await res.json(); throw new Error(err.detail || `HTTP ${res.status}`); }
+                alertEl.className = 'alert alert--success';
+                alertEl.style.display = 'flex';
+                alertEl.textContent = `Blueprint ${data.blueprint_id} saved successfully.`;
+                window.loadBlueprints();
+            } catch (err) {
+                alertEl.className = 'alert alert--error';
+                alertEl.style.display = 'flex';
+                alertEl.textContent = `Save failed: ${err.message}`;
+            }
+        });
+
+        // ========== INIT ==========
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadBlueprints);
+        } else { loadBlueprints(); }
+
         window.loadBlueprints = loadBlueprints;
         window.forgeScenario = forgeScenario;
+
+        // ========== SANDBOX MODE ==========
+        const sandboxSelect = document.getElementById('sandbox-case-select');
+        const sandboxChart = document.getElementById('sandbox-chart-viewer');
+        const sandboxCodeForm = document.getElementById('sandbox-code-form');
+        const sandboxTelemetry = document.getElementById('sandbox-telemetry-panel');
+        const tabCode = document.getElementById('tab-code');
+        const tabTelemetry = document.getElementById('tab-telemetry');
+
+        // Load cases into sandbox dropdown
+        async function loadSandboxCases() {
+            try {
+                const res = await fetch('/api/forge/blueprints');
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const blueprints = await res.json();
+                sandboxSelect.innerHTML = '<option value="">Select a case to abstract…</option>';
+                blueprints.forEach(bp => {
+                    const opt = document.createElement('option');
+                    opt.value = bp.blueprint_id;
+                    opt.innerText = `${bp.blueprint_id} — ${bp.core_concept}`;
+                    sandboxSelect.appendChild(opt);
+                });
+            } catch (err) {
+                console.error('Failed to load sandbox cases:', err);
+            }
+        }
+
+        // When a case is selected in sandbox, forge it and load into chart
+        sandboxSelect.addEventListener('change', async () => {
+            const blueprintId = sandboxSelect.value;
+            if (!blueprintId) return;
+
+            sandboxChart.innerHTML = '<div class="preview--empty" style="min-height: 450px;">Loading case…</div>';
+            sandboxCodeForm.resetForm();
+            sandboxTelemetry.resetDefault();
+
+            try {
+                const res = await fetch('/api/forge/synthesize', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ blueprint_id: blueprintId, age_range: [50, 85], noise_density: 'Medium', apply_poa_mutation: false })
+                });
+                if (!res.ok) { const err = await res.json(); throw new Error(err.detail || `HTTP ${res.status}`); }
+                const data = await res.json();
+
+                // Update chart viewer
+                sandboxChart.updateChart(data.scenario_id, data.synthesized_ehr.narrative);
+
+                // Set gold standard on telemetry
+                sandboxTelemetry.setGoldStandard(data.gold_standard);
+
+                // Pre-fill PDX with gold standard
+                const gs = data.gold_standard;
+                sandboxCodeForm.shadowRoot.getElementById('pdx').value = gs.principal_diagnosis.code;
+
+                tabCode.click();
+            } catch (err) {
+                console.error('Failed to load case:', err);
+                sandboxChart.innerHTML = `<div class="preview--empty" style="min-height: 450px; color: var(--danger);">Error: ${err.message}</div>`;
+            }
+        });
+
+        // Tab switching for sandbox
+        tabCode.addEventListener('click', () => {
+            tabCode.classList.add('tab-btn--active'); tabCode.setAttribute('aria-selected', 'true');
+            tabTelemetry.classList.remove('tab-btn--active'); tabTelemetry.setAttribute('aria-selected', 'false');
+            document.getElementById('panel-code').hidden = false;
+            document.getElementById('panel-telemetry').hidden = true;
+        });
+        tabTelemetry.addEventListener('click', () => {
+            tabTelemetry.classList.add('tab-btn--active'); tabTelemetry.setAttribute('aria-selected', 'true');
+            tabCode.classList.remove('tab-btn--active'); tabCode.setAttribute('aria-selected', 'false');
+            document.getElementById('panel-telemetry').hidden = false;
+            document.getElementById('panel-code').hidden = true;
+        });
+
+        // Listen for claim submissions from code-entry-form
+        sandboxCodeForm.addEventListener('ClaimSubmitted', async (e) => {
+            const payload = e.detail;
+            try {
+                const res = await fetch('/api/analyze', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!res.ok) { const err = await res.json(); throw new Error(err.detail || `HTTP ${res.status}`); }
+                const result = await res.json();
+                sandboxTelemetry.showResult(result, payload);
+                tabTelemetry.click();
+            } catch (err) {
+                console.error('Grading failed:', err);
+                alert('Grading failed: ' + err.message);
+            }
+        });
+
+        // Listen for text highlights from chart viewer
+        sandboxChart.addEventListener('TextHighlighted', (e) => {
+            // Could show context menu or auto-fill suggestion
+            console.log('Highlighted:', e.detail.text);
+        });
+
+        // Initialize sandbox
+        loadSandboxCases();
     </script>
 </body>
 </html>

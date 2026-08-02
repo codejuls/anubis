@@ -14,64 +14,55 @@ class ClinicalChartViewer extends HTMLElement {
             <style>
                 :host {
                     display: block;
-                    background: rgba(255, 255, 255, 0.82);
-                    backdrop-filter: blur(12px);
-                    -webkit-backdrop-filter: blur(12px);
-                    border: 1px solid rgba(16, 185, 129, 0.22);
-                    border-radius: 12px;
-                    padding: 20px;
-                    box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.05);
+                    background: var(--bg-card, #fff);
+                    border: 1px solid var(--border, #ced4da);
+                    border-radius: var(--radius, 6px);
+                    padding: 16px;
                 }
 
                 h2 {
-                    margin-top: 0;
-                    color: #059669; /* Deep Emerald */
-                    font-size: 18px;
-                    border-bottom: 2px solid rgba(16, 185, 129, 0.1);
-                    padding-bottom: 10px;
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    font-weight: 700;
-                }
-
-                h2 span {
-                    color: #10b981; /* Mint accent symbol */
+                    margin: 0 0 12px;
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    color: var(--fg, #1a1d1c);
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
                 }
 
                 .chart-content {
-                    background: rgba(247, 249, 246, 0.85); /* Frosted warm cream */
-                    border: 1px solid rgba(16, 185, 129, 0.15);
-                    border-radius: 8px;
-                    padding: 16px;
-                    font-family: "Courier New", Courier, monospace;
-                    line-height: 1.7;
-                    font-size: 14.5px;
-                    color: #0f291e; /* Deep Jade Charcoal */
+                    background: var(--bg, #f8f9fa);
+                    border: 1px solid var(--border, #ced4da);
+                    border-radius: var(--radius-sm, 4px);
+                    padding: 14px;
+                    font-family: var(--font-mono, "JetBrains Mono", monospace);
+                    line-height: 1.65;
+                    font-size: 0.8125rem;
+                    color: var(--fg, #1a1d1c);
                     white-space: pre-line;
                     user-select: text;
-                    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
+                    max-height: 420px;
+                    overflow-y: auto;
                 }
 
-                /* Edgy and modern Cyber Emerald highlighter look */
                 .chart-content::selection {
-                    background: rgba(16, 185, 129, 0.25); /* Mint-Green glass alpha */
-                    color: #065f46;                      /* Rich deep forest-mint */
+                    background: var(--primary-focus, rgba(5, 150, 105, 0.25));
+                    color: var(--fg, #1a1d1c);
                 }
 
                 .metadata {
-                    font-size: 12.5px;
-                    color: #475569;
-                    margin-bottom: 12px;
+                    font-size: 0.75rem;
+                    color: var(--fg-subtle, #6c757d);
+                    margin-bottom: 10px;
+                    font-family: var(--font-mono, "JetBrains Mono", monospace);
                 }
             </style>
 
-            <h2><span>𓇚</span> Clinical Record Viewer</h2>
-            <div class="metadata" id="case-meta">Case ID: <strong>ANUBIS-BP-SEPSIS-PNEUMONIA-001-DEFAULT</strong> | Type: Inpatient Discharge Summary</div>
+            <h2>Clinical Record</h2>
+            <div class="metadata" id="case-meta">Case ID: <strong>ANUBIS-BP-SEPSIS-PNEUMONIA-001-DEFAULT</strong> | Inpatient Discharge Summary</div>
             <div class="chart-content" id="chart-text">
 CHIEF COMPLAINT: Shortness of breath and fever.
 
-HISTORY OF PRESENT ILLNESS: The patient is a 68-year-old female with a history of COPD who presents with worsening dyspnea. Admitting vitals: Temp 102.1°F, Heart Rate 112 bpm, Respiratory Rate 24 bpm, Blood Pressure 102/58 mmHg. 
+HISTORY OF PRESENT ILLNESS: The patient is a 68-year-old female with a history of COPD who presents with worsening dyspnea. Admitting vitals: Temp 102.1°F, Heart Rate 112 bpm, Respiratory Rate 24 bpm, Blood Pressure 102/58 mmHg.
 
 LABORATORY FINDINGS: White Blood Cell (WBC) count is elevated at 14.5 K/uL. Initial serum Lactate is 2.4 mmol/L. Chest X-ray demonstrates a left lower lobe consolidate infiltrate.
 
@@ -80,13 +71,12 @@ ASSESSMENT/PLAN: Community-acquired pneumonia with sepsis. Initiated IV fluids a
         `;
     }
 
-    // Dynamic method to update chart content when a new case is generated
     updateChart(caseId, chartText) {
         const meta = this.shadowRoot.getElementById('case-meta');
         const content = this.shadowRoot.getElementById('chart-text');
-        
+
         if (meta) {
-            meta.innerHTML = `Case ID: <strong>${caseId}</strong> | Type: Inpatient Discharge Summary`;
+            meta.innerHTML = `Case ID: <strong>${caseId}</strong> | Inpatient Discharge Summary`;
         }
         if (content) {
             content.innerText = chartText;
@@ -99,7 +89,6 @@ ASSESSMENT/PLAN: Community-acquired pneumonia with sepsis. Initiated IV fluids a
             const selectedText = selection.toString().trim();
 
             if (selectedText.length > 0) {
-                // Dispatch native custom event upstream
                 const highlightEvent = new CustomEvent('TextHighlighted', {
                     detail: { text: selectedText },
                     bubbles: true,

@@ -3,6 +3,7 @@ class CodeEntryForm extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
         this.secondaryCount = 0;
+        this.procedureCount = 0;
     }
 
     connectedCallback() {
@@ -15,203 +16,243 @@ class CodeEntryForm extends HTMLElement {
             <style>
                 :host {
                     display: block;
-                    background: rgba(255, 255, 255, 0.82);
-                    backdrop-filter: blur(12px);
-                    -webkit-backdrop-filter: blur(12px);
-                    border: 1px solid rgba(16, 185, 129, 0.22);
-                    border-radius: 12px;
-                    padding: 20px;
-                    box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.05);
+                    background: var(--bg-card, #fff);
+                    border: 1px solid var(--border, #ced4da);
+                    border-radius: var(--radius, 6px);
+                    padding: 16px;
                 }
 
                 h2 {
-                    margin-top: 0;
-                    color: #059669; /* Deep Emerald */
-                    font-size: 18px;
-                    border-bottom: 2px solid rgba(16, 185, 129, 0.1);
-                    padding-bottom: 10px;
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    font-weight: 700;
+                    margin: 0 0 16px;
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    color: var(--fg, #1a1d1c);
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
                 }
 
-                h2 span {
-                    color: #10b981; /* Mint accent symbol */
-                }
-
-                .form-group {
-                    margin-bottom: 15px;
-                }
+                .form-group { margin-bottom: 14px; }
 
                 label {
                     display: block;
-                    font-size: 13px;
-                    color: #0f291e; /* Deep Jade Charcoal */
-                    margin-bottom: 6px;
+                    font-size: 0.6875rem;
                     font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.06em;
+                    color: var(--fg-muted, #343a40);
+                    margin-bottom: 6px;
+                    position: relative;
+                    padding-left: 24px;
+                }
+
+                /* Add button inline with label */
+                .add-btn {
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 50%;
+                    background: var(--primary, #059669);
+                    color: #fff;
+                    border: none;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 10px;
+                    font-weight: 700;
+                    line-height: 1;
+                    transition: background 120ms ease, transform 120ms ease;
+                    flex-shrink: 0;
+                }
+                .add-btn:hover { background: var(--primary-hover, #047857); transform: translateY(-50%) scale(1.1); }
+                .add-btn:active { transform: translateY(-50%) scale(0.95); }
+
+                /* Diagnosis/Procedure list with vertical connector */
+                .code-list {
+                    position: relative;
+                    padding-left: 8px;
+                    margin-top: 8px;
+                }
+                /* Vertical line - starts at top of list, goes to bottom */
+                .code-list::before {
+                    content: "";
+                    position: absolute;
+                    left: 7px;
+                    top: 0;
+                    bottom: 0;
+                    width: 2px;
+                    background: var(--border, #ced4da);
+                    border-radius: 1px;
+                }
+
+                .code-row {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 10px;
+                    padding-left: 16px;
+                }
+                /* Horizontal tick from vertical line to input */
+                .code-row::before {
+                    content: "";
+                    position: absolute;
+                    left: -1px;  /* Start at vertical line position within code-row coords */
+                    top: 50%;
+                    width: 17px;  /* From vertical line to input start */
+                    height: 2px;
+                    background: var(--border, #ced4da);
                 }
 
                 input, select {
                     width: 100%;
                     box-sizing: border-box;
-                    background: rgba(236, 253, 245, 0.5); /* Soft glass mint tint */
-                    border: 1px solid rgba(16, 185, 129, 0.3);
-                    border-radius: 6px;
-                    padding: 8px 12px;
-                    color: #0f291e;
-                    font-size: 14px;
+                    background: #fff;
+                    border: 1px solid var(--border, #ced4da);
+                    border-radius: var(--radius-sm, 4px);
+                    padding: 10px 12px;
+                    font-size: 0.875rem;
+                    color: var(--fg, #1a1d1c);
                     font-family: inherit;
-                    transition: all 0.2s;
+                    transition: border-color 120ms ease, box-shadow 120ms ease;
                 }
 
                 input:focus, select:focus {
                     outline: none;
-                    border-color: #059669;
-                    background: #ffffff;
-                    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+                    border-color: var(--primary, #059669);
+                    box-shadow: 0 0 0 3px var(--primary-focus, rgba(5, 150, 105, 0.25));
                 }
 
-                .secondary-row {
+                input::placeholder { color: var(--fg-subtle, #6c757d); }
+
+                .code-input { flex: 1; min-width: 100px; }
+                .poa-select { width: 140px; flex-shrink: 0; }
+
+                .remove-btn {
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    background: var(--danger-light, #fdeaea);
+                    color: var(--danger, #c92a2a);
+                    border: none;
+                    cursor: pointer;
                     display: flex;
-                    gap: 10px;
-                    margin-bottom: 10px;
                     align-items: center;
+                    justify-content: center;
+                    font-size: 12px;
+                    line-height: 1;
+                    flex-shrink: 0;
+                    transition: background 120ms ease, color 120ms ease;
                 }
+                .remove-btn:hover { background: var(--danger, #c92a2a); color: #fff; }
 
                 .btn {
                     cursor: pointer;
-                    font-weight: 700;
-                    border-radius: 6px;
+                    font-weight: 500;
+                    border-radius: var(--radius-sm, 4px);
                     padding: 8px 14px;
-                    font-size: 13px;
+                    font-size: 0.8125rem;
                     border: none;
-                    transition: all 0.2s;
+                    font-family: inherit;
+                    transition: all 120ms ease;
                 }
 
-                .btn-secondary {
-                    background: rgba(236, 253, 245, 0.6);
-                    color: #047857;
-                    border: 1px solid rgba(16, 185, 129, 0.25);
-                }
-
-                .btn-secondary:hover {
-                    background: #d1fae5;
-                    color: #065f46;
-                }
-
-                .btn-danger {
-                    background: #fee2e2;
-                    color: #991b1b;
-                    border: 1px solid #fca5a5;
-                }
-
-                .btn-danger:hover {
-                    background: #fca5a5;
-                    color: #7f1d1d;
-                }
-
-                /* Edgy and Modern Cyber Green Accent Button */
                 .btn-primary {
-                    background: linear-gradient(135deg, #10b981, #059669);
-                    color: #ffffff;
+                    background: var(--primary, #059669);
+                    color: #fff;
                     width: 100%;
-                    padding: 10px;
-                    font-size: 14px;
-                    margin-top: 15px;
+                    padding: 10px 18px;
+                    font-size: 0.8125rem;
+                    margin-top: 16px;
                     text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+                    letter-spacing: 0.04em;
                 }
 
-                .btn-primary:hover {
-                    background: linear-gradient(135deg, #059669, #047857);
-                    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
-                }
+                .btn-primary:hover { background: var(--primary-hover, #047857); }
 
-                .quick-helpers {
-                    margin-top: 10px;
-                    font-size: 12.5px;
-                    color: #475569;
-                }
+                .quick-helpers { margin-top: 8px; font-size: 0.75rem; color: var(--fg-subtle, #6c757d); }
 
                 .helper-chip {
                     display: inline-block;
-                    background: rgba(209, 250, 229, 0.8); /* Glass mint tint */
-                    color: #047857;                       /* Dark emerald text */
+                    background: var(--primary-light, #d1fae5);
+                    color: var(--primary, #059669);
                     padding: 3px 8px;
-                    border-radius: 4px;
+                    border-radius: var(--radius-sm, 4px);
                     cursor: pointer;
-                    margin-right: 5px;
-                    margin-top: 5px;
+                    margin-right: 6px;
+                    margin-top: 6px;
                     font-weight: 600;
-                    border: 1px solid rgba(16, 185, 129, 0.3);
+                    font-size: 0.75rem;
+                    border: 1px solid var(--primary, #059669);
                 }
 
-                .helper-chip:hover {
-                    background: #a7f3d0;
-                    color: #065f46;
-                }
+                .helper-chip:hover { background: var(--primary, #059669); color: #fff; }
             </style>
 
-            <h2><span>𓋹</span> Abstractor Workspace</h2>
-            
+            <h2>Abstractor Workspace</h2>
+
             <div class="form-group">
                 <label for="pdx">Principal Diagnosis Code (ICD-10-CM)</label>
                 <input type="text" id="pdx" placeholder="e.g. A41.9" value="">
                 <div class="quick-helpers">
-                    💡 Click to load: 
-                    <span class="helper-chip" data-code="A41.9">A41.9 (Sepsis)</span>
-                    <span class="helper-chip" data-code="J18.9">J18.9 (Pneumonia)</span>
+                    Quick load:
+                    <span class="helper-chip" data-code="A41.9">A41.9 Sepsis</span>
+                    <span class="helper-chip" data-code="J18.9">J18.9 Pneumonia</span>
                 </div>
             </div>
 
             <div class="form-group">
-                <label>Secondary Diagnosis Codes (ICD-10-CM)</label>
-                <div id="secondary-container">
-                    <!-- Rows will be added here -->
-                </div>
-                <button type="button" class="btn btn-secondary" id="add-secondary-btn" style="width: 100%; margin-top: 5px;">
-                    ➕ Add Secondary Diagnosis
-                </button>
+                <label>Secondary Diagnoses
+                    <button type="button" class="add-btn" id="add-secondary-btn" aria-label="Add secondary diagnosis">+</button>
+                </label>
+                <div class="code-list" id="secondary-container"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Procedures
+                    <button type="button" class="add-btn" id="add-procedure-btn" aria-label="Add procedure">+</button>
+                </label>
+                <div class="code-list" id="procedure-container"></div>
             </div>
 
             <div class="form-group">
                 <label for="hospital">Hospital Facility & Reimbursement Rate</label>
                 <select id="hospital">
-                    <option value="HOSP-URBAN-001">HOSP-URBAN-001 (Urban Academic Medical Center — Base: $7,500)</option>
+                    <option value="HOSP-URBAN-001">HOSP-URBAN-001 (Urban Academic — Base: $7,500)</option>
                     <option value="HOSP-SUBURBAN-002">HOSP-SUBURBAN-002 (Suburban Community — Base: $6,800)</option>
                     <option value="HOSP-RURAL-003">HOSP-RURAL-003 (Rural Critical Access — Base: $5,900)</option>
                 </select>
             </div>
 
-            <button class="btn btn-primary" id="submit-claim-btn">
-                𓁔 Submit Case to Grading Core
-            </button>
+            <button class="btn btn-primary" id="submit-claim-btn">Submit Case for Grading</button>
         `;
     }
 
-    // Reset workspace form inputs for new cases
     resetForm() {
         const pdxInput = this.shadowRoot.getElementById('pdx');
         if (pdxInput) pdxInput.value = "";
-        
-        const container = this.shadowRoot.getElementById('secondary-container');
-        if (container) container.innerHTML = "";
-        
+
+        const secondaryContainer = this.shadowRoot.getElementById('secondary-container');
+        if (secondaryContainer) secondaryContainer.innerHTML = "";
+
+        const procedureContainer = this.shadowRoot.getElementById('procedure-container');
+        if (procedureContainer) procedureContainer.innerHTML = "";
+
         this.secondaryCount = 0;
+        this.procedureCount = 0;
     }
 
     setupFormListeners() {
-        const addBtn = this.shadowRoot.getElementById('add-secondary-btn');
+        const addSecondaryBtn = this.shadowRoot.getElementById('add-secondary-btn');
+        const addProcedureBtn = this.shadowRoot.getElementById('add-procedure-btn');
         const submitBtn = this.shadowRoot.getElementById('submit-claim-btn');
 
-        // Handler to add a secondary diagnosis row
-        addBtn.addEventListener('click', () => {
-            this.addSecondaryRow("");
-        });
+        addSecondaryBtn.addEventListener('click', () => { this.addSecondaryRow(""); });
+        addProcedureBtn.addEventListener('click', () => { this.addProcedureRow(""); });
 
-        // Quick helper chips
         this.shadowRoot.querySelectorAll('.helper-chip').forEach(chip => {
             chip.addEventListener('click', (e) => {
                 const code = e.target.getAttribute('data-code');
@@ -219,25 +260,25 @@ class CodeEntryForm extends HTMLElement {
             });
         });
 
-        // Submit form
         submitBtn.addEventListener('click', () => {
             const pdxCode = this.shadowRoot.getElementById('pdx').value.trim();
-            if (!pdxCode) {
-                alert("Please specify a Principal Diagnosis code!");
-                return;
-            }
+            if (!pdxCode) { alert("Please specify a Principal Diagnosis code!"); return; }
 
             const secondaryCodes = [];
-            this.shadowRoot.querySelectorAll('.secondary-input').forEach(input => {
-                const code = input.value.trim();
-                if (code) {
-                    secondaryCodes.push({ code: code, present_on_admission: true });
-                }
+            this.shadowRoot.querySelectorAll('.secondary-row').forEach(row => {
+                const code = row.querySelector('.code-input').value.trim();
+                const poa = row.querySelector('.poa-select').value;
+                if (code) secondaryCodes.push({ code: code, present_on_admission: poa === 'Y' });
+            });
+
+            const procedures = [];
+            this.shadowRoot.querySelectorAll('.procedure-row').forEach(row => {
+                const code = row.querySelector('.code-input').value.trim();
+                if (code) procedures.push({ code: code });
             });
 
             const hospitalId = this.shadowRoot.getElementById('hospital').value;
 
-            // Compile payload
             const payload = {
                 case_data: {
                     age: 68,
@@ -245,7 +286,7 @@ class CodeEntryForm extends HTMLElement {
                     discharge_status: "01",
                     principal_diagnosis: { code: pdxCode, present_on_admission: true },
                     secondary_diagnoses: secondaryCodes,
-                    procedures: [],
+                    procedures: procedures,
                     service_date: "2026-08-01"
                 },
                 hospital_id: hospitalId
@@ -260,31 +301,55 @@ class CodeEntryForm extends HTMLElement {
         });
     }
 
-    addSecondaryRow(initialValue = "") {
+    addSecondaryRow(initialCode = "", initialPoa = "Y") {
         const container = this.shadowRoot.getElementById('secondary-container');
         const rowId = `sec-row-${this.secondaryCount++}`;
-        
+
         const row = document.createElement('div');
-        row.className = 'secondary-row';
+        row.className = 'code-row secondary-row';
         row.id = rowId;
         row.innerHTML = `
-            <input type="text" class="secondary-input" placeholder="e.g. J18.9" value="${initialValue}" style="flex: 1;">
-            <button type="button" class="btn btn-danger delete-row-btn" data-target="${rowId}">❌</button>
+            <input type="text" class="code-input" placeholder="Code (e.g. J18.9)" value="${initialCode}">
+            <select class="poa-select">
+                <option value="Y" ${initialPoa === 'Y' ? 'selected' : ''}>Y — Present on Admission</option>
+                <option value="N" ${initialPoa === 'N' ? 'selected' : ''}>N — Not Present on Admission</option>
+                <option value="U" ${initialPoa === 'U' ? 'selected' : ''}>U — Unknown</option>
+            </select>
+            <button type="button" class="remove-btn" data-target="${rowId}" aria-label="Remove">✕</button>
         `;
 
         container.appendChild(row);
 
-        row.querySelector('.delete-row-btn').addEventListener('click', (e) => {
+        row.querySelector('.remove-btn').addEventListener('click', (e) => {
             const targetId = e.target.getAttribute('data-target');
             const targetRow = this.shadowRoot.getElementById(targetId);
-            if (targetRow) {
-                targetRow.remove();
-            }
+            if (targetRow) targetRow.remove();
         });
     }
 
-    appendSecondaryCode(code) {
-        this.addSecondaryRow(code);
+    addProcedureRow(initialCode = "") {
+        const container = this.shadowRoot.getElementById('procedure-container');
+        const rowId = `proc-row-${this.procedureCount++}`;
+
+        const row = document.createElement('div');
+        row.className = 'code-row procedure-row';
+        row.id = rowId;
+        row.innerHTML = `
+            <input type="text" class="code-input" placeholder="Procedure code (e.g. 02RF33Z)" value="${initialCode}">
+            <button type="button" class="remove-btn" data-target="${rowId}" aria-label="Remove">✕</button>
+        `;
+
+        container.appendChild(row);
+
+        row.querySelector('.remove-btn').addEventListener('click', (e) => {
+            const targetId = e.target.getAttribute('data-target');
+            const targetRow = this.shadowRoot.getElementById(targetId);
+            if (targetRow) targetRow.remove();
+        });
+    }
+
+    appendSecondaryCode(code, poa = "Y") {
+        this.addSecondaryRow(code, poa);
     }
 }
 
