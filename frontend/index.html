@@ -266,19 +266,76 @@
         .cc-badge--none { background: var(--bg); color: var(--fg-subtle); border: 1px solid var(--border); }
 
         /* Gold standard card */
-        .gs-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 10px; }
+        .gs-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; }
         .gs-card--primary { border-left: 3px solid var(--primary); }
-        .gs-card__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-        .gs-card__code { font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--primary); }
-        .gs-card__desc { color: var(--fg); margin-top: 2px; }
-        .gs-card__rationale { font-size: 0.75rem; color: var(--fg-subtle); margin-top: 6px; line-height: 1.5; }
+        .gs-card__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; gap: 8px; }
+        .gs-card__code { font-family: var(--font-mono); font-size: 0.9375rem; font-weight: 600; color: var(--primary); }
+        .gs-card__desc { color: var(--fg); margin-top: 0; font-size: 0.8125rem; }
+        .gs-card__rationale { font-size: 0.71875rem; color: var(--fg-subtle); margin-top: 4px; line-height: 1.45; }
         .gs-card__meta { display: flex; align-items: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
 
+        .cc-badge--principal { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary); }
+
+        /* Correct Coding sequencing tree — vertical connector + horizontal ticks, echoes CodeEntryForm's code-list pattern */
+        .coding-tree { position: relative; margin: 4px 0 14px; }
+        .coding-tree::before {
+            content: "";
+            position: absolute;
+            left: 11px;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: var(--border);
+            border-radius: 1px;
+        }
+        .coding-node { position: relative; display: flex; align-items: flex-start; gap: 12px; padding: 0 0 8px 30px; }
+        .coding-node:last-child { padding-bottom: 0; }
+        .coding-node::before {
+            content: "";
+            position: absolute;
+            left: 11px;
+            top: 14px;
+            width: 14px;
+            height: 2px;
+            background: var(--border);
+        }
+        .coding-node__dot {
+            position: absolute;
+            left: 5px;
+            top: 8px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--border-strong);
+            z-index: 1;
+        }
+        .coding-node--principal .coding-node__dot { border-color: var(--primary); background: var(--primary); }
+        .coding-node__card { flex: 1; min-width: 0; }
+
         /* DRG card */
-        .drg-card { background: var(--primary); color: #fff; border-radius: var(--radius); padding: 14px; margin-top: 12px; }
-        .drg-card__code { font-family: var(--font-mono); font-size: 1.125rem; font-weight: 700; }
-        .drg-card__desc { font-size: 0.875rem; opacity: 0.9; margin-top: 4px; }
-        .drg-card__rw { font-size: 0.75rem; opacity: 0.8; margin-top: 8px; }
+        .drg-card { background: var(--primary); color: #fff; border-radius: var(--radius); padding: 12px 14px; margin-top: 4px; }
+        .drg-card__code { font-family: var(--font-mono); font-size: 1rem; font-weight: 700; }
+        .drg-card__desc { font-size: 0.8125rem; opacity: 0.9; margin-top: 3px; }
+        .drg-card__rw { font-size: 0.75rem; opacity: 0.8; margin-top: 6px; }
+
+        /* Synthesized EHR document */
+        .ehr-doc { text-align: left; color: var(--fg); }
+        .ehr-doc__type {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--primary);
+            background: var(--primary-light);
+            border: 1px solid var(--primary);
+            padding: 3px 10px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 12px;
+        }
+        .ehr-doc__body { white-space: pre-wrap; }
 
         /* Section header within panel */
         .section-header { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-subtle); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
@@ -370,7 +427,7 @@
                     <div class="panel__body">
                         <div class="tab-bar" role="tablist" aria-label="Preview tabs">
                             <button class="tab-btn tab-btn--active" id="tab-ehr" role="tab" aria-selected="true" aria-controls="panel-ehr">Synthesized EHR</button>
-                            <button class="tab-btn" id="tab-gold" role="tab" aria-selected="false" aria-controls="panel-gold">Gold Standard</button>
+                            <button class="tab-btn" id="tab-gold" role="tab" aria-selected="false" aria-controls="panel-gold">Correct Coding</button>
                         </div>
 
                         <div id="panel-ehr" role="tabpanel" aria-labelledby="tab-ehr">
@@ -381,7 +438,7 @@
 
                         <div id="panel-gold" role="tabpanel" aria-labelledby="tab-gold" hidden>
                             <div class="preview preview--empty" id="preview-gold">
-                                Gold standard claims mapping will appear here after forging.
+                                Correct coding will appear here after forging.
                             </div>
                         </div>
                     </div>
@@ -459,7 +516,7 @@
                 </div>
                 <div class="wizard-step" data-step="5" role="step">
                     <div class="wizard-step__circle">5</div>
-                    <span class="wizard-step__label">Gold Standard</span>
+                    <span class="wizard-step__label">Correct Coding</span>
                 </div>
                 <div class="wizard-step" data-step="6" role="step">
                     <div class="wizard-step__circle">6</div>
@@ -663,9 +720,9 @@
                             </div>
                         </div>
 
-                        <!-- STEP 5: GOLD STANDARD -->
+                        <!-- STEP 5: CORRECT CODING -->
                         <div class="wizard-panel" data-step="5" role="tabpanel" hidden>
-                            <h3 class="text-muted mb-md" style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 5 — Gold Standard Claims Mapping</h3>
+                            <h3 class="text-muted mb-md" style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 5 — Correct Coding Mapping</h3>
 
                             <div class="form-group">
                                 <label class="form-label">Principal Diagnosis *</label>
@@ -787,8 +844,8 @@
 
             btn.disabled = true;
             btn.innerHTML = '<span>⏳</span> Forging…';
-            previewText.innerHTML = '<div class="preview--empty">Synthesizing clinical scenario…</div>';
-            previewGold.innerHTML = '<div class="preview--empty">Generating gold standard…</div>';
+            setPreviewEmpty(previewText, 'Synthesizing clinical scenario…');
+            setPreviewEmpty(previewGold, 'Generating correct coding…');
 
             try {
                 const res = await fetch('/api/forge/synthesize', {
@@ -801,28 +858,36 @@
                 const data = await res.json();
 
                 // Render EHR
-                const ehr = data.synthesized_ehr;
-                previewText.innerHTML = `<div style="font-family: inherit; line-height: 1.7; white-space: pre-wrap;"><strong style="color: var(--primary);">${ehr.document_type}</strong><br><br>${escapeHtml(ehr.narrative).replace(/\n/g, '<br>')}</div>`;
+                setPreviewContent(previewText, renderEhrDocument(data.synthesized_ehr));
 
-                // Render Gold Standard
-                const gs = data.gold_standard;
-                let goldHtml = renderGoldStandard(gs);
-                previewGold.innerHTML = goldHtml;
+                // Render Correct Coding
+                setPreviewContent(previewGold, renderCorrectCoding(data.gold_standard));
 
                 tabEhr.click();
                 tabGold.disabled = false;
 
             } catch (err) {
                 console.error('Forge failed:', err);
-                previewText.innerHTML = `<div class="preview--empty" style="color: var(--danger);">Error: ${escapeHtml(err.message)}</div>`;
+                setPreviewEmpty(previewText, `Error: ${escapeHtml(err.message)}`, true);
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = '<span>⚙</span> Forge Scenario';
             }
         }
 
+        // Toggle a .preview container between its centered "empty/status" state and real left-aligned content.
+        // Prevents the preview--empty class (flex + center-align + muted color) from leaking onto rendered output.
+        function setPreviewEmpty(el, message, isError = false) {
+            el.classList.add('preview--empty');
+            el.innerHTML = isError ? `<span style="color: var(--danger);">${message}</span>` : message;
+        }
+        function setPreviewContent(el, html) {
+            el.classList.remove('preview--empty');
+            el.innerHTML = html;
+        }
+
         function escapeHtml(str) {
-            return str.replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>').replace(/"/g, '"').replace(/'/g, '&#039;');
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
         }
 
         function ccBadge(type) {
@@ -831,38 +896,71 @@
             return '<span class="cc-badge cc-badge--none">None</span>';
         }
 
-        function renderGoldStandard(gs) {
-            let html = '<div style="font-family: inherit; line-height: 1.7;">';
+        // Renders the synthesized clinical narrative as a left-aligned document, matching the
+        // ClinicalChartViewer's monospace-on-canvas treatment used elsewhere in the app.
+        function renderEhrDocument(ehr) {
+            return `
+                <div class="ehr-doc">
+                    <span class="ehr-doc__type">${escapeHtml(ehr.document_type)}</span>
+                    <div class="ehr-doc__body">${escapeHtml(ehr.narrative)}</div>
+                </div>
+            `;
+        }
 
-            // Principal
-            html += `<div class="gs-card gs-card--primary">
-                <div class="gs-card__header"><span class="gs-card__code">${escapeHtml(gs.principal_diagnosis.code)}</span></div>
-                <div class="gs-card__desc">${escapeHtml(gs.principal_diagnosis.description)}</div>
-                <div class="gs-card__rationale">${escapeHtml(gs.principal_diagnosis.rationale)}</div>
-            </div>`;
-
-            // Secondary
-            html += '<div class="section-header">Secondary Diagnoses</div>';
-            gs.secondary_diagnoses.forEach(sdx => {
-                html += `<div class="gs-card">
-                    <div class="gs-card__header">
-                        <span class="gs-card__code">${escapeHtml(sdx.code)}</span>
-                        ${ccBadge(sdx.type)}
+        // Renders the Correct Coding sequence as a tight vertical connector tree: Principal
+        // diagnosis first, then each Secondary diagnosis/procedure hangs off the same line —
+        // visually stating "this is the order it should be coded in," not just a list of facts.
+        function renderCorrectCoding(gs) {
+            let nodes = `
+                <div class="coding-node coding-node--principal">
+                    <span class="coding-node__dot"></span>
+                    <div class="coding-node__card">
+                        <div class="gs-card gs-card--primary">
+                            <div class="gs-card__header">
+                                <span class="gs-card__code">${escapeHtml(gs.principal_diagnosis.code)}</span>
+                                <span class="cc-badge cc-badge--principal">Principal</span>
+                            </div>
+                            <div class="gs-card__desc">${escapeHtml(gs.principal_diagnosis.description)}</div>
+                            <div class="gs-card__rationale">${escapeHtml(gs.principal_diagnosis.rationale)}</div>
+                        </div>
                     </div>
-                    <div class="gs-card__desc">${escapeHtml(sdx.description)}</div>
-                    <div class="gs-card__rationale">${escapeHtml(sdx.rationale)}</div>
-                </div>`;
+                </div>
+            `;
+
+            (gs.secondary_diagnoses || []).forEach(sdx => {
+                nodes += `
+                    <div class="coding-node">
+                        <span class="coding-node__dot"></span>
+                        <div class="coding-node__card">
+                            <div class="gs-card">
+                                <div class="gs-card__header">
+                                    <span class="gs-card__code">${escapeHtml(sdx.code)}</span>
+                                    ${ccBadge(sdx.type)}
+                                </div>
+                                <div class="gs-card__desc">${escapeHtml(sdx.description)}</div>
+                                <div class="gs-card__rationale">${escapeHtml(sdx.rationale)}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
             });
 
-            // Procedures
-            if (gs.procedures && gs.procedures.length > 0) {
-                html += '<div class="section-header mt-md">Procedures</div>';
-                gs.procedures.forEach(px => {
-                    html += `<div class="gs-card"><span class="gs-card__code">${escapeHtml(px.code)}</span> <span style="margin-left:8px;">${escapeHtml(px.description)}</span></div>`;
-                });
-            }
+            (gs.procedures || []).forEach(px => {
+                nodes += `
+                    <div class="coding-node">
+                        <span class="coding-node__dot"></span>
+                        <div class="coding-node__card">
+                            <div class="gs-card">
+                                <div class="gs-card__header"><span class="gs-card__code">${escapeHtml(px.code)}</span></div>
+                                <div class="gs-card__desc">${escapeHtml(px.description)}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
 
-            // DRG
+            let html = `<div class="coding-tree">${nodes}</div>`;
+
             if (gs.reimbursement_impact) {
                 html += `<div class="drg-card">
                     <div class="drg-card__code">MS-DRG ${escapeHtml(gs.reimbursement_impact.drg_code)}: ${escapeHtml(gs.reimbursement_impact.drg_description)}</div>
@@ -870,7 +968,6 @@
                 </div>`;
             }
 
-            html += '</div>';
             return html;
         }
 
