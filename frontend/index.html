@@ -266,45 +266,45 @@
         .cc-badge--none { background: var(--bg); color: var(--fg-subtle); border: 1px solid var(--border); }
 
         /* Gold standard card */
-        .gs-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; }
+        .gs-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 10px; white-space: normal; }
         .gs-card--primary { border-left: 3px solid var(--primary); }
-        .gs-card__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; gap: 8px; }
+        .gs-card__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 3px; gap: 8px; }
         .gs-card__code { font-family: var(--font-mono); font-size: 0.9375rem; font-weight: 600; color: var(--primary); }
-        .gs-card__desc { color: var(--fg); margin-top: 0; font-size: 0.8125rem; }
-        .gs-card__rationale { font-size: 0.71875rem; color: var(--fg-subtle); margin-top: 4px; line-height: 1.45; }
-        .gs-card__meta { display: flex; align-items: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+        .gs-card__desc { color: var(--fg); margin-top: 0; font-size: 0.8125rem; line-height: 1.3; }
+        .gs-card__rationale { font-size: 0.71875rem; color: var(--fg-subtle); margin-top: 3px; line-height: 1.35; }
+        .gs-card__meta { display: flex; align-items: center; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
 
         .cc-badge--principal { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary); }
 
         /* Correct Coding sequencing tree — vertical connector + horizontal ticks, echoes CodeEntryForm's code-list pattern */
-        .coding-tree { position: relative; margin: 4px 0 14px; }
+        .coding-tree { position: relative; margin: 2px 0 10px; white-space: normal; }
         .coding-tree::before {
             content: "";
             position: absolute;
-            left: 11px;
+            left: 9px;
             top: 6px;
             bottom: 6px;
             width: 2px;
             background: var(--border);
             border-radius: 1px;
         }
-        .coding-node { position: relative; display: flex; align-items: flex-start; gap: 12px; padding: 0 0 8px 30px; }
+        .coding-node { position: relative; display: flex; align-items: flex-start; gap: 10px; padding: 0 0 6px 26px; }
         .coding-node:last-child { padding-bottom: 0; }
         .coding-node::before {
             content: "";
             position: absolute;
-            left: 11px;
-            top: 14px;
-            width: 14px;
+            left: 9px;
+            top: 12px;
+            width: 12px;
             height: 2px;
             background: var(--border);
         }
         .coding-node__dot {
             position: absolute;
-            left: 5px;
-            top: 8px;
-            width: 13px;
-            height: 13px;
+            left: 4px;
+            top: 6px;
+            width: 11px;
+            height: 11px;
             border-radius: 50%;
             background: var(--bg-card);
             border: 2px solid var(--border-strong);
@@ -314,10 +314,10 @@
         .coding-node__card { flex: 1; min-width: 0; }
 
         /* DRG card */
-        .drg-card { background: var(--primary); color: #fff; border-radius: var(--radius); padding: 12px 14px; margin-top: 4px; }
-        .drg-card__code { font-family: var(--font-mono); font-size: 1rem; font-weight: 700; }
-        .drg-card__desc { font-size: 0.8125rem; opacity: 0.9; margin-top: 3px; }
-        .drg-card__rw { font-size: 0.75rem; opacity: 0.8; margin-top: 6px; }
+        .drg-card { background: var(--primary); color: #fff; border-radius: var(--radius-sm); padding: 8px 10px; margin-top: 2px; white-space: normal; }
+        .drg-card__code { font-family: var(--font-mono); font-size: 0.875rem; font-weight: 700; }
+        .drg-card__desc { font-size: 0.75rem; opacity: 0.9; margin-top: 2px; }
+        .drg-card__rw { font-size: 0.6875rem; opacity: 0.8; margin-top: 4px; }
 
         /* Synthesized EHR document */
         .ehr-doc { text-align: left; color: var(--fg); }
