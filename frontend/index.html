@@ -1305,40 +1305,37 @@
         // Expose anime globally for components
         window.anime = anime;
 
-        // Backend API base URL (single localtunnel for both frontend and API)
-                const API_BASE = 'https://slimy-tips-lay.loca.lt';
+        // Load blueprints into the dropdown (relative path - same origin)
+        async function loadBlueprints() {
+            const select = document.getElementById('blueprint-select');
+            try {
+                const res = await fetch('/api/forge/blueprints');
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const blueprints = await res.json();
 
-                // Load blueprints into the dropdown
-                async function loadBlueprints() {
-                    const select = document.getElementById('blueprint-select');
-                    try {
-                        const res = await fetch(`${API_BASE}/api/forge/blueprints`, { mode: 'cors' });
-                        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                        const blueprints = await res.json();
+                select.innerHTML = "";
+                blueprints.forEach(bp => {
+                    const opt = document.createElement('option');
+                    opt.value = bp.blueprint_id;
+                    opt.innerText = `${bp.blueprint_id} - ${bp.core_concept} (${bp.domain})`;
+                    select.appendChild(opt);
+                });
+            } catch (err) {
+                console.error("Failed to load blueprints:", err);
+                select.innerHTML = '<option value="">Failed to load blueprints</option>';
+            }
+        }
 
-                        select.innerHTML = "";
-                        blueprints.forEach(bp => {
-                            const opt = document.createElement('option');
-                            opt.value = bp.blueprint_id;
-                            opt.innerText = `${bp.blueprint_id} - ${bp.core_concept} (${bp.domain})`;
-                            select.appendChild(opt);
-                        });
-                    } catch (err) {
-                        console.error("Failed to load blueprints:", err);
-                        select.innerHTML = '<option value="">Failed to load blueprints</option>';
-                    }
-                }
+        // Initialize on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadBlueprints);
+        } else {
+            loadBlueprints();
+        }
 
-                // Initialize on DOM ready
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', loadBlueprints);
-                } else {
-                    loadBlueprints();
-                }
-
-                // Expose for debugging
-                window.loadBlueprints = loadBlueprints;
-            </script>
+        // Forge Scenario handler
+        async function forgeScenario() {
+            const btn = document.getElementById('forge-btn');
             const previewText = document.getElementById('preview-text');
             const previewGold = document.getElementById('preview-gold');
             const tabEhr = document.getElementById('tab-ehr');
