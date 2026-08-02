@@ -1300,11 +1300,188 @@
         import "./components/ClinicalChartViewer.js";
         import "./components/CodeEntryForm.js";
         import "./components/TelemetryPanel.js";
-        import "./components/ScenarioForgeStudio.js";
-        import anime from "./components/anime.esm.min.js";
+        import * as anime from "https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.esm.min.js";
 
         // Expose anime globally for components
         window.anime = anime;
+
+        // Backend API base URL (single localtunnel for both frontend and API)
+                const API_BASE = 'https://slimy-tips-lay.loca.lt';
+
+                // Load blueprints into the dropdown
+                async function loadBlueprints() {
+                    const select = document.getElementById('blueprint-select');
+                    try {
+                        const res = await fetch(`${API_BASE}/api/forge/blueprints`, { mode: 'cors' });
+                        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                        const blueprints = await res.json();
+
+                        select.innerHTML = "";
+                        blueprints.forEach(bp => {
+                            const opt = document.createElement('option');
+                            opt.value = bp.blueprint_id;
+                            opt.innerText = `${bp.blueprint_id} - ${bp.core_concept} (${bp.domain})`;
+                            select.appendChild(opt);
+                        });
+                    } catch (err) {
+                        console.error("Failed to load blueprints:", err);
+                        select.innerHTML = '<option value="">Failed to load blueprints</option>';
+                    }
+                }
+
+                // Initialize on DOM ready
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', loadBlueprints);
+                } else {
+                    loadBlueprints();
+                }
+
+                // Expose for debugging
+                window.loadBlueprints = loadBlueprints;
+            </script>
+            const previewText = document.getElementById('preview-text');
+            const previewGold = document.getElementById('preview-gold');
+            const tabEhr = document.getElementById('tab-ehr');
+            const tabGold = document.getElementById('tab-gold');
+            const panelEhr = document.getElementById('panel-ehr');
+            const panelGold = document.getElementById('panel-gold');
+
+            // Get form values
+            const blueprintId = document.getElementById('blueprint-select').value;
+            const ageMin = parseInt(document.getElementById('age-min').value);
+            const ageMax = parseInt(document.getElementById('age-max').value);
+            const noiseDensity = document.getElementById('noise-density').value;
+            const applyPoaMutation = document.getElementById('poa-mutation').checked;
+
+            if (!blueprintId) {
+                alert('Please select a blueprint');
+                return;
+            }
+
+            // UI loading state
+            btn.disabled = true;
+            btn.innerHTML = '<span>⏳</span> Forging…';
+            previewText.innerHTML = '<div class="preview-body--empty">Synthesizing clinical scenario…</div>';
+            previewGold.innerHTML = '<div class="preview-body--empty">Generating gold standard…</div>';
+
+            try {
+                const res = await fetch('/api/forge/synthesize', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        blueprint_id: blueprintId,
+                        age_range: [ageMin, ageMax],
+                        noise_density: noiseDensity,
+                        apply_poa_mutation: applyPoaMutation
+                    })
+                });
+
+                if (!res.ok) {
+                    const err = await res.json();
+                    throw new Error(err.detail || `HTTP ${res.status}`);
+                }
+
+                const data = await res.json();
+
+                // Render synthesized EHR
+                const ehr = data.synthesized_ehr;
+                previewText.innerHTML = `
+                    <div style="font-family: inherit; line-height: 1.7; white-space: pre-wrap;">
+                        <strong style="color: var(--emerald); font-size: 1.1em;">${ehr.document_type}</strong><br><br>
+                        ${ehr.narrative.replace(/\n/g, '<br>')}
+                    </div>
+                `;
+
+                // Render gold standard
+                const gs = data.gold_standard;
+                let goldHtml = `
+                    <div style="font-family: inherit; line-height: 1.7;">
+                        <div style="margin-bottom: 16px; padding: 12px; background: var(--bg-base); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                            <strong style="color: var(--emerald);">Principal Diagnosis</strong><br>
+                            <code style="font-size: 1.1em;">${gs.principal_diagnosis.code}</code> — ${gs.principal_diagnosis.description}<br>
+                            <em style="color: var(--text-muted); font-size: 0.85em;">${gs.principal_diagnosis.rationale}</em>
+                        </div>
+                        <strong>Secondary Diagnoses</strong><br>
+                `;
+                gs.secondary_diagnoses.forEach(sdx => {
+                    goldHtml += `
+                        <div style="margin: 10px 0; padding: 10px; background: var(--bg-base); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                            <code>${sdx.code}</code> — ${sdx.description}
+                            <span style="margin-left: 10px; padding: 2px 8px; background: ${sdx.type === 'MCC' ? 'rgba(192,57,43,0.15)' : 'rgba(0,127,74,0.15)'}; color: ${sdx.type === 'MCC' ? '#c0392b' : 'var(--emerald)'}; border-radius: var(--radius-sm); font-size: 0.7em; font-weight: 700;">${sdx.type}</span>
+                            <br><em style="color: var(--text-muted); font-size: 0.85em;">${sdx.rationale}</em>
+                        </div>
+                    `;
+                });
+                if (gs.procedures && gs.procedures.length > 0) {
+                    goldHtml += '<strong style="margin-top: 16px; display: block;">Procedures</strong><br>';
+                    gs.procedures.forEach(px => {
+                        goldHtml += `<div style="margin: 8px 0; padding: 10px; background: var(--bg-base); border-radius: var(--radius-sm);"><code>${px.code}</code> — ${px.description}</div>`;
+                    });
+                }
+                if (gs.reimbursement_impact) {
+                    goldHtml += `
+                        <div style="margin-top: 16px; padding: 12px; background: linear-gradient(135deg, var(--emerald), var(--emerald-light)); border-radius: var(--radius-md); color: white;">
+                            <strong>MS-DRG ${gs.reimbursement_impact.drg_code}: ${gs.reimbursement_impact.drg_description}</strong><br>
+                            Relative Weight: ${gs.reimbursement_impact.relative_weight}
+                        </div>
+                    `;
+                }
+                previewGold.innerHTML = goldHtml;
+
+                // Auto-switch to EHR tab and enable Gold tab
+                tabEhr.click();
+                tabGold.disabled = false;
+
+            } catch (err) {
+                console.error('Forge failed:', err);
+                previewText.innerHTML = `<div class="preview-body--empty" style="color: #c0392b;">Error: ${err.message}</div>`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<span>🔥</span> Forge Scenario & Synthesize EHR';
+            }
+        }
+
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-btn').forEach(b => {
+                    b.classList.remove('tab-btn--active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                document.querySelectorAll('[role="tabpanel"]').forEach(p => p.hidden = true);
+
+                this.classList.add('tab-btn--active');
+                this.setAttribute('aria-selected', 'true');
+                const panelId = this.getAttribute('aria-controls');
+                document.getElementById(panelId).hidden = false;
+            });
+        });
+
+        // Mode switching
+        document.getElementById('mode-forge-btn').addEventListener('click', function() {
+            document.getElementById('mode-forge-btn').classList.add('mode-btn--active');
+            document.getElementById('mode-forge-btn').setAttribute('aria-selected', 'true');
+            document.getElementById('mode-create-btn').classList.remove('mode-btn--active');
+            document.getElementById('mode-create-btn').setAttribute('aria-selected', 'false');
+            document.getElementById('section-forge').classList.add('section--active');
+            document.getElementById('section-create').classList.remove('section--active');
+        });
+
+        document.getElementById('mode-create-btn').addEventListener('click', function() {
+            document.getElementById('mode-create-btn').classList.add('mode-btn--active');
+            document.getElementById('mode-create-btn').setAttribute('aria-selected', 'true');
+            document.getElementById('mode-forge-btn').classList.remove('mode-btn--active');
+            document.getElementById('mode-forge-btn').setAttribute('aria-selected', 'false');
+            document.getElementById('section-create').classList.add('section--active');
+            document.getElementById('section-forge').classList.remove('section--active');
+        });
+
+        // Wire up the forge button
+        document.getElementById('forge-btn').addEventListener('click', forgeScenario);
+
+        // Expose for debugging
+        window.loadBlueprints = loadBlueprints;
+        window.forgeScenario = forgeScenario;
     </script>
 </body>
 </html>
