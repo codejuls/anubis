@@ -5,266 +5,1294 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Anubis - Live Portal & Scenario Forge</title>
     <style>
-        /* 
-           THE MINT-EMERALD GLASSMORPHISM PALETTE:
-           - 60% Dominant (Base): Warm cream & frosted ice backdrop (#f7f9f6 with ambient soft green gradient)
-           - 30% Secondary (Structure): Emerald Forest (#047857), Deep Jade Slate (#0f291e), and Soft Mint Glass (#d1fae5 / rgba(255,255,255,0.75))
-           - 10% Accent (Action/Energy): Vibrant Emerald Mint (#10b981 / #059669)
-        */
+        /* ============================================================
+           NEUMORPHIC DESIGN SYSTEM — PROJECT ANUBIS
+           Gray-base neumorphism with Emerald accents
+           Progressive elevation: left (low) → right (high)
+           Sharp, technical, professional, fun
+        ============================================================ */
         :root {
-            --bg-color: #f7f9f6;          
-            --card-glass: rgba(255, 255, 255, 0.82); 
-            --glass-border: rgba(16, 185, 129, 0.22); 
-            --text-main: #0f291e;         
-            --text-secondary: #475569;    
-            
-            --emerald-primary: #059669;    
-            --emerald-dark: #047857;       
-            --emerald-light-bg: #ecfdf5;   
-            
-            --accent-green: #10b981;      
-            --accent-green-hover: #059669;
-            --accent-green-dark: #065f46;
+            /* NEUMORPHIC GRAY PALETTE */
+            --bg-base: #e8eae9;              /* Base background */
+            --bg-raised: #e8eae9;            /* Raised surface (same as base) */
+            --bg-pressed: #d4d6d5;           /* Pressed/inset surface */
+
+            /* SHADOWS — The soul of neumorphism */
+            --shadow-low: 
+                3px 3px 6px #c5c7c6,          /* Dark shadow (bottom-right) */
+                -3px -3px 6px #ffffff;        /* Light shadow (top-left) */
+            --shadow-med: 
+                6px 6px 12px #c5c7c6,
+                -6px -6px 12px #ffffff;
+            --shadow-high: 
+                10px 10px 20px #c5c7c6,
+                -10px -10px 20px #ffffff;
+
+            /* INSET (pressed) shadows */
+            --shadow-inset-low: 
+                inset 3px 3px 6px #c5c7c6,
+                inset -3px -3px 6px #ffffff;
+            --shadow-inset-med: 
+                inset 6px 6px 12px #c5c7c6,
+                inset -6px -6px 12px #ffffff;
+
+            /* EMERALD ACCENTS — Higher contrast, works on gray */
+            --emerald: #007f4a;              /* Primary emerald — strong on gray */
+            --emerald-light: #00a85e;        /* Hover/active */
+            --emerald-dark: #005a35;         /* Pressed */
+            --emerald-glow: rgba(0, 127, 74, 0.35);
+            --emerald-glow-strong: rgba(0, 127, 74, 0.55);
+
+            /* TEXT */
+            --text-primary: #1a1d1c;
+            --text-secondary: #4a4f4d;
+            --text-muted: #6d7371;
+            --text-on-emerald: #ffffff;
+
+            /* BORDERS — Subtle definition */
+            --border-subtle: #d0d4d2;
+            --border-emerald: #007f4a;
+
+            /* ELEVATION STEPS (progressive left→right) */
+            --elev-1: var(--shadow-low);      /* Far left — barely raised */
+            --elev-2: var(--shadow-low);      /* Left */
+            --elev-3: var(--shadow-med);      /* Center-left */
+            --elev-4: var(--shadow-med);      /* Center */
+            --elev-5: var(--shadow-high);     /* Center-right */
+            --elev-6: var(--shadow-high);     /* Far right — most prominent */
+
+            /* RADIUS — Sharp, technical */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+
+            /* TRANSITIONS */
+            --transition-fast: 120ms cubic-bezier(0.2, 0.8, 0.2, 1);
+            --transition-med: 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+            --transition-slow: 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
+
+            /* Z-INDEX LAYERS */
+            --z-base: 1;
+            --z-raised: 10;
+            --z-sticky: 100;
+            --z-modal: 1000;
+            --z-toast: 1100;
+        }
+
+        /* Reduce motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ========== BASE ========== */
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 15px;
         }
 
         body {
-            background-color: var(--bg-color);
+            background: var(--bg-base);
             background-image: 
-                radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(5, 150, 105, 0.08) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(209, 250, 229, 0.2) 0px, transparent 50%);
-            background-attachment: fixed;
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                radial-gradient(ellipse at 0% 0%, #f0f2f1 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 100%, #e0e3e1 0%, transparent 50%);
+            color: var(--text-primary);
+            font-family: "JetBrains Mono", "Fira Code", "SF Mono", "Monaco", "Courier New", monospace;
             margin: 0;
-            padding: 25px;
+            padding: 24px;
             min-height: 100vh;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            line-height: 1.25;
+            margin: 0;
+        }
+
+        h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); }
+        h2 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+        h3 { font-size: clamp(1rem, 2vw, 1.125rem); }
+        h4 { font-size: clamp(0.875rem, 1.5vw, 1rem); }
+
+        .text-emerald { color: var(--emerald); }
+        .text-secondary { color: var(--text-secondary); }
+        .text-muted { color: var(--text-muted); font-size: 0.875em; }
+
+        /* ========== LAYOUT ========== */
+        .app-shell {
+            max-width: 1600px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
+        /* ========== NEUMORPHIC CARD BASE ========== */
+        .neo-card {
+            background: var(--bg-raised);
+            border-radius: var(--radius-md);
+            transition: box-shadow var(--transition-med), transform var(--transition-fast);
+            border: 1px solid transparent;
+        }
+
+        .neo-card--elev-1 { box-shadow: var(--elev-1); }
+        .neo-card--elev-2 { box-shadow: var(--elev-2); }
+        .neo-card--elev-3 { box-shadow: var(--elev-3); }
+        .neo-card--elev-4 { box-shadow: var(--elev-4); }
+        .neo-card--elev-5 { box-shadow: var(--elev-5); }
+        .neo-card--elev-6 { box-shadow: var(--elev-6); }
+
+        .neo-card--interactive:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-high);
+        }
+        .neo-card--interactive:active {
+            transform: translateY(1px);
+            box-shadow: var(--shadow-inset-low);
+        }
+
+        .neo-card--pressed {
+            box-shadow: var(--shadow-inset-med);
+            background: var(--bg-pressed);
+        }
+
+        /* ========== HEADER ========== */
         .header {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            background: var(--card-glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 18px 24px;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.05);
+            gap: 20px;
+            padding: 20px 24px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--elev-2);
         }
 
-        .title-area h1 {
-            color: var(--emerald-primary);
-            margin: 0;
-            font-size: 26px;
+        .header__brand {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: 800;
+            gap: 12px;
         }
 
-        .title-area h1 span {
-            color: var(--accent-green);
-        }
-
-        .title-area p {
-            color: var(--text-secondary);
-            margin: 5px 0 0 0;
-            font-size: 14.5px;
-            font-weight: 500;
-        }
-
-        .mode-nav {
+        .header__logo {
+            width: 40px;
+            height: 40px;
             display: flex;
-            gap: 10px;
-            background: rgba(236, 253, 245, 0.6);
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+            border-radius: var(--radius-sm);
+            color: var(--text-on-emerald);
+            font-size: 1.25rem;
+            box-shadow: var(--shadow-low), inset 0 0 0 1px rgba(255,255,255,0.2);
+        }
+
+        .header__title { font-weight: 800; letter-spacing: -0.02em; }
+        .header__subtitle { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+
+        .header__nav { display: flex; gap: 8px; }
+
+        /* ========== MODE SWITCHER (Neumorphic Toggle) ========== */
+        .mode-switcher {
+            display: inline-flex;
+            background: var(--bg-base);
+            border-radius: var(--radius-md);
             padding: 4px;
-            border-radius: 10px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            box-shadow: var(--shadow-inset-low);
+            gap: 4px;
         }
 
         .mode-btn {
             background: transparent;
             border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 13.5px;
-            font-weight: 700;
-            color: var(--emerald-dark);
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-secondary);
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all var(--transition-fast);
+            font-family: inherit;
+            white-space: nowrap;
         }
 
-        .mode-btn.active {
-            background: var(--emerald-primary);
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+        .mode-btn--active {
+            background: var(--bg-raised);
+            color: var(--emerald);
+            box-shadow: var(--shadow-low);
         }
 
+        .mode-btn:not(.mode-btn--active):hover {
+            color: var(--text-primary);
+        }
+
+        /* ========== BADGE ========== */
         .badge {
-            background: var(--emerald-primary);
-            color: #ffffff;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.6875rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2);
-            border: 1px solid var(--accent-green);
+            letter-spacing: 0.06em;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-raised);
+            box-shadow: var(--shadow-low);
+            color: var(--text-secondary);
         }
 
-        /* Two-column layout for main workspaces */
+        .badge--emerald {
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+            color: var(--text-on-emerald);
+            border-color: transparent;
+            box-shadow: var(--shadow-low), 0 0 0 1px rgba(255,255,255,0.15) inset;
+        }
+
+        /* ========== MAIN WORKSPACE — Progressive Grid ========== */
         .workspace {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
+            align-items: start;
         }
 
-        @media (max-width: 900px) {
-            .workspace {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 1100px) {
+            .workspace { grid-template-columns: 1fr; }
         }
 
-        /* Smart NLP Suggestion Glass Card */
-        .suggestion-card {
-            background: rgba(236, 253, 245, 0.92); 
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--accent-green);
-            border-radius: 12px;
-            padding: 16px 20px;
-            font-size: 13.5px;
+        /* Progressive elevation classes for workspace children */
+        .workspace > *:nth-child(1) { /* Left panel — lowest elevation */ }
+        .workspace > *:nth-child(2) { /* Right panel — higher elevation */ }
+
+        /* ========== PANELS ========== */
+        .panel {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
         }
 
-        .suggestion-header {
+        .panel__header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: var(--bg-raised);
+            border-bottom: 1px solid var(--border-subtle);
         }
 
-        .suggestion-title {
-            color: var(--accent-green-dark); 
+        .panel__title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9375rem;
             font-weight: 700;
-            font-size: 14px;
+        }
+
+        .panel__icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+            border-radius: var(--radius-sm);
+            color: var(--text-on-emerald);
+            font-size: 0.875rem;
+            box-shadow: var(--shadow-low);
+        }
+
+        .panel__body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        /* Left panel — Elevation 2 */
+        .panel--left { box-shadow: var(--elev-2); }
+        /* Right panel — Elevation 4 */
+        .panel--right { box-shadow: var(--elev-4); }
+
+        /* ========== FORMS — Neumorphic Inputs ========== */
+        .form-group { margin-bottom: 16px; }
+
+        .form-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .neo-input,
+        .neo-select,
+        .neo-textarea {
+            width: 100%;
+            background: var(--bg-base);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            font-family: inherit;
+            box-shadow: var(--shadow-inset-low);
+            transition: all var(--transition-fast);
+        }
+
+        .neo-input:focus,
+        .neo-select:focus,
+        .neo-textarea:focus {
+            outline: none;
+            border-color: var(--emerald);
+            box-shadow: var(--shadow-inset-low), 0 0 0 3px var(--emerald-glow);
+        }
+
+        .neo-input::placeholder,
+        .neo-textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .neo-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236d7371' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 40px;
+        }
+
+        .neo-textarea {
+            resize: vertical;
+            min-height: 80px;
+            line-height: 1.55;
+        }
+
+        /* Range inputs */
+        .range-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .neo-range {
+            flex: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            background: var(--bg-base);
+            border-radius: var(--radius-sm);
+            height: 6px;
+            box-shadow: var(--shadow-inset-low);
+        }
+
+        .neo-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--emerald);
+            cursor: pointer;
+            box-shadow: var(--shadow-low);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .neo-range::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            box-shadow: var(--shadow-med), 0 0 0 4px var(--emerald-glow);
+        }
+
+        .neo-range::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border: none;
+            border-radius: 50%;
+            background: var(--emerald);
+            cursor: pointer;
+            box-shadow: var(--shadow-low);
+        }
+
+        .range-value {
+            min-width: 44px;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+        }
+
+        /* Checkbox */
+        .neo-checkbox {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .neo-checkbox input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .neo-checkbox__box {
+            width: 20px;
+            height: 20px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-base);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-inset-low);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+            flex-shrink: 0;
+        }
+
+        .neo-checkbox input:checked + .neo-checkbox__box {
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+            border-color: transparent;
+            box-shadow: var(--shadow-low), inset 0 0 0 1px rgba(255,255,255,0.2);
+        }
+
+        .neo-checkbox__box::after {
+            content: "";
+            width: 6px;
+            height: 10px;
+            border: solid var(--text-on-emerald);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg) translateY(-1px);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .neo-checkbox input:checked + .neo-checkbox__box::after {
+            opacity: 1;
+        }
+
+        .neo-checkbox__label {
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* ========== BUTTONS ========== */
+        .neo-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: none;
+            border-radius: var(--radius-sm);
+            padding: 10px 20px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            white-space: nowrap;
+        }
+
+        .neo-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: var(--shadow-inset-low) !important;
+        }
+
+        /* Primary — Emerald */
+        .neo-btn--primary {
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+            color: var(--text-on-emerald);
+            box-shadow: var(--shadow-low), inset 0 0 0 1px rgba(255,255,255,0.15);
+        }
+
+        .neo-btn--primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-med), 0 0 0 1px rgba(255,255,255,0.15), 0 0 12px var(--emerald-glow-strong);
+        }
+
+        .neo-btn--primary:active:not(:disabled) {
+            transform: translateY(1px);
+            box-shadow: var(--shadow-inset-med);
+            background: linear-gradient(135deg, var(--emerald-dark), var(--emerald));
+        }
+
+        /* Secondary — Gray raised */
+        .neo-btn--secondary {
+            background: var(--bg-raised);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-low);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .neo-btn--secondary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-med);
+        }
+
+        .neo-btn--secondary:active:not(:disabled) {
+            transform: translateY(1px);
+            box-shadow: var(--shadow-inset-med);
+            background: var(--bg-pressed);
+        }
+
+        /* Ghost — Minimal */
+        .neo-btn--ghost {
+            background: transparent;
+            color: var(--text-secondary);
+            box-shadow: none;
+            padding: 8px 12px;
+        }
+
+        .neo-btn--ghost:hover:not(:disabled) {
+            color: var(--emerald);
+            background: var(--bg-base);
+            box-shadow: var(--shadow-inset-low);
+        }
+
+        .neo-btn--ghost:active:not(:disabled) {
+            background: var(--bg-pressed);
+        }
+
+        /* Danger */
+        .neo-btn--danger {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: #fff;
+            box-shadow: var(--shadow-low);
+        }
+
+        .neo-btn--danger:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-med), 0 0 12px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Small */
+        .neo-btn--sm {
+            padding: 6px 12px;
+            font-size: 0.75rem;
+        }
+
+        /* ========== DYNAMIC ARRAY FIELDS ========== */
+        .array-field {
+            background: var(--bg-base);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: var(--shadow-inset-low);
+            position: relative;
+            animation: arraySlideIn var(--transition-med) ease-out;
+        }
+
+        @keyframes arraySlideIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .array-field__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .array-field__title {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .array-field__remove {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 6px;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+        }
+
+        .array-field__remove:hover {
+            color: #c0392b;
+            background: rgba(192, 57, 43, 0.1);
+        }
+
+        /* ========== TABS ========== */
+        .tab-bar {
+            display: flex;
+            gap: 4px;
+            background: var(--bg-base);
+            padding: 4px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-inset-low);
+            margin-bottom: 16px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-family: inherit;
+        }
+
+        .tab-btn--active {
+            background: var(--bg-raised);
+            color: var(--emerald);
+            box-shadow: var(--shadow-low);
+        }
+
+        .tab-btn:not(.tab-btn--active):hover {
+            color: var(--text-primary);
+        }
+
+        /* ========== PREVIEW PANEL ========== */
+        .preview-body {
+            background: var(--bg-base);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            font-family: inherit;
+            font-size: 0.8125rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+            white-space: pre-wrap;
+            max-height: 420px;
+            overflow-y: auto;
+            box-shadow: var(--shadow-inset-low);
+        }
+
+        .preview-body--empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: var(--text-muted);
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* ========== YAML EDITOR ========== */
+        .yaml-editor {
+            background: #1a1d1c;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            font-family: "JetBrains Mono", "Fira Code", monospace;
+            font-size: 0.75rem;
+            line-height: 1.65;
+            color: #e8eae9;
+            max-height: 340px;
+            overflow: auto;
+            box-shadow: var(--shadow-inset-med);
+            tab-size: 2;
+        }
+
+        .yaml-editor .key { color: #00a85e; }
+        .yaml-editor .string { color: #7dd3a0; }
+        .yaml-editor .comment { color: #6d7371; font-style: italic; }
+        .yaml-editor .number { color: #f9c74f; }
+
+        /* ========== ALERT TOAST ========== */
+        .alert {
+            display: none;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            border-radius: var(--radius-md);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            box-shadow: var(--elev-4);
+            animation: alertSlideIn var(--transition-med) ease-out;
+        }
+
+        @keyframes alertSlideIn {
+            from { opacity: 0; transform: translateY(-12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .alert--success {
+            background: var(--bg-raised);
+            border: 1px solid var(--emerald);
+            color: var(--emerald-dark);
+        }
+
+        .alert--error {
+            background: var(--bg-raised);
+            border: 1px solid #c0392b;
+            color: #c0392b;
+        }
+
+        .alert--info {
+            background: var(--bg-raised);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+        }
+
+        /* ========== WIZARD STEPPER ========== */
+        .wizard-stepper {
             display: flex;
             align-items: center;
             gap: 8px;
+            margin-bottom: 24px;
+            padding: 0 4px;
         }
 
-        .severity-chip {
-            background: #059669;
-            color: #ffffff;
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .suggestion-details {
-            color: var(--text-main);
-            line-height: 1.5;
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            padding: 10px 14px;
-            border-radius: 8px;
-        }
-
-        .suggestion-citation {
-            font-size: 12px;
-            color: var(--emerald-dark);
-            font-style: italic;
-            margin-top: 4px;
-        }
-
-        .suggestion-actions {
+        .wizard-step {
+            flex: 1;
             display: flex;
-            gap: 10px;
-            justify-content: flex-end;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            position: relative;
         }
 
-        .toast-action {
-            background: var(--accent-green);
-            color: #ffffff;
-            border: none;
-            border-radius: 6px;
-            padding: 8px 16px;
-            font-size: 13px;
-            cursor: pointer;
+        .wizard-step:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: var(--border-subtle);
+            z-index: 0;
+        }
+
+        .wizard-step--completed:not(:last-child)::after,
+        .wizard-step--active:not(:last-child)::after {
+            background: linear-gradient(90deg, var(--emerald), var(--emerald-light));
+        }
+
+        .wizard-step__circle {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6875rem;
             font-weight: 700;
-            transition: all 0.2s;
-            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+            background: var(--bg-base);
+            border: 2px solid var(--border-subtle);
+            color: var(--text-muted);
+            box-shadow: var(--shadow-inset-low);
+            z-index: 1;
+            transition: all var(--transition-med);
         }
 
-        .toast-action:hover {
-            background-color: var(--accent-green-hover);
-            transform: translateY(-1px);
+        .wizard-step--active .wizard-step__circle {
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+            border-color: transparent;
+            color: var(--text-on-emerald);
+            box-shadow: var(--shadow-low), 0 0 0 4px var(--emerald-glow);
         }
+
+        .wizard-step--completed .wizard-step__circle {
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+            border-color: transparent;
+            color: var(--text-on-emerald);
+        }
+
+        .wizard-step__label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .wizard-step--active .wizard-step__label,
+        .wizard-step--completed .wizard-step__label {
+            color: var(--emerald);
+        }
+
+        .wizard-step--completed .wizard-step__label {
+            color: var(--text-secondary);
+        }
+
+        /* ========== SECTION VISIBILITY ========== */
+        .section {
+            display: none;
+            animation: sectionFadeIn var(--transition-med) ease-out;
+        }
+
+        .section--active {
+            display: block;
+        }
+
+        @keyframes sectionFadeIn {
+            from { opacity: 0; transform: translateX(16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ========== SCROLLBAR ========== */
+        *::-webkit-scrollbar { width: 8px; height: 8px; }
+        *::-webkit-scrollbar-track { background: var(--bg-base); }
+        *::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 4px; border: 2px solid var(--bg-base); }
+        *::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+        *::-webkit-scrollbar-corner { background: var(--bg-base); }
+
+        /* ========== UTILITIES ========== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-sm { gap: 8px; }
+        .gap-md { gap: 12px; }
+        .gap-lg { gap: 16px; }
+        .w-full { width: 100%; }
+        .mt-sm { margin-top: 8px; }
+        .mt-md { margin-top: 16px; }
+        .mt-lg { margin-top: 24px; }
+        .mb-sm { margin-bottom: 8px; }
+        .mb-md { margin-bottom: 16px; }
     </style>
 </head>
 <body>
-
-    <div class="header">
-        <div class="title-area">
-            <h1><span>𓁢</span> Project Anubis Platform</h1>
-            <p>Interactive Clinical Scenario Forge & Abstractor Sandbox</p>
-        </div>
-        
-        <!-- Navigation Modes -->
-        <div class="mode-nav">
-            <button class="mode-btn active" id="mode-forge-btn">🔥 Scenario Forge Studio</button>
-            <button class="mode-btn" id="mode-sandbox-btn">𓁢 Abstractor Sandbox</button>
-        </div>
-
-        <div>
-            <span class="badge">Ecosystem MVP</span>
-        </div>
-    </div>
-
-    <!-- Mode 1: Scenario Forge Studio (Educator Creation & Demo Portal) -->
-    <div id="section-forge">
-        <scenario-forge-studio id="forge-studio"></scenario-forge-studio>
-    </div>
-
-    <!-- Mode 2: Abstractor Sandbox (Student Coding Practice) -->
-    <div id="section-sandbox" style="display: none; flex-direction: column; gap: 20px;">
-        <!-- Smart NLP Code Suggestion Glass Card -->
-        <div class="suggestion-card" id="suggestion-box" style="display: none;">
-            <div class="suggestion-header">
-                <div class="suggestion-title">
-                    ⚡ <span>Anubis NLP Entity Match</span>
+    <div class="app-shell">
+        <!-- HEADER -->
+        <header class="header neo-card neo-card--elev-2">
+            <div class="header__brand">
+                <div class="header__logo" aria-hidden="true">𓁢</div>
+                <div>
+                    <h1 class="header__title">Project Anubis</h1>
+                    <p class="header__subtitle text-secondary">Clinical Scenario Forge & Abstractor Sandbox</p>
                 </div>
-                <span class="severity-chip" id="suggest-severity">MCC</span>
             </div>
-            
-            <div class="suggestion-details">
-                Excerpt: <em id="suggest-excerpt">"Temp 102.1°F"</em><br>
-                Suggested Code: <strong id="suggest-code" style="color: var(--emerald-dark); font-size: 15px;">A41.9</strong> — <span id="suggest-desc">Sepsis, unspecified organism</span>
-                <div class="suggestion-citation" id="suggest-citation">Source: AHA Coding Clinic Q4 2023, p. 8</div>
-                <div style="font-size: 12.5px; color: var(--text-secondary); margin-top: 6px;" id="suggest-rationale"></div>
+            <nav class="header__nav flex items-center gap-sm">
+                <div class="mode-switcher" role="tablist" aria-label="Mode selection">
+                    <button class="mode-btn mode-btn--active" id="mode-forge-btn" role="tab" aria-selected="true" data-mode="forge">🔥 Forge Scenario</button>
+                    <button class="mode-btn" id="mode-create-btn" role="tab" aria-selected="false" data-mode="create">✨ Create Blueprint</button>
+                </div>
+                <span class="badge badge--emerald">Next Gen MVP</span>
+            </nav>
+        </header>
+
+        <!-- MODE 1: FORGE SCENARIO -->
+        <section id="section-forge" class="section section--active">
+            <div class="workspace">
+                <!-- LEFT: Educator Controls (Elevation 2) -->
+                <div class="panel panel--left neo-card neo-card--elev-2">
+                    <div class="panel__header">
+                        <h2 class="panel__title">
+                            <span class="panel__icon">🔥</span>
+                            Educator Controls
+                        </h2>
+                    </div>
+                    <div class="panel__body">
+                        <div class="form-group">
+                            <label class="form-label" for="blueprint-select">Parent Blueprint</label>
+                            <select class="neo-select w-full" id="blueprint-select" aria-describedby="blueprint-desc">
+                                <option value="">Loading blueprints…</option>
+                            </select>
+                            <p id="blueprint-desc" class="text-muted mt-sm">Select a clinical scenario template to customize</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Demographic Age Range</label>
+                            <div class="range-row">
+                                <input type="number" id="age-min" class="neo-input" value="50" min="18" max="100" placeholder="Min" aria-label="Minimum age">
+                                <span class="text-muted">to</span>
+                                <input type="number" id="age-max" class="neo-input" value="85" min="18" max="100" placeholder="Max" aria-label="Maximum age">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="noise-density">Isomorphic Noise Density</label>
+                            <select class="neo-select w-full" id="noise-density">
+                                <option value="Low">Low — Clean Academic Baseline</option>
+                                <option value="Medium" selected>Medium — Standard Clinical Noise</option>
+                                <option value="High">High — High-Acuity / Distractor Heavy</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="neo-checkbox">
+                                <input type="checkbox" id="poa-mutation">
+                                <span class="neo-checkbox__box" aria-hidden="true"></span>
+                                <span class="neo-checkbox__label">
+                                    <strong>Mutation Vector:</strong> Shift Sepsis Onset to Post-Admission (POA Mutation)
+                                </span>
+                            </label>
+                        </div>
+
+                        <button class="neo-btn neo-btn--primary w-full mt-lg" id="forge-btn" type="button">
+                            <span>🔥</span> Forge Scenario & Synthesize EHR
+                        </button>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Live Output Preview (Elevation 4) -->
+                <div class="panel panel--right neo-card neo-card--elev-4">
+                    <div class="panel__header">
+                        <h2 class="panel__title">
+                            <span class="panel__icon">📄</span>
+                            Live Preview
+                        </h2>
+                    </div>
+                    <div class="panel__body">
+                        <div class="tab-bar" role="tablist" aria-label="Preview tabs">
+                            <button class="tab-btn tab-btn--active" id="tab-ehr" role="tab" aria-selected="true" aria-controls="panel-ehr">Synthesized EHR Chart</button>
+                            <button class="tab-btn" id="tab-gold" role="tab" aria-selected="false" aria-controls="panel-gold">Gold Standard Claims</button>
+                        </div>
+
+                        <div id="panel-ehr" role="tabpanel" aria-labelledby="tab-ehr">
+                            <div class="preview-body preview-body--empty" id="preview-text">
+                                Configure educator parameters and click <strong>Forge Scenario</strong> to synthesize a live medical case…
+                            </div>
+                        </div>
+
+                        <div id="panel-gold" role="tabpanel" aria-labelledby="tab-gold" hidden>
+                            <div class="preview-body preview-body--empty" id="preview-gold">
+                                Gold standard claims mapping will appear here after forging…
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="suggestion-actions">
-                <button class="toast-action" id="apply-code-btn">➕ Apply Code to Workspace</button>
+        <!-- MODE 2: BLUEPRINT CREATOR WIZARD -->
+        <section id="section-create" class="section">
+            <div class="alert" id="create-alert" role="alert" aria-live="polite"></div>
+
+            <!-- Wizard Stepper -->
+            <nav class="wizard-stepper" aria-label="Blueprint creation steps">
+                <div class="wizard-step wizard-step--active" data-step="1" role="step" aria-current="step">
+                    <div class="wizard-step__circle">1</div>
+                    <span class="wizard-step__label">Identity</span>
+                </div>
+                <div class="wizard-step" data-step="2" role="step">
+                    <div class="wizard-step__circle">2</div>
+                    <span class="wizard-step__label">Demographics</span>
+                </div>
+                <div class="wizard-step" data-step="3" role="step">
+                    <div class="wizard-step__circle">3</div>
+                    <span class="wizard-step__label">Noise Pool</span>
+                </div>
+                <div class="wizard-step" data-step="4" role="step">
+                    <div class="wizard-step__circle">4</div>
+                    <span class="wizard-step__label">Clinical</span>
+                </div>
+                <div class="wizard-step" data-step="5" role="step">
+                    <div class="wizard-step__circle">5</div>
+                    <span class="wizard-step__label">Gold Standard</span>
+                </div>
+                <div class="wizard-step" data-step="6" role="step">
+                    <div class="wizard-step__circle">6</div>
+                    <span class="wizard-step__label">Export</span>
+                </div>
+            </nav>
+
+            <!-- Wizard Panels (progressive elevation left→right in wide view) -->
+            <div class="workspace">
+                <!-- LEFT: Form Steps (Elevation 2) -->
+                <div class="panel panel--left neo-card neo-card--elev-2" style="min-height: 600px;">
+                    <div class="panel__header">
+                        <h2 class="panel__title">
+                            <span class="panel__icon">✨</span>
+                            Blueprint Builder
+                        </h2>
+                    </div>
+                    <div class="panel__body" style="flex: 1; overflow-y: auto;">
+                        <!-- STEP 1: IDENTITY -->
+                        <div class="wizard-panel" data-step="1" role="tabpanel" aria-labelledby="step1-label">
+                            <h3 id="step1-label" class="text-secondary mb-md" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 1 — Blueprint Identity</h3>
+                            <div class="form-group">
+                                <label class="form-label" for="bp-id">Blueprint ID *</label>
+                                <input type="text" id="bp-id" class="neo-input w-full" placeholder="BP-DOMAIN-CONCEPT-###" value="BP-NEW-CONDITION-001" aria-describedby="bp-id-help">
+                                <p id="bp-id-help" class="text-muted mt-sm">Unique identifier. Format: BP-DOMAIN-CONCEPT-###</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="bp-domain">Clinical Domain *</label>
+                                <select class="neo-select w-full" id="bp-domain">
+                                    <option value="Inpatient-Internal-Medicine">Inpatient — Internal Medicine</option>
+                                    <option value="Inpatient-Cardiology">Inpatient — Cardiology</option>
+                                    <option value="Inpatient-Neurology">Inpatient — Neurology</option>
+                                    <option value="Inpatient-Pulmonology">Inpatient — Pulmonology</option>
+                                    <option value="Inpatient-Orthopedics">Inpatient — Orthopedics</option>
+                                    <option value="Inpatient-Surgery">Inpatient — Surgery</option>
+                                    <option value="Inpatient-Oncology">Inpatient — Oncology</option>
+                                    <option value="Inpatient-Nephrology">Inpatient — Nephrology</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="bp-concept">Core Concept *</label>
+                                <input type="text" id="bp-concept" class="neo-input w-full" placeholder="e.g., Acute pancreatitis with systemic inflammation" aria-describedby="bp-concept-help">
+                                <p id="bp-concept-help" class="text-muted mt-sm">One-line clinical summary of the scenario</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="bp-difficulty">Difficulty Level *</label>
+                                <select class="neo-select w-full" id="bp-difficulty">
+                                    <option value="Introductory">Introductory</option>
+                                    <option value="Moderate" selected>Moderate</option>
+                                    <option value="Advanced">Advanced</option>
+                                    <option value="Expert">Expert</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2: DEMOGRAPHICS -->
+                        <div class="wizard-panel" data-step="2" role="tabpanel" aria-labelledby="step2-label" hidden>
+                            <h3 id="step2-label" class="text-secondary mb-md" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 2 — Demographics Rules</h3>
+                            <div class="form-group">
+                                <label class="form-label">Age Range *</label>
+                                <div class="range-row">
+                                    <input type="number" id="bp-age-min" class="neo-input" value="50" min="0" max="120" placeholder="Min" aria-label="Minimum age">
+                                    <span class="text-muted">to</span>
+                                    <input type="number" id="bp-age-max" class="neo-input" value="85" min="0" max="120" placeholder="Max" aria-label="Maximum age">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Genders *</label>
+                                <div class="flex gap-md mt-sm">
+                                    <label class="neo-checkbox">
+                                        <input type="checkbox" id="bp-gender-f" checked>
+                                        <span class="neo-checkbox__box" aria-hidden="true"></span>
+                                        <span class="neo-checkbox__label">Female (F)</span>
+                                    </label>
+                                    <label class="neo-checkbox">
+                                        <input type="checkbox" id="bp-gender-m" checked>
+                                        <span class="neo-checkbox__box" aria-hidden="true"></span>
+                                        <span class="neo-checkbox__label">Male (M)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3: NOISE POOL -->
+                        <div class="wizard-panel" data-step="3" role="tabpanel" aria-labelledby="step3-label" hidden>
+                            <h3 id="step3-label" class="text-secondary mb-md" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 3 — Isomorphic Noise Pool</h3>
+                            <p class="text-muted mb-md">Variability injected into each generated case for realism</p>
+
+                            <div class="form-group">
+                                <label class="form-label">Social History Variants</label>
+                                <div id="social-history-array">
+                                    <!-- Dynamic array fields injected here -->
+                                </div>
+                                <button type="button" class="neo-btn neo-btn--secondary neo-btn--sm mt-sm" id="add-social-btn">+ Add Social History Variant</button>
+                            </div>
+
+                            <div class="form-group mt-lg">
+                                <label class="form-label">Chronic Condition Variants</label>
+                                <div id="chronic-conditions-array">
+                                    <!-- Dynamic array fields injected here -->
+                                </div>
+                                <button type="button" class="neo-btn neo-btn--secondary neo-btn--sm mt-sm" id="add-chronic-btn">+ Add Chronic Condition</button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 4: CLINICAL TEMPLATE -->
+                        <div class="wizard-panel" data-step="4" role="tabpanel" aria-labelledby="step4-label" hidden>
+                            <h3 id="step4-label" class="text-secondary mb-md" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 4 — Clinical Template</h3>
+
+                            <div class="form-group">
+                                <label class="form-label" for="bp-chief-complaint">Chief Complaint *</label>
+                                <input type="text" id="bp-chief-complaint" class="neo-input w-full" placeholder="e.g., Severe epigastric pain radiating to back, nausea, vomiting">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Vital Signs Ranges</label>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+                                    <div class="form-group">
+                                        <label class="form-label">Temp (°F)</label>
+                                        <div class="range-row">
+                                            <input type="number" id="bp-temp-min" class="neo-input" value="100.5" step="0.1" min="95" max="108" placeholder="Min">
+                                            <span class="text-muted">to</span>
+                                            <input type="number" id="bp-temp-max" class="neo-input" value="102.5" step="0.1" min="95" max="108" placeholder="Max">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Heart Rate (bpm)</label>
+                                        <div class="range-row">
+                                            <input type="number" id="bp-hr-min" class="neo-input" value="100" min="40" max="180" placeholder="Min">
+                                            <span class="text-muted">to</span>
+                                            <input type="number" id="bp-hr-max" class="neo-input" value="118" min="40" max="180" placeholder="Max">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Resp Rate</label>
+                                        <div class="range-row">
+                                            <input type="number" id="bp-rr-min" class="neo-input" value="20" min="8" max="40" placeholder="Min">
+                                            <span class="text-muted">to</span>
+                                            <input type="number" id="bp-rr-max" class="neo-input" value="26" min="8" max="40" placeholder="Max">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">BP Systolic</label>
+                                        <div class="range-row">
+                                            <input type="number" id="bp-sys-min" class="neo-input" value="95" min="60" max="220" placeholder="Min">
+                                            <span class="text-muted">to</span>
+                                            <input type="number" id="bp-sys-max" class="neo-input" value="115" min="60" max="220" placeholder="Max">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">BP Diastolic</label>
+                                        <div class="range-row">
+                                            <input type="number" id="bp-dia-min" class="neo-input" value="55" min="30" max="140" placeholder="Min">
+                                            <span class="text-muted">to</span>
+                                            <input type="number" id="bp-dia-max" class="neo-input" value="70" min="30" max="140" placeholder="Max">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Lab Ranges</label>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+                                    <div class="form-group">
+                                        <label class="form-label">WBC (K/µL)</label>
+                                        <div class="range-row">
+                                            <input type="number" id="bp-wbc-min" class="neo-input" value="12.0" step="0.1" min="1" max="50" placeholder="Min">
+                                            <span class="text-muted">to</span>
+                                            <input type="number" id="bp-wbc-max" class="neo-input" value="18.0" step="0.1" min="1" max="50" placeholder="Max">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Lactate (mmol/L)</label>
+                                        <div class="range-row">
+                                            <input type="number" id="bp-lactate-min" class="neo-input" value="1.5" step="0.1" min="0.3" max="10" placeholder="Min">
+                                            <span class="text-muted">to</span>
+                                            <input type="number" id="bp-lactate-max" class="neo-input" value="3.5" step="0.1" min="0.3" max="10" placeholder="Max">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Custom Lab 1 Name</label>
+                                        <input type="text" id="bp-custom-lab1-name" class="neo-input" placeholder="e.g., BNP, Troponin, CRP">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Custom Lab 1 Range</label>
+                                        <div class="range-row">
+                                            <input type="number" id="bp-custom-lab1-min" class="neo-input" step="0.1" placeholder="Min">
+                                            <span class="text-muted">to</span>
+                                            <input type="number" id="bp-custom-lab1-max" class="neo-input" step="0.1" placeholder="Max">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="bp-chest-xray">Chest X-Ray Finding *</label>
+                                <textarea id="bp-chest-xray" class="neo-textarea w-full" placeholder="e.g., Left lower lobe opacity consistent with acute infiltrate/consolidation." rows="2">Left lower lobe opacity consistent with acute infiltrate/consolidation.</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="bp-assessment">Assessment / Hospital Course Narrative *</label>
+                                <textarea id="bp-assessment" class="neo-textarea w-full" placeholder="e.g., Severe sepsis secondary to community-acquired pneumonia. Patient was placed on sepsis resuscitation protocol..." rows="4">Severe sepsis secondary to community-acquired pneumonia. Patient was placed on sepsis resuscitation protocol with IV fluid boluses and started on broad-spectrum IV antibiotics (Ceftriaxone and Azithromycin). Supplemental oxygen titrated via nasal cannula. Chronic conditions were monitored and maintained on home medications.</textarea>
+                                <p class="text-muted mt-sm">This narrative is used directly in the generated EHR. Write it clinically.</p>
+                            </div>
+                        </div>
+
+                        <!-- STEP 5: GOLD STANDARD -->
+                        <div class="wizard-panel" data-step="5" role="tabpanel" aria-labelledby="step5-label" hidden>
+                            <h3 id="step5-label" class="text-secondary mb-md" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 5 — Gold Standard Claims Mapping</h3>
+
+                            <div class="form-group">
+                                <label class="form-label">Principal Diagnosis *</label>
+                                <div style="display: grid; grid-template-columns: 140px 1fr; gap: 12px;">
+                                    <input type="text" id="bp-pdx-code" class="neo-input" value="A41.9" placeholder="A41.9" aria-label="ICD-10 code">
+                                    <input type="text" id="bp-pdx-desc" class="neo-input" value="Sepsis, unspecified organism" placeholder="Description" aria-label="Description">
+                                </div>
+                                <label class="form-label mt-md">Rationale (Coding Guideline Citation)</label>
+                                <textarea id="bp-pdx-rationale" class="neo-textarea w-full" placeholder="e.g., Sepsis is present on admission (POA) and meets criteria for principal diagnosis under ICD-10-CM Guideline I.C.1.d.1.a." rows="2">Sepsis is present on admission (POA) and meets criteria for principal diagnosis under ICD-10-CM Guideline I.C.1.d.1.a.</textarea>
+                            </div>
+
+                            <div class="form-group mt-lg">
+                                <label class="form-label">Secondary Diagnoses</label>
+                                <div id="secondary-diagnoses-array">
+                                    <!-- Dynamic array fields injected here -->
+                                </div>
+                                <button type="button" class="neo-btn neo-btn--secondary neo-btn--sm mt-sm" id="add-secondary-btn">+ Add Secondary Diagnosis</button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 6: EXPORT -->
+                        <div class="wizard-panel" data-step="6" role="tabpanel" aria-labelledby="step6-label" hidden>
+                            <h3 id="step6-label" class="text-secondary mb-md" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Step 6 — Generate & Export</h3>
+
+                            <div class="flex gap-sm flex-wrap mb-md">
+                                <button class="neo-btn neo-btn--primary" id="btn-preview-yaml" type="button">👁️ Preview YAML</button>
+                                <button class="neo-btn neo-btn--secondary" id="btn-save-blueprint" type="button">💾 Save to Project</button>
+                                <button class="neo-btn neo-btn--secondary" id="btn-download-yaml" type="button">⬇️ Download .yaml</button>
+                            </div>
+
+                            <label class="form-label">YAML Output (Editable)</label>
+                            <textarea id="yaml-preview" class="yaml-editor w-full" placeholder="Click “Preview YAML” to generate…" spellcheck="false" aria-label="YAML preview editor"></textarea>
+                        </div>
+
+                        <!-- Wizard Navigation -->
+                        <div class="flex justify-between mt-lg pt-md" style="border-top: 1px solid var(--border-subtle);">
+                            <button class="neo-btn neo-btn--ghost neo-btn--sm" id="wizard-prev" type="button" disabled>← Previous</button>
+                            <button class="neo-btn neo-btn--primary" id="wizard-next" type="button">Next →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Live YAML Preview / Help (Elevation 4) -->
+                <div class="panel panel--right neo-card neo-card--elev-4" style="min-height: 600px;">
+                    <div class="panel__header">
+                        <h2 class="panel__title">
+                            <span class="panel__icon">📋</span>
+                            Live Preview & Reference
+                        </h2>
+                    </div>
+                    <div class="panel__body">
+                        <div class="preview-body" id="create-preview" style="min-height: 400px;">
+                            <div class="preview-body--empty">
+                                <strong>Live YAML Preview</strong><br><br>
+                                Fill in the wizard steps on the left. Click <strong>Preview YAML</strong> on Step 6 to see the generated blueprint here.<br><br>
+                                <span class="text-muted">All changes sync in real-time as you type.</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-lg pt-lg" style="border-top: 1px solid var(--border-subtle);">
+                            <h4 class="text-secondary mb-sm" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Quick Reference</h4>
+                            <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.7;">
+                                <strong>Blueprint ID format:</strong> BP-DOMAIN-CONCEPT-###<br>
+                                <strong>CC/MCC types:</strong> None, CC, MCC (per CMS DRG logic)<br>
+                                <strong>POA values:</strong> Y (Present), N (Not present), U (Unknown)<br>
+                                <strong>Assessment field:</strong> Drives the generated EHR narrative directly<br>
+                                <strong>Noise pool:</strong> Social history + chronic conditions add isomorphic variability
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="workspace">
-            <clinical-chart-viewer id="chart"></clinical-chart-viewer>
-            <code-entry-form id="form"></code-entry-form>
-        </div>
-
-        <telemetry-panel id="telemetry"></telemetry-panel>
+        </section>
     </div>
 
     <!-- Load Custom Web Components as ES Modules -->
@@ -273,128 +1301,10 @@
         import "./components/CodeEntryForm.js";
         import "./components/TelemetryPanel.js";
         import "./components/ScenarioForgeStudio.js";
+        import anime from "./components/anime.esm.min.js";
 
-        const modeForgeBtn = document.getElementById('mode-forge-btn');
-        const modeSandboxBtn = document.getElementById('mode-sandbox-btn');
-        const sectionForge = document.getElementById('section-forge');
-        const sectionSandbox = document.getElementById('section-sandbox');
-        
-        const forgeStudio = document.getElementById('forge-studio');
-        const chart = document.getElementById('chart');
-        const form = document.getElementById('form');
-        const telemetry = document.getElementById('telemetry');
-        
-        const suggestionBox = document.getElementById('suggestion-box');
-        const suggestExcerpt = document.getElementById('suggest-excerpt');
-        const suggestCode = document.getElementById('suggest-code');
-        const suggestDesc = document.getElementById('suggest-desc');
-        const suggestSeverity = document.getElementById('suggest-severity');
-        const suggestCitation = document.getElementById('suggest-citation');
-        const suggestRationale = document.getElementById('suggest-rationale');
-        const applyCodeBtn = document.getElementById('apply-code-btn');
-
-        let currentSuggestedCode = "";
-        let currentSeverity = "";
-
-        // Navigation Mode Switcher
-        modeForgeBtn.addEventListener('click', () => {
-            modeForgeBtn.classList.add('active');
-            modeSandboxBtn.classList.remove('active');
-            sectionForge.style.display = 'block';
-            sectionSandbox.style.display = 'none';
-        });
-
-        modeSandboxBtn.addEventListener('click', () => {
-            modeSandboxBtn.classList.add('active');
-            modeForgeBtn.classList.remove('active');
-            sectionForge.style.display = 'none';
-            sectionSandbox.style.display = 'flex';
-        });
-
-        // Listen for ScenarioForged event from ScenarioForgeStudio
-        document.addEventListener('ScenarioForged', (event) => {
-            const pkg = event.detail;
-
-            // Load into Sandbox components
-            chart.updateChart(pkg.scenario_id, pkg.synthesized_ehr.narrative);
-            form.resetForm();
-            telemetry.setGoldStandard(pkg.gold_standard);
-            telemetry.resetDefault();
-        });
-
-        // Listen for text selection / highlight events
-        document.addEventListener('TextHighlighted', async (event) => {
-            const text = event.detail.text;
-
-            try {
-                const response = await fetch('/api/extract', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ selected_text: text })
-                });
-
-                if (!response.ok) return;
-
-                const nlpData = await response.json();
-
-                currentSuggestedCode = nlpData.suggested_code;
-                currentSeverity = nlpData.severity_type;
-
-                suggestExcerpt.innerText = `"${nlpData.entity_text}"`;
-                suggestCode.innerText = nlpData.suggested_code;
-                suggestDesc.innerText = nlpData.description;
-                suggestSeverity.innerText = nlpData.severity_type;
-                suggestCitation.innerText = `Source: ${nlpData.official_citation} (${nlpData.source})`;
-                suggestRationale.innerText = nlpData.rationale;
-
-                suggestionBox.style.display = 'flex';
-
-            } catch (err) {
-                console.error("NLP extraction failed:", err);
-            }
-        });
-
-        // Apply suggested code to workspace
-        applyCodeBtn.addEventListener('click', () => {
-            if (currentSuggestedCode) {
-                if (currentSeverity === "Principal Candidate") {
-                    const pdxInput = form.shadowRoot.getElementById('pdx');
-                    if (pdxInput) pdxInput.value = currentSuggestedCode;
-                } else {
-                    form.appendSecondaryCode(currentSuggestedCode);
-                }
-                suggestionBox.style.display = 'none';
-            }
-        });
-
-        // Listen for claim submissions
-        document.addEventListener('ClaimSubmitted', async (event) => {
-            const payload = event.detail;
-
-            try {
-                suggestionBox.style.display = 'none';
-
-                const response = await fetch('/api/analyze', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.detail || "Server returned an error");
-                }
-
-                const result = await response.json();
-
-                telemetry.showResult(result, payload);
-                telemetry.scrollIntoView({ behavior: 'smooth' });
-
-            } catch (error) {
-                console.error("Analysis request failed:", error);
-                alert(`Analysis failed: ${error.message}`);
-            }
-        });
+        // Expose anime globally for components
+        window.anime = anime;
     </script>
 </body>
 </html>

@@ -1,0 +1,24 @@
+{
+  "name": "anubis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codejuls/anubis.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codejuls/anubis/issues"
+  },
+  "homepage": "https://github.com/codejuls/anubis#readme",
+  "dependencies": {
+    "animejs": "^4.5.0",
+    "localtunnel": "^2.0.2"
+  }
+}
