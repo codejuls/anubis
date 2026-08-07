@@ -471,6 +471,7 @@
                                 References <span class="badge" id="reference-count-badge" style="display:none; margin-left: 4px;">0</span>
                             </button>
                             <button class="tab-btn" id="tab-telemetry" role="tab" aria-selected="false" aria-controls="panel-telemetry">Telemetry</button>
+                            <button class="tab-btn" id="tab-optimize" role="tab" aria-selected="false" aria-controls="panel-optimize">Optimize</button>
                         </div>
 
                         <div id="panel-code" role="tabpanel" aria-labelledby="tab-code">
@@ -486,6 +487,9 @@
 
                         <div id="panel-telemetry" role="tabpanel" aria-labelledby="tab-telemetry" hidden>
                             <telemetry-panel id="sandbox-telemetry-panel"></telemetry-panel>
+                        </div>
+                        <div id="panel-optimize" role="tabpanel" aria-labelledby="tab-optimize" hidden>
+                            <drg-optimizer-panel id="sandbox-drg-optimizer"></drg-optimizer-panel>
                         </div>
                     </div>
                 </div>
@@ -1419,5 +1423,6 @@
         // Initialize sandbox
         loadSandboxCases();
     </script>
+    <script type="module" src="/components/DRGOptimizerPanel.js"></script>
 </body>
 </html>

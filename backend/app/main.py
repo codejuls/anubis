@@ -13,6 +13,9 @@ from .generator import SyntheticClaimsGenerator
 from .llm_provider import OllamaProvider, OVMSProvider
 from .nlp_parser import ClinicalNLPParser, NLPExtractionRequest, NLPExtractionResponse
 from .forge import ScenarioForgeEngine, BlueprintSummary, ForgeCustomizationRequest, ForgeScenarioPackage
+from .schemas import GrouperRequest, GrouperResponse, OptimizationRequest, OptimizationAnalysis
+from .drg_optimizer import DRGOptimizer, DRGKnowledgeBase
+from .guideline_index import FY2026GuidelineIndex
 
 # Blueprint Creator models
 class BlueprintSaveRequest(BaseModel):
@@ -207,6 +210,42 @@ async def analyze_claim(request: AnalysisRequest):
         )
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Analysis failed: {str(e)}")
+
+
+
+
+# DRG Optimizer Endpoint
+@ app.post("/api/optimize", response_model=OptimizationAnalysis)
+async def optimize_drg(request: OptimizationRequest):
+    """
+    Analyze a claim for DRG optimization opportunities.
+    
+    Input: Current case data + current DRG result + hospital ID
+    Output: Full optimization analysis with target DRGs, gaps, and query recommendations
+    """
+    try:
+        # Initialize the DRG optimizer with dependencies
+        guideline_index = FY2026GuidelineIndex()
+        drg_kb = DRGKnowledgeBase()
+        
+        optimizer = DRGOptimizer(
+            grouper=grouper,
+            pricer=pricer,
+            guideline_index=guideline_index,
+            drg_kb=drg_kb
+        )
+        
+        # Run the optimization analysis
+        hospital_id = request.hospital_id or "DEFAULT"
+        analysis = await optimizer.analyze_optimization(
+            case_data=request.case_data,
+            current_drg=request.current_drg,
+            hospital_id=hospital_id
+        )
+        
+        return analysis
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"DRG optimization failed: {str(e)}")
 
 
 # Mount Frontend Static Files to serve the complete sandbox on a single port!

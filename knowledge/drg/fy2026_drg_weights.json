@@ -1,0 +1,153 @@
+{
+  "metadata": {
+    "fiscal_year": "FY2026",
+    "effective_start": "2025-10-01",
+    "effective_end": "2026-09-30",
+    "grouper_version": "v43",
+    "source_authority": "CMS MS-DRG Relative Weights and Definitions",
+    "source_url": "https://www.cms.gov/medicare/coding/icd10/ms-drg-classification",
+    "generated_at": "2026-08-07",
+    "note": "MVP subset - DRGs relevant to current Anubis blueprints (Sepsis, Pneumonia, COPD, Stroke, AMI, Heart Failure, Hip Fracture)"
+  },
+  "drg_weights": {
+    "870": {
+      "description": "SEPTICEMIA OR SEVERE SEPSIS WITH MV >96 HOURS",
+      "weight": 3.4521,
+      "mdc": "18",
+      "mdc_name": "Infectious and Parasitic Diseases"
+    },
+    "871": {
+      "description": "SEPTICEMIA OR SEVERE SEPSIS WITHOUT MV >96 HOURS WITH MCC",
+      "weight": 1.7824,
+      "mdc": "18",
+      "mdc_name": "Infectious and Parasitic Diseases"
+    },
+    "872": {
+      "description": "SEPTICEMIA OR SEVERE SEPSIS WITHOUT MV >96 HOURS WITHOUT MCC",
+      "weight": 0.9831,
+      "mdc": "18",
+      "mdc_name": "Infectious and Parasitic Diseases"
+    },
+    "190": {
+      "description": "CHRONIC OBSTRUCTIVE PULMONARY DISEASE WITH MCC",
+      "weight": 1.1542,
+      "mdc": "04",
+      "mdc_name": "Diseases and Disorders of the Respiratory System"
+    },
+    "191": {
+      "description": "CHRONIC OBSTRUCTIVE PULMONARY DISEASE WITH CC",
+      "weight": 0.8120,
+      "mdc": "04",
+      "mdc_name": "Diseases and Disorders of the Respiratory System"
+    },
+    "192": {
+      "description": "CHRONIC OBSTRUCTIVE PULMONARY DISEASE WITHOUT CC/MCC",
+      "weight": 0.5832,
+      "mdc": "04",
+      "mdc_name": "Diseases and Disorders of the Respiratory System"
+    },
+    "193": {
+      "description": "SIMPLE PNEUMONIA & PLEURISY WITH MCC",
+      "weight": 1.3415,
+      "mdc": "04",
+      "mdc_name": "Diseases and Disorders of the Respiratory System"
+    },
+    "194": {
+      "description": "SIMPLE PNEUMONIA & PLEURISY WITH CC",
+      "weight": 0.9520,
+      "mdc": "04",
+      "mdc_name": "Diseases and Disorders of the Respiratory System"
+    },
+    "195": {
+      "description": "SIMPLE PNEUMONIA & PLEURISY WITHOUT CC/MCC",
+      "weight": 0.6841,
+      "mdc": "04",
+      "mdc_name": "Diseases and Disorders of the Respiratory System"
+    },
+    "064": {
+      "description": "INTRACRANIAL HEMORRHAGE OR CEREBRAL INFARCTION WITH MCC",
+      "weight": 1.8742,
+      "mdc": "01",
+      "mdc_name": "Diseases and Disorders of the Nervous System"
+    },
+    "065": {
+      "description": "INTRACRANIAL HEMORRHAGE OR CEREBRAL INFARCTION WITH CC",
+      "weight": 1.0987,
+      "mdc": "01",
+      "mdc_name": "Diseases and Disorders of the Nervous System"
+    },
+    "066": {
+      "description": "INTRACRANIAL HEMORRHAGE OR CEREBRAL INFARCTION WITHOUT CC/MCC",
+      "weight": 0.7523,
+      "mdc": "01",
+      "mdc_name": "Diseases and Disorders of the Nervous System"
+    },
+    "280": {
+      "description": "ACUTE MYOCARDIAL INFARCTION, DISCHARGED ALIVE WITH MCC",
+      "weight": 1.5623,
+      "mdc": "05",
+      "mdc_name": "Diseases and Disorders of the Circulatory System"
+    },
+    "281": {
+      "description": "ACUTE MYOCARDIAL INFARCTION, DISCHARGED ALIVE WITH CC",
+      "weight": 0.9876,
+      "mdc": "05",
+      "mdc_name": "Diseases and Disorders of the Circulatory System"
+    },
+    "282": {
+      "description": "ACUTE MYOCARDIAL INFARCTION, DISCHARGED ALIVE WITHOUT CC/MCC",
+      "weight": 0.6543,
+      "mdc": "05",
+      "mdc_name": "Diseases and Disorders of the Circulatory System"
+    },
+    "287": {
+      "description": "CIRCULATORY DISORDERS EXCEPT AMI, W CARD CATH W MCC",
+      "weight": 2.1345,
+      "mdc": "05",
+      "mdc_name": "Diseases and Disorders of the Circulatory System"
+    },
+    "291": {
+      "description": "HEART FAILURE & SHOCK WITH MCC",
+      "weight": 1.2345,
+      "mdc": "05",
+      "mdc_name": "Diseases and Disorders of the Circulatory System"
+    },
+    "292": {
+      "description": "HEART FAILURE & SHOCK WITH CC",
+      "weight": 0.8765,
+      "mdc": "05",
+      "mdc_name": "Diseases and Disorders of the Circulatory System"
+    },
+    "293": {
+      "description": "HEART FAILURE & SHOCK WITHOUT CC/MCC",
+      "weight": 0.5432,
+      "mdc": "05",
+      "mdc_name": "Diseases and Disorders of the Circulatory System"
+    },
+    "480": {
+      "description": "HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT WITH MCC",
+      "weight": 2.3456,
+      "mdc": "08",
+      "mdc_name": "Diseases and Disorders of the Musculoskeletal System"
+    },
+    "481": {
+      "description": "HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT WITH CC",
+      "weight": 1.5678,
+      "mdc": "08",
+      "mdc_name": "Diseases and Disorders of the Musculoskeletal System"
+    },
+    "482": {
+      "description": "HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT WITHOUT CC/MCC",
+      "weight": 1.1234,
+      "mdc": "08",
+      "mdc_name": "Diseases and Disorders of the Musculoskeletal System"
+    }
+  },
+  "mdc_hierarchy": {
+    "01": { "name": "Diseases and Disorders of the Nervous System", "drg_range": "064-066" },
+    "04": { "name": "Diseases and Disorders of the Respiratory System", "drg_range": "190-195" },
+    "05": { "name": "Diseases and Disorders of the Circulatory System", "drg_range": "280-293" },
+    "08": { "name": "Diseases and Disorders of the Musculoskeletal System", "drg_range": "480-482" },
+    "18": { "name": "Infectious and Parasitic Diseases", "drg_range": "870-872" }
+  }
+}

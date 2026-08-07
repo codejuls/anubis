@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional
+from typing import List, Optional, Literal
 from datetime import date
+from enum import Enum
 
 class DiagnosisCode(BaseModel):
     code: str = Field(..., description="ICD-10-CM diagnosis code (e.g., 'A41.9')")
@@ -27,3 +28,50 @@ class GrouperResponse(BaseModel):
     mdc_code: str = Field(..., description="Major Diagnostic Category (e.g., '18')")
     complication_level: str = Field(..., description="CC/MCC status level (None, CC, or MCC)")
     raw_response: dict = Field(default_factory=dict, description="Escaped vendor-specific response for advanced debugging")
+
+# New models for DRG Optimizer
+
+class OptimizationRequest(BaseModel):
+    case_data: GrouperRequest
+    current_drg: GrouperResponse
+    hospital_id: Optional[str] = Field(default="HOSP-URBAN-001", description="Hospital ID for pricing calculations")
+
+class OptimizationAnalysis(BaseModel):
+    optimization_potential: Literal["HIGH", "MEDIUM", "LOW", "NONE"]
+    current_reimbursement: float
+    target_drg_candidates: List["DRGCandidate"]
+    documentation_gaps: List["DocumentationGap"]
+    query_worthiness_score: float  # 0-10
+    query_worthiness_rationale: str
+    fiscal_year_context: "FiscalYearContext"
+
+class DRGCandidate(BaseModel):
+    drg_code: str
+    drg_description: str
+    relative_weight: float
+    reimbursement_delta: float
+    probability: Literal["HIGH", "MEDIUM", "LOW"]
+    requirements: List[str]  # Clinical/procedural requirements
+    query_recommendations: List["QueryRecommendation"]
+
+class QueryRecommendation(BaseModel):
+    question: str
+    clinical_indicators: List[str]  # Where to look in the record
+    icd10_guideline_ref: Optional[str] = None
+    coding_clinic_ref: Optional[str] = None
+    compliance_risk: Literal["LOW", "MEDIUM", "HIGH"]
+
+class DocumentationGap(BaseModel):
+    category: str
+    current_code: str
+    gap: str
+    action: str
+    icd10_guideline_ref: Optional[str] = None
+    coding_clinic_ref: Optional[str] = None
+    potential_impact: str
+
+class FiscalYearContext(BaseModel):
+    fiscal_year: str
+    grouper_version: str
+    effective_date: date
+    guideline_version: str
