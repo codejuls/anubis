@@ -1,0 +1,526 @@
+"""
+DRG Optimizer Module for Project Anubis
+Implements the DRG optimization analysis pipeline.
+"""
+
+import json
+import os
+from typing import List, Dict, Any, Optional
+from datetime import date
+from enum import Enum
+
+from pydantic import BaseModel
+from typing import Literal
+
+from .schemas import (
+    GrouperRequest,
+    GrouperResponse,
+    OptimizationRequest,
+    OptimizationAnalysis
+)
+from .grouper import AnubisMockGrouper
+from .pricer import AnubisMockPricer
+from .guideline_index import FY2026GuidelineIndex
+
+
+class OptimizationPotential(str, Enum):
+    HIGH = "HIGH"
+    MEDIUM = "MEDIUM"
+    LOW = "LOW"
+    NONE = "NONE"
+
+
+class ProbabilityLevel(str, Enum):
+    HIGH = "HIGH"
+    MEDIUM = "MEDIUM"
+    LOW = "LOW"
+
+
+class ComplianceRisk(str, Enum):
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+
+
+class FiscalYearContext(BaseModel):
+    fiscal_year: str
+    grouper_version: str
+    effective_date: date
+    guideline_version: str
+
+
+class QueryRecommendation(BaseModel):
+    question: str
+    clinical_indicators: List[str]
+    icd10_guideline_ref: Optional[str] = None
+    coding_clinic_ref: Optional[str] = None
+    compliance_risk: ComplianceRisk = ComplianceRisk.LOW
+
+
+class DocumentationGap(BaseModel):
+    category: str
+    current_code: str
+    gap: str
+    action: str
+    icd10_guideline_ref: Optional[str] = None
+    coding_clinic_ref: Optional[str] = None
+    potential_impact: str
+
+
+class DRGCandidate(BaseModel):
+    drg_code: str
+    drg_description: str
+    relative_weight: float
+    reimbursement_delta: float
+    probability: ProbabilityLevel
+    requirements: List[str]  # Clinical/procedural requirements
+    query_recommendations: List[QueryRecommendation]
+
+
+class OptimizationAnalysis(BaseModel):
+    optimization_potential: OptimizationPotential
+    current_reimbursement: float
+    target_drg_candidates: List[DRGCandidate]
+    documentation_gaps: List[DocumentationGap]
+    query_worthiness_score: float  # 0-10
+    query_worthiness_rationale: str
+    fiscal_year_context: FiscalYearContext
+
+
+class DRGKnowledgeBase:
+    """Loads and queries FY-specific DRG weights, criteria, and hierarchy."""
+
+    def __init__(self, knowledge_base_path: str = "anubis/knowledge/drg"):
+        self.knowledge_base_path = knowledge_base_path
+        self.drg_weights: Dict[str, Any] = {}
+        self.mdc_hierarchy: Dict[str, Any] = {}
+        self.drg_criteria: Dict[str, Any] = {}
+        self._load_knowledge_base()
+
+    def _load_knowledge_base(self):
+        """Load DRG weights and MDC hierarchy from JSON file."""
+        weights_file = os.path.join(self.knowledge_base_path, "fy2026_drg_weights.json")
+        if os.path.exists(weights_file):
+            with open(weights_file, 'r') as f:
+                data = json.load(f)
+                self.drg_weights = data.get("drg_weights", {})
+                self.mdc_hierarchy = data.get("mdc_hierarchy", {})
+                # For MVP, we'll use the same structure for criteria (to be expanded)
+                self.drg_criteria = data.get("drg_criteria", {})
+        else:
+            # Fallback to minimal data if file not found
+            self.drg_weights = {
+                "870": {"description": "SEPTICEMIA OR SEVERE SEPSIS WITH MV >96 HOURS", "weight": 3.4521, "mdc": "18"},
+                "871": {"description": "SEPTICEMIA OR SEVERE SEPSIS WITHOUT MV >96 HOURS WITH MCC", "weight": 1.7824, "mdc": "18"},
+                "872": {"description": "SEPTICEMIA OR SEVERE SEPSIS WITHOUT MV >96 HOURS WITHOUT MCC", "weight": 0.9831, "mdc": "18"},
+            }
+            self.mdc_hierarchy = {
+                "18": {"name": "Infectious and Parasitic Diseases", "drg_range": "870-872"}
+            }
+
+    def load_fy_data(self, fiscal_year: str) -> Dict[str, Any]:
+        """Load FY-specific DRG data. For MVP, we only support FY2026."""
+        if fiscal_year != "FY2026":
+            raise ValueError(f"Only FY2026 is supported in MVP. Requested: {fiscal_year}")
+        return {
+            "drg_weights": self.drg_weights,
+            "mdc_hierarchy": self.mdc_hierarchy,
+            "drg_criteria": self.drg_criteria
+        }
+
+    def get_drg_weight(self, drg_code: str) -> Optional[float]:
+        """Get the relative weight for a given DRG code."""
+        drg_info = self.drg_weights.get(drg_code)
+        if drg_info:
+            return drg_info.get("weight")
+        return None
+
+    def get_drg_info(self, drg_code: str) -> Optional[Dict[str, Any]]:
+        """Get full information for a given DRG code."""
+        return self.drg_weights.get(drg_code)
+
+    def get_mdc_for_drg(self, drg_code: str) -> Optional[str]:
+        """Get the MDC for a given DRG code."""
+        drg_info = self.drg_weights.get(drg_code)
+        if drg_info:
+            return drg_info.get("mdc")
+        return None
+
+    def get_drg_criteria(self, drg_code: str) -> Optional[Dict[str, Any]]:
+        """Get clinical criteria for a given DRG code."""
+        return self.drg_criteria.get(drg_code)
+
+
+class DRGClinicalMapper:
+    """Maps DRG criteria to clinical documentation requirements."""
+
+    def __init__(self, drg_kb: DRGKnowledgeBase):
+        self.drg_kb = drg_kb
+
+    def map_requirements(self, target_drg: str, current_codes: List[str]) -> List[DocumentationGap]:
+        """
+        Map current codes to clinical documentation requirements for target DRG.
+        For MVP, we'll return a simplified set of gaps based on known examples.
+        """
+        gaps = []
+
+        # Example logic for sepsis DRGs (to be expanded)
+        if target_drg == "870":  # SEPTICEMIA OR SEVERE SEPSIS WITH MV >96 HOURS
+            # Check if mechanical ventilation procedure is present
+            has_vent_procedure = any(proc.startswith("5A1955Z") for proc in current_codes)
+            if not has_vent_procedure:
+                gaps.append(DocumentationGap(
+                    category="Mechanical Ventilation Duration",
+                    current_code="None",
+                    gap="Mechanical ventilation >96 hours not documented",
+                    action="Check ventilator logs, respiratory therapy notes, ICU flow sheets for duration >96 hours",
+                    icd10_guideline_ref="ICD-10-PCS Guideline B3.1a",
+                    coding_clinic_ref="AHA Coding Clinic, Q1 2024, p.12",
+                    potential_impact="Required for DRG 870 assignment"
+                ))
+
+        # Check for MCC if target DRG expects MCC
+        target_info = self.drg_kb.get_drg_info(target_drg)
+        if target_info:
+            # This is a simplified check - in reality we'd need to check the specific criteria
+            pass
+
+        return gaps
+
+    def _get_mcc_cc_lists(self, drg_code: str) -> tuple[List[str], List[str]]:
+        """Get MCC and CC lists for a DRG from criteria (placeholder)."""
+        # In a full implementation, this would come from the DRG criteria
+        # For MVP, we return empty lists
+        return [], []
+
+
+class QueryOpportunityScorer:
+    """Scores and ranks query opportunities."""
+
+    def __init__(self):
+        pass
+
+    def score_opportunity(
+        self,
+        gap: DocumentationGap,
+        reimbursement_delta: float,
+        clinical_indicators: List[str]
+    ) -> QueryRecommendation:
+        """
+        Score a documentation gap and generate a query recommendation.
+        For MVP, we return a basic query recommendation.
+        """
+        # Determine compliance risk based on gap category (simplified)
+        compliance_risk = ComplianceRisk.LOW
+        if "ventilation" in gap.category.lower() or "ventilator" in gap.category.lower():
+            compliance_risk = ComplianceRisk.MEDIUM  # Ventilation queries need careful phrasing
+
+        # Generate a question based on the gap
+        question = f"Was there documentation of {gap.gap.lower()}?"
+        if "review" in gap.action.lower():
+            question = f"Does the medical record show {gap.gap.lower()}?"
+
+        return QueryRecommendation(
+            question=question,
+            clinical_indicators=clinical_indicators,
+            icd10_guideline_ref=gap.icd10_guideline_ref,
+            coding_clinic_ref=gap.coding_clinic_ref,
+            compliance_risk=compliance_risk
+        )
+
+
+class DRGOptimizer:
+    """Main orchestrator for DRG optimization analysis."""
+
+    def __init__(
+        self,
+        grouper: AnubisMockGrouper,
+        pricer: AnubisMockPricer,
+        guideline_index: FY2026GuidelineIndex,
+        drg_kb: DRGKnowledgeBase
+    ):
+        self.grouper = grouper
+        self.pricer = pricer
+        self.guideline_index = guideline_index
+        self.drg_kb = drg_kb
+        self.clinical_mapper = DRGClinicalMapper(drg_kb)
+        self.query_scorer = QueryOpportunityScorer()
+
+    def _resolve_fiscal_year(self, service_date: date) -> str:
+        """Resolve fiscal year from service date (CMS FY: Oct 1 - Sep 30)."""
+        if service_date.month >= 10:
+            return f"FY{service_date.year + 1}"
+        return f"FY{service_date.year}"
+
+    def _get_current_reimbursement(self, drg_weight: float, hospital_base_rate: float = 7500.0) -> float:
+        """Calculate reimbursement from DRG weight and hospital base rate.
+        Using a default base rate of $7500 for MVP; in reality this would be hospital-specific.
+        """
+        return drg_weight * hospital_base_rate
+
+    def _get_hospital_base_rate(self, hospital_id: str) -> float:
+        """Get hospital-specific base rate.
+        For MVP, return a default rate. In reality, this would come from a hospital database.
+        """
+        # Default base rate for Medicare inpatient prospective payment system
+        return 7500.0
+
+    def _enumerate_target_drg_candidates(
+        self,
+        current_drg: str,
+        principal_diagnosis: str,
+        procedures: List[str],
+        mcc_present: bool,
+        cc_present: bool,
+        fiscal_year: str
+    ) -> List[DRGCandidate]:
+        """
+        Enumerate all DRGs reachable from current state by adding/removing MCCs/CCs,
+        changing PDx sequencing, or adding procedures.
+        For MVP, we implement a simplified version for the sepsis example.
+        """
+        candidates = []
+
+        # Load FY data
+        fy_data = self.drg_kb.load_fy_data(fiscal_year)
+
+        # Get current DRG weight
+        current_weight = self.drg_kb.get_drg_weight(current_drg)
+        if current_weight is None:
+            return candidates
+
+        # Get hospital base rate (default for MVP)
+        hospital_base_rate = self._get_hospital_base_rate("HOSP-URBAN-001")  # TODO: make dynamic
+
+        # Current reimbursement
+        current_reimbursement = self._get_current_reimbursement(current_weight, hospital_base_rate)
+
+        # Example: For sepsis DRGs (870, 871, 872)
+        # We'll hardcode the transitions for MVP, but in reality this would be algorithmic
+        if current_drg == "871":  # SEPTICEMIA OR SEVERE SEPSIS WITHOUT MV >96 HOURS WITH MCC
+            # Candidate: 870 - SEPTICEMIA OR SEVERE SEPSIS WITH MV >96 HOURS
+            target_870_weight = self.drg_kb.get_drg_weight("870")
+            if target_870_weight:
+                reimbursement_870 = self._get_current_reimbursement(target_870_weight, hospital_base_rate)
+                delta_870 = reimbursement_870 - current_reimbursement
+
+                # Check if mechanical ventilation procedure is present
+                has_vent_procedure = any(proc.startswith("5A1955Z") for proc in procedures)
+
+                candidates.append(DRGCandidate(
+                    drg_code="870",
+                    drg_description="SEPTICEMIA OR SEVERE SEPSIS WITH MV >96 HOURS",
+                    relative_weight=target_870_weight,
+                    reimbursement_delta=delta_870,
+                    probability=ProbabilityLevel.MEDIUM if not has_vent_procedure else ProbabilityLevel.HIGH,
+                    requirements=[
+                        "Documentation of mechanical ventilation >96 hours",
+                        "ICD-10-PCS code 5A1955Z (mechanical ventilation >96 hours) must be present"
+                    ],
+                    query_recommendations=[  # Will be populated later in analyze_optimization
+                        QueryRecommendation(
+                            question="Was the patient on mechanical ventilation for more than 96 consecutive hours?",
+                            clinical_indicators=[
+                                "Ventilator logs showing >96 hrs",
+                                "Respiratory therapy notes",
+                                "ICU flow sheets"
+                            ],
+                            icd10_guideline_ref="ICD-10-PCS Guideline B3.1a",
+                            coding_clinic_ref="AHA Coding Clinic, Q1 2024, p.12",
+                            compliance_risk=ComplianceRisk.MEDIUM
+                        )
+                    ]
+                ))
+
+            # Candidate: 872 - SEPTICEMIA OR SEVERE SEPSIS WITHOUT MV >96 HOURS WITHOUT MCC
+            target_872_weight = self.drg_kb.get_drg_weight("872")
+            if target_872_weight:
+                reimbursement_872 = self._get_current_reimbursement(target_872_weight, hospital_base_rate)
+                delta_872 = reimbursement_872 - current_reimbursement
+
+                # Check if MCC is present
+                if mcc_present:
+                    candidates.append(DRGCandidate(
+                        drg_code="872",
+                        drg_description="SEPTICEMIA OR SEVERE SEPSIS WITHOUT MV >96 HOURS WITHOUT MCC",
+                        relative_weight=target_872_weight,
+                        reimbursement_delta=delta_872,
+                        probability=ProbabilityLevel.LOW,  # Low probability because we'd need to remove MCC
+                        requirements=[
+                            "Demonstrate that no MCC is present"
+                        ],
+                        query_recommendations=[]
+                    ))
+
+        # Add current DRG as a candidate (for completeness)
+        drg_info = self.drg_kb.get_drg_info(current_drg)
+        drg_description = drg_info.get("description", "") if drg_info else ""
+        candidates.append(DRGCandidate(
+            drg_code=current_drg,
+            drg_description=drg_description,
+            relative_weight=current_weight,
+            reimbursement_delta=0.0,
+            probability=ProbabilityLevel.HIGH,
+            requirements=[],
+            query_recommendations=[]
+        ))
+
+        # Sort candidates by reimbursement delta descending (highest first)
+        candidates.sort(key=lambda x: x.reimbursement_delta, reverse=True)
+        return candidates
+
+    def _analyze_documentation_gaps(
+        self,
+        target_drg_candidates: List[DRGCandidate],
+        principal_diagnosis: str,
+        secondary_diagnoses: List[str],
+        procedures: List[str]
+    ) -> List[DocumentationGap]:
+        """Analyze documentation gaps for all target DRG candidates."""
+        all_gaps = []
+        current_codes = [principal_diagnosis] + secondary_diagnoses + procedures
+
+        for candidate in target_drg_candidates:
+            if candidate.drg_code != "871":  # Skip current DRG for gap analysis (optional)
+                gaps = self.clinical_mapper.map_requirements(candidate.drg_code, current_codes)
+                all_gaps.extend(gaps)
+
+        # For MVP, we'll also add some example gaps if none found
+        if not all_gaps:
+            # Example gap for sepsis specificity
+            all_gaps.append(DocumentationGap(
+                category="Sepsis Severity",
+                current_code="A41.9",
+                gap="Unspecified organism — consider more specific sepsis code if culture data exists",
+                action="Review microbiology reports for identified organism",
+                icd10_guideline_ref="I.C.1.d.1.a",
+                potential_impact="May support same DRG but with higher specificity for quality metrics"
+            ))
+
+        return all_gaps
+
+    def _calculate_query_worthiness(
+        self,
+        documentation_gaps: List[DocumentationGap],
+        target_drg_candidates: List[DRGCandidate]
+    ) -> tuple[float, str]:
+        """Calculate query worthiness score and rationale."""
+        if not target_drg_candidates:
+            return 0.0, "No target DRG candidates identified."
+
+        # Find the candidate with highest positive reimbursement delta
+        best_candidate = None
+        max_delta = 0.0
+        for candidate in target_drg_candidates:
+            if candidate.reimbursement_delta > max_delta:
+                max_delta = candidate.reimbursement_delta
+                best_candidate = candidate
+
+        if best_candidate is None or max_delta <= 0:
+            return 0.0, "No positive reimbursement delta found for any target DRG."
+
+        # Base score on reimbursement delta (higher delta = higher score)
+        # Scale: $0 = 0 points, $10,000+ = 10 points (linear)
+        reimbursement_score = min(10.0, (max_delta / 10000.0) * 10.0)
+
+        # Adjust based on probability (HIGH probability increases score, LOW decreases)
+        probability_adjustment = {
+            ProbabilityLevel.HIGH: 1.0,
+            ProbabilityLevel.MEDIUM: 0.8,
+            ProbabilityLevel.LOW: 0.6
+        }.get(best_candidate.probability, 0.8)
+
+        # Adjust based on number of gaps (more gaps = slightly lower score due to complexity)
+        gap_factor = max(0.5, 1.0 - (len(documentation_gaps) * 0.1))
+
+        # Final score
+        final_score = reimbursement_score * probability_adjustment * gap_factor
+        final_score = max(0.0, min(10.0, final_score))  # Clamp to 0-10
+
+        # Generate rationale
+        rationale_parts = [
+            f"High reimbursement delta (${max_delta:.0f})",
+            f"Probability of success: {best_candidate.probability.value}",
+            f"{len(documentation_gaps)} documentation gap(s) identified"
+        ]
+        rationale = ". ".join(rationale_parts) + "."
+
+        return final_score, rationale
+
+    async def analyze_optimization(
+        self,
+        case_data: GrouperRequest,
+        current_drg: GrouperResponse,
+        hospital_id: str = "HOSP-URBAN-001"
+    ) -> OptimizationAnalysis:
+        """
+        Full optimization analysis pipeline.
+        """
+        # 1. Resolve fiscal year from service date
+        fiscal_year = self._resolve_fiscal_year(case_data.service_date)
+
+        # 2. Extract current state
+        principal_diagnosis = case_data.principal_diagnosis.code
+        secondary_diagnoses = [diag.code for diag in case_data.secondary_diagnoses]
+        procedures = [proc.code for proc in case_data.procedures]
+        mcc_present = current_drg.complication_level == "MCC"
+        cc_present = current_drg.complication_level == "CC"
+
+        # 3. Get current DRG weight and reimbursement
+        current_weight = current_drg.relative_weight
+        hospital_base_rate = self._get_hospital_base_rate(hospital_id)
+        current_reimbursement = self._get_current_reimbursement(current_weight, hospital_base_rate)
+
+        # 4. Enumerate target DRG candidates
+        target_drg_candidates = self._enumerate_target_drg_candidates(
+            current_drg=current_drg.drg_code,
+            principal_diagnosis=principal_diagnosis,
+            procedures=procedures,
+            mcc_present=mcc_present,
+            cc_present=cc_present,
+            fiscal_year=fiscal_year
+        )
+
+        # 5. Analyze documentation gaps
+        documentation_gaps = self._analyze_documentation_gaps(
+            target_drg_candidates=target_drg_candidates,
+            principal_diagnosis=principal_diagnosis,
+            secondary_diagnoses=secondary_diagnoses,
+            procedures=procedures
+        )
+
+        # 6. Calculate query worthiness
+        query_worthiness_score, query_worthiness_rationale = self._calculate_query_worthiness(
+            documentation_gaps=documentation_gaps,
+            target_drg_candidates=target_drg_candidates
+        )
+
+        # 7. Determine optimization potential
+        if query_worthiness_score >= 7.0:
+            optimization_potential = OptimizationPotential.HIGH
+        elif query_worthiness_score >= 4.0:
+            optimization_potential = OptimizationPotential.MEDIUM
+        elif query_worthiness_score > 0.0:
+            optimization_potential = OptimizationPotential.LOW
+        else:
+            optimization_potential = OptimizationPotential.NONE
+
+        # 8. Build fiscal year context
+        fy_data = self.drg_kb.load_fy_data(fiscal_year)
+        fiscal_year_context = FiscalYearContext(
+            fiscal_year=fiscal_year,
+            grouper_version=fy_data.get("metadata", {}).get("grouper_version", "v43"),
+            effective_date=date.fromisoformat(fy_data.get("metadata", {}).get("effective_start", "2025-10-01")),
+            guideline_version="FY2026"
+        )
+
+        # 9. Return analysis
+        return OptimizationAnalysis(
+            optimization_potential=optimization_potential,
+            current_reimbursement=current_reimbursement,
+            target_drg_candidates=target_drg_candidates,
+            documentation_gaps=documentation_gaps,
+            query_worthiness_score=query_worthiness_score,
+            query_worthiness_rationale=query_worthiness_rationale,
+            fiscal_year_context=fiscal_year_context
+        )

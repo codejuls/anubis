@@ -105,6 +105,643 @@ class DRGOptimizerPanel extends HTMLElement {
                 .loading, .error, .empty {
                     text-align: center;
                     padding: 20px;
+                    color: var(--fg-muted, #6c757d);
+                    font-style: italic;
+                }
+                
+                .error {
+                    color: var(--danger, #c92a2a);
+                }
+                
+                .optimization-status {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 16px;
+                    padding: 12px;
+                    background: var(--bg-hover, #e9ecef);
+                    border-radius: var(--radius-sm, 4px);
+                }
+                
+                .status-indicator {
+                    display: inline-flex;
+                    align-items: center;
+                    margin-right: 12px;
+                }
+                
+                .status-dot {
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    margin-right: 8px;
+                }
+                
+                .status-high { background: var(--primary, #059669); }
+                .status-medium { background: #ff9500; }
+                .status-low { background: var(--danger, #c92a2a); }
+                .status-none { background: var(--fg-muted, #6c757d); }
+                
+                .status-text {
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    font-size: 0.8125rem;
+                }
+                
+                .current-drginfo {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 16px;
+                    padding: 12px;
+                    background: var(--bg-card, #fff);
+                    border: 1px solid var(--border, #ced4da);
+                    border-radius: var(--radius-sm, 4px);
+                }
+                
+                .drg-detail {
+                    flex: 1;
+                }
+                
+                .drg-code {
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    color: var(--fg, #1a1d1c);
+                    margin-bottom: 4px;
+                }
+                
+                .drg-description {
+                    font-size: 0.875rem;
+                    color: var(--fg-muted, #6c757d);
+                }
+                
+                .reimbursement-info {
+                    text-align: right;
+                }
+                
+                .reimbursement-label {
+                    font-size: 0.75rem;
+                    color: var(--fg-muted, #6c757d);
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                }
+                
+                .reimbursement-amount {
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    color: var(--fg, #1a1d1c);
+                }
+                
+                .section-title {
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                    color: var(--fg-muted, #6c757d);
+                    margin-bottom: 8px;
+                    padding-bottom: 4px;
+                    border-bottom: 1px solid var(--border, #ced4da);
+                }
+                
+                .candidate-list, .gap-list {
+                    margin-bottom: 16px;
+                }
+                
+                .candidate-item, .gap-item {
+                    background: var(--bg-card, #fff);
+                    border: 1px solid var(--border, #ced4da);
+                    border-radius: var(--radius-sm, 4px);
+                    padding: 12px;
+                    margin-bottom: 8px;
+                }
+                
+                .candidate-header, .gap-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    margin-bottom: 8px;
+                }
+                
+                .candidate-title, .gap-title {
+                    font-weight: 600;
+                    flex: 1;
+                }
+                
+                .candidate-delta, .gap-actions {
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    white-space: nowrap;
+                }
+                
+                .candidate-delta.positive { color: var(--primary, #059669); }
+                .candidate-delta.zero { color: var(--fg-muted, #6c757d); }
+                .candidate-delta.negative { color: var(--danger, #c92a2a); }
+                
+                .candidate-meta, .gap-meta {
+                    display: flex;
+                    gap: 16px;
+                    font-size: 0.8125rem;
+                    color: var(--fg-muted, #6c757d);
+                    margin-bottom: 8px;
+                    flex-wrap: wrap;
+                }
+                
+                .candidate-probability, .gap-category {
+                    background: var(--bg-hover, #e9ecef);
+                    padding: 2px 6px;
+                    border-radius: var(--radius-sm, 4px);
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                }
+                
+                .prob-high { background: var(--primary-light, #d1fae5); color: var(--primary, #059669); }
+                .prob-medium { background: #fff4e5; color: #ff9500; }
+                .prob-low { background: var(--danger-light, #fdeaea); color: var(--danger, #c92a2a); }
+                
+                .requirements-list, .indicators-list {
+                    margin: 8px 0;
+                    padding-left: 16px;
+                }
+                
+                .requirements-list li, .indicators-list li {
+                    margin-bottom: 4px;
+                    font-size: 0.875rem;
+                    line-height: 1.4;
+                }
+                
+                .query-section {
+                    margin-top: 12px;
+                    padding-top: 12px;
+                    border-top: 1px solid var(--border-hover, #e9ecef);
+                }
+                
+                .query-question {
+                    font-weight: 600;
+                    margin-bottom: 8px;
+                    color: var(--fg, #1a1d1c);
+                }
+                
+                .query-indicators {
+                    font-size: 0.875rem;
+                    color: var(--fg-muted, #6c757d);
+                    margin-bottom: 8px;
+                }
+                
+                .query-indicators-label {
+                    font-weight: 600;
+                    margin-right: 4px;
+                }
+                
+                .query-references {
+                    font-size: 0.75rem;
+                    color: var(--fg-muted, #6c757d);
+                }
+                
+                .query-ref-label {
+                    font-weight: 600;
+                }
+                
+                .worthiness-section {
+                    background: var(--bg-hover, #e9ecef);
+                    border-radius: var(--radius-sm, 4px);
+                    padding: 12px;
+                    margin-top: 16px;
+                }
+                
+                .worthiness-title {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 8px;
+                }
+                
+                .worthiness-score {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    color: var(--fg, #1a1d1c);
+                }
+                
+                .score-label {
+                    font-size: 0.875rem;
+                    text-transform: uppercase;
+                    color: var(--fg-muted, #6c757d);
+                }
+                
+                .worthiness-rationale {
+                    font-size: 0.875rem;
+                    line-height: 1.5;
+                    color: var(--fg-muted, #6c757d);
+                }
+                
+                .fiscal-year-info {
+                    font-size: 0.75rem;
+                    color: var(--fg-muted, #6c757d);
+                    margin-top: 8px;
+                    text-align: right;
+                }
+                
+                .btn-view-query {
+                    background: var(--primary, #059669);
+                    color: white;
+                    border: none;
+                    padding: 6px 12px;
+                    border-radius: var(--radius-sm, 4px);
+                    font-size: 0.75rem;
+                    cursor: pointer;
+                }
+                
+                .btn-view-query:hover {
+                    background: var(--primary-hover, #047857);
+                }
+                
+                .no-data {
+                    text-align: center;
+                    color: var(--fg-muted, #6c757d);
+                    font-style: italic;
+                }
+            </style>
+                    margin: 0 0 16px;
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    color: var(--fg, #1a1d1c);
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                }
+                
+                .loading, .error, .empty {
+                    text-align: center;
+                    padding: 20px;
+                    color: var(--fg-muted, #6c757d);
+                    font-style: italic;
+                }
+                
+                .error {
+                    color: var(--danger, #c92a2a);
+                }
+                
+                .optimization-status {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 16px;
+                    padding: 12px;
+                    background: var(--bg-hover, #e9ecef);
+                    border-radius: var(--radius-sm, 4px);
+                }
+                
+                .status-indicator {
+                    display: inline-flex;
+                    align-items: center;
+                    margin-right: 12px;
+                }
+                
+                .status-dot {
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    margin-right: 8px;
+                }
+                
+                .status-high { background: var(--primary, #006b3c); }
+                .status-medium { background: #ff9500; }
+                .status-low { background: var(--danger, #c92a2a); }
+                .status-none { background: var(--fg-muted, #6c757d); }
+                
+                .status-text {
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    font-size: 0.8125rem;
+                }
+                
+                .current-drginfo {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 16px;
+                    padding: 12px;
+                    background: var(--bg-card, #fff);
+                    border: 1px solid var(--border, #ced4da);
+                    border-radius: var(--radius-sm, 4px);
+                }
+                
+                .drg-detail {
+                    flex: 1;
+                }
+                
+                .drg-code {
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    color: var(--fg, #1a1d1c);
+                    margin-bottom: 4px;
+                }
+                
+                .drg-description {
+                    font-size: 0.875rem;
+                    color: var(--fg-muted, #6c757d);
+                }
+                
+                .reimbursement-info {
+                    text-align: right;
+                }
+                
+                .reimbursement-label {
+                    font-size: 0.75rem;
+                    color: var(--fg-muted, #6c757d);
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                }
+                
+                .reimbursement-amount {
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    color: var(--fg, #1a1d1c);
+                }
+                
+                .section-title {
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                    color: var(--fg-muted, #6c757d);
+                    margin-bottom: 8px;
+                    padding-bottom: 4px;
+                    border-bottom: 1px solid var(--border, #ced4da);
+                }
+                
+                .candidate-list, .gap-list {
+                    margin-bottom: 16px;
+                }
+                
+                .candidate-item, .gap-item {
+                    background: var(--bg-card, #fff);
+                    border: 1px solid var(--border, #ced4da);
+                    border-radius: var(--radius-sm, 4px);
+                    padding: 12px;
+                    margin-bottom: 8px;
+                }
+                
+                .candidate-header, .gap-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    margin-bottom: 8px;
+                }
+                
+                .candidate-title, .gap-title {
+                    font-weight: 600;
+                    flex: 1;
+                }
+                
+                .candidate-delta, .gap-actions {
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    white-space: nowrap;
+                }
+                
+                .candidate-delta.positive { color: var(--primary, #006b3c); }
+                .candidate-delta.zero { color: var(--fg-muted, #6c757d); }
+                .candidate-delta.negative { color: var(--danger, #c92a2a); }
+                
+                .candidate-meta, .gap-meta {
+                    display: flex;
+                    gap: 16px;
+                    font-size: 0.8125rem;
+                    color: var(--fg-muted, #6c757d);
+                    margin-bottom: 8px;
+                    flex-wrap: wrap;
+                }
+                
+                .candidate-probability, .gap-category {
+                    background: var(--bg-hover, #e9ecef);
+                    padding: 2px 6px;
+                    border-radius: var(--radius-sm, 4px);
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                }
+                
+                .prob-high { background: var(--primary-light, #e8f5ee); color: var(--primary, #006b3c); }
+                .prob-medium { background: #fff4e5; color: #ff9500; }
+                .prob-low { background: var(--danger-light, #fdeaea); color: var(--danger, #c92a2a); }
+                
+                .requirements-list, .indicators-list {
+                    margin: 8px 0;
+                    padding-left: 16px;
+                }
+                
+                .requirements-list li, .indicators-list li {
+                    margin-bottom: 4px;
+                    font-size: 0.875rem;
+                    line-height: 1.4;
+                }
+                
+                .query-section {
+                    margin-top: 12px;
+                    padding-top: 12px;
+                    border-top: 1px solid var(--border-hover, #e9ecef);
+                }
+                
+                .query-question {
+                    font-weight: 600;
+                    margin-bottom: 8px;
+                    color: var(--fg, #1a1d1c);
+                }
+                
+                .query-indicators {
+                    font-size: 0.875rem;
+                    color: var(--fg-muted, #6c757d);
+                    margin-bottom: 8px;
+                }
+                
+                .query-indicators-label {
+                    font-weight: 600;
+                    margin-right: 4px;
+                }
+                
+                .query-references {
+                    font-size: 0.75rem;
+                    color: var(--fg-muted, #6c757d);
+                }
+                
+                .query-ref-label {
+                    font-weight: 600;
+                }
+                
+                .worthiness-section {
+                    background: var(--bg-hover, #e9ecef);
+                    border-radius: var(--radius-sm, 4px);
+                    padding: 12px;
+                    margin-top: 16px;
+                }
+                
+                .worthiness-title {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 8px;
+                }
+                
+                .worthiness-score {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    color: var(--fg, #1a1d1c);
+                }
+                
+                .score-label {
+                    font-size: 0.875rem;
+                    text-transform: uppercase;
+                    color: var(--fg-muted, #6c757d);
+                }
+                
+                .worthiness-rationale {
+                    font-size: 0.875rem;
+                    line-height: 1.5;
+                    color: var(--fg-muted, #6c757d);
+                }
+                
+                .fiscal-year-info {
+                    font-size: 0.75rem;
+                    color: var(--fg-muted, #6c757d);
+                    margin-top: 8px;
+                    text-align: right;
+                }
+                
+                .btn-view-query {
+                    background: var(--primary, #006b3c);
+                    color: white;
+                    border: none;
+                    padding: 6px 12px;
+                    border-radius: var(--radius-sm, 4px);
+                    font-size: 0.75rem;
+                    cursor: pointer;
+                }
+                
+                .btn-view-query:hover {
+                    background: var(--primary-hover, #00582e);
+                }
+                
+                .no-data {
+                    text-align: center;
+                    color: var(--fg-muted, #6c757d);
+                    font-style: italic;
+                }
+                
+                /* Telemetry Panel specific styles that we might want to reuse */
+                .dashboard {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    gap: 12px;
+                    margin-bottom: 16px;
+                }
+                
+                .metric-card {
+                    background: var(--bg, #f8f9fa);
+                    border: 1px solid var(--border, #ced4da);
+                    border-radius: var(--radius, 6px);
+                    padding: 12px 14px;
+                }
+                
+                .metric-label {
+                    font-size: 0.625rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.06em;
+                    color: var(--fg-subtle, #6c757d);
+                }
+                
+                .metric-value {
+                    font-size: 1.25rem;
+                    font-weight: 700;
+                    color: var(--fg, #1a1d1c);
+                    margin-top: 4px;
+                }
+                
+                .metric-desc {
+                    font-size: 0.75rem;
+                    color: var(--fg-subtle, #6c757d);
+                    margin-top: 2px;
+                    font-weight: 500;
+                }
+                
+                .badge-status {
+                    display: block;
+                    padding: 10px 14px;
+                    border-radius: var(--radius, 6px);
+                    font-size: 0.8125rem;
+                    font-weight: 600;
+                    text-align: center;
+                    margin-bottom: 16px;
+                }
+                
+                .badge-success {
+                    background: var(--primary-light, #d1fae5);
+                    color: var(--primary, #059669);
+                    border: 1px solid var(--primary, #059669);
+                }
+                
+                .badge-warning {
+                    background: #fef3c7;
+                    color: #92400e;
+                    border: 1px solid #fbf24;
+                }
+                
+                .badge-error {
+                    background: var(--danger-light, #fdeaea);
+                    color: var(--danger, #c92a2a);
+                    border: 1px solid var(--danger, #c92a2a);
+                }
+                
+                .gap-card {
+                    background: var(--danger-light, #fdeaea);
+                    border: 1px solid var(--danger, #c92a2a);
+                    border-radius: var(--radius, 6px);
+                    padding: 14px;
+                    margin-bottom: 16px;
+                }
+                
+                .gap-title {
+                    font-weight: 600;
+                    font-size: 0.75rem;
+                    color: var(--danger, #c92a2a);
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                    margin-bottom: 8px;
+                }
+                
+                .gap-values {
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    gap: 12px;
+                    margin-top: 10px;
+                    font-size: 0.8125rem;
+                    padding-top: 10px;
+                    border-top: 1px solid rgba(201, 42, 42, 0.15);
+                    font-weight: 600;
+                }
+                
+                .educational-rationale {
+                    background: var(--bg, #f8f9fa);
+                    border: 1px solid var(--border, #ced4da);
+                    border-radius: var(--radius, 6px);
+                    padding: 14px;
+                    font-size: 0.8125rem;
+                    line-height: 1.6;
+                    color: var(--fg, #1a1d1c);
+                }
+                
+                .educational-rationale h3 {
+                    margin: 0 0 8px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    color: var(--primary, #059669);
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                }
+            </style>
+                    margin: 0 0 16px;
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    color: var(--fg, #1a1d1c);
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                }
+                
+                .loading, .error, .empty {
+                    text-align: center;
+                    padding: 20px;
                     color: var(--fg-muted, #343a40);
                 }
                 
@@ -418,13 +1055,16 @@ class DRGOptimizerPanel extends HTMLElement {
                         <div class="worthiness-score">${data.query_worthiness_score.toFixed(1)}</div>
                         <div class="score-label">/10</div>
                     </div>
-                    <div>��❓ QUERY WORTHINESS</div>
+                    <div>���🔍��❓ QUERY WORTHINESS</div>
                 </div>
                 <div class="worthiness-rationale">${data.query_worthiness_rationale}</div>
                 <div class="fiscal-year-info">
                     ${data.fiscal_year_context.fiscal_year} | 
                     ${data.fiscal_year_context.grouper_version} | 
                     ${data.fiscal_year_context.guideline_version}
+                </div>
+                <div class="graph-visualization">
+                    <drg-graph-visualizer id="drg-graph-viz"></drg-graph-visualizer>
                 </div>
             </div>
         `;

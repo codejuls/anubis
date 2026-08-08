@@ -1,0 +1,527 @@
+class DRGOptimizerPanel extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.analysisData = null;
+        this.loading = false;
+        this.error = null;
+    }
+
+    connectedCallback() {
+        this.render();
+        // In a real implementation, we would listen for case updates
+        // For MVP, we'll load a sample case on mount
+        this.loadSampleCase();
+    }
+
+    async loadSampleCase() {
+        // This would normally come from the current sandbox case
+        // For demo, we'll use the sepsis example from the design document
+        try {
+            this.loading = true;
+            this.render();
+            
+            // Sample case data matching the design document example
+            const caseData = {
+                age: 68,
+                gender: "F",
+                discharge_status: "01",
+                principal_diagnosis: {
+                    code: "A41.9",
+                    present_on_admission: true
+                },
+                secondary_diagnoses: [
+                    { code: "J18.9", present_on_admission: true },
+                    { code: "I10", present_on_admission: true }
+                ],
+                procedures: [
+                    { code: "02RF33Z", date_of_service: "2026-08-01" }
+                ],
+                service_date: "2026-08-15"
+            };
+            
+            const current_drg = {
+                drg_code: "871",
+                drg_description: "SEPTICEMIA OR SEVERE SEPSIS WITHOUT MV >96 HOURS WITH MCC",
+                relative_weight: 1.7824,
+                mdc_code: "18",
+                complication_level: "MCC"
+            };
+            
+            const response = await fetch('/api/optimize', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    case_data: caseData,
+                    current_drg: current_drg,
+                    hospital_id: "HOSP-URBAN-001"
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            this.analysisData = await response.json();
+            this.loading = false;
+            this.error = null;
+            this.render();
+        } catch (err) {
+            this.loading = false;
+            this.error = err.message;
+            this.render();
+        }
+    }
+
+    formatCurrency(amount) {
+        return new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+        }).format(amount);
+    }
+
+    render() {
+        this.shadowRoot.innerHTML = `
+            <style>
+                :host {
+                    display: block;
+                    background: var(--bg-card, #fff);
+                    border: 1px solid var(--border, #ced4da);
+                    border-radius: var(--radius, 6px);
+                    padding: 16px;
+                }
+                
+                h2 {
+                    margin: 0 0 16px;
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    color: var(--fg, #1a1d1c);
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                }
+                
+                .loading, .error, .empty {
+                    text-align: center;
+                    padding: 20px;
+                    color: var(--fg-muted, #343a40);
+                }
+                
+                .error {
+                    color: var(--danger, #c92a2a);
+                }
+                
+                .optimization-status {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 16px;
+                    padding: 12px;
+                    background: var(--bg-hover, #e9ecef);
+                    border-radius: var(--radius-sm, 4px);
+                }
+                
+                .status-indicator {
+                    display: inline-flex;
+                    align-items: center;
+                    margin-right: 12px;
+                }
+                
+                .status-dot {
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    margin-right: 8px;
+                }
+                
+                .status-high { background: var(--primary, #006b3c); }
+                .status-medium { background: #ff9500; }
+                .status-low { background: var(--danger, #c92a2a); }
+                .status-none { background: var(--fg-muted, #343a40); }
+                
+                .status-text {
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    font-size: 0.8125rem;
+                }
+                
+                .current-drginfo {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 16px;
+                    padding: 12px;
+                    background: var(--bg-card, #fff);
+                    border: 1px solid var(--border, #ced4da);
+                    border-radius: var(--radius-sm, 4px);
+                }
+                
+                .drg-detail {
+                    flex: 1;
+                }
+                
+                .drg-code {
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    color: var(--fg, #1a1d1c);
+                    margin-bottom: 4px;
+                }
+                
+                .drg-description {
+                    font-size: 0.875rem;
+                    color: var(--fg-muted, #343a40);
+                }
+                
+                .reimbursement-info {
+                    text-align: right;
+                }
+                
+                .reimbursement-label {
+                    font-size: 0.75rem;
+                    color: var(--fg-muted, #343a40);
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                }
+                
+                .reimbursement-amount {
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    color: var(--fg, #1a1d1c);
+                }
+                
+                .section-title {
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                    color: var(--fg-muted, #343a40);
+                    margin-bottom: 8px;
+                    padding-bottom: 4px;
+                    border-bottom: 1px solid var(--border, #ced4da);
+                }
+                
+                .candidate-list, .gap-list {
+                    margin-bottom: 16px;
+                }
+                
+                .candidate-item, .gap-item {
+                    background: var(--bg-card, #fff);
+                    border: 1px solid var(--border, #ced4da);
+                    border-radius: var(--radius-sm, 4px);
+                    padding: 12px;
+                    margin-bottom: 8px;
+                }
+                
+                .candidate-header, .gap-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    margin-bottom: 8px;
+                }
+                
+                .candidate-title, .gap-title {
+                    font-weight: 600;
+                    flex: 1;
+                }
+                
+                .candidate-delta, .gap-actions {
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    white-space: nowrap;
+                }
+                
+                .candidate-delta.positive { color: var(--primary, #006b3c); }
+                .candidate-delta.zero { color: var(--fg-muted, #343a40); }
+                .candidate-delta.negative { color: var(--danger, #c92a2a); }
+                
+                .candidate-meta, .gap-meta {
+                    display: flex;
+                    gap: 16px;
+                    font-size: 0.8125rem;
+                    color: var(--fg-muted, #343a40);
+                    margin-bottom: 8px;
+                    flex-wrap: wrap;
+                }
+                
+                .candidate-probability, .gap-category {
+                    background: var(--bg-hover, #e9ecef);
+                    padding: 2px 6px;
+                    border-radius: var(--radius-sm, 4px);
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                }
+                
+                .prob-high { background: var(--primary-light, #e8f5ee); color: var(--primary, #006b3c); }
+                .prob-medium { background: #fff4e5; color: #ff9500; }
+                .prob-low { background: var(--danger-light, #fdeaea); color: var(--danger, #c92a2a); }
+                
+                .requirements-list, .indicators-list {
+                    margin: 8px 0;
+                    padding-left: 16px;
+                }
+                
+                .requirements-list li, .indicators-list li {
+                    margin-bottom: 4px;
+                    font-size: 0.875rem;
+                    line-height: 1.4;
+                }
+                
+                .query-section {
+                    margin-top: 12px;
+                    padding-top: 12px;
+                    border-top: 1px solid var(--border-hover, #e9ecef);
+                }
+                
+                .query-question {
+                    font-weight: 600;
+                    margin-bottom: 8px;
+                    color: var(--fg, #1a1d1c);
+                }
+                
+                .query-indicators {
+                    font-size: 0.875rem;
+                    color: var(--fg-muted, #343a40);
+                    margin-bottom: 8px;
+                }
+                
+                .query-indicators-label {
+                    font-weight: 600;
+                    margin-right: 4px;
+                }
+                
+                .query-references {
+                    font-size: 0.75rem;
+                    color: var(--fg-muted, #343a40);
+                }
+                
+                .query-ref-label {
+                    font-weight: 600;
+                }
+                
+                .worthiness-section {
+                    background: var(--bg-hover, #e9ecef);
+                    border-radius: var(--radius-sm, 4px);
+                    padding: 12px;
+                    margin-top: 16px;
+                }
+                
+                .worthiness-title {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 8px;
+                }
+                
+                .worthiness-score {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    color: var(--fg, #1a1d1c);
+                }
+                
+                .score-label {
+                    font-size: 0.875rem;
+                    text-transform: uppercase;
+                    color: var(--fg-muted, #343a40);
+                }
+                
+                .worthiness-rationale {
+                    font-size: 0.875rem;
+                    line-height: 1.5;
+                    color: var(--fg-muted, #343a40);
+                }
+                
+                .fiscal-year-info {
+                    font-size: 0.75rem;
+                    color: var(--fg-muted, #343a40);
+                    margin-top: 8px;
+                    text-align: right;
+                }
+                
+                .btn-view-query {
+                    background: var(--primary, #006b3c);
+                    color: white;
+                    border: none;
+                    padding: 6px 12px;
+                    border-radius: var(--radius-sm, 4px);
+                    font-size: 0.75rem;
+                    cursor: pointer;
+                }
+                
+                .btn-view-query:hover {
+                    background: var(--primary-hover, #00582e);
+                }
+                
+                .no-data {
+                    text-align: center;
+                    color: var(--fg-muted, #343a40);
+                    font-style: italic;
+                }
+            </style>
+            
+            ${this.loading ? this.renderLoading() : 
+             this.error ? this.renderError() :
+             !this.analysisData ? this.renderEmpty() :
+             this.renderAnalysis()}
+        `;
+    }
+    
+    renderLoading() {
+        return `<div class="loading">Loading optimization analysis...</div>`;
+    }
+    
+    renderError() {
+        return `<div class="error">Error: ${this.error}</div>`;
+    }
+    
+    renderEmpty() {
+        return `<div class="empty">No analysis data available</div>`;
+    }
+    
+    renderAnalysis() {
+        const data = this.analysisData;
+        const statusClass = data.optimization_potential.toLowerCase();
+        
+        return `
+            <div class="optimization-status">
+                <div class="status-indicator">
+                    <div class="status-dot status-${statusClass}"></div>
+                    <div class="status-text">${data.optimization_potential} OPTIMIZATION POTENTIAL</div>
+                </div>
+            </div>
+            
+            <div class="current-drginfo">
+                <div class="drg-detail">
+                    <div class="drg-code">${data.target_drg_candidates.find(c => c.reimbursement_delta === 0)?.drg_code || 'N/A'}</div>
+                    <div class="drg-description">${data.target_drg_candidates.find(c => c.reimbursement_delta === 0)?.drg_description || 'N/A'}</div>
+                </div>
+                <div class="reimbursement-info">
+                    <div class="reimbursement-label">Current Weight</div>
+                    <div class="reimbursement-amount">${data.target_drg_candidates.find(c => c.reimbursement_delta === 0)?.relative_weight?.toFixed(4) || '0.0000'}</div>
+                    <div class="reimbursement-label">Reimbursement</div>
+                    <div class="reimbursement-amount">${this.formatCurrency(data.current_reimbursement)}</div>
+                </div>
+            </div>
+            
+            <div class="section-title">TARGET DRG CANDIDATES</div>
+            <div class="candidate-list">
+                ${data.target_drg_candidates.map(candidate => 
+                    candidate.reimbursement_delta !== 0 ? this.renderCandidate(candidate) : ''
+                ).join('')}
+            </div>
+            
+            <div class="section-title">DOCUMENTATION GAPS</div>
+            <div class="gap-list">
+                ${data.documentation_gaps.map(gap => this.renderGap(gap)).join('')}
+            </div>
+            
+            <div class="worthiness-section">
+                <div class="worthiness-title">
+                    <div>
+                        <div class="worthiness-score">${data.query_worthiness_score.toFixed(1)}</div>
+                        <div class="score-label">/10</div>
+                    </div>
+                    <div>���🔍��❓ QUERY WORTHINESS</div>
+                </div>
+                <div class="worthiness-rationale">${data.query_worthiness_rationale}</div>
+                <div class="fiscal-year-info">
+                    ${data.fiscal_year_context.fiscal_year} | 
+                    ${data.fiscal_year_context.grouper_version} | 
+                    ${data.fiscal_year_context.guideline_version}
+                </div>
+                <div class="graph-visualization">
+                    <drg-graph-visualizer id="drg-graph-viz"></drg-graph-visualizer>
+                </div>
+            </div>
+        `;
+    }
+    
+    renderCandidate(candidate) {
+        const deltaClass = candidate.reimbursement_delta > 0 ? 'positive' : 
+                          candidate.reimbursement_delta < 0 ? 'negative' : 'zero';
+        const probClass = candidate.probability.toLowerCase();
+        
+        return `
+            <div class="candidate-item">
+                <div class="candidate-header">
+                    <div class="candidate-title">
+                        � ▶ ${candidate.drg_code} — ${candidate.drg_description}
+                    </div>
+                    <div class="candidate-delta ${deltaClass}">
+                        Δ ${this.formatCurrency(Math.abs(candidate.reimbursement_delta))}
+                        ${candidate.reimbursement_delta >= 0 ? '+' : ''}
+                    </div>
+                </div>
+                <div class="candidate-meta">
+                    <span class="candidate-probability prob-${probClass}">${candidate.probability}</span>
+                    <span class="candidate-weight">Weight: ${candidate.relative_weight.toFixed(4)}</span>
+                </div>
+                
+                ${candidate.requirements.length > 0 ? `
+                    <div class="requirements-list">
+                        <strong>Requirements:</strong>
+                        <ul>
+                            ${candidate.requirements.map(req => `<li>${req}</li>`).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+                
+                ${candidate.query_recommendations.length > 0 ? `
+                    <div class="query-section">
+                        ${candidate.query_recommendations.map(rec => this.renderQueryRecommendation(rec)).join('')}
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }
+    
+    renderGap(gap) {
+        return `
+            <div class="gap-item">
+                <div class="gap-header">
+                    <div class="gap-title">
+                        ${gap.category === 'Sepsis Organism Specificity' ? '��⚠' : ''} ${gap.category}
+                    </div>
+                    <div class="gap-actions">
+                        <!-- View details button could go here -->
+                    </div>
+                </div>
+                <div class="gap-meta">
+                    <span class="gap-category">${gap.category}</span>
+                </div>
+                <div class="gap-current">Current: ${gap.current_code}</div>
+                <div class="gap-description">${gap.gap}</div>
+                <div class="gap-action"><strong>Action:</strong> ${gap.action}</div>
+                ${gap.icd10_guideline_ref || gap.coding_clinic_ref ? `
+                    <div class="gap-references">
+                        ${gap.icd10_guideline_ref ? `<span class="query-ref-label">Guideline:</span> ${gap.icd10_guideline_def} ` : ''}
+                        ${gap.coding_clinic_ref ? `<span class="query-ref-label">Coding Clinic:</span> ${gap.coding_clinic_ref}` : ''}
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }
+    
+    renderQueryRecommendation(rec) {
+        const riskClass = rec.compliance_risk.toLowerCase();
+        
+        return `
+            <div class="query-recommendation" style="margin-bottom: 12px; padding: 10px; background: var(--bg-hover, #e9ecef); border-radius: var(--radius-sm, 4px);">
+                <div class="query-question">${rec.question}</div>
+                <div class="query-indicators">
+                    <span class="query-indicators-label">Look for:</span> 
+                    ${rec.clinical_indicators.join(', ')}
+                </div>
+                ${rec.icd10_guideline_ref || rec.coding_clinic_ref ? `
+                    <div class="query-references">
+                        ${rec.icd10_guideline_ref ? `<span class="query-ref-label">Guideline:</span> ${rec.icd10_guideline_ref} ` : ''}
+                        ${rec.coding_clinic_ref ? `<span class="query-ref-label">Coding Clinic:</span> ${rec.coding_clinic_ref}` : ''}
+                    </div>
+                ` : ''}
+                <div style="margin-top: 6px; font-size: 0.75rem;">
+                    <span class="query-ref-label compliance-risk-${riskClass}">Compliance Risk: ${rec.compliance_risk}</span>
+                </div>
+            </div>
+        `;
+    }
+}
+
+customElements.define('drg-optimizer-panel', DRGOptimizerPanel);
+export default DRGOptimizerPanel;

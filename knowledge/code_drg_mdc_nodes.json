@@ -1,0 +1,8007 @@
+[
+  {
+    "id": "SEC-1",
+    "label": "Includes Case Summary Exercises for Beginning to Intermediate-Level Practice",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-2",
+    "label": "ICD-10-CM and ICD-10-PCS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-3",
+    "label": "ICD-10-  CM AND ICD-10-  PCS Coding Handbook",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-4",
+    "label": "ICD-10-  CM AND ICD-10-  PCS Coding Handbook with Answers",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-5",
+    "label": "2026 Revised Edition",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-6",
+    "label": "NELLY LEON-  CHISEN, RHIA DENENE M. HARPER, RHIA TAMMY LOVE, MSHI, RHIA, CCS, CDIP",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-7",
+    "label": "GRETCHEN YOUNG-  CHARLES, RHIA CENTRAL OFFICE ON ICD-10-  CM AND ICD-10-  PCS OF THE AMERICAN HOSPITAL ASSOCIATION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-8",
+    "label": "Contents",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-9",
+    "label": "List of   T ables and Figures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-10",
+    "label": "About the Authors",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-11",
+    "label": "Acknowl  edgments",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-12",
+    "label": "How to Use This Handbook",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-13",
+    "label": "Changes in Code Usage",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-14",
+    "label": "Additional Resources",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-15",
+    "label": "Format AND Conventions AND Current Coding Practices FOR ICD-10-  CM AND ICD-10-  PCS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-16",
+    "label": "CHAPTER\u00a01",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-17",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-18",
+    "label": "Introduction to the ICD-10-  CM Classification",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-19",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-20",
+    "label": "TERM TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-21",
+    "label": "ICD-10-  CM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-22",
+    "label": "CHAPTER 1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-23",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-24",
+    "label": "DEVELOPMENT OF ICD-10-  CM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-25",
+    "label": "FORMAT",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-26",
+    "label": "TABULAR LIST OF DISEASES AND INJURIES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-27",
+    "label": "FIGURE\u00a01.1 Table of Contents from ICD-10-  CM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-28",
+    "label": "ICD-10-  CM   Tabular List of Diseases and Injuries",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-29",
+    "label": "Code Structure",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-30",
+    "label": "Placeholder Character",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-31",
+    "label": "T16 Foreign body in ear",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-32",
+    "label": "ALPHABETIC INDEX",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-33",
+    "label": "EXERCISE 1.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-34",
+    "label": "CHAPTER 1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-35",
+    "label": "Alphabetization Rules",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-36",
+    "label": "Numerical Entries",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-37",
+    "label": "Defi  ciency . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-38",
+    "label": "Connecting Words",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-39",
+    "label": "Index   Tables",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-40",
+    "label": "CHAPTER\u00a02",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-41",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-42",
+    "label": "ICD-10-  CM Conventions",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-43",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-44",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-45",
+    "label": "NEC",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-46",
+    "label": "NOS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-47",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-48",
+    "label": "CHAPTER 2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-49",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-50",
+    "label": "INSTRUCTIONAL NOTES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-51",
+    "label": "General Notes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-52",
+    "label": "Inclusion and Exclusion Notes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-53",
+    "label": "Inclusion Notes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-54",
+    "label": "Inclusion Terms",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-55",
+    "label": "Exclusion Notes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-56",
+    "label": "'Excludes1'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-57",
+    "label": "Q03 Congenital hydrocephalus",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-58",
+    "label": "'Excludes2'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-59",
+    "label": "CHAPTER 2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-60",
+    "label": "F90 Attention-  defi  cit hyperactivity disorders",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-61",
+    "label": "'Code First' and 'Use Additional Code'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-62",
+    "label": "'Code Also'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-63",
+    "label": "ABBREVIATIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-64",
+    "label": "NEC",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-65",
+    "label": "NOS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-66",
+    "label": "CROSS-  REFERENCE NOTES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-67",
+    "label": "'See'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-68",
+    "label": "'See Also'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-69",
+    "label": "CHAPTER 2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-70",
+    "label": "'See Category'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-71",
+    "label": "'See Condition'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-72",
+    "label": "PUNCTUATION MARKS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-73",
+    "label": "Parentheses",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-74",
+    "label": "EXERCISE 2.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-75",
+    "label": "Square Brackets",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-76",
+    "label": "Nephropathy . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-77",
+    "label": "Colons",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-78",
+    "label": "N92.6 Irregular menstruation, unspecifi  ed",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-79",
+    "label": "CHAPTER 2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-80",
+    "label": "Commas",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-81",
+    "label": "RELATIONAL TERMS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-82",
+    "label": "'And'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-83",
+    "label": "'With' and 'In'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-84",
+    "label": "'Due To'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-85",
+    "label": "CHAPTER\u00a03",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-86",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-87",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-88",
+    "label": "Uniform Hospital Discharge Data Set",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-89",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-90",
+    "label": "MS-  DRG system",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-91",
+    "label": "Other reportable diagnoses",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-92",
+    "label": "Principal diagnosis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-93",
+    "label": "UHDDS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-94",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-95",
+    "label": "CHAPTER 3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-96",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-97",
+    "label": "DATA ITEMS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-98",
+    "label": "Principal Diagnosis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-99",
+    "label": "CHAPTER 3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-100",
+    "label": "CHAPTER 3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-101",
+    "label": "Other Diagnoses",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-102",
+    "label": "CHAPTER 3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-103",
+    "label": "CHAPTER 3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-104",
+    "label": "Reporting Guidelines for Other Diagnoses",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-105",
+    "label": "CHAPTER 3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-106",
+    "label": "CHAPTER 3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-107",
+    "label": "Admitting Diagnosis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-108",
+    "label": "CHAPTER 3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-109",
+    "label": "PROCEDURES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-110",
+    "label": "RELATIONSHIP OF UHDDS TO OUTPATIENT REPORTING",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-111",
+    "label": "RELATIONSHIP OF UHDDS TO LONG-  TERM CARE REPORTING",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-112",
+    "label": "ETHICAL CODING AND REPORTING",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-113",
+    "label": "CHAPTER 3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-114",
+    "label": "CHAPTER\u00a04",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-115",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-116",
+    "label": "The Medical Rec  ord as a Source Document",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-117",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-118",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-119",
+    "label": "POA indicator",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-120",
+    "label": "Provider",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-121",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-122",
+    "label": "CHAPTER 4",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-123",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-124",
+    "label": "CONTENTS OF THE MEDICAL REC  ORD",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-125",
+    "label": "CHAPTER 4",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-126",
+    "label": "CHAPTER 4",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-127",
+    "label": "CHAPTER 4",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-128",
+    "label": "CHAPTER\u00a05",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-129",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-130",
+    "label": "Basic ICD-10-  CM Coding Steps",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-131",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-132",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-133",
+    "label": "Alphabetic Index of Diseases and Injuries and the Index to External Causes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-134",
+    "label": "Tabular List",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-135",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-136",
+    "label": "CHAPTER 5",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-137",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-138",
+    "label": "LOCATE THE CODE ENTRY IN THE ALPHABETIC INDEX",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-139",
+    "label": "EXERCISE 5.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-140",
+    "label": "VERIFY THE ALPHANUMERIC CODE IN THE TABULAR LIST",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-141",
+    "label": "CHAPTER 5",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-142",
+    "label": "CODING DEMONSTRATIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-143",
+    "label": "\u00b7 Hirsutism",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-144",
+    "label": "\u00b7 Portal vein obstruction",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-145",
+    "label": "\u00b7 Abscess abdominal wall due to Staphylococcus",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-146",
+    "label": "\u00b7 Aplasia of pulmonary artery",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-147",
+    "label": "\u00b7 Acute bronchopneumonia due to aspiration of oil",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-148",
+    "label": "Pneumonia (acute) (double) (migratory) . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-149",
+    "label": "REVIEW EXERCISE 5.2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-150",
+    "label": "CHAPTER\u00a06",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-151",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-152",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-153",
+    "label": "Basic ICD-10-  CM Coding Guidelines",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-154",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-155",
+    "label": "Combination code",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-156",
+    "label": "NEC",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-157",
+    "label": "NOS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-158",
+    "label": "'Rule out'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-159",
+    "label": "'Ruled out'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-160",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-161",
+    "label": "CHAPTER 6",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-162",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-163",
+    "label": "USE BOTH THE ALPHABETIC INDEX AND THE TABULAR LIST",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-164",
+    "label": "ASSIGN CODES TO THE HIGHEST LEVEL OF DETAIL",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-165",
+    "label": "ASSIGN RESIDUAL CODES ( NEC AND NOS) AS APPROPRIATE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-166",
+    "label": "ASSIGN COMBINATION CODES WHEN AVAILABLE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-167",
+    "label": "CHAPTER 6",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-168",
+    "label": "CHAPTER 6",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-169",
+    "label": "ASSIGN MULTIPLE CODES AS NEEDED",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-170",
+    "label": "Mandatory Multiple Coding",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-171",
+    "label": "EXERCISE 6.2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-172",
+    "label": "Discretionary Multiple Coding",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-173",
+    "label": "CHAPTER 6",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-174",
+    "label": "Avoid Indiscriminate Multiple Coding",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-175",
+    "label": "Laterality",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-176",
+    "label": "CODE UNCERTAIN DIAGNOSES AS IF ESTABLISHED",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-177",
+    "label": "CHAPTER 6",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-178",
+    "label": "'Rule Out' versus 'Ruled Out'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-179",
+    "label": "' Borderline' Diagnoses",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-180",
+    "label": "Use of Sign/Symptom and 'Unspecified' Codes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-181",
+    "label": "ACUTE AND CHRONIC CONDITIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-182",
+    "label": "EXERCISE 6.4",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-183",
+    "label": "CHAPTER 6",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-184",
+    "label": "CHAPTER 6",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-185",
+    "label": "IMPENDING OR THREATENED CONDITION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-186",
+    "label": "REPORTING THE SAME DIAGNOSIS CODE MORE THAN ONCE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-187",
+    "label": "CODING MULTIPLE SITES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-188",
+    "label": "LATE EFFECTS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-189",
+    "label": "EXERCISE 6.5",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-190",
+    "label": "Locating Late Effect Codes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-191",
+    "label": "CHAPTER 6",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-192",
+    "label": "Two Codes Required",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-193",
+    "label": "LATE EFFECT VERSUS CURRENT ILLNESS OR INJURY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-194",
+    "label": "REVIEW EXERCISE 6.7",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-195",
+    "label": "CHAPTER\u00a07",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-196",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-197",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-198",
+    "label": "Introduction to the ICD-10-  PCS Classification",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-199",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-200",
+    "label": "Approach",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-201",
+    "label": "Character",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-202",
+    "label": "Qualifier",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-203",
+    "label": "Root operation",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-204",
+    "label": "Value",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-205",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-206",
+    "label": "CHAPTER 7",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-207",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-208",
+    "label": "DEVELOPMENT OF ICD-10-  PCS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-209",
+    "label": "FORMAT AND   ORGANIZATION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-210",
+    "label": "Format",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-211",
+    "label": "Alphabetic Index",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-212",
+    "label": "Cholecystectomy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-213",
+    "label": "CHAPTER 7",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-214",
+    "label": "Tables",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-215",
+    "label": "Code Structure",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-216",
+    "label": "Relational Terms",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-217",
+    "label": "EXERCISE 7.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-218",
+    "label": "CHAPTER 7",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-219",
+    "label": "CHAPTER 7",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-220",
+    "label": "CODE CHARACTERS AND THEIR DEFINITIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-221",
+    "label": "Character 1: Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-222",
+    "label": "Character 2: Body System",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-223",
+    "label": "CHAPTER 7",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-224",
+    "label": "EXERCISE 7.2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-225",
+    "label": "Character 3: Root Operation",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-226",
+    "label": "Character 4: Body Part",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-227",
+    "label": "CHAPTER 7",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-228",
+    "label": "Character 5: Approach",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-229",
+    "label": "CHAPTER 7",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-230",
+    "label": "EXERCISE 7.3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-231",
+    "label": "Character 6: Device",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-232",
+    "label": "CHAPTER 7",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-233",
+    "label": "CHAPTER 7",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-234",
+    "label": "FIGURE 7.6 Excerpt from the Device Aggregation   Table",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-235",
+    "label": "EXERCISE 7.4",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-236",
+    "label": "Character 7: Qualifier",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-237",
+    "label": "CHAPTER\u00a08",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-238",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-239",
+    "label": "Basic ICD-10-  PCS Coding Steps",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-240",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-241",
+    "label": "TERM TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-242",
+    "label": "Principal procedure",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-243",
+    "label": "CHAPTER 8",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-244",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-245",
+    "label": "LOCATE THE MAIN TERM IN THE ALPHABETIC INDEX",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-246",
+    "label": "Excision",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-247",
+    "label": "Claviculectomy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-248",
+    "label": "Condylectomy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-249",
+    "label": "Adductor hallucis muscle",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-250",
+    "label": "EXERCISE 8.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-251",
+    "label": "CHAPTER 8",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-252",
+    "label": "FIND THE APPLICABLE   TABLE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-253",
+    "label": "CODING DEMONSTRATIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-254",
+    "label": "Total Laparoscopic Cholecystectomy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-255",
+    "label": "FIGURE\u00a08.1 Excerpt of 0FT   Table from ICD-10-  PCS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-256",
+    "label": "CHAPTER 8",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-257",
+    "label": "Below-  the-  Knee Amputation, Distal Portion, Right Leg",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-258",
+    "label": "UNIFORM HOSPITAL DISCHARGE DATA SET FOR REPORTING PROCEDURES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-259",
+    "label": "Meeting Vari  ous Reporting Requirements",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-260",
+    "label": "Designating the Principal Procedure",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-261",
+    "label": "CHAPTER 8",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-262",
+    "label": "CHAPTER 8",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-263",
+    "label": "CHAPTER\u00a09",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-264",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-265",
+    "label": "ICD-10-  PCS Root Operations in the Medical and Surgical Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-266",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-267",
+    "label": "TERM TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-268",
+    "label": "Root operation",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-269",
+    "label": "CHAPTER 9",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-270",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-271",
+    "label": "ROOT OPERATION GUIDELINES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-272",
+    "label": "Coding Multiple Procedures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-273",
+    "label": "CHAPTER 9",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-274",
+    "label": "CHAPTER 9",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-275",
+    "label": "Coding Discontinued or Incomplete Procedures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-276",
+    "label": "Coding Biopsies",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-277",
+    "label": "Coding Procedures on Overlapping Body Layers",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-278",
+    "label": "MEDICAL AND SURGICAL ROOT OPERATIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-279",
+    "label": "Root Operations to Take Out Some or All of a Body Part",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-280",
+    "label": "CHAPTER 9",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-281",
+    "label": "Excision versus Resection",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-282",
+    "label": "Excision for Graft",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-283",
+    "label": "Detachment, Destruction, and Extraction",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-284",
+    "label": "CHAPTER 9",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-285",
+    "label": "Root Operations to Take Out Solids, Fluids, or Gases from a Body Part",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-286",
+    "label": "Root Operations Involving Cutting or Separation Only",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-287",
+    "label": "CHAPTER 9",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-288",
+    "label": "Root Operations to Put In, Put Back, or Move Some or All of a Body Part",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-289",
+    "label": "EXERCISE 9.3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-290",
+    "label": "Root Operations to Alter the Dia  meter or Route of a Tubular Body Part",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-291",
+    "label": "CHAPTER 9",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-292",
+    "label": "Root Operations That Always Involve a Device",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-293",
+    "label": "CHAPTER 9",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-294",
+    "label": "Supplement",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-295",
+    "label": "Root Operations That Involve Examination Only",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-296",
+    "label": "Root Operations That Include Other Repairs",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-297",
+    "label": "CHAPTER 9",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-298",
+    "label": "Root Operations That Include Other Objectives",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-299",
+    "label": "EXERCISE 9.5",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-300",
+    "label": "CHAPTER\u00a010",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-301",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-302",
+    "label": "ICD-10-  PCS Medical- and Surgical-  Related, Ancillary, and New Technology Procedure Sections",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-303",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-304",
+    "label": "TERM TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-305",
+    "label": "Root operation",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-306",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-307",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-308",
+    "label": "MEDICAL- AND SURGICAL-  RELATED PROCEDURES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-309",
+    "label": "Placement Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-310",
+    "label": "TABLE\u00a010.2 Placement Section Root Operation Values and Definitions",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-311",
+    "label": "Cast change, lower right arm",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-312",
+    "label": "Application of compression dressing to abdominal wound",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-313",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-314",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-315",
+    "label": "Application of dressing to right hand",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-316",
+    "label": "Placement of stereotactic head frame",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-317",
+    "label": "Removal of stereotactic head frame",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-318",
+    "label": "Cervical traction using a traction apparatus",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-319",
+    "label": "Administration Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-320",
+    "label": "FIGURE\u00a010.2 Structure of Codes in the Administration Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-321",
+    "label": "Infusion of chemotherapy, central vein insertion",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-322",
+    "label": "Peritoneal dialysis via indwelling catheter",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-323",
+    "label": "Transfusion of embryonic stem cells into central vein",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-324",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-325",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-326",
+    "label": "Measurement and Monitoring Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-327",
+    "label": "FIGURE\u00a010.3 Structure of Codes in the   Measurement and Monitoring Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-328",
+    "label": "Single external EKG (electrocardiogram) reading",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-329",
+    "label": "Holter monitoring",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-330",
+    "label": "EXERCISE 10.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-331",
+    "label": "Extracorporeal or Systemic Assistance and   Performance Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-332",
+    "label": "FIGURE\u00a010.4 Structure of Codes in the Extracorporeal or Systemic Assistance and   Performance Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-333",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-334",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-335",
+    "label": "Continuous positive airway pressure for sleep apnea-  eight hours",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-336",
+    "label": "Continuous mechanical ventilation for six consecutive days",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-337",
+    "label": "External cardioversion",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-338",
+    "label": "Extracorporeal or Systemic Therapies Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-339",
+    "label": "FIGURE\u00a010.5 Structure of Codes in the Extracorporeal or Systemic Therapies Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-340",
+    "label": "This document is licensed to codejuls@ gmail.com, Julius Hutzler",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-341",
+    "label": "Donor peripheral lymphocyte apheresis procedure, multiple",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-342",
+    "label": "Shock wave therapy for heel pain, single treatment",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-343",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-344",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-345",
+    "label": "Restoration",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-346",
+    "label": "Osteopathic Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-347",
+    "label": "FIGURE\u00a010.6 Structure of Codes in the Osteopathic Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-348",
+    "label": "Other Procedures Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-349",
+    "label": "Robotic assisted laparoscopic cholecystectomy (the robotic assistance only)",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-350",
+    "label": "Suture removal of left arm",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-351",
+    "label": "Chiropractic Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-352",
+    "label": "Chiropractic mechanically assisted manipulation of right wrist",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-353",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-354",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-355",
+    "label": "ANCILLARY PROCEDURES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-356",
+    "label": "Imaging Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-357",
+    "label": "FIGURE\u00a010.8 Structure of Codes in the Imaging Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-358",
+    "label": "X-ray of right upper arm",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-359",
+    "label": "Retrograde pyelogram (kidneys, ureters, bladder) with low osmolar contrast",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-360",
+    "label": "CT scan of brain without contrast, followed by high osmolar contrast",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-361",
+    "label": "MRI of liver and spleen with contrast",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-362",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-363",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-364",
+    "label": "Bilateral ovarian ultrasound",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-365",
+    "label": "Nuclear Medicine Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-366",
+    "label": "Brain PET scan with C-11",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-367",
+    "label": "I-131 thyroid uptake study",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-368",
+    "label": "Radiation Therapy Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-369",
+    "label": "FIGURE\u00a010.10 Structure of Codes in the Radiation Therapy Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-370",
+    "label": "External beam radiation to left breast (photons 1.33 MeV)",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-371",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-372",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-373",
+    "label": "Endobronchial brachytherapy, HDR, Ir-192",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-374",
+    "label": "Physical Rehabilitation and Diagnostic Audiology Section",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-375",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-376",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-377",
+    "label": "TABLE\u00a010.3 Physical Rehabilitation and Diagnostic Audiology Types",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-378",
+    "label": "Hydrotherapy   whirlpool treatment of skin ulcer of right heel",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-379",
+    "label": "Bedside swallowing assessment of stroke patient",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-380",
+    "label": "NEW TECHNOLOGY SECTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-381",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-382",
+    "label": "CHAPTER 10",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-383",
+    "label": "Introduction of cefiderocol anti-  infective into central vein, percutaneous approach",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-384",
+    "label": "CHAPTER\u00a011",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-385",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-386",
+    "label": "Z Codes and External Cause of Morbidity Codes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-387",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-388",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-389",
+    "label": "Aftercare management",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-390",
+    "label": "External cause of morbidity codes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-391",
+    "label": "Palliative care",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-392",
+    "label": "Z codes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-393",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-394",
+    "label": "CHAPTER 11",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-395",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-396",
+    "label": "USING Z CODES AND EXTERNAL CAUSE OF MORBIDITY CODES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-397",
+    "label": "LOCATING Z CODES AND EXTERNAL CAUSE OF MORBIDITY CODES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-398",
+    "label": "Z CODES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-399",
+    "label": "Admission or Encounter for Aftercare Management",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-400",
+    "label": "CHAPTER 11",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-401",
+    "label": "Admission for Follow-  Up Examination",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-402",
+    "label": "Admission for Observation and Evaluation",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-403",
+    "label": "CHAPTER 11",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-404",
+    "label": "Special Investigations and Examinations",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-405",
+    "label": "CHAPTER 11",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-406",
+    "label": "CHAPTER 11",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-407",
+    "label": "Screening Examinations",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-408",
+    "label": "Contact/Exposure",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-409",
+    "label": "Codes Representing Patient History, Status, or Prob  lems",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-410",
+    "label": "CHAPTER 11",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-411",
+    "label": "CHAPTER 11",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-412",
+    "label": "Ge  ne  tic Susceptibility to Disease and Prophylactic Organ Removal",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-413",
+    "label": "Social Determinants of Health",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-414",
+    "label": "Z Codes as Principal/First-  Listed Diagnosis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-415",
+    "label": "CHAPTER 11",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-416",
+    "label": "Coding OF Signs AND Symptoms",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-417",
+    "label": "CHAPTER\u00a012",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-418",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-419",
+    "label": "Symptoms, Signs, and Ill-  Defined Conditions",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-420",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-421",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-422",
+    "label": "Sign",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-423",
+    "label": "Symptom",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-424",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-425",
+    "label": "CHAPTER 12",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-426",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-427",
+    "label": "SIGNS AND SYMPTOMS AS PRINCIPAL DIAGNOSES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-428",
+    "label": "SIGNS AND SYMPTOMS AS ADDITIONAL DIAGNOSES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-429",
+    "label": "ABNORMAL FINDINGS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-430",
+    "label": "CHAPTER 12",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-431",
+    "label": "COMA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-432",
+    "label": "NATIONAL INSTITUTES OF HEALTH STROKE SCALE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-433",
+    "label": "ILL-  DEFINED CONDITIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-434",
+    "label": "EXERCISE 12.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-435",
+    "label": "CHAPTER 12",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-436",
+    "label": "Coding OF Infectious AND Parasitic Diseases, Endocrine Diseases AND Metabolic Disorders, AND Mental Disorders",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-437",
+    "label": "CHAPTER\u00a013",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-438",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-439",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-440",
+    "label": "Infectious and Parasitic Diseases",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-441",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-442",
+    "label": "Bacteremia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-443",
+    "label": "COVID-19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-444",
+    "label": "Sepsis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-445",
+    "label": "Septicemia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-446",
+    "label": "Septic shock",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-447",
+    "label": "SIRS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-448",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-449",
+    "label": "CHAPTER 13",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-450",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-451",
+    "label": "ORGANISM VERSUS SITE OR OTHER SUBTERM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-452",
+    "label": "WEST NILE VIRUS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-453",
+    "label": "ZIKA VIRUS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-454",
+    "label": "TUBERCULOSIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-455",
+    "label": "CHAPTER 13",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-456",
+    "label": "CHAPTER 13",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-457",
+    "label": "SEPSIS, SEVERE SEPSIS, AND SEPTIC SHOCK",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-458",
+    "label": "Coding and Sequencing",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-459",
+    "label": "Severe Sepsis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-460",
+    "label": "CHAPTER 13",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-461",
+    "label": "Sepsis and Severe Sepsis with a Localized Infection",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-462",
+    "label": "Sepsis due to a Postprocedural Infection",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-463",
+    "label": "Sepsis and Severe Sepsis Associated with a Noninfectious   Process (Condition)",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-464",
+    "label": "CHAPTER 13",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-465",
+    "label": "TOXIC SHOCK SYNDROME",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-466",
+    "label": "GRAM-  NEGATIVE BACTERIAL INFECTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-467",
+    "label": "NOSOCOMIAL INFECTIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-468",
+    "label": "DRUG-  RESISTANT INFECTIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-469",
+    "label": "CHAPTER 13",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-470",
+    "label": "AIDS AND OTHER HIV INFECTIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-471",
+    "label": "Unconfirmed Diagnosis of HIV Infection",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-472",
+    "label": "CHAPTER 13",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-473",
+    "label": "Serologic Testing for HIV Infection",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-474",
+    "label": "Se  lection and Sequencing of HIV Codes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-475",
+    "label": "COVID-19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-476",
+    "label": "Unconfirmed Diagnosis of COVID-19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-477",
+    "label": "Sequencing of COVID-19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-478",
+    "label": "Contact/Exposure, Screening, Testing, or History of COVID-19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-479",
+    "label": "This document is licensed to codejuls@ gmail.com, Julius Hutzler",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-480",
+    "label": "Underimmunization for COVID-19 Status",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-481",
+    "label": "Post COVID-19 Condition",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-482",
+    "label": "LATE EFFECTS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-483",
+    "label": "CHAPTER\u00a014",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-484",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-485",
+    "label": "Endocrine, Nutritional, and Metabolic Diseases",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-486",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-487",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-488",
+    "label": "Diabetes mellitus",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-489",
+    "label": "Type 1 diabetes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-490",
+    "label": "Type 2 diabetes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-491",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-492",
+    "label": "CHAPTER 14",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-493",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-494",
+    "label": "DIABETES MELLITUS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-495",
+    "label": "Types of Diabetes Mellitus",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-496",
+    "label": "CHAPTER 14",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-497",
+    "label": "Complications and Manifestations of Diabetes Mellitus",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-498",
+    "label": "Acute Metabolic Complications",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-499",
+    "label": "CHAPTER 14",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-500",
+    "label": "Chronic Complications",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-501",
+    "label": "Diabetic Renal Complications",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-502",
+    "label": "Diabetic Eye Disease",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-503",
+    "label": "Diabetic Neurological Complications",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-504",
+    "label": "Diabetic Circulatory Complications",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-505",
+    "label": "CHAPTER 14",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-506",
+    "label": "Other Manifestations of Diabetes Mellitus",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-507",
+    "label": "Complications Due to Insulin Pump Malfunction",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-508",
+    "label": "DIABETES MELLITUS COMPLICATING PREGNANCY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-509",
+    "label": "Gestational Diabetes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-510",
+    "label": "Neonatal Conditions Associated with Maternal Diabetes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-511",
+    "label": "CHAPTER 14",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-512",
+    "label": "CHAPTER 14",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-513",
+    "label": "EXERCISE 14.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-514",
+    "label": "HYPOGLYCEMIC AND INSULIN REACTIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-515",
+    "label": "EXERCISE 14.2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-516",
+    "label": "HISTORY OF DIABETES MELLITUS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-517",
+    "label": "CODES FOR NUTRITIONAL DISORDERS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-518",
+    "label": "CHAPTER 14",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-519",
+    "label": "METABOLIC DISORDERS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-520",
+    "label": "Fluid Overload",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-521",
+    "label": "Cystic Fibrosis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-522",
+    "label": "Tumor Lysis Syndrome",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-523",
+    "label": "CHAPTER 14",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-524",
+    "label": "EXERCISE 14.3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-525",
+    "label": "CHAPTER\u00a015",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-526",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-527",
+    "label": "Mental Disorders",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-528",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-529",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-530",
+    "label": "Abuse",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-531",
+    "label": "Dependence",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-532",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-533",
+    "label": "CHAPTER 15",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-534",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-535",
+    "label": "MENTAL DISORDERS DUE TO KNOWN PHYSIOLOGICAL CONDITIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-536",
+    "label": "Organic Brain Syndrome",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-537",
+    "label": "FIGURE\u00a015.1 Side View of the Brain",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-538",
+    "label": "Organic Anxiety Disorder",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-539",
+    "label": "Dementia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-540",
+    "label": "CHAPTER 15",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-541",
+    "label": "ALTERED   MENTAL STATE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-542",
+    "label": "TRANSIENT GLOBAL AMNESIA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-543",
+    "label": "SCHIZOPHRENIC DISORDERS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-544",
+    "label": "F20.0 Paranoid   schizophrenia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-545",
+    "label": "F20.1 Disor  ga  nized   schizophrenia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-546",
+    "label": "F20.2 Catatonic   schizophrenia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-547",
+    "label": "F20.3 Undifferentiated   schizophrenia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-548",
+    "label": "F20.5 Residual   schizophrenia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-549",
+    "label": "F20.8 Other   schizophrenia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-550",
+    "label": "F20.81 Schizophreniform disorder",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-551",
+    "label": "F20.89 Other   schizophrenia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-552",
+    "label": "F20.9 Schizophrenia, unspecifi  ed",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-553",
+    "label": "AFFECTIVE DISORDERS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-554",
+    "label": "CHAPTER 15",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-555",
+    "label": "EXERCISE 15.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-556",
+    "label": "NONPSYCHOTIC   MENTAL DISORDERS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-557",
+    "label": "Anxiety Disorders",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-558",
+    "label": "CHAPTER 15",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-559",
+    "label": "Reactions to Stress",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-560",
+    "label": "Dissociative and Conversion Disorders",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-561",
+    "label": "Somatoform Disorders",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-562",
+    "label": "BEHAVIORAL SYNDROMES ASSOCIATED WITH PHYSIOLOGICAL DISTURBANCES AND PHYSICAL   FACTORS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-563",
+    "label": "CHAPTER 15",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-564",
+    "label": "DISORDERS OF ADULT PERSONALITY AND BE  HAV  IOR",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-565",
+    "label": "SUBSTANCE ABUSE DISORDERS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-566",
+    "label": "Alcohol Dependence and Abuse",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-567",
+    "label": "CHAPTER 15",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-568",
+    "label": "Drug Dependence and Abuse",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-569",
+    "label": "Psychoactive Substance Use",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-570",
+    "label": "Psychoactive Substance Use, Abuse, and Dependence Code Hierarchy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-571",
+    "label": "Medical Conditions Due to Psychoactive Substance Use, Abuse and Dependence",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-572",
+    "label": "Se  lection of the Principal Diagnosis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-573",
+    "label": "CHAPTER 15",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-574",
+    "label": "Substance Abuse Therapy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-575",
+    "label": "MENTAL HEALTH AND SUBSTANCE ABUSE TREATMENT PROCEDURE CODING",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-576",
+    "label": "Mental Health Procedures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-577",
+    "label": "Electroconvulsive therapy, unilateral-  single seizure",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-578",
+    "label": "CHAPTER 15",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-579",
+    "label": "Substance Abuse Treatment",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-580",
+    "label": "Methadone maintenance medi  cation management",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-581",
+    "label": "CHAPTER 15",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-582",
+    "label": "Coding OF Diseases OF THE Blood AND Blood-  Forming Organs, Certain Disorders Involving THE Immune Mechanism, AND Diseases OF THE Nervous System",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-583",
+    "label": "CHAPTER\u00a016",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-584",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-585",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-586",
+    "label": "Diseases of the Blood and Blood-  Forming Organs and Certain Disorders Involving the Immune Mechanism",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-587",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-588",
+    "label": "Anemia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-589",
+    "label": "Aplastic anemia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-590",
+    "label": "Pancytopenia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-591",
+    "label": "Sickle-  cell anemia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-592",
+    "label": "Sickle-  cell trait",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-593",
+    "label": "Thrombocytopenia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-594",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-595",
+    "label": "CHAPTER 16",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-596",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-597",
+    "label": "ANEMIA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-598",
+    "label": "Deficiency Anemias",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-599",
+    "label": "Anemia due to Acute Blood Loss",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-600",
+    "label": "EXERCISE 16.2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-601",
+    "label": "CHAPTER 16",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-602",
+    "label": "CHAPTER 16",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-603",
+    "label": "Anemia of Chronic Disease",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-604",
+    "label": "Anemia due to Chemotherapy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-605",
+    "label": "Aplastic Anemia and Pancytopenia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-606",
+    "label": "EXERCISE 16.3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-607",
+    "label": "Sickle-  Cell Anemia and Thalassemia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-608",
+    "label": "CHAPTER 16",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-609",
+    "label": "CHAPTER 16",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-610",
+    "label": "COAGULATION DEFECTS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-611",
+    "label": "DISEASES OF PLATELET CELLS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-612",
+    "label": "DISEASES OF WHITE BLOOD CELLS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-613",
+    "label": "CHAPTER 16",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-614",
+    "label": "CHAPTER 16",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-615",
+    "label": "FIGURE\u00a016.1 Four Major Types of Blood Cells",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-616",
+    "label": "DISORDERS OF THE IMMUNE SYSTEM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-617",
+    "label": "Immunodeficiency",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-618",
+    "label": "Sarcoidosis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-619",
+    "label": "CHAPTER 16",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-620",
+    "label": "CHAPTER 16",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-621",
+    "label": "Cytokine Release Syndrome",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-622",
+    "label": "CHAPTER\u00a017",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-623",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-624",
+    "label": "Diseases of the Nervous System and Sense Organs",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-625",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-626",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-627",
+    "label": "Central   nervous system",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-628",
+    "label": "Conductive hearing loss",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-629",
+    "label": "Peripheral   nervous system",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-630",
+    "label": "Sensorineural hearing loss",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-631",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-632",
+    "label": "CHAPTER 17",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-633",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-634",
+    "label": "FIGURE\u00a017.1      The   Nervous System",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-635",
+    "label": "INFLAMMATORY DISEASES OF THE CENTRAL   NERVOUS SYSTEM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-636",
+    "label": "PARKINSON'S DISEASE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-637",
+    "label": "CHAPTER 17",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-638",
+    "label": "ALZHEIMER'S DISEASE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-639",
+    "label": "EPILEPSY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-640",
+    "label": "EXERCISE 17.2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-641",
+    "label": "HEADACHE AND MIGRAINE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-642",
+    "label": "NARCOLEPSY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-643",
+    "label": "HEMIPLEGIA/HEMIPARESIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-644",
+    "label": "PAIN",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-645",
+    "label": "Admission/Encounter for Pain Control/Management",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-646",
+    "label": "CHAPTER 17",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-647",
+    "label": "Postoperative Pain",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-648",
+    "label": "AUTONOMIC DYSREFLEXIA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-649",
+    "label": "HYDROCEPHALUS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-650",
+    "label": "ENCEPHALOPATHY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-651",
+    "label": "CHAPTER 17",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-652",
+    "label": "CHAPTER 17",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-653",
+    "label": "EXERCISE 17.3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-654",
+    "label": "DISORDERS OF THE PERIPHERAL   NERVOUS SYSTEM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-655",
+    "label": "CRITICAL ILLNESS POLYNEUROPATHY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-656",
+    "label": "CRITICAL ILLNESS MYOPATHY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-657",
+    "label": "CEREBROSPINAL FLUID LEAK",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-658",
+    "label": "INTRACRANIAL HYPOTENSION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-659",
+    "label": "DISORDERS OF THE EYE AND ADNEXAE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-660",
+    "label": "Thyroid Orbitopathy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-661",
+    "label": "FIGURE\u00a017.2      The Eye",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-662",
+    "label": "Corneal Injury",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-663",
+    "label": "Conjunctivitis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-664",
+    "label": "CHAPTER 17",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-665",
+    "label": "CHAPTER 17",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-666",
+    "label": "Corneal Dystrophies",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-667",
+    "label": "EXERCISE 17.5",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-668",
+    "label": "Cataracts",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-669",
+    "label": "EXERCISE 17.6",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-670",
+    "label": "Glaucoma",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-671",
+    "label": "CHAPTER 17",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-672",
+    "label": "TABLE\u00a017.1 Coding of Glaucoma",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-673",
+    "label": "DISEASES OF THE EAR AND MASTOID   PROCESS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-674",
+    "label": "Otitis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-675",
+    "label": "FIGURE\u00a017.3      The Ear",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-676",
+    "label": "CHAPTER 17",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-677",
+    "label": "CHAPTER 17",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-678",
+    "label": "Deafness and Hearing Loss",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-679",
+    "label": "EXERCISE 17.8",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-680",
+    "label": "Coding OF Diseases OF THE Respiratory, Digestive, AND Genitourinary Systems",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-681",
+    "label": "CHAPTER\u00a018",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-682",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-683",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-684",
+    "label": "Diseases of the Respiratory System",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-685",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-686",
+    "label": "Acute pulmonary edema",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-687",
+    "label": "Atelectasis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-688",
+    "label": "Bronchospasm",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-689",
+    "label": "COPD",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-690",
+    "label": "Pleural effusion",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-691",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-692",
+    "label": "CHAPTER 18",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-693",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-694",
+    "label": "PNEUMONIA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-695",
+    "label": "FIGURE\u00a018.1      The Respiratory System",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-696",
+    "label": "Pneumocystis pneumonia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-697",
+    "label": "Lobar Pneumonia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-698",
+    "label": "Interstitial Lung Diseases",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-699",
+    "label": "CHAPTER 18",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-700",
+    "label": "Legionnaires' Disease",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-701",
+    "label": "Gram-  Negative Pneumonia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-702",
+    "label": "Aspergillosis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-703",
+    "label": "Aspiration Pneumonia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-704",
+    "label": "Ventilator Associated Pneumonia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-705",
+    "label": "INFLUENZA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-706",
+    "label": "COVID-19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-707",
+    "label": "VAPING-  RELATED DISORDER",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-708",
+    "label": "LARYNGITIS AND   TRACHEITIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-709",
+    "label": "CHAPTER 18",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-710",
+    "label": "CHRONIC OBSTRUCTIVE PULMONARY DISEASE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-711",
+    "label": "Asthma",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-712",
+    "label": "Bronchospasm",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-713",
+    "label": "CHAPTER 18",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-714",
+    "label": "ATELECTASIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-715",
+    "label": "PLEURAL EFFUSION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-716",
+    "label": "RESPIRATORY FAILURE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-717",
+    "label": "CHAPTER 18",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-718",
+    "label": "ACUTE RESPIRATORY DISTRESS SYNDROME",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-719",
+    "label": "CHAPTER 18",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-720",
+    "label": "ACUTE AND CHRONIC PULMONARY EDEMA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-721",
+    "label": "Cardiogenic",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-722",
+    "label": "Noncardiogenic",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-723",
+    "label": "SURGICAL PROCEDURES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-724",
+    "label": "BIOPSIES OF BRONCHUS, PLEURA, AND LUNG",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-725",
+    "label": "CHAPTER 18",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-726",
+    "label": "ABLATION OF LUNG AND PLEURODESIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-727",
+    "label": "MECHANICAL VENTILATION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-728",
+    "label": "CHAPTER 18",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-729",
+    "label": "Duration of Mechanical Ventilation",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-730",
+    "label": "Sequencing of Mechanical Ventilation",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-731",
+    "label": "CHAPTER 18",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-732",
+    "label": "CHAPTER 18",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-733",
+    "label": "Tracheostomy Complications",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-734",
+    "label": "EXERCISE 18.3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-735",
+    "label": "CHAPTER\u00a019",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-736",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-737",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-738",
+    "label": "Diseases of the Digestive System",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-739",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-740",
+    "label": "Biliary system",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-741",
+    "label": "Calculus",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-742",
+    "label": "Diverticulitis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-743",
+    "label": "Diverticulosis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-744",
+    "label": "Diverticulum",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-745",
+    "label": "Esophageal varices",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-746",
+    "label": "Esophagitis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-747",
+    "label": "GI",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-748",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-749",
+    "label": "CHAPTER 19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-750",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-751",
+    "label": "GASTROINTESTINAL HEMORRHAGE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-752",
+    "label": "FIGURE\u00a019.1      The Digestive System",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-753",
+    "label": "DISEASES OF THE ESOPHAGUS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-754",
+    "label": "CHAPTER 19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-755",
+    "label": "ULCERS OF THE STOMACH AND SMALL INTESTINE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-756",
+    "label": "DIEULAFOY LESIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-757",
+    "label": "COMPLICATIONS OF ARTIFICIAL OPENINGS OF THE DIGESTIVE SYSTEM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-758",
+    "label": "Complications of Colostomy and Enterostomy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-759",
+    "label": "Complications of Gastrostomy and Esophagostomy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-760",
+    "label": "DIVERTICULOSIS AND DIVERTICULITIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-761",
+    "label": "CHAPTER 19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-762",
+    "label": "Congenital versus Acquired Diverticula",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-763",
+    "label": "COLON POLYPS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-764",
+    "label": "DIGESTIVE SYSTEM PROCEDURES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-765",
+    "label": "CHAPTER 19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-766",
+    "label": "EXERCISE 19.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-767",
+    "label": "DISEASES OF THE BILIARY SYSTEM AND THE LIVER",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-768",
+    "label": "Cholesterolosis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-769",
+    "label": "Short Bowel Syndrome",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-770",
+    "label": "Postcholecystectomy Syndrome",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-771",
+    "label": "Hepatic Encephalopathy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-772",
+    "label": "CHAPTER 19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-773",
+    "label": "CHAPTER 19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-774",
+    "label": "Cholecystectomy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-775",
+    "label": "Removal of Biliary Calculi",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-776",
+    "label": "EXERCISE 19.2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-777",
+    "label": "ADHESIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-778",
+    "label": "CHAPTER 19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-779",
+    "label": "CHAPTER 19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-780",
+    "label": "HERNIAS OF THE ABDOMINAL CAVITY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-781",
+    "label": "EXERCISE 19.3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-782",
+    "label": "APPENDICITIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-783",
+    "label": "CHAPTER 19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-784",
+    "label": "DIARRHEA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-785",
+    "label": "CONSTIPATION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-786",
+    "label": "BARIATRIC SURGERY AND COMPLICATIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-787",
+    "label": "CHAPTER 19",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-788",
+    "label": "EXERCISE 19.4",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-789",
+    "label": "CHAPTER\u00a020",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-790",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-791",
+    "label": "Diseases of the Genitourinary System",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-792",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-793",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-794",
+    "label": "Acute kidney failure",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-795",
+    "label": "Chronic kidney disease",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-796",
+    "label": "Nephropathy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-797",
+    "label": "Ureter",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-798",
+    "label": "Urethra",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-799",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-800",
+    "label": "CHAPTER 20",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-801",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-802",
+    "label": "INFECTIONS OF THE GENITOURINARY TRACT",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-803",
+    "label": "EXERCISE 20.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-804",
+    "label": "HEMATURIA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-805",
+    "label": "URINARY INCONTINENCE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-806",
+    "label": "RENAL DISEASE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-807",
+    "label": "Chronic Kidney Disease and End-  Stage Renal Disease",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-808",
+    "label": "CHAPTER 20",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-809",
+    "label": "Acute Kidney Failure",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-810",
+    "label": "Kidney Disease with Hypertension",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-811",
+    "label": "TABLE\u00a020.1 Hypertensive Chronic Kidney Disease and Hypertensive Heart and Chronic Kidney Disease and the Applicable CKD Stages",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-812",
+    "label": "Kidney Disease with Diabetes Mellitus",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-813",
+    "label": "RENAL DIALYSIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-814",
+    "label": "Peritoneal Dialysis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-815",
+    "label": "Hemodialysis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-816",
+    "label": "Hemodialysis via Catheter",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-817",
+    "label": "CHAPTER 20",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-818",
+    "label": "Arteriovenous Graft",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-819",
+    "label": "Arteriovenous Fistula",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-820",
+    "label": "COMPLICATIONS OF CYSTOSTOMY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-821",
+    "label": "CYSTOSCOPY AS OPERATIVE APPROACH",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-822",
+    "label": "CHAPTER 20",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-823",
+    "label": "REMOVAL OF URINARY CALCULUS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-824",
+    "label": "EXERCISE 20.3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-825",
+    "label": "PROSTATE DISEASE AND THERAPY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-826",
+    "label": "CHAPTER 20",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-827",
+    "label": "ENDOMETRIOSIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-828",
+    "label": "GENITAL PROLAPSE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-829",
+    "label": "CHAPTER 20",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-830",
+    "label": "ENDOMETRIAL HYPERPLASIA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-831",
+    "label": "DYSPLASIA OF CERVIX, VAGINA, AND VULVA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-832",
+    "label": "HYSTERECTOMY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-833",
+    "label": "ENDOMETRIAL ABLATION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-834",
+    "label": "CHAPTER 20",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-835",
+    "label": "DISEASES OF THE BREAST",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-836",
+    "label": "BREAST RECONSTRUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-837",
+    "label": "CHAPTER 20",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-838",
+    "label": "FIGURE\u00a020.5 Breast Reconstruction Surgery",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-839",
+    "label": "CHAPTER 20",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-840",
+    "label": "REVIEW EXERCISE 20.4",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-841",
+    "label": "Coding OF Diseases OF THE Skin AND Diseases OF THE Musculoskeletal System",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-842",
+    "label": "CHAPTER\u00a021",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-843",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-844",
+    "label": "Diseases of the Skin and Subcutaneous Tissue",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-845",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-846",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-847",
+    "label": "Cellulitis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-848",
+    "label": "Debridement",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-849",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-850",
+    "label": "CHAPTER 21",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-851",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-852",
+    "label": "DERMATITIS DUE TO DRUGS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-853",
+    "label": "ERYTHEMA MULTIFORME",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-854",
+    "label": "CHAPTER 21",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-855",
+    "label": "ULCERS OF THE SKIN",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-856",
+    "label": "L89.623, Pressure ulcer of left heel, stage 3.",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-857",
+    "label": "CHAPTER 21",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-858",
+    "label": "CELLULITIS OF THE SKIN",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-859",
+    "label": "OTHER CELLULITIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-860",
+    "label": "EXCISION OF LESION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-861",
+    "label": "CHAPTER 21",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-862",
+    "label": "DEBRIDEMENT",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-863",
+    "label": "DERMAL REGENERATIVE GRAFT",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-864",
+    "label": "CHAPTER\u00a022",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-865",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-866",
+    "label": "Diseases of the Musculoskeletal System and Connective Tissue",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-867",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-868",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-869",
+    "label": "Joint revision",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-870",
+    "label": "Myelopathy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-871",
+    "label": "Osteoarthritis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-872",
+    "label": "Pathological fracture",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-873",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-874",
+    "label": "CHAPTER 22",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-875",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-876",
+    "label": "Site, Laterality, and Multiple Sites",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-877",
+    "label": "Bone versus Joint",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-878",
+    "label": "Acute Traumatic versus Chronic or Recurrent Musculoskeletal Conditions",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-879",
+    "label": "BACK DISORDERS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-880",
+    "label": "FIGURE\u00a022.1 The   Human Skeleton",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-881",
+    "label": "CHAPTER 22",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-882",
+    "label": "CHAPTER 22",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-883",
+    "label": "ARTHRITIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-884",
+    "label": "FIGURE\u00a022.2 The Spinal Column",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-885",
+    "label": "CHAPTER 22",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-886",
+    "label": "EXERCISE 22.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-887",
+    "label": "DERANGEMENT",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-888",
+    "label": "OSTEOPOROSIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-889",
+    "label": "PATHOLOGICAL FRACTURES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-890",
+    "label": "CHAPTER 22",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-891",
+    "label": "STRESS FRACTURES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-892",
+    "label": "Aty  pi  cal Femoral Fractures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-893",
+    "label": "Periprosthetic Fractures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-894",
+    "label": "MUSCULOSKELETAL BODY PART GUIDELINES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-895",
+    "label": "CHAPTER 22",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-896",
+    "label": "CHAPTER 22",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-897",
+    "label": "REPLACEMENT OF A JOINT",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-898",
+    "label": "EXERCISE 22.3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-899",
+    "label": "CHAPTER 22",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-900",
+    "label": "SPINAL FUSION AND REFUSION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-901",
+    "label": "Examples include the following:",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-902",
+    "label": "CHAPTER 22",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-903",
+    "label": "VERTEBROPLASTY AND KYPHOPLASTY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-904",
+    "label": "SPINAL DISC PROSTHESES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-905",
+    "label": "SPINAL DECOMPRESSION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-906",
+    "label": "SPINAL MOTION PRESERVATION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-907",
+    "label": "CHAPTER 22",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-908",
+    "label": "PLICA SYNDROME",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-909",
+    "label": "FASCIITIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-910",
+    "label": "EXERCISE 22.4",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-911",
+    "label": "CHAPTER 22",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-912",
+    "label": "Coding OF Pregnancy AND Childbirth Complications, Abortion, Congenital Anomalies, AND Perinatal Conditions",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-913",
+    "label": "CHAPTER\u00a023",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-914",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-915",
+    "label": "Complications of Pregnancy, Childbirth, and the Puerperium",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-916",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-917",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-918",
+    "label": "Antepartum",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-919",
+    "label": "Peripartum",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-920",
+    "label": "Postpartum",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-921",
+    "label": "Puerperium",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-922",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-923",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-924",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-925",
+    "label": "FINAL CHARACTER FOR TRIMESTER",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-926",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-927",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-928",
+    "label": "OUTCOME OF DELIVERY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-929",
+    "label": "EXERCISE 23.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-930",
+    "label": "FETAL SEVENTH CHARACTERS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-931",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-932",
+    "label": "SE  LECTION OF FIRST-  LISTED OR PRINCIPAL DIAGNOSIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-933",
+    "label": "Routine Outpatient Prenatal Visits",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-934",
+    "label": "Supervision of High-  Risk Pregnancy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-935",
+    "label": "Episodes When No Delivery Occurs",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-936",
+    "label": "Admission with Normal Delivery",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-937",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-938",
+    "label": "EXERCISE 23.2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-939",
+    "label": "Admission with Other Delivery",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-940",
+    "label": "Admission for Other Obstetric Care",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-941",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-942",
+    "label": "FETAL CONDITIONS AFFECTING MANAGEMENT OF PREGNANCY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-943",
+    "label": "Multiple Gestation",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-944",
+    "label": "In Utero Surgery",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-945",
+    "label": "OTHER CONDITIONS COMPLICATING PREGNANCY, CHILDBIRTH, OR THE PUERPERIUM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-946",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-947",
+    "label": "Hypertension",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-948",
+    "label": "Diabetes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-949",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-950",
+    "label": "HIV Infection",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-951",
+    "label": "Alcohol, Tobacco, and Drug Use",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-952",
+    "label": "COMPLICATIONS OF   LABOR AND DELIVERY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-953",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-954",
+    "label": "Obstructed   Labor",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-955",
+    "label": "Fetal Stress",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-956",
+    "label": "POSTPARTUM COMPLICATIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-957",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-958",
+    "label": "OTHER MATERNAL DISEASES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-959",
+    "label": "SEQUELAE OF COMPLICATION OF PREGNANCY, CHILDBIRTH, OR THE PUERPERIUM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-960",
+    "label": "EXERCISE 23.4",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-961",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-962",
+    "label": "OBSTETRIC PROCEDURES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-963",
+    "label": "PROCEDURES ASSISTING DELIVERY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-964",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-965",
+    "label": "Forceps Delivery and Vacuum Extraction",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-966",
+    "label": "Episiotomy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-967",
+    "label": "Duhrssen Incision",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-968",
+    "label": "Perineal Lacerations",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-969",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-970",
+    "label": "Fetal Monitoring",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-971",
+    "label": "Cesarean Delivery",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-972",
+    "label": "SERVICES RELATED TO CONTRACEPTIVE MANAGEMENT",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-973",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-974",
+    "label": "STERILIZATION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-975",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-976",
+    "label": "PROCREATIVE MANAGEMENT",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-977",
+    "label": "SUSPECTED MATERNAL AND FETAL CONDITIONS NOT FOUND",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-978",
+    "label": "EXERCISE 23.8",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-979",
+    "label": "CHAPTER 23",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-980",
+    "label": "CHAPTER\u00a024",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-981",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-982",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-983",
+    "label": "Abortion and Ec  topic Pregnancy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-984",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-985",
+    "label": "Abortion",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-986",
+    "label": "Biochemical pregnancy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-987",
+    "label": "Ec  topic pregnancy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-988",
+    "label": "Molar pregnancy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-989",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-990",
+    "label": "CHAPTER 24",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-991",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-992",
+    "label": "TYPES OF ABORTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-993",
+    "label": "COMPLETE VERSUS INCOMPLETE SPONTANEOUS ABORTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-994",
+    "label": "COMPLICATIONS ASSOCIATED WITH ABORTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-995",
+    "label": "EXERCISE 24.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-996",
+    "label": "CHAPTER 24",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-997",
+    "label": "MATERNAL CONDITION AS REASON FOR ABORTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-998",
+    "label": "INADVERTENT ABORTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-999",
+    "label": "ABORTION PROCEDURE RESULTING IN LIVEBORN INFANT",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1000",
+    "label": "LOSS OF FETUS WITH REMAINING FETUS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1001",
+    "label": "CHAPTER 24",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1002",
+    "label": "CONTINUING PREGNANCY FOLLOWING ELECTIVE FETAL REDUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1003",
+    "label": "PROCEDURES FOR TERMINATION OF PREGNANCY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1004",
+    "label": "EXERCISE 24.2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1005",
+    "label": "EC  TOPIC AND MOLAR PREGNANCIES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1006",
+    "label": "Tubal Pregnancy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1007",
+    "label": "CHAPTER 24",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1008",
+    "label": "Complications of Molar and Ec  topic Pregnancies",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1009",
+    "label": "MISSED ABORTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1010",
+    "label": "CHAPTER\u00a025",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1011",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1012",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1013",
+    "label": "TERM TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1014",
+    "label": "Congenital anomaly",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1015",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1016",
+    "label": "CHAPTER 25",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1017",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1018",
+    "label": "LOCATION OF TERMS IN THE ALPHABETIC INDEX",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1019",
+    "label": "Deformity . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1020",
+    "label": "RELATIONSHIP OF AGE TO CODES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1021",
+    "label": "NEWBORN WITH CONGENITAL CONDITIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1022",
+    "label": "CONGENITAL DEFORMITIES VERSUS PERINATAL DEFORMITIES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1023",
+    "label": "CHAPTER 25",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1024",
+    "label": "HYDROCEPHALUS AND SPINA BIFIDA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1025",
+    "label": "CONGENITAL MALFORMATIONS OF AORTIC AND MITRAL VALVES AND THE   GREAT ARTERIES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1026",
+    "label": "Congenital Malformations of Aortic and Mitral Valves",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1027",
+    "label": "Congenital Malformations of the Aorta",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1028",
+    "label": "Pulmonary Artery Anomalies",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1029",
+    "label": "CHAPTER 25",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1030",
+    "label": "NEUROFIBROMATOSIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1031",
+    "label": "ALAGILLE SYNDROME AND OTHER CONGENITAL MALFORMATIONS OF LIVER",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1032",
+    "label": "CYSTIC KIDNEY DISEASE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1033",
+    "label": "CONGENITAL MALFORMATIONS OF GENITAL ORGANS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1034",
+    "label": "OMPHALOCELE AND GASTROSCHISIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1035",
+    "label": "CRANIOSYNOSTOSIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1036",
+    "label": "CHAPTER 25",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1037",
+    "label": "OTHER SPECIFIED CONGENITAL MALFORMATION SYNDROMES AND MALFORMATIONS, NEC",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1038",
+    "label": "USHER SYNDROME",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1039",
+    "label": "GENETIC NEURODEVELOPMENTAL DISORDERS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1040",
+    "label": "EXERCISE 25.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1041",
+    "label": "CHAPTER\u00a026",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1042",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1043",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1044",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1045",
+    "label": "Newborn immaturity",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1046",
+    "label": "Newborn postmaturity",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1047",
+    "label": "Newborn low birth weight",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1048",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1049",
+    "label": "CHAPTER 26",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1050",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1051",
+    "label": "LOCATING CODES FOR PERINATAL CONDITIONS IN THE ALPHABETIC INDEX",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1052",
+    "label": "GENERAL PERINATAL GUIDELINES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1053",
+    "label": "RELATIONSHIP OF AGE TO CODES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1054",
+    "label": "CLASSIFICATION OF BIRTHS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1055",
+    "label": "OTHER DIAGNOSES FOR NEWBORNS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1056",
+    "label": "CHAPTER 26",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1057",
+    "label": "PREMATURITY, LOW BIRTH WEIGHT, AND POSTMATURITY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1058",
+    "label": "APNEA OF NEWBORN",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1059",
+    "label": "CHAPTER 26",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1060",
+    "label": "ABNORMAL FINDINGS ON STATE-  MANDATED NEWBORN SCREENING",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1061",
+    "label": "FETAL DISTRESS AND ASPHYXIA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1062",
+    "label": "NEONATAL   CEREBRAL INFARCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1063",
+    "label": "FETAL AND NEWBORN ASPIRATION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1064",
+    "label": "CHAPTER 26",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1065",
+    "label": "HEMOLYTIC DISEASE OF THE NEWBORN",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1066",
+    "label": "NECROTIZING ENTEROCOLITIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1067",
+    "label": "NEONATAL   CEREBRAL LEUKOMALACIA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1068",
+    "label": "DISORDERS OF STOMACH FUNCTION AND FEEDING PROB  LEMS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1069",
+    "label": "OBSERVATION AND EVALUATION OF NEWBORNS AND INFANTS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1070",
+    "label": "CHAPTER 26",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1071",
+    "label": "CHAPTER 26",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1072",
+    "label": "INFECTIONS ORIGINATING DURING THE PERINATAL PERIOD",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1073",
+    "label": "MATERNAL CONDITIONS AFFECTING THE FETUS OR NEWBORN",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1074",
+    "label": "CHAPTER 26",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1075",
+    "label": "SURGICAL OPERATION ON MOTHER AND FETUS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1076",
+    "label": "ENDOCRINE AND METABOLIC DISTURBANCES SPECIFIC TO THE FETUS AND NEWBORN",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1077",
+    "label": "INFANTILE COLIC",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1078",
+    "label": "APPARENT LIFE-  THREATENING EVENT",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1079",
+    "label": "ROUTINE VACCINATION OF NEWBORNS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1080",
+    "label": "HEALTH SUPERVISION OF INFANT OR CHILD",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1081",
+    "label": "CHAPTER 26",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1082",
+    "label": "EXERCISE 26.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1083",
+    "label": "CHAPTER 26 Perinatal Conditions",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1084",
+    "label": "Coding OF Circulatory System Diseases AND Neoplastic Diseases",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1085",
+    "label": "CHAPTER\u00a027",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1086",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1087",
+    "label": "Diseases of the Circulatory System",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1088",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1089",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1090",
+    "label": "Diastolic heart failure",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1091",
+    "label": "Systolic heart failure",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1092",
+    "label": "Thrombophlebitis of a vein",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1093",
+    "label": "Thrombosis of a vein",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1094",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1095",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1096",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1097",
+    "label": "RHEUMATIC HEART DISEASE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1098",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1099",
+    "label": "ISCHEMIC HEART DISEASE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1100",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1101",
+    "label": "Angina Pectoris",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1102",
+    "label": "Myocardial Infarction",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1103",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1104",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1105",
+    "label": "Evolving   Myocardial Infarction",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1106",
+    "label": "Current Complications Following   Myocardial Infarction",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1107",
+    "label": "Other Acute Ischemic Heart Disease",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1108",
+    "label": "Postmyo  car  dial Infarction Syndrome and Postmyo  car  dial Angina",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1109",
+    "label": "EXERCISE 27.4",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1110",
+    "label": "Chronic Ischemic Heart Disease",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1111",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1112",
+    "label": "Chronic Total Occlusion",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1113",
+    "label": "HEART FAILURE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1114",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1115",
+    "label": "Compensated, Decompensated, and Exacerbated Heart Failure",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1116",
+    "label": "Hypertensive Heart Disease and Heart Failure",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1117",
+    "label": "CARDIAC TAMPONADE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1118",
+    "label": "CARDIOMYOPATHY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1119",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1120",
+    "label": "CARDIAC ARREST",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1121",
+    "label": "DISSECTION AND ANEURYSM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1122",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1123",
+    "label": "CEREBROVASCULAR DISORDERS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1124",
+    "label": "FIGURE 27.5    Types of   Cerebral Infarction",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1125",
+    "label": "Sequelae of Cerebrovascular Disease",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1126",
+    "label": "HYPERTENSION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1127",
+    "label": "Primary, Transient, and Secondary Hypertension",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1128",
+    "label": "HYPERTENSIVE HEART DISEASE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1129",
+    "label": "HYPERTENSION AND CHRONIC KIDNEY DISEASE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1130",
+    "label": "HYPERTENSIVE HEART AND CHRONIC KIDNEY DISEASE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1131",
+    "label": "HYPERTENSION WITH OTHER CONDITIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1132",
+    "label": "Hypertensive Cerebrovascular Disease",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1133",
+    "label": "Hypertensive Retinopathy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1134",
+    "label": "HYPERTENSION COMPLICATING PREGNANCY, CHILDBIRTH, AND THE PUERPERIUM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1135",
+    "label": "ELEVATED BLOOD PRESSURE VERSUS HYPERTENSION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1136",
+    "label": "ATHEROSCLEROSIS OF EXTREMITIES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1137",
+    "label": "SECONDARY PULMONARY HYPERTENSION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1138",
+    "label": "PULMONARY EMBOLISM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1139",
+    "label": "FONTAN PHYSIOLOGY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1140",
+    "label": "SADDLE EMBOLISM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1141",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1142",
+    "label": "THROMBOSIS AND THROMBOPHLEBITIS OF VEINS OF EXTREMITIES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1143",
+    "label": "ATHEROEMBOLISM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1144",
+    "label": "OTHER CIRCULATORY CONDITIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1145",
+    "label": "STATUS Z CODES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1146",
+    "label": "PROCEDURES INVOLVING THE CIRCULATORY SYSTEM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1147",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1148",
+    "label": "Diagnostic Cardiac Catheterization",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1149",
+    "label": "Angiocardiography",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1150",
+    "label": "Intraoperative Fluorescence Vascular Angiography",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1151",
+    "label": "Electrophysiological Stimulation and Recording Studies",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1152",
+    "label": "Implantation of Automatic Cardioverter Defibrillator",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1153",
+    "label": "Cardiac Pacemaker Therapy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1154",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1155",
+    "label": "Cardiac Resynchronization Therapy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1156",
+    "label": "Percutaneous Mitral Valve Repair",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1157",
+    "label": "Percutaneous Aortic and Pulmonary Valve Repair",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1158",
+    "label": "Percutaneous Balloon Valvuloplasty",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1159",
+    "label": "Percutaneous Transluminal Coronary Angioplasty",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1160",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1161",
+    "label": "Transluminal Coronary Atherectomy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1162",
+    "label": "Angioplasty and Atherectomy of Noncoronary Vessels",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1163",
+    "label": "Coronary Artery Bypass Graft",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1164",
+    "label": "FIGURE 27.8    Coronary Artery Bypass Graft",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1165",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1166",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1167",
+    "label": "Exclusion or Excision of the Left Atrial Appendage",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1168",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1169",
+    "label": "Ablation of Heart Tissue ( Maze Procedure)",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1170",
+    "label": "Implantable Heart Assist Devices",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1171",
+    "label": "Synthetic substitute heart/ventricle",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1172",
+    "label": "Implantable heart assist system",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1173",
+    "label": "Short-  Term External Heart Assist Devices",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1174",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1175",
+    "label": "Intra-  Aortic Balloon Pump",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1176",
+    "label": "Totally Implantable and Tunneled Vascular Access Devices",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1177",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1178",
+    "label": "Implantable Hemodynamic Monitor",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1179",
+    "label": "Intravascular and Intra-  Aneurysm Pressure   Measurement",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1180",
+    "label": "Implantation of Carotid Sinus Stimulation System",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1181",
+    "label": "Implantation of Cardiomyostimulation System",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1182",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1183",
+    "label": "Heart Transplantation",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1184",
+    "label": "FIGURE 27.12    Open Aneurysmectomy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1185",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1186",
+    "label": "Procedures on Aneurysms",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1187",
+    "label": "FIGURE 27.13      Open Surgical Aneurysm Repair via Tube Graft",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1188",
+    "label": "FIGURE 27.14      Endovascular Aneurysm Repair",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1189",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1190",
+    "label": "CHAPTER 27",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1191",
+    "label": "Other Endovascular Procedures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1192",
+    "label": "CHAPTER\u00a028",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1193",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1194",
+    "label": "Neoplasms",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1195",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1196",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1197",
+    "label": "Direct extension",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1198",
+    "label": "Invasive",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1199",
+    "label": "Metastasis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1200",
+    "label": "Neoplasm",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1201",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1202",
+    "label": "CHAPTER 28",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1203",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1204",
+    "label": "BE  HAV  IOR CLASSIFICATION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1205",
+    "label": "Malignant Neoplasms",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1206",
+    "label": "Neuroendocrine Tumors",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1207",
+    "label": "Merkel Cell Carcinoma",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1208",
+    "label": "Malignant Neoplasms of Ec  topic Tissue",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1209",
+    "label": "Benign Neoplasms",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1210",
+    "label": "Carcinoma in Situ",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1211",
+    "label": "CHAPTER 28",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1212",
+    "label": "Neoplasms of Uncertain Be  hav  ior",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1213",
+    "label": "Neoplasms of Unspecified Be  hav  ior",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1214",
+    "label": "Unspecified Mass or Lesion",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1215",
+    "label": "MORPHOLOGY CLASSIFICATION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1216",
+    "label": "LOCATING CODES FOR NEOPLASTIC DISEASE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1217",
+    "label": "Carcinoma . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1218",
+    "label": "TABLE 28.1 Section of the   Neoplasm   Table in the Alphabetic Index of Diseases and Injuries",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1219",
+    "label": "BASIC TYPES OF MALIGNANT NEOPLASMS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1220",
+    "label": "CHAPTER 28",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1221",
+    "label": "CODING OF SOLID MALIGNANT NEOPLASMS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1222",
+    "label": "Overlapping Sites",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1223",
+    "label": "Malignancy in Two or More Noncontiguous Sites",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1224",
+    "label": "Neoplasms Described as Metastatic",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1225",
+    "label": "'Metastatic To'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1226",
+    "label": "'Metastatic From'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1227",
+    "label": "Single Metastatic Site",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1228",
+    "label": "Multiple Metastatic Sites",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1229",
+    "label": "No Site Stated",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1230",
+    "label": "Adenocarcinoma . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1231",
+    "label": "EXERCISE 28.5",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1232",
+    "label": "CODING OF MALIGNANCIES OF HEMATOPOIETIC AND LYMPHATIC SYSTEMS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1233",
+    "label": "Neoplasms of Lymph Nodes or Glands",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1234",
+    "label": "CHAPTER 28",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1235",
+    "label": "Hodgkin Lymphoma",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1236",
+    "label": "Non-  Hodgkin Lymphomas",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1237",
+    "label": "Multiple Myeloma, Other Immunoproliferative Neoplasms, and Leukemias",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1238",
+    "label": "SEQUENCING OF CODES FOR NEOPLASTIC DISEASES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1239",
+    "label": "Admission/Encounter for Treatment of Primary Site",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1240",
+    "label": "Admission/Encounter for Treatment of Secondary Site",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1241",
+    "label": "CHAPTER 28",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1242",
+    "label": "Admission for Complications Associated with a Malignant Neoplasm",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1243",
+    "label": "Admission or Encounter Involving Administration of Radiation Therapy, Immunotherapy, or Chemotherapy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1244",
+    "label": "CHAPTER 28",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1245",
+    "label": "Encounter to Determine Extent of Malignancy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1246",
+    "label": "Current Malignancy versus Personal History of Malignancy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1247",
+    "label": "Malignant Neoplasm Associated with Transplanted Organ",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1248",
+    "label": "Breast Implant-  Associated Anaplastic Large Cell Lymphoma",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1249",
+    "label": "Malignant Neoplasm in a Pregnant Patient",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1250",
+    "label": "Pathological Fracture Due to a Neoplasm",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1251",
+    "label": "Malignant Ascites",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1252",
+    "label": "Malignant Pleural Effusion",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1253",
+    "label": "Encounter for Prophylactic Organ Removal",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1254",
+    "label": "Coding of Admissions or Encounters for Follow-  Up Examinations",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1255",
+    "label": "TREATMENT OF NEOPLASMS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1256",
+    "label": "Lymph Nodes Excision/Resection",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1257",
+    "label": "Thermal Ablation",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1258",
+    "label": "Laser Interstitial Thermal Therapy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1259",
+    "label": "Chemotherapy and Immunotherapy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1260",
+    "label": "Radiation Therapy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1261",
+    "label": "Intraoperative Electron Radiation Therapy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1262",
+    "label": "EXERCISE 28.8",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1263",
+    "label": "Coding OF Injuries, Burns, Poisoning, AND Complications OF Care",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1264",
+    "label": "CHAPTER\u00a029",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1265",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1266",
+    "label": "Injuries",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1267",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1268",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1269",
+    "label": "External cause codes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1270",
+    "label": "Pathological fracture",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1271",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1272",
+    "label": "CHAPTER 29",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1273",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1274",
+    "label": "SEVENTH CHARACTERS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1275",
+    "label": "Seventh Character 'A'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1276",
+    "label": "Seventh Character 'D'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1277",
+    "label": "Seventh Character 'S'",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1278",
+    "label": "MULTIPLE CODING OF INJURIES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1279",
+    "label": "CHAPTER 29",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1280",
+    "label": "SEQUENCING OF INJURY CODES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1281",
+    "label": "EXTERNAL CAUSE OF MORBIDITY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1282",
+    "label": "External Cause Status",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1283",
+    "label": "CHAPTER 29",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1284",
+    "label": "Activity Codes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1285",
+    "label": "Sequencing of External Cause Codes",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1286",
+    "label": "Transport and Vehicle Accidents",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1287",
+    "label": "External Cause of Injury Classified by Intent",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1288",
+    "label": "Place of Occurrence",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1289",
+    "label": "LATE EFFECTS OF EXTERNAL   CAUSES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1290",
+    "label": "EXERCISE 29.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1291",
+    "label": "CHILD AND ADULT ABUSE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1292",
+    "label": "CHAPTER 29 Injuries",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1293",
+    "label": "FRACTURES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1294",
+    "label": "CHAPTER 29",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1295",
+    "label": "Seventh-  Character Values for Fractures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1296",
+    "label": "CHAPTER 29",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1297",
+    "label": "Initial Care",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1298",
+    "label": "Subsequent Care",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1299",
+    "label": "FIGURE\u00a029.3 Gustilo Classification of Open Fractures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1300",
+    "label": "Skull Fractures and Intracranial Injuries",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1301",
+    "label": "CHAPTER 29 Injuries",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1302",
+    "label": "Vertebral Fractures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1303",
+    "label": "Fractures of the Pelvis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1304",
+    "label": "Fractures of the Extremities",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1305",
+    "label": "EXERCISE 29.2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1306",
+    "label": "Pathological Fractures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1307",
+    "label": "Compression Fractures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1308",
+    "label": "Stress Fractures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1309",
+    "label": "Periprosthetic Fractures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1310",
+    "label": "Fractures Due to Birth Injury",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1311",
+    "label": "PROCEDURES RELATED TO FRACTURES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1312",
+    "label": "Reduction of Fractures",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1313",
+    "label": "Internal Fixation",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1314",
+    "label": "External Fixation",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1315",
+    "label": "EXERCISE 29.3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1316",
+    "label": "ADMISSIONS OR ENCOUNTERS FOR ORTHOPEDIC AFTERCARE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1317",
+    "label": "DISLOCATIONS AND SUBLUXATIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1318",
+    "label": "CHAPTER 29 Injuries",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1319",
+    "label": "INTERNAL INJURIES OF THE CHEST, ABDOMEN, AND PELVIS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1320",
+    "label": "BLOOD VESSEL AND NERVE INJURIES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1321",
+    "label": "OPEN WOUNDS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1322",
+    "label": "AMPUTATIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1323",
+    "label": "OTHER INJURIES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1324",
+    "label": "EARLY COMPLICATIONS OF TRAUMA",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1325",
+    "label": "EXERCISE 29.4",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1326",
+    "label": "OTHER EFFECTS OF EXTERNAL   CAUSES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1327",
+    "label": "CHAPTER 29 Injuries",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1328",
+    "label": "EXERCISE 29.5",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1329",
+    "label": "LATE EFFECTS OF INJURIES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1330",
+    "label": "EXERCISE 29.6",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1331",
+    "label": "EXERCISE 29.7",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1332",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1333",
+    "label": "Burns",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1334",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1335",
+    "label": "TERM TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1336",
+    "label": "Rule of nines",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1337",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1338",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1339",
+    "label": "ANATOMICAL SITE OF BURN",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1340",
+    "label": "DEPTH OF BURN",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1341",
+    "label": "First Degree",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1342",
+    "label": "Second Degree",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1343",
+    "label": "Third Degree",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1344",
+    "label": "SEQUENCING OF CODES FOR BURNS/CORROSIONS AND RELATED CONDITIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1345",
+    "label": "SEVENTH-  CHARACTER VALUES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1346",
+    "label": "EXTENT OF BURN",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1347",
+    "label": "SUNBURN",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1348",
+    "label": "EXTERNAL   CAUSES OF BURNS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1349",
+    "label": "ASSOCIATED INJURIES AND ILLNESSES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1350",
+    "label": "EXERCISE 30.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1351",
+    "label": "CHAPTER 30 Burns",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1352",
+    "label": "CHAPTER\u00a031",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1353",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1354",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1355",
+    "label": "Poisoning, Toxic Effects, Adverse Effects, and Underdosing of Drugs",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1356",
+    "label": "TERMS TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1357",
+    "label": "Adverse effect",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1358",
+    "label": "Poisoning",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1359",
+    "label": "Toxic effect",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1360",
+    "label": "Underdosing",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1361",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1362",
+    "label": "CHAPTER 31",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1363",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1364",
+    "label": "CHAPTER 31",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1365",
+    "label": "CHAPTER 31",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1366",
+    "label": "LOCATION OF CODES ASSOCIATED WITH POISONING, ADVERSE EFFECTS, AND UNDERDOSING",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1367",
+    "label": "CHAPTER 31",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1368",
+    "label": "CHAPTER 31",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1369",
+    "label": "GUIDELINES FOR ASSIGNMENT OF CODES FOR POISONING, ADVERSE EFFECTS, UNDERDOSING, AND TOXIC EFFECTS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1370",
+    "label": "ENVIRONMENTAL TOXINS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1371",
+    "label": "EXERCISE 31.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1372",
+    "label": "CHAPTER 31",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1373",
+    "label": "CHAPTER 31",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1374",
+    "label": "UNSPECIFIED ADVERSE EFFECT OF DRUGS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1375",
+    "label": "POISONING DUE TO SUBSTANCE ABUSE OR DEPENDENCE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1376",
+    "label": "EXERCISE 31.2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1377",
+    "label": "LATE EFFECTS OF POISONING, ADVERSE EFFECTS, AND UNDERDOSING",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1378",
+    "label": "CHAPTER 31",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1379",
+    "label": "CHAPTER 31",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1380",
+    "label": "CHAPTER\u00a032",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1381",
+    "label": "CHAPTER OVERVIEW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1382",
+    "label": "Complications of Surgery and Medical Care",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1383",
+    "label": "LEARNING OUTCOMES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1384",
+    "label": "TERM TO KNOW",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1385",
+    "label": "Iatrogenic condition",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1386",
+    "label": "REMEMBER . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1387",
+    "label": "CHAPTER 32",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1388",
+    "label": "INTRODUCTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1389",
+    "label": "LOCATING COMPLICATION CODES IN THE ALPHABETIC INDEX",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1390",
+    "label": "Adhesions, adhesive (postinfective) . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1391",
+    "label": "CHAPTER 32",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1392",
+    "label": "Complication(s) (from) (of ) . . .",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1393",
+    "label": "POSTOPERATIVE CONDITIONS NOT CLASSIFIED AS COMPLICATIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1394",
+    "label": "EXERCISE 32.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1395",
+    "label": "COMPLICATIONS AFFECTING SPECIFIC BODY SYSTEMS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1396",
+    "label": "CHAPTER 32",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1397",
+    "label": "CHAPTER 32",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1398",
+    "label": "COMPLICATIONS FOLLOWING INFUSION, TRANSFUSION, AND THERAPEUTIC INJECTION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1399",
+    "label": "CHAPTER 32",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1400",
+    "label": "COMPLICATIONS DUE TO PRESENCE OF INTERNAL DEVICE, IMPLANT, OR GRAFT",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1401",
+    "label": "Endoleaks Following Endovascular Aneurysm Repair",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1402",
+    "label": "CHAPTER 32",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1403",
+    "label": "TRANSPLANT COMPLICATIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1404",
+    "label": "COMPLICATIONS OF REATTACHMENT AND AMPUTATION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1405",
+    "label": "CHAPTER 32",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1406",
+    "label": "EXERCISE 32.3",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1407",
+    "label": "COMPLICATIONS OF PROCEDURES NOT CLASSIFIED ELSEWHERE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1408",
+    "label": "COMPLICATIONS OF FOREIGN BODY ACCIDENTALLY LEFT DURING SURGERY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1409",
+    "label": "CHAPTER 32",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1410",
+    "label": "OTHER COMPLICATIONS OF SURGICAL AND MEDICAL CARE NOT CLASSIFIED ELSEWHERE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1411",
+    "label": "COMPLICATIONS VERSUS AFTERCARE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1412",
+    "label": "EXERCISE 32.4",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1413",
+    "label": "CHAPTER 32",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1414",
+    "label": "STATUS POST",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1415",
+    "label": "SURGICAL OR MEDICAL CARE AS EXTERNAL CAUSE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1416",
+    "label": "EXERCISE 32.5",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1417",
+    "label": "Final Review Exercise",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1418",
+    "label": "Final Review Exercise",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1419",
+    "label": "K85.20 Alcohol induced acute pancreatitis without necrosis or infection",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1420",
+    "label": "F10.229 Alcohol dependence with intoxication, unspecified HZ2ZZZZ    Alcohol detoxification",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1421",
+    "label": "E43 Unspecified severe protein-  calorie malnutrition F50.00 Anorexia nervosa, unspecified",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1422",
+    "label": "K57.33 Diverticulitis of colon with bleeding E87.6 Hypokalemia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1423",
+    "label": "I50.23 Acute on chronic systolic (congestive) heart failure I20.0 Unstable angina",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1424",
+    "label": "E10.65 T ype 1 diabetes mellitus with hyperglycemia I21.19 ST elevation (STEMI)   myocardial infarction involving other coronary artery of inferior wall",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1425",
+    "label": "I51.0 Atrial septal defect, acquired",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1426",
+    "label": "H90.6 Mixed conductive and sensorineural hearing loss, bilateral",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1427",
+    "label": "T86.11 Kidney transplant rejection",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1428",
+    "label": "Excision of right kidney, percutaneous approach,",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1429",
+    "label": "S72.301A Unspecified fracture of shaft of right femur, initial encounter for closed fracture",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1430",
+    "label": "Z03.6 Encounter for observation for suspected toxic effect from ingested substance ruled out",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1431",
+    "label": "A37.01 Whooping cough due to Bordetella pertussis with pneumonia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1432",
+    "label": "I20.0 Unstable angina",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1433",
+    "label": "I47.9 Paroxysmal tachycardia, unspecified",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1434",
+    "label": "B20 Human immunodeficiency virus (HIV) disease C46.0 Kaposi's sarcoma of skin",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1435",
+    "label": "E11.01 E11.22",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1436",
+    "label": "I96 Gangrene, not elsewhere classified L89.323 Pressure ulcer of left buttock, stage 3 0HB8XZZ Excision of buttock skin, external approach",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1437",
+    "label": "N18.30 Chronic kidney disease, stage 3 unspecified Z79.4 Long-  term (current) use of insulin",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1438",
+    "label": "Appendix A",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1439",
+    "label": "APPENDIX A",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1440",
+    "label": "MEDICARE AND MEDICAID REIMBURSEMENT",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1441",
+    "label": "Physicians and Nonhospital Providers",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1442",
+    "label": "Hospitals",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1443",
+    "label": "APPENDIX A",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1444",
+    "label": "Acute Care Inpatient Hospitals",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1445",
+    "label": "Hospital Outpatient   Services",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1446",
+    "label": "Inpatient Psychiatric Facilities",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1447",
+    "label": "Inpatient Rehabilitation Facilities",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1448",
+    "label": "Long-  Term Care Hospitals",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1449",
+    "label": "APPENDIX A",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1450",
+    "label": "Critical Access Hospitals",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1451",
+    "label": "Home Health Agencies",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1452",
+    "label": "Hospice Agencies",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1453",
+    "label": "Skilled Nursing Facilities",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1454",
+    "label": "MEDICARE ADVANTAGE PLANS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1455",
+    "label": "COMMERCIAL PAYER REIMBURSEMENT",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1456",
+    "label": "Appendix B",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1457",
+    "label": "APPENDIX B",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1458",
+    "label": "Reporting of the Pre  sent on Admission Indicator",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1459",
+    "label": "DEFINITION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1460",
+    "label": "DOCUMENTATION",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1461",
+    "label": "APPENDIX B",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1462",
+    "label": "GUIDELINES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1463",
+    "label": "REPORTING OPTIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1464",
+    "label": "Conditions Pre  sent on Admission",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1465",
+    "label": "Conditions Not Pre  sent on Admission",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1466",
+    "label": "APPENDIX B",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1467",
+    "label": "APPENDIX B",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1468",
+    "label": "Unclear Documentation",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1469",
+    "label": "Conditions Clinically Undetermined",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1470",
+    "label": "Conditions Exempt from POA Reporting",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1471",
+    "label": "Special Considerations",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1472",
+    "label": "EXERCISE B.1",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1473",
+    "label": "EXERCISE B.2",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1474",
+    "label": "APPENDIX B",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1475",
+    "label": "Appendix C",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1476",
+    "label": "APPENDIX C",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1477",
+    "label": "Case Summary Exercises",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1478",
+    "label": "CONTENTS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1479",
+    "label": "APPENDIX C",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1480",
+    "label": "ABOUT THIS APPENDIX",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1481",
+    "label": "How to Use This Appendix",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1482",
+    "label": "About the Answers",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1483",
+    "label": "1. SYMPTOMS, SIGNS, AND ILL-  DEFINED CONDITIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1484",
+    "label": "R56.00 Simple febrile convulsions",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1485",
+    "label": "H66.92 Otitis media, unspecified, left ear",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1486",
+    "label": "2. INFECTIOUS AND PARASITIC DISEASES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1487",
+    "label": "3. ENDOCRINE, NUTRITIONAL, AND METABOLIC DISEASES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1488",
+    "label": "4.   MENTAL DISORDERS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1489",
+    "label": "G30.0 Alzheimer's disease, with early onset Dementia in other diseases classified elsewhere,",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1490",
+    "label": "E43 Unspecified severe protein-  calorie malnutrition",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1491",
+    "label": "F50.00 Anorexia nervosa, unspecified",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1492",
+    "label": "5.   DISEASES OF THE BLOOD AND BLOOD-  FORMING ORGANS AND CERTAIN DISORDERS INVOLVING THE IMMUNE MECHANISM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1493",
+    "label": "D61.09 Other constitutional aplastic anemia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1494",
+    "label": "D57.00 Hb-  SS disease with crisis, unspecified",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1495",
+    "label": "E83.52 Hypercalcemia C67.9 Malignant neoplasm of bladder, unspecified",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1496",
+    "label": "6. DISEASES OF THE   NERVOUS SYSTEM AND SENSE ORGANS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1497",
+    "label": "H52.4 Presbyopia",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1498",
+    "label": "B20 Human immunodeficiency virus [HIV] disease",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1499",
+    "label": "H40.1131  Primary open-  angle glaucoma, bilateral mild stage H35.30 Unspecified macular degeneration",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1500",
+    "label": "G57.22 Lesion of femoral nerve, left side S73.032S Other anterior subluxation of left hip, sequela 01ND3ZZ Release femoral nerve, percutaneous approach",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1501",
+    "label": "J32.9 Chronic sinusitis, unspecified",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1502",
+    "label": "F03.90 Unspecified dementia without behavioral disturbance, psychotic disturbance, mood disturbance, and anxiety",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1503",
+    "label": "I69.334 Monoplegia of upper limb following   cerebral infarction affecting left non-  dominant side",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1504",
+    "label": "Q23.2 Congenital mitral stenosis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1505",
+    "label": "7. DISEASES OF THE RESPIRATORY SYSTEM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1506",
+    "label": "J36 Peritonsillar abscess",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1507",
+    "label": "B95.4 Other streptococcus as the cause of diseases classified elsewhere",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1508",
+    "label": "R06.81 Apnea, not elsewhere classified 4A12X9Z Monitoring of cardiac output, external approach",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1509",
+    "label": "8. DISEASES OF THE DIGESTIVE SYSTEM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1510",
+    "label": "K62.89 Other specified diseases of anus and rectum 0DBP0ZZ Excision of rectum, open approach",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1511",
+    "label": "A08.4 Viral intestinal infection, unspecified: BD15YZZ Fluoroscopy of upper GI using other contrast",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1512",
+    "label": "K85.90 Acute pancreatitis without necrosis or infection, unspecified",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1513",
+    "label": "R10.13 Epigastric pain R11.0 Nausea",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1514",
+    "label": "K57.92 Diverticulitis of intestine, part unspecified, without perforation or abscess without bleeding",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1515",
+    "label": "D49.0 Neoplasm of unspecified be  hav  ior of digestive system",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1516",
+    "label": "R11.15 Cyclical vomiting syndrome unrelated to migraine R10.9 Unspecified abdominal pain",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1517",
+    "label": "9. DISEASES OF THE GENITOURINARY SYSTEM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1518",
+    "label": "Z52.4 Kidney donor",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1519",
+    "label": "N10 Acute pyelonephritis",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1520",
+    "label": "10. DISEASES OF THE SKIN AND SUBCUTANEOUS TISSUE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1521",
+    "label": "L03.221 Cellulitis of neck",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1522",
+    "label": "L03.116 Cellulitis of left lower limb",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1523",
+    "label": "F11.10 Opioid abuse, uncomplicated",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1524",
+    "label": "11.   DISEASES OF THE MUSCULOSKELETAL SYSTEM AND CONNECTIVE TISSUE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1525",
+    "label": "M48.02 Spinal stenosis, cervical region",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1526",
+    "label": "M94.0 Chondrocostal junction syndrome [Tietze] R05.9 Cough",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1527",
+    "label": "M00.861 Arthritis due to other bacteria, right knee 0MBN0ZZ    Excision of right knee bursa and ligament, open approach",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1528",
+    "label": "12.   COMPLICATIONS OF PREGNANCY, CHILDBIRTH, AND THE PUERPERIUM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1529",
+    "label": "0UL70ZZ Occlusion of bilateral fallopian tubes, open approach",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1530",
+    "label": "O86.02 Infection of obstetric surgical wound, deep incisional site",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1531",
+    "label": "O47.03 False   labor before 37 completed weeks gestation, third trimester",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1532",
+    "label": "O60.02 Preterm   labor without delivery, second trimester Z3A.25 25 weeks gestation of pregnancy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1533",
+    "label": "Z3A.10  10 weeks gestation of pregnancy",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1534",
+    "label": "13. ABORTION AND EC  TOPIC PREGNANCY",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1535",
+    "label": "O00.101 Right tubal pregnancy without intrauterine pregnancy 10T24ZZ Resection of products of conception, ec  topic, percutaneous endoscopic approach",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1536",
+    "label": "14. CONGENITAL ANOMALIES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1537",
+    "label": "Q25.6 Stenosis of pulmonary artery",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1538",
+    "label": "0BJ08ZZ",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1539",
+    "label": "Q66.02 Congenital talipes equinovarus, left foot",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1540",
+    "label": "Z53.09 Procedure and treatment not carried out   because of other contraindication",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1541",
+    "label": "11.    Inpatient observation admission: A",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1542",
+    "label": "15. PERINATAL CONDITIONS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1543",
+    "label": "Q61.4 Renal dysplasia 0TT00ZZ Resection of right kidney, open approach",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1544",
+    "label": "16. DISEASES OF THE CIRCULATORY SYSTEM",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1545",
+    "label": "R07.89 Other chest pain",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1546",
+    "label": "I82.422 Acute embolism and thrombosis of left iliac vein Z79.01 Long term (current) use of anticoagulant",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1547",
+    "label": "I61.8 Other nontraumatic intrace  re  bral hemorrhage I69.354 Hemiplegia and hemiparesis following   cerebral infarction affecting left non-  dominant side",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1548",
+    "label": "17. NEOPLASMS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1549",
+    "label": "J44.1 Chronic obstructive pulmonary disease with (acute) exacerbation",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1550",
+    "label": "C34.12 Malignant neoplasm of upper lobe, left bronchus or lung",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1551",
+    "label": "Inpatient admission (episode 2): This",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1552",
+    "label": "C90.20 Extramedullary plasmacytoma not having achieved remission",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1553",
+    "label": "J90 Pleural effusion, not elsewhere classified R91.8 Other nonspecific abnormal findings of lung field",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1554",
+    "label": "D33.3 Benign neoplasm of cranial nerves",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1555",
+    "label": "005N0ZZ Destruction of acoustic nerve, open approach",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1556",
+    "label": "Z51.0 Encounter for antineoplastic radiation therapy Z85.118 Personal history of other malignant neoplasm of bronchus and lung",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1557",
+    "label": "18. INJURIES",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1558",
+    "label": "14.    Emergency department visit (episode 1):",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1559",
+    "label": "R56.9 Unspecified convulsions",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1560",
+    "label": "15.    Emergency department visit (episode 1): The",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1561",
+    "label": "Orthopedic clinic visit (episode 2): The",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1562",
+    "label": "0RSKXZZ Reposition left shoulder joint, external approach",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1563",
+    "label": "V00.131D Fall from skateboard, subsequent encounter",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1564",
+    "label": "19. BURNS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1565",
+    "label": "20.   POISONING, TOXIC EFFECTS, ADVERSE EFFECTS, AND UNDERDOSING OF DRUGS",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1566",
+    "label": "21. COMPLICATIONS OF SURGERY AND MEDICAL CARE",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1567",
+    "label": "J95.2 Acute pulmonary insufficiency following nonthoracic surgery",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1568",
+    "label": "T85.520A Displacement of bile duct prosthesis, initial encounter",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1569",
+    "label": "Index",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1570",
+    "label": "INDEX",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1571",
+    "label": "Authoritative Information from the Publisher of",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1572",
+    "label": "AHA Coding Clinic \u00ae",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1573",
+    "label": "Quizzes, Review Questions, and Case Summary Exercises",
+    "type": "guideline"
+  },
+  {
+    "id": "SEC-1574",
+    "label": "Educator Resources",
+    "type": "guideline"
+  },
+  {
+    "id": "870",
+    "label": "SEPTICEMIA OR SEVERE SEPSIS WITH MV >96 HOURS",
+    "type": "drg"
+  },
+  {
+    "id": "871",
+    "label": "SEPTICEMIA OR SEVERE SEPSIS WITHOUT MV >96 HOURS WITH MCC",
+    "type": "drg"
+  },
+  {
+    "id": "872",
+    "label": "SEPTICEMIA OR SEVERE SEPSIS WITHOUT MV >96 HOURS WITHOUT MCC",
+    "type": "drg"
+  },
+  {
+    "id": "190",
+    "label": "CHRONIC OBSTRUCTIVE PULMONARY DISEASE WITH MCC",
+    "type": "drg"
+  },
+  {
+    "id": "191",
+    "label": "CHRONIC OBSTRUCTIVE PULMONARY DISEASE WITH CC",
+    "type": "drg"
+  },
+  {
+    "id": "192",
+    "label": "CHRONIC OBSTRUCTIVE PULMONARY DISEASE WITHOUT CC/MCC",
+    "type": "drg"
+  },
+  {
+    "id": "193",
+    "label": "SIMPLE PNEUMONIA & PLEURISY WITH MCC",
+    "type": "drg"
+  },
+  {
+    "id": "194",
+    "label": "SIMPLE PNEUMONIA & PLEURISY WITH CC",
+    "type": "drg"
+  },
+  {
+    "id": "195",
+    "label": "SIMPLE PNEUMONIA & PLEURISY WITHOUT CC/MCC",
+    "type": "drg"
+  },
+  {
+    "id": "064",
+    "label": "INTRACRANIAL HEMORRHAGE OR CEREBRAL INFARCTION WITH MCC",
+    "type": "drg"
+  },
+  {
+    "id": "065",
+    "label": "INTRACRANIAL HEMORRHAGE OR CEREBRAL INFARCTION WITH CC",
+    "type": "drg"
+  },
+  {
+    "id": "066",
+    "label": "INTRACRANIAL HEMORRHAGE OR CEREBRAL INFARCTION WITHOUT CC/MCC",
+    "type": "drg"
+  },
+  {
+    "id": "280",
+    "label": "ACUTE MYOCARDIAL INFARCTION, DISCHARGED ALIVE WITH MCC",
+    "type": "drg"
+  },
+  {
+    "id": "281",
+    "label": "ACUTE MYOCARDIAL INFARCTION, DISCHARGED ALIVE WITH CC",
+    "type": "drg"
+  },
+  {
+    "id": "282",
+    "label": "ACUTE MYOCARDIAL INFARCTION, DISCHARGED ALIVE WITHOUT CC/MCC",
+    "type": "drg"
+  },
+  {
+    "id": "287",
+    "label": "CIRCULATORY DISORDERS EXCEPT AMI, W CARD CATH W MCC",
+    "type": "drg"
+  },
+  {
+    "id": "291",
+    "label": "HEART FAILURE & SHOCK WITH MCC",
+    "type": "drg"
+  },
+  {
+    "id": "292",
+    "label": "HEART FAILURE & SHOCK WITH CC",
+    "type": "drg"
+  },
+  {
+    "id": "293",
+    "label": "HEART FAILURE & SHOCK WITHOUT CC/MCC",
+    "type": "drg"
+  },
+  {
+    "id": "480",
+    "label": "HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT WITH MCC",
+    "type": "drg"
+  },
+  {
+    "id": "481",
+    "label": "HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT WITH CC",
+    "type": "drg"
+  },
+  {
+    "id": "482",
+    "label": "HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT WITHOUT CC/MCC",
+    "type": "drg"
+  },
+  {
+    "id": "01",
+    "label": "Diseases and Disorders of the Nervous System",
+    "type": "mdc"
+  },
+  {
+    "id": "04",
+    "label": "Diseases and Disorders of the Respiratory System",
+    "type": "mdc"
+  },
+  {
+    "id": "05",
+    "label": "Diseases and Disorders of the Circulatory System",
+    "type": "mdc"
+  },
+  {
+    "id": "08",
+    "label": "Diseases and Disorders of the Musculoskeletal System",
+    "type": "mdc"
+  },
+  {
+    "id": "18",
+    "label": "Infectious and Parasitic Diseases",
+    "type": "mdc"
+  }
+]

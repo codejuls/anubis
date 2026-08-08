@@ -5,6 +5,7 @@ from pydantic import BaseModel, Field
 from datetime import date
 from typing import Optional, List
 import os
+import re
 
 from .schemas import GrouperRequest, GrouperResponse
 from .grouper import AnubisMockGrouper
@@ -248,6 +249,116 @@ async def optimize_drg(request: OptimizationRequest):
         raise HTTPException(status_code=400, detail=f"DRG optimization failed: {str(e)}")
 
 
+from .medical_code_graph.graph import MedicalCodeGraph
+import json
+from pathlib import Path
+
+_graph_instance = None
+
+def get_graph():
+    global _graph_instance
+    if _graph_instance is None:
+        _graph_instance = MedicalCodeGraph(data_dir="/opt/data/anubis/knowledge")
+        try:
+            _graph_instance.load()
+        except FileNotFoundError as e:
+            _graph_instance = e
+    elif isinstance(_graph_instance, Exception):
+        raise _graph_instance
+    return _graph_instance
+
+# Helper to extract codes from text (ICD-10-CM/PCS, CPT, HCPCS pattern)
+_CODE_RE = re.compile(r"\b[A-Z][0-9]{2}(?:\.[0-9A-Z]{1,4})?\b")
+
+def extract_codes(text: str) -> list:
+    return sorted(set(_CODE_RE.findall(text.upper())))
+
+@app.post("/api/graph/tip")
+async def graph_tip(payload: dict):
+    """
+    Expected JSON:
+    {
+        "question": "What is the impact of adding a sepsis code to a COPD claim?",
+        "use_llm": true   # optional, defaults to true
+    }
+    Returns:
+    {
+        "tip": "..." ,
+        "codes": ["J44.9", "A41.9"],
+        "context": "..."
+    }
+    """
+    question = payload.get("question", "")
+    use_llm = bool(payload.get("use_llm", True))
+    if not question:
+        raise HTTPException(status_code=400, detail="Missing 'question' field")
+
+    try:
+        g = get_graph()
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=500, detail=f"Graph data not found: {e}")
+
+    codes = extract_codes(question)
+    if not codes:
+        # Fallback: treat the whole question as a space/comma separated list of potential codes
+        parts = [p.strip().upper() for p in question.replace(",", " ").split() if p]
+        codes = [p for p in parts if _CODE_RE.fullmatch(p)]
+    if not codes:
+        raise HTTPException(status_code=400, detail="No valid medical codes found in the input.")
+
+    # Build context using the graph
+    facts = []
+    for code in codes:
+        for edge in g.outgoing.get(code, []):
+            if edge["type"] == "code_guideline":
+                gl_node = g.get_node(edge["target"])
+                gl_label = gl_node.get("label") if gl_node else edge["target"]
+                facts.append(f"- Code {code} is associated with guideline '{gl_label}'.")
+
+    mdcs = set()
+    drgs = set()
+    for code in codes:
+        for e1 in g.outgoing.get(code, []):
+            if e1["type"] != "code_guideline":
+                continue
+            guideline_id = e1["target"]
+            for e2 in g.outgoing.get(guideline_id, []):
+                if e2["type"] != "guideline_mdc":
+                    continue
+                mdc_id = e2["target"]
+                mdcs.add(mdc_id)
+                for e3 in g.incoming.get(mdc_id, []):
+                    if e3["type"] == "drg_mdc":
+                        drgs.add(e3["source"])
+
+    if mdcs:
+        facts.append(f"- The involved MDC(s) are: {', '.join(sorted(mdcs))}.")
+    if drgs:
+        facts.append(f"- Possible DRG(s) for the given code(s): {', '.join(sorted(drgs))}.")
+
+    # Add known heuristics (could be made configurable)
+    facts.append("- Sepsis (A41.9) is always an MCC, which can increase DRG weight.")
+    facts.append("- If prolonged ventilation (>96h) is present, consider procedure code 5A1945Z, which may shift the DRG to a higher weight.")
+
+    context = "\n".join(facts)
+
+    if not use_llm or ollama_llm is None:
+        # Fallback to graph-generated tip
+        tip = g.generate_tip_for_codes(codes)
+        return {"tip": tip, "codes": codes, "context": context}
+
+    # Use the LLM to generate a natural language answer
+    try:
+        llm_response = await ollama_llm.generate_text(
+            system_prompt="You are a medical coding expert. Use the following knowledge‑graph facts to answer the question.",
+            user_prompt=f"{context}\\n\
+Question: {question}\\nAnswer in plain language, suitable for a coder's quick reference.",
+            max_tokens=512
+        )
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"LLM generation failed: {exc}")
+
+    return {"tip": llm_response.strip(), "codes": codes, "context": context}
 # Mount Frontend Static Files to serve the complete sandbox on a single port!
 frontend_dir = "/opt/data/anubis/frontend"
 if os.path.exists(frontend_dir):

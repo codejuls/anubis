@@ -21,6 +21,7 @@ from .schemas import (
 from .grouper import AnubisMockGrouper
 from .pricer import AnubisMockPricer
 from .guideline_index import FY2026GuidelineIndex
+from .medical_code_graph.graph import MedicalCodeGraph
 
 
 class OptimizationPotential(str, Enum):
@@ -237,12 +238,14 @@ class DRGOptimizer:
         grouper: AnubisMockGrouper,
         pricer: AnubisMockPricer,
         guideline_index: FY2026GuidelineIndex,
-        drg_kb: DRGKnowledgeBase
+        drg_kb: DRGKnowledgeBase,
+        medical_code_graph: Optional[MedicalCodeGraph] = None
     ):
         self.grouper = grouper
         self.pricer = pricer
         self.guideline_index = guideline_index
         self.drg_kb = drg_kb
+        self.medical_code_graph = medical_code_graph or MedicalCodeGraph(data_dir="/opt/data/anubis/knowledge")
         self.clinical_mapper = DRGClinicalMapper(drg_kb)
         self.query_scorer = QueryOpportunityScorer()
 
@@ -294,6 +297,38 @@ class DRGOptimizer:
 
         # Current reimbursement
         current_reimbursement = self._get_current_reimbursement(current_weight, hospital_base_rate)
+
+        # Graph-based enhancement: find possible DRGs from the codes via the medical code graph
+        try:
+            # Get the current codes (principal and secondary diagnoses)
+            all_codes = [principal_diagnosis] + secondary_diagnoses
+            possible_drgs_from_graph = self.medical_code_graph.get_possible_drgs_for_codes(all_codes)
+            for drg_code in possible_drgs_from_graph:
+                # Skip if this DRG is already in candidates (by drg_code)
+                if any(candidate.drg_code == drg_code for candidate in candidates):
+                    continue
+                # Get the DRG weight and info from the knowledge base
+                drg_weight = self.drg_kb.get_drg_weight(drg_code)
+                if drg_weight is None:
+                    continue
+                drg_info = self.drg_kb.get_drg_info(drg_code)
+                drg_description = drg_info.get('description', '') if drg_info else ''
+                # Calculate reimbursement for this DRG
+                reimbursement_drg = self._get_current_reimbursement(drg_weight, hospital_base_rate)
+                reimbursement_delta = reimbursement_drg - current_reimbursement
+
+                candidates.append(DRGCandidate(
+                    drg_code=drg_code,
+                    drg_description=drg_description,
+                    relative_weight=drg_weight,
+                    reimbursement_delta=reimbursement_delta,
+                    probability=ProbabilityLevel.LOW,  # We do not have strong evidence for these, so low probability
+                    requirements=[],
+                    query_recommendations=[]
+                ))
+        except Exception as e:
+            # If the graph enhancement fails, we just continue with the original candidates
+            pass
 
         # Example: For sepsis DRGs (870, 871, 872)
         # We'll hardcode the transitions for MVP, but in reality this would be algorithmic
