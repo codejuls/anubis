@@ -356,33 +356,7 @@ class DRGOptimizerPanel extends HTMLElement {
                     font-style: italic;
                 }
             </style>
-                    margin: 0 0 16px;
-                    font-size: 0.875rem;
-                    font-weight: 600;
-                    color: var(--fg, #1a1d1c);
-                    text-transform: uppercase;
-                    letter-spacing: 0.04em;
-                }
-                
-                .loading, .error, .empty {
-                    text-align: center;
-                    padding: 20px;
-                    color: var(--fg-muted, #6c757d);
-                    font-style: italic;
-                }
-                
-                .error {
-                    color: var(--danger, #c92a2a);
-                }
-                
-                .optimization-status {
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 16px;
-                    padding: 12px;
-                    background: var(--bg-hover, #e9ecef);
-                    border-radius: var(--radius-sm, 4px);
-                }
+            <h2>DRG Optimization Analysis</h2>
                 
                 .status-indicator {
                     display: inline-flex;
